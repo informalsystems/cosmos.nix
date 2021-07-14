@@ -3,7 +3,7 @@
 This is an experimental Nix project for integrating the Rust and Go projects in Cosmos
 as Nix packages. Use this at your own risk.
 
-## Installation
+## Setup Non-NixOS
 
 This project is developed entirely in [Nix Flakes](https://nixos.wiki/wiki/Flakes).
 To get started, run the following:
@@ -27,13 +27,45 @@ mkdir -p ~/.config/nix
 echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 ```
 
+[Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
+
+Add these lines to your Nix config (either ~/.config/nix/nix.conf [for MacOS] or /etc/nix/nix.conf [for flavors of Linux, depending on your distro]):
+
+```
+extra-substituters = https://cache.nixos.org https://nix-community.cachix.org https://pre-commit-hooks.cachix.org
+trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc=
+cores = 4 # NB: You may want to increase this on machines with more cores
+```
+
+### Setup NixOS
+
+In your `configuration.nix` file add this. Note, you can add the suggested binary caches in addition to your existing ones.
+
+```nix
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    binaryCaches = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+      "https://pre-commit-hooks.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+    ];
+   };
+```
+
 ## Sources
 
 Right now only the sources of the upstream projects are given as
 a Nix derivation. You can build them by running:
 
 ```bash
-$ nix build .#sources
+$ nix build
 $ ls result/
 cosmos-sdk  gaia  ibc-go  ibc-rs  tendermint-rs
 ```
