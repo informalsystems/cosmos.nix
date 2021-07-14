@@ -87,6 +87,5 @@
 
       # nix build
       defaultPackage = packages.sources;
-    }
-    );
+    });
 }

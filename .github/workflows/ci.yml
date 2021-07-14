@@ -14,14 +14,6 @@ jobs:
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           extra_nix_config: |
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-
-      # We can enable this whenever
-      # - name: Link Cachix 🔌
-      #   uses: cachix/cachix-action@v10
-      #   with:
-      #     name: jonathanlorimer
-      #     authToken: '${{ secrets.CACHIX_API_KEY }}'
 
       - name: Check 🔎
         run: |
