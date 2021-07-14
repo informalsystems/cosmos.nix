@@ -1,0 +1,112 @@
+{
+  "nodes": {
+    "cosmos-sdk-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626188694,
+        "narHash": "sha256-ynSwho5S63Qo+oqzpZHiZEHa2ouIf9nEzbYzVaGNfUo=",
+        "owner": "cosmos",
+        "repo": "cosmos-sdk",
+        "rev": "7040387c184869cb45aeb681e95c4c347bf26e26",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "cosmos-sdk",
+        "type": "github"
+      }
+    },
+    "gaia-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626172714,
+        "narHash": "sha256-/7aG+aoh7whSdRoQjUwY32K3DO4e8PGmC9Th5abd44w=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "397391e371937d8b6168cd000b8dbf68269a704e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
+    "ibc-go-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626260024,
+        "narHash": "sha256-AmyS0fUIHxG+PyH3G7gV2xnfW2L8YeFRM+ervgNIRuM=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "484cedcac875e8f96457d245d2eff816901976d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
+    "ibc-rs-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626256293,
+        "narHash": "sha256-T1juEVy68x/lE3tX+DVG94mPvYQvuAMDfFFLB1Xv82I=",
+        "owner": "informalsystems",
+        "repo": "ibc-rs",
+        "rev": "a0c9a782faf0fb2165de9bb300644493e08b9055",
+        "type": "github"
+      },
+      "original": {
+        "owner": "informalsystems",
+        "repo": "ibc-rs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-src": {
+      "locked": {
+        "lastModified": 1620055814,
+        "narHash": "sha256-8LEHoYSJiL901bTMVatq+rf8y7QtWuZhwwpKE2fyaRY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1db42b7fe3878f3f5f7a4f2dc210772fd080e205",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-20.03",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "cosmos-sdk-src": "cosmos-sdk-src",
+        "gaia-src": "gaia-src",
+        "ibc-go-src": "ibc-go-src",
+        "ibc-rs-src": "ibc-rs-src",
+        "nixpkgs-src": "nixpkgs-src",
+        "tendermint-rs-src": "tendermint-rs-src"
+      }
+    },
+    "tendermint-rs-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626212265,
+        "narHash": "sha256-oUicZT0tCQGlCbNOlgUzYHQvu2cySFKKkYr+RqeJJJU=",
+        "owner": "informalsystems",
+        "repo": "tendermint-rs",
+        "rev": "1a7c16056906c21b35d5112edf65c287c2ab692a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "informalsystems",
+        "repo": "tendermint-rs",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
