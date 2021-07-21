@@ -3,11 +3,11 @@
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1626382374,
-        "narHash": "sha256-rJijs/iCkJ/cp7SRDLLL4A1hCM64NL9llknZXHRvjZE=",
+        "lastModified": 1626794131,
+        "narHash": "sha256-g6dJz/6tTtrl5Z7jrxK+X78KB5UadlmqBVZT/f5DA0M=",
         "owner": "cosmos",
         "repo": "cosmos-sdk",
-        "rev": "615f22466f7b3ddd20d2eb004e5addb7f96407bb",
+        "rev": "12e4be34fbd2414b10756997ca3769ebaaf6bdea",
         "type": "github"
       },
       "original": {
@@ -118,7 +118,7 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "narHash": "sha256-8/56tbBsYywImtisssqpgVx125I/Wsoy1ru9eKqsLn4=",
+        "narHash": "sha256-5NNREtbB59Itwqk0PWq7jk41YwR+t2Vx1IKORdaai8s=",
         "path": "./Hermes",
         "type": "path"
       },
@@ -130,11 +130,11 @@
     "ibc-go-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1626342236,
-        "narHash": "sha256-5B+U+/REVx5/QhxVjiMVbLUDqcVW5jpaLlaBzECteTA=",
+        "lastModified": 1626799724,
+        "narHash": "sha256-uvzdzHxrHyWGOQ6/GsVLHDSIZ/paZrcXold7loXaBLs=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "099d7042a5b95b294b52c8e36a07307a4418773f",
+        "rev": "0afa15af41997cfb4c5dd5f98de8043961e26195",
         "type": "github"
       },
       "original": {
@@ -192,11 +192,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1626464457,
-        "narHash": "sha256-u2PCh/+8vQSLwf0mPpKHKQ8hAPB3l4uNZR3r0TdK2Lg=",
+        "lastModified": 1626852498,
+        "narHash": "sha256-lOXUJvi0FJUXHTVSiC5qsMRtEUgqM4mGZpMESLuGhmo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c6c4a3d45ab200f17805d2d86a1ff1cc7ca2b186",
+        "rev": "16105403bdd843540cbef9c63fc0f16c1c6eaa70",
         "type": "github"
       },
       "original": {
@@ -273,11 +273,11 @@
     "tendermint-rs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1626441187,
-        "narHash": "sha256-vTl3eExt71MlXOgHLyab79tSz0tQj8hJ9h9ksy4Jzvs=",
+        "lastModified": 1626881756,
+        "narHash": "sha256-7fnTTtjHQ9h+p3X/3iSlU+IJyz+26CE60XogeGEAAJs=",
         "owner": "informalsystems",
         "repo": "tendermint-rs",
-        "rev": "a93a215dfa07ef65c64a6edbff018603a4d58dde",
+        "rev": "d8e18c647cd8695d16610c4292b15ec6d1b45fbc",
         "type": "github"
       },
       "original": {

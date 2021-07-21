@@ -27,11 +27,11 @@
     , crate2nix
     , flake-utils
     , ibc-rs-src
+    , ...
     }:
     let utils = flake-utils.lib; in
     utils.eachDefaultSystem (system:
-    let pkgs = import nixpkgs {
-      inherit system;
+    let
       overlays = [
         rust-overlay.overlay
         (final: _: {
@@ -42,7 +42,8 @@
           cargo = final.rust-bin.stable.latest.default;
         })
       ];
-    };
+      pkgs = import nixpkgs { inherit system overlays; };
+      evalPkgs = import nixpkgs { system = "x86_64-linux"; inherit overlays; };
     in
     rec {
       packages = utils.flattenTree
@@ -50,7 +51,9 @@
           hermes =
             let
               name = "ibc-rs";
-              generateCargoNix = (import "${crate2nix}/tools.nix" { inherit pkgs; }).generatedCargoNix;
+              # The use of `evalPkgs` here is a major hack. This is to get around the IFD limitation in nix flakes
+              # See this github issue: https://github.com/NixOS/nix/issues/4265#issuecomment-732358327
+              generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
 
               # Create the cargo2nix project
               cargoNix = pkgs.callPackage

@@ -8,9 +8,9 @@
 
     # Rust Inputs
     flake-utils.url = "github:numtide/flake-utils";
-    hermes.url = "path:./Hermes";
 
     # Cosmos Sources
+    hermes.url = "path:./Hermes";
     tendermint-rs-src = {
       flake = false;
       url = github:informalsystems/tendermint-rs;
