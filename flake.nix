@@ -7,19 +7,10 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     # Rust Inputs
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    crate2nix = {
-      url = "github:yusdacra/crate2nix/feat/builtinfetchgit";
-      flake = false;
-    };
     flake-utils.url = "github:numtide/flake-utils";
+    hermes.url = "path:./Hermes";
 
     # Cosmos Sources
-    ibc-rs-src = {
-      flake = false;
-      url = github:informalsystems/ibc-rs;
-    };
-
     tendermint-rs-src = {
       flake = false;
       url = github:informalsystems/tendermint-rs;
@@ -45,10 +36,8 @@
     { self
     , nixpkgs
     , pre-commit-hooks
-    , rust-overlay
-    , crate2nix
     , flake-utils
-    , ibc-rs-src
+    , hermes
     , tendermint-rs-src
     , gaia-src
     , cosmos-sdk-src
@@ -56,22 +45,9 @@
     }:
     let utils = flake-utils.lib; in
     utils.eachDefaultSystem (system:
-    let pkgs = import nixpkgs {
-      inherit system;
-      overlays = [
-        rust-overlay.overlay
-        (final: _: {
-          # Because rust-overlay bundles multiple rust packages into one
-          # derivation, specify that mega-bundle here, so that crate2nix
-          # will use them automatically.
-          rustc = final.rust-bin.stable.latest.default;
-          cargo = final.rust-bin.stable.latest.default;
-        })
-      ];
-    };
-    in
+    let pkgs = import nixpkgs { inherit system; }; in
     rec {
-      packages = ## utils.flattenTree
+      packages = utils.flattenTree
         {
           sources = pkgs.stdenv.mkDerivation {
             name = "sources";
@@ -80,14 +56,13 @@
             installPhase = ''
               mkdir -p $out
               ls -la $out
-              ln -s ${ibc-rs-src} $out/ibc-rs
               ln -s ${tendermint-rs-src} $out/tendermint-rs
               ln -s ${gaia-src} $out/gaia
               ln -s ${cosmos-sdk-src} $out/cosmos-sdk
               ln -s ${ibc-go-src} $out/ibc-go
             '';
           };
-          hermes = import ./hermes.nix { inherit pkgs ibc-rs-src crate2nix; };
+          hermes = hermes.packages.${system}.hermes;
         };
 
       # nix flake check
@@ -116,14 +91,11 @@
       };
 
       # nix build
-      defaultPackage = packages.sources;
+      defaultPackage = packages.hermes;
 
       # nix run
       apps = {
-        hermes = {
-          type = "app";
-          program = "${packages.hermes}/bin/hermes";
-        };
+        hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
       };
       defaultApp = apps.hermes;
     });
