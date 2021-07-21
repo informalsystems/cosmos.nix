@@ -1,5 +1,5 @@
 {
-  description = "A flake for building Hello World";
+  description = "A reproducible Cosmos";
 
   inputs = {
     # Nix Inputs
