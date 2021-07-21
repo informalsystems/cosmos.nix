@@ -10,7 +10,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     # Cosmos Sources
-    hermes.url = "path:./Hermes";
+    hermes.url = "path:./hermes";
     tendermint-rs-src = {
       flake = false;
       url = github:informalsystems/tendermint-rs;
