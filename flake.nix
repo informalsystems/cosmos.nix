@@ -5,6 +5,13 @@
     # Nix Inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
+    # Rust Inputs
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    crate2nix = {
+      url = "github:yusdacra/crate2nix/feat/builtinfetchgit";
+      flake = false;
+    };
     flake-utils.url = "github:numtide/flake-utils";
 
     # Cosmos Sources
@@ -38,6 +45,8 @@
     { self
     , nixpkgs
     , pre-commit-hooks
+    , rust-overlay
+    , crate2nix
     , flake-utils
     , ibc-rs-src
     , tendermint-rs-src
@@ -47,9 +56,22 @@
     }:
     let utils = flake-utils.lib; in
     utils.eachDefaultSystem (system:
-    let pkgs = nixpkgs.legacyPackages.${system}; in
+    let pkgs = import nixpkgs {
+      inherit system;
+      overlays = [
+        rust-overlay.overlay
+        (final: _: {
+          # Because rust-overlay bundles multiple rust packages into one
+          # derivation, specify that mega-bundle here, so that crate2nix
+          # will use them automatically.
+          rustc = final.rust-bin.stable.latest.default;
+          cargo = final.rust-bin.stable.latest.default;
+        })
+      ];
+    };
+    in
     rec {
-      packages = utils.flattenTree
+      packages = ## utils.flattenTree
         {
           sources = pkgs.stdenv.mkDerivation {
             name = "sources";
@@ -65,6 +87,7 @@
               ln -s ${ibc-go-src} $out/ibc-go
             '';
           };
+          hermes = import ./hermes.nix { inherit pkgs ibc-rs-src crate2nix; };
         };
 
       # nix flake check
@@ -81,11 +104,27 @@
       # nix develop
       devShell = pkgs.mkShell {
         inherit (self.checks.${system}.pre-commit-check) shellHook;
-        # Add dev shell dependencies here
-        # buildInputs = with pkgs; [ ];
+        nativeBuildInputs = with pkgs; [
+          rustc
+          cargo
+          pkg-config
+        ];
+        buildInputs = with pkgs; [
+          openssl
+          pkgs.crate2nix
+        ];
       };
 
       # nix build
       defaultPackage = packages.sources;
+
+      # nix run
+      apps = {
+        hermes = {
+          type = "app";
+          program = "${packages.hermes}/bin/hermes";
+        };
+      };
+      defaultApp = apps.hermes;
     });
 }
