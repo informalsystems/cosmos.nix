@@ -118,12 +118,12 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "narHash": "sha256-5NNREtbB59Itwqk0PWq7jk41YwR+t2Vx1IKORdaai8s=",
-        "path": "./Hermes",
+        "narHash": "sha256-Lnqh0y13bU6/7A4Rv7WM0aQzioLmkdJ8k3nh+V3CH8c=",
+        "path": "./hermes",
         "type": "path"
       },
       "original": {
-        "path": "./Hermes",
+        "path": "./hermes",
         "type": "path"
       }
     },
@@ -247,8 +247,7 @@
         "hermes": "hermes",
         "ibc-go-src": "ibc-go-src",
         "nixpkgs": "nixpkgs_3",
-        "pre-commit-hooks": "pre-commit-hooks",
-        "tendermint-rs-src": "tendermint-rs-src"
+        "pre-commit-hooks": "pre-commit-hooks"
       }
     },
     "rust-overlay": {
@@ -267,22 +266,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "tendermint-rs-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626881756,
-        "narHash": "sha256-7fnTTtjHQ9h+p3X/3iSlU+IJyz+26CE60XogeGEAAJs=",
-        "owner": "informalsystems",
-        "repo": "tendermint-rs",
-        "rev": "d8e18c647cd8695d16610c4292b15ec6d1b45fbc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "informalsystems",
-        "repo": "tendermint-rs",
         "type": "github"
       }
     }

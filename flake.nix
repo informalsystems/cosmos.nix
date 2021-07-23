@@ -11,10 +11,7 @@
 
     # Cosmos Sources
     hermes.url = "path:./hermes";
-    tendermint-rs-src = {
-      flake = false;
-      url = github:informalsystems/tendermint-rs;
-    };
+    # tendermint-rs.url = "path:./tendermint-rs";
 
     gaia-src = {
       flake = false;
@@ -38,7 +35,7 @@
     , pre-commit-hooks
     , flake-utils
     , hermes
-    , tendermint-rs-src
+      # , tendermint-rs-src
     , gaia-src
     , cosmos-sdk-src
     , ibc-go-src
@@ -56,7 +53,6 @@
             installPhase = ''
               mkdir -p $out
               ls -la $out
-              ln -s ${tendermint-rs-src} $out/tendermint-rs
               ln -s ${gaia-src} $out/gaia
               ln -s ${cosmos-sdk-src} $out/cosmos-sdk
               ln -s ${ibc-go-src} $out/ibc-go
