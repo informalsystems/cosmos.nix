@@ -47,6 +47,8 @@
     utils.eachDefaultSystem (system:
     let pkgs = import nixpkgs { inherit system; }; in
     rec {
+
+      # nix build .#<app>
       packages = utils.flattenTree
         {
           sources = pkgs.stdenv.mkDerivation {
@@ -90,13 +92,9 @@
         ];
       };
 
-      # nix build
-      defaultPackage = packages.hermes;
-
-      # nix run
+      # nix run .#<app>
       apps = {
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
       };
-      defaultApp = apps.hermes;
     });
 }
