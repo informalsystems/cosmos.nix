@@ -59,6 +59,7 @@
             (generateCargoNix {
               inherit name;
               src = tendermint-rs-src;
+              additionalCargoNixArgs = [ "--all-features" ];
             })
             {
               # Individual crate overrides
@@ -75,18 +76,29 @@
             };
         in
         utils.flattenTree {
-          tendermint = cargoNix.workspaceMembers.tendermint.build.override {
-            features = [ "secp256k1" ];
-          };
+          # tendermint = cargoNix.workspaceMembers.tendermint.build.override {
+          #   features = [ "secp256k1" ];
+          # };
           tendermint-rpc = cargoNix.workspaceMembers.tendermint-rpc.build.override {
-            features = [ "default" "cli" "http-client" "secp256k1" "websocket-client" ];
-            # features = ["rt-multi-thread" "websocket-client" "http-client"];
+            features = [
+              "default"
+              "cli"
+              "http-client"
+              "websocket-client"
+            ];
           };
           tendermint-light-client = cargoNix.workspaceMembers.tendermint-light-client.build.override {
-            features = [ "default" "rpc-client" "lightstore-sled" "unstable" "cli" "http-client" "secp256k1" "websocket-client" ];
-            # features = ["rpc-client" "rt"];
+            features = [
+              "default"
+              "rpc-client"
+              "lightstore-sled"
+              "unstable"
+              "cli"
+              "http-client"
+              "websocket-client"
+            ];
           };
-          # tendermint = cargoNix.workspaceMembers.tendermint.build;
+          tendermint = cargoNix.workspaceMembers.tendermint.build;
           # tendermint-rpc = cargoNix.workspaceMembers.tendermint-rpc.build;
           # tendermint-light-client = cargoNix.workspaceMembers.tendermint-light-client.build;
         };

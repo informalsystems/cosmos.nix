@@ -109,7 +109,7 @@
     "tendermint-rs-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-cnNmEdggce+pibvP5QM+4Q48YGDCrwYjW7CWK0924oA=",
+        "narHash": "sha256-vZ5o2YZbQdieDMi7KrB3y9svUNXks9crc0oH2qRy7Zw=",
         "path": "../../../tendermint-rs",
         "type": "path"
       },
