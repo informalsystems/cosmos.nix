@@ -71,7 +71,10 @@ Note, you can add the suggested binary caches in addition to your existing ones.
 Right now only the sources of the upstream projects are given as a Nix
 derivation. You can build them by running:
 
-```bash $ nix build $ ls result/ cosmos-sdk  gaia  ibc-go  ibc-rs  tendermint-rs
+```bash
+$ nix build
+$ ls result/
+cosmos-sdk  gaia  ibc-go  ibc-rs  tendermint-rs
 ```
 
 This is just to show that our Nix derivations now have access to the source code
@@ -86,9 +89,3 @@ upcoming development.
 
 Here is a list of the commands you can invoke to run specific packges.
 - [hermes](https://hermes.informal.systems/): `nix run .#hermes`
-
-
-
-
-
-
