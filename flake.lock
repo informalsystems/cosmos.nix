@@ -118,7 +118,7 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "narHash": "sha256-Ug/OjuuCulhd79RCFDJLSMSPjcyvY1+XY6vwEFjaEPQ=",
+        "narHash": "sha256-Lnqh0y13bU6/7A4Rv7WM0aQzioLmkdJ8k3nh+V3CH8c=",
         "path": "./hermes",
         "type": "path"
       },
