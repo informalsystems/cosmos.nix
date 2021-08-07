@@ -29,8 +29,7 @@ mkdir -p ~/.config/nix
 echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 ```
 
-[Setup
-Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
+[Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
 
 Add these lines to your Nix config (either ~/.config/nix/nix.conf [for MacOS] or
 /etc/nix/nix.conf [for flavors of Linux, depending on your distro]):
