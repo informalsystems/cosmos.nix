@@ -15,7 +15,6 @@
     };
 
     # Cosmos Sources
-    # hermes.url = "path:./hermes";
     ibc-rs-src = {
       url = github:informalsystems/ibc-rs;
       flake = false;
@@ -75,9 +74,11 @@
       # Note: below is the only use of eval pkgs. This is due to an issue with import from
       # derivation (IFD), which requires nix derivations to be built at evaluation time.
       # Since we can't build on all system types (`utils.eachDefaultSystem` requires us
-      # to evaluate all possible systems) we need to pick a system for evaluation. With
-      # proper caching this flake should still work for running on all system types.
-      # Issue: https://github.com/NixOS/nix/issues/4265
+      # to evaluate all possible systems) we need to pick a system for building during
+      # evaluation. With proper caching this flake should still work for running on all
+      # system types.
+      #
+      # Github Issue: https://github.com/NixOS/nix/issues/4265
       generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
     in
     rec {
