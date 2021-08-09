@@ -51,7 +51,7 @@ data LockDetails =
     } deriving Show
 
 instance FromJSON LockDetails where
-  parseJSON = withObject "Coord" $ \v -> LockDetails
+  parseJSON = withObject "LockDetails" $ \v -> LockDetails
         <$> v .: "narHash"
         <*> v .: "owner"
         <*> v .: "repo"
@@ -63,7 +63,6 @@ main = sh $ do
   inputs <- stdin
   flakeLock <- TB.input "flake.lock"
   let goSources = uncurry GoSource . T.breakOn "/" <$> T.words (lineToText inputs)
-  liftIO $ print goSources
 
   when (any (\GoSource{..} -> T.null storePath) goSources) $ liftIO $ do
     errorMessage "One or more go sources are missing nix store paths"
@@ -84,11 +83,13 @@ main = sh $ do
     forM missingSrcs (\err -> errorMessage err)
     exit $ ExitFailure 126
 
-  forM foundSrcs updateGoModules
+  syncedSources <- forM foundSrcs updateGoModules
+
+  liftIO $ forM syncedSources notifyUpdated
 
   exit $ ExitSuccess
 
-data HasSyncedModules = Updated | Cached
+data HasSyncedModules = Updated | Cached deriving (Show)
 
 updateGoModules :: GoSourceDetailed -> Shell (HasSyncedModules, Text)
 updateGoModules GoSourceDetailed{..} = do
@@ -99,7 +100,6 @@ updateGoModules GoSourceDetailed{..} = do
 
   let narHashIsEqual = input narFile <&> \hash -> Any $ (lineToText hash) == ldNarHash
   shouldSync <- msum [ pure $ negateAny hasNarFile, narHashIsEqual]
-  liftIO $ print shouldSync
 
   if getAny shouldSync
      then do
@@ -114,6 +114,13 @@ updateGoModules GoSourceDetailed{..} = do
        output (collapse $ goSrcDir <> "./last-synced.nar") (pure $ unsafeTextToLine ldNarHash)
        pure (Updated, detailedSourceName)
      else pure (Cached, detailedSourceName)
+
+
+notifyUpdated :: (HasSyncedModules, Text) -> IO ()
+notifyUpdated (Updated, name) =
+  successMessage $ "Updated go modules for: " <> name <> "."
+notifyUpdated (Cached, name) =
+  infoMessage $ name <> " has up to date go modules."
 
 negateAny :: Any -> Any
 negateAny (Any True) = Any False
