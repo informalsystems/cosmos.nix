@@ -120,7 +120,7 @@ notifyUpdated :: (HasSyncedModules, Text) -> IO ()
 notifyUpdated (Updated, name) =
   successMessage $ "Updated go modules for: " <> name <> "."
 notifyUpdated (Cached, name) =
-  infoMessage $ name <> " has up to date go modules."
+  skipMessage $ name <> " has up to date go modules."
 
 negateAny :: Any -> Any
 negateAny (Any True) = Any False
@@ -135,6 +135,3 @@ nodesLookup name nodes =
   case HM.lookup name nodes of
     Nothing -> Left $ "Couldn't find " <> name <> " in nodes"
     Just a -> Right a
-
-(<$$>) :: (Functor f, Functor g) => (a -> b) -> f (g a) -> f (g b)
-(<$$>) f fga = fmap f <$> fga
