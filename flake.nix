@@ -147,6 +147,7 @@
       # nix run .#<app>
       apps = {
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
+        gaia = utils.mkApp { name = "gaiad"; drv = packages.gaia; };
       };
     });
 }
