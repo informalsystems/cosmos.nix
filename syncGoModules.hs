@@ -95,7 +95,7 @@ updateGoModules :: GoSourceDetailed -> Shell (HasSyncedModules, Text)
 updateGoModules GoSourceDetailed{..} = do
   let LockDetails{..} = detailedLockDetails
       goSrcDir = "./" <> fromText ldRepo
-      narFile = goSrcDir <> "last-synced.nar"
+      narFile = goSrcDir <> "last-synced.narHash"
   hasNarFile <- fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
 
   let narHashIsEqual = input narFile <&> \hash -> Any $ (lineToText hash) == ldNarHash
@@ -108,10 +108,10 @@ updateGoModules GoSourceDetailed{..} = do
        cd tmp
        cptreeL (fromText detailedStorePath) "./"
        proc "gomod2nix" [] mempty
-
        cd sourceHome
-       mv (collapse $ tmp <> "./gomod2nix.toml") (collapse $ goSrcDir <> "./go-modules.toml")
-       output (collapse $ goSrcDir <> "./last-synced.nar") (pure $ unsafeTextToLine ldNarHash)
+       mktree goSrcDir
+       mv (tmp <> "gomod2nix.toml") (goSrcDir <> "go-modules.toml")
+       output narFile (pure $ unsafeTextToLine ldNarHash)
        pure (Updated, detailedSourceName)
      else pure (Cached, detailedSourceName)
 
