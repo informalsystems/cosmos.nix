@@ -12,6 +12,7 @@ import Prelude
 import Control.Monad
 import Turtle
 import Data.Either
+import Data.Bifunctor
 import qualified Turtle.Bytes as TB
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
@@ -24,10 +25,11 @@ import Data.Monoid
 import qualified Control.Foldl as FLD
 import Data.String.Interpolate
 
-data GoSource = GoSource { sourceName :: Text, storePath :: Text } deriving Show
+data GoSource = GoSource { sourceName :: Text, inputName :: Text, storePath :: Text } deriving Show
 data GoSourceDetailed =
   GoSourceDetailed
     { detailedSourceName :: Text
+    , detailedInputName :: Text
     , detailedStorePath :: Text
     , detailedLockDetails :: LockDetails
     } deriving Show
@@ -62,7 +64,7 @@ main :: IO ()
 main = sh $ do
   inputs <- stdin
   flakeLock <- TB.input "flake.lock"
-  let goSources = uncurry GoSource . T.breakOn "/" <$> T.words (lineToText inputs)
+  let goSources = parseInputs <$> T.words (lineToText inputs)
 
   when (any (\GoSource{..} -> T.null storePath) goSources) $ liftIO $ do
     errorMessage "One or more go sources are missing nix store paths"
@@ -76,8 +78,8 @@ main = sh $ do
         liftIO . exit $ ExitFailure 126
       Just (Nodes nodes) ->
         pure $ goSources <&> \GoSource{..} ->
-          GoSourceDetailed sourceName storePath <$>
-            (nodesLookup sourceName nodes >>= (fmap locked . resultToEitherText . fromJSON @NodeDetails))
+          GoSourceDetailed sourceName inputName storePath <$>
+            (nodesLookup inputName nodes >>= (fmap locked . resultToEitherText . fromJSON @NodeDetails))
 
   when (not . null $ missingSrcs) $ liftIO $ do
     forM missingSrcs (\err -> errorMessage err)
@@ -85,16 +87,24 @@ main = sh $ do
 
   syncedSources <- forM foundSrcs updateGoModules
 
-  liftIO $ forM syncedSources notifyUpdated
+  liftIO $ do
+    putStrLn "\n"
+    putStrLn $ formatWith [bold] "Done syncing go modules:"
+    forM syncedSources notifyUpdated
 
   exit $ ExitSuccess
+
+parseInputs :: Text -> GoSource
+parseInputs = (\(sourceName, (inputName, storePath)) -> GoSource{..})
+            . fmap (T.breakOn "/" . T.drop 1)
+            . T.breakOn ":"
 
 data HasSyncedModules = Updated | Cached deriving (Show)
 
 updateGoModules :: GoSourceDetailed -> Shell (HasSyncedModules, Text)
 updateGoModules GoSourceDetailed{..} = do
   let LockDetails{..} = detailedLockDetails
-      goSrcDir = "./" <> fromText ldRepo
+      goSrcDir = "./" <> fromText detailedSourceName
       narFile = goSrcDir <> "last-synced.narHash"
   hasNarFile <- fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
 
@@ -118,7 +128,7 @@ updateGoModules GoSourceDetailed{..} = do
 
 notifyUpdated :: (HasSyncedModules, Text) -> IO ()
 notifyUpdated (Updated, name) =
-  successMessage $ "Updated go modules for: " <> name <> "."
+  successMessage $ name <> "'s go modules were updated."
 notifyUpdated (Cached, name) =
   skipMessage $ name <> " has up to date go modules."
 
