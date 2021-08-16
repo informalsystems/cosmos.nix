@@ -3,7 +3,9 @@
 This is an experimental Nix project for integrating the Rust and Go projects in Cosmos
 as Nix packages. Use this at your own risk.
 
-## Setup Non-NixOS
+## Setup
+
+### Non-NixOS
 
 This project is developed entirely in [Nix Flakes](https://nixos.wiki/wiki/Flakes).
 To get started, run the following:
@@ -29,7 +31,8 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
 [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
 
-Add these lines to your Nix config (either ~/.config/nix/nix.conf [for MacOS] or /etc/nix/nix.conf [for flavors of Linux, depending on your distro]):
+Add these lines to your Nix config (either ~/.config/nix/nix.conf [for MacOS] or
+/etc/nix/nix.conf [for flavors of Linux, depending on your distro]):
 
 ```
 extra-substituters = https://cache.nixos.org https://nix-community.cachix.org https://pre-commit-hooks.cachix.org
@@ -37,9 +40,12 @@ trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/r
 cores = 4 # NB: You may want to increase this on machines with more cores
 ```
 
-### Setup NixOS
+### NixOS
 
-In your `configuration.nix` file add this. Note, you can add the suggested binary caches in addition to your existing ones.
+In your `configuration.nix` file you can add code below. It does 2 things, the
+first is that it enables nix experimental features (which enables flakes) and
+second it adds cache information so you don't have to build everything yourself.
+Note, you can add the suggested binary caches in addition to your existing ones.
 
 ```nix
   nix = {
@@ -61,8 +67,8 @@ In your `configuration.nix` file add this. Note, you can add the suggested binar
 
 ## Sources
 
-Right now only the sources of the upstream projects are given as
-a Nix derivation. You can build them by running:
+Right now only the sources of the upstream projects are given as a Nix
+derivation. You can build them by running:
 
 ```bash
 $ nix build
@@ -71,9 +77,14 @@ cosmos-sdk  gaia  ibc-go  ibc-rs  tendermint-rs
 ```
 
 This is just to show that our Nix derivations now have access to the source code
-of the upstream projects we want to support. The exact versions of the source code
-are pinned inside the `flake.lock` file, and can be updated using the
-`nix flake lock` command.
+of the upstream projects we want to support. The exact versions of the source
+code are pinned inside the `flake.lock` file, and can be updated using the `nix
+flake lock` command.
 
-We will then build actual Nix derivations based on these source files
-in upcoming development.
+We will then build actual Nix derivations based on these source files in
+upcoming development.
+
+## Applications
+
+Here is a list of the commands you can invoke to run specific packges.
+- [hermes](https://hermes.informal.systems/): `nix run .#hermes`
