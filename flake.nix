@@ -81,6 +81,7 @@
           storePath = "${cosmos-sdk-src}/cosmovisor";
         };
         cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
+        ibc-go = { inputName = "ibc-go-src"; storePath = "${ibc-go-src}"; };
       };
     in
     rec {
@@ -115,6 +116,8 @@
             inherit pkgs;
             cosmos-sdk-src = packages.cosmos-sdk-no-cosmovisor;
           };
+          cosmovisor = (import ./cosmovisor) { inherit pkgs; cosmovisor-src = goProjectSrcs.cosmovisor.storePath; };
+          ibc-go = (import ./ibc-go) { inherit ibc-go-src pkgs; };
         };
 
       # nix flake check
@@ -158,7 +161,7 @@
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
         gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
         cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-        simd = utils.mkApp { name = "simd"; drv = packages.cosmos-sdk; };
+        ibc-go = utils.mkApp { name = "ibc-go"; drv = packages.ibc-go; exePath = "/bin/simd"; };
       };
     });
 }
