@@ -14,6 +14,9 @@
       flake = false;
     };
 
+    # Go Inputs
+    gomod2nix.url = "github:tweag/gomod2nix";
+
     # Cosmos Sources
     ibc-rs-src = {
       url = github:informalsystems/ibc-rs;
@@ -48,6 +51,7 @@
     , flake-utils
     , rust-overlay
     , crate2nix
+    , gomod2nix
     , ibc-rs-src
     , tendermint-rs-src
     , gaia-src
@@ -65,6 +69,7 @@
           rustc = final.rust-bin.stable.latest.default;
           cargo = final.rust-bin.stable.latest.default;
         })
+        gomod2nix.overlay
       ];
     in
     utils.eachDefaultSystem (system:
@@ -80,6 +85,7 @@
       #
       # Github Issue: https://github.com/NixOS/nix/issues/4265
       generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
+      goProjectSrcs = { inherit gaia-src; };
     in
     rec {
       # nix build .#<app>
@@ -99,6 +105,7 @@
             '';
           };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
+          gaia = (import ./gaia) { inherit gaia-src pkgs; };
         };
 
       # nix flake check
@@ -113,22 +120,34 @@
       };
 
       # nix develop
-      devShell = pkgs.mkShell {
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-        nativeBuildInputs = with pkgs; [
-          rustc
-          cargo
-          pkg-config
-        ];
-        buildInputs = with pkgs; [
-          openssl
-          pkgs.crate2nix
-        ];
-      };
+      devShell =
+        let
+          syncGoModulesInputs = with builtins; concatStringsSep " "
+            (attrValues (builtins.mapAttrs (name: value: "${name}${value}") goProjectSrcs));
+          syncGoModulesScript = pkgs.writeShellScriptBin "syncGoModules" ''
+            echo "${syncGoModulesInputs}" | ./syncGoModules.hs
+          '';
+        in
+        pkgs.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          nativeBuildInputs = with pkgs; [
+            rustc
+            cargo
+            pkg-config
+          ];
+          buildInputs = with pkgs; [
+            openssl
+            # need to prefix with pkgs because of they shadow the name of inputs
+            pkgs.crate2nix
+            pkgs.gomod2nix
+            syncGoModulesScript
+          ];
+        };
 
       # nix run .#<app>
       apps = {
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
+        gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
       };
     });
 }
