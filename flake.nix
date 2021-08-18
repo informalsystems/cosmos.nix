@@ -23,9 +23,14 @@
       flake = false;
     };
 
-    gaia-src = {
+    gaia5-src = {
       flake = false;
-      url = github:cosmos/gaia;
+      url = github:cosmos/gaia/v5.0.5;
+    };
+
+    gaia4-src = {
+      flake = false;
+      url = github:cosmos/gaia/v4.2.1;
     };
 
     cosmos-sdk-src = {
@@ -44,7 +49,8 @@
     , crate2nix
     , gomod2nix
     , ibc-rs-src
-    , gaia-src
+    , gaia4-src
+    , gaia5-src
     , cosmos-sdk-src
     }:
     let
@@ -75,13 +81,13 @@
       # Github Issue: https://github.com/NixOS/nix/issues/4265
       generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
       goProjectSrcs = {
-        gaia = { inputName = "gaia-src"; storePath = "${gaia-src}"; };
+        gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
+        gaia4 = { inputName = "gaia4-src"; storePath = "${gaia4-src}"; };
         cosmovisor = {
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
         };
         cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
-        ibc-go = { inputName = "ibc-go-src"; storePath = "${ibc-go-src}"; };
       };
     in
     rec {
@@ -107,7 +113,6 @@
             '';
           };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
-          gaia = (import ./gaia) { inherit gaia-src pkgs; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
             cosmovisor-src = goProjectSrcs.cosmovisor.storePath;
@@ -116,8 +121,8 @@
             inherit pkgs;
             cosmos-sdk-src = packages.cosmos-sdk-no-cosmovisor;
           };
-          cosmovisor = (import ./cosmovisor) { inherit pkgs; cosmovisor-src = goProjectSrcs.cosmovisor.storePath; };
-          ibc-go = (import ./ibc-go) { inherit ibc-go-src pkgs; };
+          gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
+          gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
         };
 
       # nix flake check
@@ -159,9 +164,11 @@
       # nix run .#<app>
       apps = {
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
-        gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
+        gaia = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+        gaia4 = utils.mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
+        gaia5 = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
         cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-        ibc-go = utils.mkApp { name = "ibc-go"; drv = packages.ibc-go; exePath = "/bin/simd"; };
+        simd = utils.mkApp { name = "simd"; drv = packages.cosmos-sdk; };
       };
     });
 }
