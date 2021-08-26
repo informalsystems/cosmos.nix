@@ -68,12 +68,13 @@
     sha256 = "1fv6mssk1r96jbkbb413kxmcf87xz2knyx1bivdam2aa3mhxrim5"
 
 ["github.com/99designs/keyring"]
-  sumVersion = "v1.1.6"
+  sumVersion = "v1.1.7-0.20210622111912-ef00f8ac3d76"
+  vendorPath = "github.com/cosmos/keyring"
   ["github.com/99designs/keyring".fetch]
     type = "git"
-    url = "https://github.com/99designs/keyring"
-    rev = "68286ee5140ad1c5cce93fcc054e6cc90015b0ea"
-    sha256 = "08rcdqpxaa9n348q10fw40q4gxpjajkyrighykk71i7mxzwkcgwn"
+    url = "https://github.com/cosmos/keyring"
+    rev = "ef00f8ac3d762e4e0997a49c16808bb7fe81b661"
+    sha256 = "1ivw6y46iv1x6r6wqiahzv2c4a9rakkjx8a2drx54y6798hdcvvf"
 
 ["github.com/Azure/azure-pipeline-go"]
   sumVersion = "v0.2.2"
@@ -569,14 +570,6 @@
     rev = "825249438eec392bc87b980fb635b336e496a888"
     sha256 = "1khqy1m22vnyw0x24i4bwd37zvgzj25q139mh79bddj1rw5hf7hy"
 
-["github.com/client9/misspell"]
-  sumVersion = "v0.3.4"
-  ["github.com/client9/misspell".fetch]
-    type = "git"
-    url = "https://github.com/client9/misspell"
-    rev = "b90dc15cfd220ecf8bbc9043ecb928cef381f011"
-    sha256 = "1vwf33wsc4la25zk9nylpbp9px3svlmldkm0bha4hp56jws4q9cs"
-
 ["github.com/cloudflare/cloudflare-go"]
   sumVersion = "v0.10.2-0.20190916151808-a80f83b9add9"
   ["github.com/cloudflare/cloudflare-go".fetch]
@@ -586,22 +579,13 @@
     sha256 = "07q34xpgw1p091v2mmf64s2lx1gi7wxn7mnzr9182sxa7xp0bj52"
 
 ["github.com/cncf/udpa/go"]
-  sumVersion = "v0.0.0-20201120205902-5459f2c99403"
+  sumVersion = "v0.0.0-20191209042840-269d4d468f6f"
   relPath = "go"
   ["github.com/cncf/udpa/go".fetch]
     type = "git"
     url = "https://github.com/cncf/udpa"
-    rev = "5459f2c994033b0afed7e4a70ac7e90c90c1ffee"
-    sha256 = "0i3al193dsp91j7iywqrm6fr56y2sz51ci4vf19mb3j4n2x44gsi"
-
-["github.com/cncf/xds/go"]
-  sumVersion = "v0.0.0-20210312221358-fbca930ec8ed"
-  relPath = "go"
-  ["github.com/cncf/xds/go".fetch]
-    type = "git"
-    url = "https://github.com/cncf/xds"
-    rev = "fbca930ec8edc42e1a2b083dc59d0f6ec4946eb1"
-    sha256 = "16dlsms2k63570051ch1jb9yphrkqz61wdgs2l6zqaykhg13rjmh"
+    rev = "269d4d468f6f798d803d140c3016ed6fc6b735c5"
+    sha256 = "0i1jiaw2k3hlwwmg4hap81vb4s1p25xp9kdfww37v0fbgjariccs"
 
 ["github.com/cockroachdb/datadriven"]
   sumVersion = "v0.0.0-20190809214429-80d97fb3cbaa"
@@ -691,14 +675,6 @@
     url = "https://github.com/coreos/pkg"
     rev = "399ea9e2e55f791b6e3d920860dbecb99c3692f0"
     sha256 = "0nxbn0m7lr4dg0yrwnvlkfiyg3ndv8vdpssjx7b714nivpc6ar0y"
-
-["github.com/cosmos/cosmos-sdk"]
-  sumVersion = "v0.43.0-rc2"
-  ["github.com/cosmos/cosmos-sdk".fetch]
-    type = "git"
-    url = "https://github.com/cosmos/cosmos-sdk"
-    rev = "0ab5726a7aa5c2d66916b14becb696e6e19a1efb"
-    sha256 = "074schqadp1m3fa2f80kmpbpyw2fza054hcy08n64p4crwid74fx"
 
 ["github.com/cosmos/go-bip39"]
   sumVersion = "v1.0.0"
@@ -926,12 +902,12 @@
     sha256 = "0r2gf20acxnrcrch57hvgg8qp8ic96w6bx0j080cfya04xib3dxv"
 
 ["github.com/envoyproxy/go-control-plane"]
-  sumVersion = "v0.9.9-0.20210512163311-63b5d3c536b0"
+  sumVersion = "v0.9.4"
   ["github.com/envoyproxy/go-control-plane".fetch]
     type = "git"
     url = "https://github.com/envoyproxy/go-control-plane"
-    rev = "63b5d3c536b0a97ec2bbb2e74de7adae1ba1dfee"
-    sha256 = "1zb462sarpyjd4jxgiv9mqlmzz2rbjfh2r9xb7z4nbdkhpg1wh1j"
+    rev = "ba8e577f987f6676343cac84525b92ed1b2d86fe"
+    sha256 = "0m0crzx70lp7vz13v20wxb1fcfdnzp7h3mkh3bn6a8mbfz6w5asj"
 
 ["github.com/envoyproxy/protoc-gen-validate"]
   sumVersion = "v0.1.0"
@@ -1213,14 +1189,6 @@
     url = "https://github.com/gogo/gateway"
     rev = "817b4cf527e834d7d563b7329355c45801d5e02d"
     sha256 = "1jj7vr3sdk7yz8jl1kzv8473pkhd388f95byc8pdwrh6y7fh0xrq"
-
-["github.com/gogo/googleapis"]
-  sumVersion = "v1.1.0"
-  ["github.com/gogo/googleapis".fetch]
-    type = "git"
-    url = "https://github.com/gogo/googleapis"
-    rev = "8558fb44d2f1fc223118afc694129d2c2d2924d1"
-    sha256 = "0gkdk3k2wc0l8650s0k29kc01bi8nf14h741phmcsbi6li9y5sk1"
 
 ["github.com/gogo/protobuf"]
   sumVersion = "v1.3.3-alpha.regen.1"
@@ -1731,12 +1699,12 @@
     sha256 = "0algnnigph27spgn655zm4723yfjxjjvlf4k14z9drj3682df25a"
 
 ["github.com/jhump/protoreflect"]
-  sumVersion = "v1.8.2"
+  sumVersion = "v1.9.0"
   ["github.com/jhump/protoreflect".fetch]
     type = "git"
     url = "https://github.com/jhump/protoreflect"
-    rev = "a7354461904cf462f86778faa7132a0472343d17"
-    sha256 = "110bzwmwglw5y5m83yy4bgqjdr3qmqi12qnxlm04jhg20m6snpsf"
+    rev = "d3608faa83b85e64a0e2880cba9be9c951460727"
+    sha256 = "0pbyvisfjmhx1g5l6m0dqv730hid1jr8h8746yx3d567ms2hgj8f"
 
 ["github.com/jmespath/go-jmespath"]
   sumVersion = "v0.0.0-20180206201540-c2b33e8439af"
@@ -1954,14 +1922,6 @@
     url = "https://github.com/lucasjones/reggen"
     rev = "cdb49ff09d77331d3fdd51e862b4023d2257954c"
     sha256 = "1cby9n647v4gh11mpz1dfscks8n0cw0rj8d2hjh4q9mky4m7jzl1"
-
-["github.com/lyft/protoc-gen-validate"]
-  sumVersion = "v0.0.13"
-  ["github.com/lyft/protoc-gen-validate".fetch]
-    type = "git"
-    url = "https://github.com/lyft/protoc-gen-validate"
-    rev = "4349a359d42fdfee53b85dd5c89a2f169e1dc6b2"
-    sha256 = "06x2mb4qa766dgrcahjlp6fb7f8dinkfk1i8zy6ibfigcrlbqjr5"
 
 ["github.com/magiconair/properties"]
   sumVersion = "v1.8.5"
@@ -3039,15 +2999,6 @@
     rev = "49838f207d61097fc0ebb8aeef306913388376ca"
     sha256 = "0gw4f7inf8y2ik00yfb36xganiq9rl4w2d1a41bsjqsh83ajz2km"
 
-["go.opentelemetry.io/proto/otlp"]
-  sumVersion = "v0.7.0"
-  relPath = "otlp"
-  ["go.opentelemetry.io/proto/otlp".fetch]
-    type = "git"
-    url = "https://github.com/open-telemetry/opentelemetry-proto-go"
-    rev = "4fc4e99f9e4387bc9890e74f757d3994ffa384ce"
-    sha256 = "003p1yjh48sfgq7b2k1hxn8jdpdps17zfhn427lbfpd1z7gd2cdq"
-
 ["go.uber.org/atomic"]
   sumVersion = "v1.7.0"
   ["go.uber.org/atomic".fetch]
@@ -3225,12 +3176,12 @@
     sha256 = "06n5npgcjk8is2ajf0786nma5wjwpbwca273gv3yqq7dr3bkzv48"
 
 ["google.golang.org/grpc"]
-  sumVersion = "v1.39.0"
+  sumVersion = "v1.33.2"
   ["google.golang.org/grpc".fetch]
     type = "git"
     url = "https://github.com/grpc/grpc-go"
-    rev = "ebf6a4b476dc7c1bcb57c82e9c74529a7f046710"
-    sha256 = "02wbl21kjx118ranbhqbpzxnq31mayi2w60vdrm2zn3rqqf3jszy"
+    rev = "56d63285d528c0d33f9bf8c355139d91edc047de"
+    sha256 = "03yz4nlf4kqbnpw48f0mvcb2f5zzy0vjd5i2iw0hrjspd0238fzk"
 
 ["google.golang.org/protobuf"]
   sumVersion = "v1.27.1"
