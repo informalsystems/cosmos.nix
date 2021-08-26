@@ -85,7 +85,13 @@
       #
       # Github Issue: https://github.com/NixOS/nix/issues/4265
       generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
-      goProjectSrcs = { inherit gaia-src; };
+      goProjectSrcs = {
+        gaia = { inputName = "gaia-src"; storePath = "${gaia-src}"; };
+        cosmovisor = {
+          inputName = "cosmos-sdk-src";
+          storePath = "${cosmos-sdk-src}/cosmovisor";
+        };
+      };
     in
     rec {
       # nix build .#<app>
@@ -106,6 +112,7 @@
           };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           gaia = (import ./gaia) { inherit gaia-src pkgs; };
+          cosmovisor = (import ./cosmovisor) { inherit pkgs; cosmovisor-src = goProjectSrcs.cosmovisor.storePath; };
         };
 
       # nix flake check
@@ -123,7 +130,7 @@
       devShell =
         let
           syncGoModulesInputs = with builtins; concatStringsSep " "
-            (attrValues (builtins.mapAttrs (name: value: "${name}${value}") goProjectSrcs));
+            (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
           syncGoModulesScript = pkgs.writeShellScriptBin "syncGoModules" ''
             echo "${syncGoModulesInputs}" | ./syncGoModules.hs
           '';
@@ -148,6 +155,7 @@
       apps = {
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
         gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
+        cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
       };
     });
 }
