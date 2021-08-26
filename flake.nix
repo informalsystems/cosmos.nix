@@ -23,11 +23,6 @@
       flake = false;
     };
 
-    # tendermint-rs-src = {
-    #   flake = false;
-    #   url = github:informalsystems/tendermint-rs;
-    # };
-
     gaia-src = {
       flake = false;
       url = github:cosmos/gaia;
@@ -49,7 +44,6 @@
     , crate2nix
     , gomod2nix
     , ibc-rs-src
-      # , tendermint-rs-src
     , gaia-src
     , cosmos-sdk-src
     }:

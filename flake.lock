@@ -113,22 +113,6 @@
         "type": "github"
       }
     },
-    "ibc-go-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626799724,
-        "narHash": "sha256-uvzdzHxrHyWGOQ6/GsVLHDSIZ/paZrcXold7loXaBLs=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "0afa15af41997cfb4c5dd5f98de8043961e26195",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "type": "github"
-      }
-    },
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -232,12 +216,10 @@
         "flake-utils": "flake-utils",
         "gaia-src": "gaia-src",
         "gomod2nix": "gomod2nix",
-        "ibc-go-src": "ibc-go-src",
         "ibc-rs-src": "ibc-rs-src",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks",
-        "rust-overlay": "rust-overlay",
-        "tendermint-rs-src": "tendermint-rs-src"
+        "rust-overlay": "rust-overlay"
       }
     },
     "rust-overlay": {
@@ -256,22 +238,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "tendermint-rs-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626881756,
-        "narHash": "sha256-7fnTTtjHQ9h+p3X/3iSlU+IJyz+26CE60XogeGEAAJs=",
-        "owner": "informalsystems",
-        "repo": "tendermint-rs",
-        "rev": "d8e18c647cd8695d16610c4292b15ec6d1b45fbc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "informalsystems",
-        "repo": "tendermint-rs",
         "type": "github"
       }
     },
