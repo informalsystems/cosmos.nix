@@ -158,7 +158,7 @@
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
         gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
         cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-        ibc-go = utils.mkApp { name = "ibc-go"; drv = packages.ibc-go; exePath = "/bin/simd"; };
+        simd = utils.mkApp { name = "simd"; drv = packages.ibc-go; };
       };
     });
 }
