@@ -67,7 +67,6 @@
     , cosmos-sdk-src
     }:
     let
-      utils = flake-utils.lib;
       overlays = [
         rust-overlay.overlay
         (final: _: {
@@ -80,7 +79,8 @@
         gomod2nix.overlay
       ];
     in
-    utils.eachDefaultSystem (system:
+    with flake-utils.lib;
+    eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system overlays; };
       evalPkgs = import nixpkgs { system = "x86_64-linux"; inherit overlays; };
@@ -113,7 +113,7 @@
     in
     rec {
       # nix build .#<app>
-      packages = utils.flattenTree
+      packages = flattenTree
         {
           # We need a version of cosmos-sdk with no cosmovisor
           # since buildGoApplication doesn't know how to handle
