@@ -17,6 +17,17 @@
     # Go Inputs
     gomod2nix.url = "github:tweag/gomod2nix";
 
+    # Freshautomations inputs
+    stoml-src = {
+      url = github:freshautomations/stoml;
+      flake = false;
+    };
+
+    sconfig-src = {
+      url = github:freshautomations/sconfig;
+      flake = false;
+    };
+
     # Cosmos Sources
     ibc-rs-src = {
       url = github:informalsystems/ibc-rs;
@@ -48,6 +59,8 @@
     , rust-overlay
     , crate2nix
     , gomod2nix
+    , stoml-src
+    , sconfig-src
     , ibc-rs-src
     , gaia4-src
     , gaia5-src
@@ -83,6 +96,14 @@
       goProjectSrcs = {
         gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
         gaia4 = { inputName = "gaia4-src"; storePath = "${gaia4-src}"; };
+        stoml = {
+          inputName = "stoml-src";
+          storePath = "${stoml-src}";
+        };
+        sconfig = {
+          inputName = "sconfig-src";
+          storePath = "${sconfig-src}";
+        };
         cosmovisor = {
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
@@ -112,6 +133,8 @@
               done
             '';
           };
+          stoml = (import ./stoml) { inherit pkgs stoml-src; };
+          sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
@@ -169,6 +192,8 @@
         gaia5 = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
         cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
         simd = utils.mkApp { name = "simd"; drv = packages.cosmos-sdk; };
+        stoml = utils.mkApp { name = "stoml"; drv = packages.stoml; };
+        sconfig = utils.mkApp { name = "sconfig"; drv = packages.sconfig; };
       };
     });
 }
