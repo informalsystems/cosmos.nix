@@ -17,6 +17,17 @@
     # Go Inputs
     gomod2nix.url = "github:tweag/gomod2nix";
 
+    # Freshautomations inputs
+    stoml-src = {
+      url = github:freshautomations/stoml;
+      flake = false;
+    };
+
+    sconfig-src = {
+      url = github:freshautomations/sconfig;
+      flake = false;
+    };
+
     # Cosmos Sources
     ibc-rs-src = {
       url = github:informalsystems/ibc-rs;
@@ -52,6 +63,8 @@
     , rust-overlay
     , crate2nix
     , gomod2nix
+    , stoml-src
+    , sconfig-src
     , ibc-rs-src
     , tendermint-rs-src
     , gaia-src
@@ -86,7 +99,18 @@
       # Github Issue: https://github.com/NixOS/nix/issues/4265
       generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
       goProjectSrcs = {
-        gaia = { inputName = "gaia-src"; storePath = "${gaia-src}"; };
+        stoml = {
+          inputName = "stoml-src";
+          storePath = "${stoml-src}";
+        };
+        sconfig = {
+          inputName = "sconfig-src";
+          storePath = "${sconfig-src}";
+        };
+        gaia = {
+          inputName = "gaia-src";
+          storePath = "${gaia-src}";
+        };
         cosmovisor = {
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
@@ -97,6 +121,8 @@
       # nix build .#<app>
       packages = utils.flattenTree
         {
+          stoml = (import ./stoml) { inherit pkgs stoml-src; };
+          sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           sources = pkgs.stdenv.mkDerivation {
             name = "sources";
             unpackPhase = "true";
@@ -156,6 +182,8 @@
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
         gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
         cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
+        stoml = utils.mkApp { name = "stoml"; drv = packages.stoml; };
+        sconfig = utils.mkApp { name = "sconfig"; drv = packages.sconfig; };
       };
     });
 }

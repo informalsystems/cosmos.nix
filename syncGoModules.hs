@@ -62,7 +62,7 @@ instance FromJSON LockDetails where
 main :: IO ()
 main = sh $ do
   inputs <- stdin
-  flakeLock <- TB.input "flake.lock"
+  flakeLock <- TB.strict . TB.input $ "flake.lock"
   let goSources = parseInputs <$> T.words (lineToText inputs)
 
   when (any (\GoSource{..} -> T.null storePath) goSources) $ liftIO $ do
@@ -71,11 +71,12 @@ main = sh $ do
     exit $ ExitFailure 126
 
   (missingSrcs, foundSrcs) <- partitionEithers <$>
-    case decode . BSL.fromStrict $ flakeLock of
-      Nothing -> do
+    case eitherDecode . BSL.fromStrict $ flakeLock of
+      Left e -> do
         liftIO $ errorMessage "Could not parse flake.lock file! It appears to be in an invalid state."
+        liftIO . pPrint $ "aeson failed with this message: \n" <> e
         liftIO . exit $ ExitFailure 126
-      Just (Nodes nodes) ->
+      Right (Nodes nodes) ->
         pure $ goSources <&> \GoSource{..} ->
           GoSourceDetailed sourceName inputName storePath <$>
             (nodesLookup inputName nodes >>= (fmap locked . resultToEitherText . fromJSON @NodeDetails))
