@@ -72,7 +72,6 @@
     , ibc-go-src
     }:
     let
-      utils = flake-utils.lib;
       overlays = [
         rust-overlay.overlay
         (final: _: {
@@ -85,7 +84,8 @@
         gomod2nix.overlay
       ];
     in
-    utils.eachDefaultSystem (system:
+    with flake-utils.lib;
+    eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system overlays; };
       evalPkgs = import nixpkgs { system = "x86_64-linux"; inherit overlays; };
@@ -119,7 +119,7 @@
     in
     rec {
       # nix build .#<app>
-      packages = utils.flattenTree
+      packages = flattenTree
         {
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
@@ -179,11 +179,11 @@
 
       # nix run .#<app>
       apps = {
-        hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
-        gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
-        cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-        stoml = utils.mkApp { name = "stoml"; drv = packages.stoml; };
-        sconfig = utils.mkApp { name = "sconfig"; drv = packages.sconfig; };
+        hermes = mkApp { name = "hermes"; drv = packages.hermes; };
+        gaia = mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
+        cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
+        stoml = mkApp { name = "stoml"; drv = packages.stoml; };
+        sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
       };
     });
 }
