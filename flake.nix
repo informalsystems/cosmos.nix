@@ -104,6 +104,10 @@
           inputName = "sconfig-src";
           storePath = "${sconfig-src}";
         };
+        gaia = {
+          inputName = "gaia-src";
+          storePath = "${gaia-src}";
+        };
         cosmovisor = {
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
@@ -115,24 +119,6 @@
       # nix build .#<app>
       packages = flattenTree
         {
-          # We need a version of cosmos-sdk with no cosmovisor
-          # since buildGoApplication doesn't know how to handle
-          # sub-applications
-          cosmos-sdk-no-cosmovisor = pkgs.stdenv.mkDerivation {
-            name = "cosmos-sdk-no-cosmovisor";
-            unpackPhase = "true";
-            buildPhase = "true";
-            installPhase = ''
-              mkdir -p $out
-
-              for x in ${cosmos-sdk-src}/*; do
-                if [ $x = "${cosmos-sdk-src}/cosmovisor" ]
-                  then continue
-                  else cp -r $x $out
-                fi
-              done
-            '';
-          };
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
@@ -142,7 +128,25 @@
           };
           cosmos-sdk = (import ./cosmos-sdk) {
             inherit pkgs;
-            cosmos-sdk-src = packages.cosmos-sdk-no-cosmovisor;
+            cosmos-sdk-src =
+              # We need a version of cosmos-sdk with no cosmovisor
+              # since buildGoApplication doesn't know how to handle
+              # sub-applications
+              pkgs.stdenv.mkDerivation {
+                name = "cosmos-sdk-no-cosmovisor";
+                unpackPhase = "true";
+                buildPhase = "true";
+                installPhase = ''
+                  mkdir -p $out
+
+                  for x in ${cosmos-sdk-src}/*; do
+                    if [ $x = "${cosmos-sdk-src}/cosmovisor" ]
+                      then continue
+                      else cp -r $x $out
+                    fi
+                  done
+                '';
+              };
           };
           gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
           gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
