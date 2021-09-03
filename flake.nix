@@ -118,6 +118,8 @@
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           gm = (import ./gm) { inherit pkgs ibc-rs-src; };
+          stoml = (import ./stoml) { inherit pkgs stoml-src; };
+          sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
