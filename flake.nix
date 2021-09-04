@@ -121,19 +121,6 @@
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           gm = (import ./gm) { inherit pkgs ibc-rs-src; };
-          sources = pkgs.stdenv.mkDerivation {
-            name = "sources";
-            unpackPhase = "true";
-            buildPhase = "true";
-            installPhase = ''
-              mkdir -p $out
-              ls -la $out
-              ln -s ${tendermint-rs-src} $out/tendermint-rs
-              ln -s ${gaia-src} $out/gaia
-              ln -s ${cosmos-sdk-src} $out/cosmos-sdk
-              ln -s ${ibc-go-src} $out/ibc-go
-            '';
-          };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
@@ -194,7 +181,9 @@
           '';
         in
         pkgs.mkShell {
-          shellHook = self.checks.${system}.pre-commit-check.shellHook;
+          shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
+          '';
           nativeBuildInputs = with pkgs; [
             rustc
             cargo
