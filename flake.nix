@@ -123,11 +123,7 @@
         {
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
-          gm = (import ./gm) {
-            inherit pkgs ibc-rs-src;
-            stoml = packages.stoml;
-            sconfig = packages.sconfig;
-          };
+          gm = (import ./gm) { inherit pkgs ibc-rs-src; };
           sources = pkgs.stdenv.mkDerivation {
             name = "sources";
             unpackPhase = "true";
