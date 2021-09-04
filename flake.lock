@@ -3,11 +3,11 @@
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1630679367,
-        "narHash": "sha256-tD1ghhs/kojua5z5H6Bf6pgSDEuZTEWZN+uxzeuVqgs=",
+        "lastModified": 1626794131,
+        "narHash": "sha256-g6dJz/6tTtrl5Z7jrxK+X78KB5UadlmqBVZT/f5DA0M=",
         "owner": "cosmos",
         "repo": "cosmos-sdk",
-        "rev": "bfba5491f39f0e0af100480a3194a30c2dc4b9c3",
+        "rev": "12e4be34fbd2414b10756997ca3769ebaaf6bdea",
         "type": "github"
       },
       "original": {
@@ -35,11 +35,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1629481132,
-        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
+        "lastModified": 1623875721,
+        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "997f7efcb746a9c140ce1f13c72263189225f482",
+        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
         "type": "github"
       },
       "original": {
@@ -81,11 +81,11 @@
     "gaia-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1630076700,
-        "narHash": "sha256-ATmHEqTbBX8USfDodN3Bz4yO43CHXXDi9svhhe8RBcA=",
+        "lastModified": 1626289329,
+        "narHash": "sha256-aPQPoLzM/3ahQqscDFzqI1N/6bxXWduGghNMTgo5dz8=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "134cd31c8719ad9f7e4bcbeb180adf8c91683157",
+        "rev": "64ae891c9a77ea88e08d7c5056781388d6892e42",
         "type": "github"
       },
       "original": {
@@ -116,11 +116,11 @@
     "ibc-go-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1630659428,
-        "narHash": "sha256-pRTgHgsO5BCYbndm2+OtdSAf+V2hJNx51l6kkLjZlrA=",
+        "lastModified": 1626799724,
+        "narHash": "sha256-uvzdzHxrHyWGOQ6/GsVLHDSIZ/paZrcXold7loXaBLs=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "74182d8d45bca3504ed0190e9cdedb1a8ba45973",
+        "rev": "0afa15af41997cfb4c5dd5f98de8043961e26195",
         "type": "github"
       },
       "original": {
@@ -132,11 +132,11 @@
     "ibc-rs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1629820654,
-        "narHash": "sha256-NReR6R6lzOnqpyl33CSNttQT0D5G/6QWjaiaSnVSeqw=",
+        "lastModified": 1628083286,
+        "narHash": "sha256-d5ceOvZPzhNOLK8r0ZPlKFjv4SuUzC02/lO6PjdpPNc=",
         "owner": "informalsystems",
         "repo": "ibc-rs",
-        "rev": "c518e15a073a5187d64cd00d1a62b2c9360a9408",
+        "rev": "142c7dc29c7636d1c9ece51ce8fd6f7c50ca3477",
         "type": "github"
       },
       "original": {
@@ -163,11 +163,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1630338749,
-        "narHash": "sha256-J1LsmwGtlYpqIMYEi/amMKkk0VfRrwHaEs/uylugGnE=",
+        "lastModified": 1626852498,
+        "narHash": "sha256-lOXUJvi0FJUXHTVSiC5qsMRtEUgqM4mGZpMESLuGhmo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8a2ec31e224de9461390cdd03e5e0b0290cdad0b",
+        "rev": "16105403bdd843540cbef9c63fc0f16c1c6eaa70",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1630635173,
-        "narHash": "sha256-A1zPYakdEgfrxGp1ENaDOgrmVNFRP5oPnK3LHaNbAXM=",
+        "lastModified": 1628302495,
+        "narHash": "sha256-FmqzWLoxxUpCaU4uvXkonSo/ftS6ebrTGD7PBEQyHko=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "4d4d4b20bfaa04960f78ad3c8023901d23120735",
+        "rev": "01dd01693bd7896529841d55c4d21a98897ef26e",
         "type": "github"
       },
       "original": {
@@ -296,11 +296,11 @@
     "tendermint-rs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1630515393,
-        "narHash": "sha256-M5sFRp+vRPNiSwGv0jsKOfw32P0Sy3dRTKeTr6vJBWw=",
+        "lastModified": 1626881756,
+        "narHash": "sha256-7fnTTtjHQ9h+p3X/3iSlU+IJyz+26CE60XogeGEAAJs=",
         "owner": "informalsystems",
         "repo": "tendermint-rs",
-        "rev": "b99c9373790732bbce9b267b558c1796fc90e20d",
+        "rev": "d8e18c647cd8695d16610c4292b15ec6d1b45fbc",
         "type": "github"
       },
       "original": {
