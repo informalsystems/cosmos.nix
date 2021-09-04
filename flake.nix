@@ -123,6 +123,11 @@
         {
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
+          gm = (import ./gm) {
+            inherit pkgs ibc-rs-src;
+            stoml = packages.stoml;
+            sconfig = packages.sconfig;
+          };
           sources = pkgs.stdenv.mkDerivation {
             name = "sources";
             unpackPhase = "true";
@@ -162,7 +167,9 @@
           '';
         in
         pkgs.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          shellHook = ''
+            ${self.checks.${system}.pre-commit-check.shellHook}
+          '';
           nativeBuildInputs = with pkgs; [
             rustc
             cargo
@@ -174,6 +181,11 @@
             pkgs.crate2nix
             pkgs.gomod2nix
             syncGoModulesScript
+
+            # gaia manager dependencies
+            packages.stoml
+            packages.sconfig
+            pkgs.gnused
           ];
         };
 
@@ -184,6 +196,7 @@
         cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
         stoml = mkApp { name = "stoml"; drv = packages.stoml; };
         sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
+        gm = mkApp { name = "gm"; drv = packages.gm; };
       };
     });
 }
