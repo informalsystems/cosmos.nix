@@ -172,9 +172,7 @@
           '';
         in
         pkgs.mkShell {
-          shellHook = ''
-            ${self.checks.${system}.pre-commit-check.shellHook}
-          '';
+          shellHook = self.checks.${system}.pre-commit-check.shellHook;
           nativeBuildInputs = with pkgs; [
             rustc
             cargo
