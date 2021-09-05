@@ -170,10 +170,11 @@
             pkg-config
           ];
           buildInputs = with pkgs; [
-            openssl
             # need to prefix with pkgs because of they shadow the name of inputs
             pkgs.crate2nix
             pkgs.gomod2nix
+
+            openssl
             syncGoModulesScript
 
             # gaia manager dependencies
