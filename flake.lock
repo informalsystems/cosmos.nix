@@ -16,23 +16,6 @@
         "type": "github"
       }
     },
-    "crate2nix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1627937495,
-        "narHash": "sha256-kRGfg8aQKrufKlJaXiQqAnodoFf76LjVJ0UGRwRvarY=",
-        "owner": "yusdacra",
-        "repo": "crate2nix",
-        "rev": "7b340c5e90bddf9f9fd08df12e7371168c3c607d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yusdacra",
-        "ref": "feat/builtinfetchgit",
-        "repo": "crate2nix",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "locked": {
         "lastModified": 1623875721,
@@ -132,16 +115,34 @@
     "ibc-rs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1628083286,
-        "narHash": "sha256-d5ceOvZPzhNOLK8r0ZPlKFjv4SuUzC02/lO6PjdpPNc=",
+        "lastModified": 1629820654,
+        "narHash": "sha256-NReR6R6lzOnqpyl33CSNttQT0D5G/6QWjaiaSnVSeqw=",
         "owner": "informalsystems",
         "repo": "ibc-rs",
-        "rev": "142c7dc29c7636d1c9ece51ce8fd6f7c50ca3477",
+        "rev": "c518e15a073a5187d64cd00d1a62b2c9360a9408",
         "type": "github"
       },
       "original": {
         "owner": "informalsystems",
         "repo": "ibc-rs",
+        "type": "github"
+      }
+    },
+    "naersk": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1629707199,
+        "narHash": "sha256-sGxlmfp5eXL5sAMNqHSb04Zq6gPl+JeltIZ226OYN0w=",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "df71f5e4babda41cd919a8684b72218e2e809fa9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nmattia",
+        "repo": "naersk",
         "type": "github"
       }
     },
@@ -163,6 +164,20 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1630879492,
+        "narHash": "sha256-QSqIyHww3WEargEPAGuuJ4TXShPg65tKBXcUj5I08AU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1a8359692853f50121a8c236e112fdc1ba48349e",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1626852498,
         "narHash": "sha256-lOXUJvi0FJUXHTVSiC5qsMRtEUgqM4mGZpMESLuGhmo=",
         "owner": "nixos",
@@ -177,7 +192,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1619531122,
         "narHash": "sha256-ovm5bo6PkZzNKh2YGXbRKYIjega0EjiEP0YDwyeXEYU=",
@@ -191,7 +206,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1628186154,
         "narHash": "sha256-r2d0wvywFnL9z4iptztdFMhaUIAaGzrSs7kSok0PgmE=",
@@ -209,7 +224,7 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1624971177,
@@ -228,24 +243,23 @@
     "root": {
       "inputs": {
         "cosmos-sdk-src": "cosmos-sdk-src",
-        "crate2nix": "crate2nix",
         "flake-utils": "flake-utils",
         "gaia-src": "gaia-src",
         "gomod2nix": "gomod2nix",
         "ibc-go-src": "ibc-go-src",
         "ibc-rs-src": "ibc-rs-src",
-        "nixpkgs": "nixpkgs_2",
+        "naersk": "naersk",
+        "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay",
         "sconfig-src": "sconfig-src",
-        "stoml-src": "stoml-src",
-        "tendermint-rs-src": "tendermint-rs-src"
+        "stoml-src": "stoml-src"
       }
     },
     "rust-overlay": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1628302495,
@@ -293,22 +307,6 @@
         "type": "github"
       }
     },
-    "tendermint-rs-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626881756,
-        "narHash": "sha256-7fnTTtjHQ9h+p3X/3iSlU+IJyz+26CE60XogeGEAAJs=",
-        "owner": "informalsystems",
-        "repo": "tendermint-rs",
-        "rev": "d8e18c647cd8695d16610c4292b15ec6d1b45fbc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "informalsystems",
-        "repo": "tendermint-rs",
-        "type": "github"
-      }
-    },
     "utils": {
       "locked": {
         "lastModified": 1623875721,
@@ -328,4 +326,3 @@
   "root": "root",
   "version": 7
 }
-

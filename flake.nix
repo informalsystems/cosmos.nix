@@ -9,10 +9,11 @@
 
     # Rust Inputs
     rust-overlay.url = "github:oxalica/rust-overlay";
-    crate2nix = {
-      url = "github:yusdacra/crate2nix/feat/builtinfetchgit";
-      flake = false;
-    };
+    # crate2nix = {
+    #   url = "github:yusdacra/crate2nix/feat/builtinfetchgit";
+    #   flake = false;
+    # };
+    naersk.url = "github:nmattia/naersk";
 
     # Go Inputs
     gomod2nix.url = "github:tweag/gomod2nix";
@@ -34,11 +35,6 @@
       flake = false;
     };
 
-    tendermint-rs-src = {
-      flake = false;
-      url = github:informalsystems/tendermint-rs;
-    };
-
     gaia-src = {
       flake = false;
       url = github:cosmos/gaia;
@@ -48,11 +44,6 @@
       flake = false;
       url = github:cosmos/cosmos-sdk;
     };
-
-    ibc-go-src = {
-      flake = false;
-      url = github:cosmos/ibc-go;
-    };
   };
 
   outputs =
@@ -61,15 +52,13 @@
     , pre-commit-hooks
     , flake-utils
     , rust-overlay
-    , crate2nix
+    , naersk
     , gomod2nix
     , stoml-src
     , sconfig-src
     , ibc-rs-src
-    , tendermint-rs-src
     , gaia-src
     , cosmos-sdk-src
-    , ibc-go-src
     }:
     let
       overlays = [
@@ -78,8 +67,8 @@
           # Because rust-overlay bundles multiple rust packages into one
           # derivation, specify that mega-bundle here, so that crate2nix
           # will use them automatically.
-          rustc = final.rust-bin.stable.latest.default;
-          cargo = final.rust-bin.stable.latest.default;
+          rustc = final.rust-bin.nightly.latest.default;
+          cargo = final.rust-bin.nightly.latest.default;
         })
         gomod2nix.overlay
       ];
@@ -88,16 +77,10 @@
     eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system overlays; };
-      evalPkgs = import nixpkgs { system = "x86_64-linux"; inherit overlays; };
-      # Note: below is the only use of eval pkgs. This is due to an issue with import from
-      # derivation (IFD), which requires nix derivations to be built at evaluation time.
-      # Since we can't build on all system types (`utils.eachDefaultSystem` requires us
-      # to evaluate all possible systems) we need to pick a system for building during
-      # evaluation. With proper caching this flake should still work for running on all
-      # system types.
-      #
-      # Github Issue: https://github.com/NixOS/nix/issues/4265
-      generateCargoNix = (import "${crate2nix}/tools.nix" { pkgs = evalPkgs; }).generatedCargoNix;
+      naersk-lib = naersk.lib."${system}".override {
+        cargo = pkgs.cargo;
+        rustc = pkgs.rustc;
+      };
       goProjectSrcs = {
         stoml = {
           inputName = "stoml-src";
@@ -127,20 +110,12 @@
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           gm = (import ./gm) { inherit pkgs ibc-rs-src; };
-          sources = pkgs.stdenv.mkDerivation {
-            name = "sources";
-            unpackPhase = "true";
-            buildPhase = "true";
-            installPhase = ''
-              mkdir -p $out
-              ls -la $out
-              ln -s ${tendermint-rs-src} $out/tendermint-rs
-              ln -s ${gaia-src} $out/gaia
-              ln -s ${cosmos-sdk-src} $out/cosmos-sdk
-              ln -s ${ibc-go-src} $out/ibc-go
-            '';
+          hermes = naersk-lib.buildPackage {
+            pname = "ibc-rs";
+            root = ibc-rs-src;
+            buildInputs = with pkgs; [ rustc cargo pkgconfig ];
+            nativeBuildInputs = with pkgs; [ openssl ];
           };
-          hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           gaia = (import ./gaia) { inherit gaia-src pkgs; };
           cosmovisor = (import ./cosmovisor) { inherit pkgs; cosmovisor-src = goProjectSrcs.cosmovisor.storePath; };
         };
