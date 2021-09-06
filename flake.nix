@@ -165,7 +165,7 @@
               {
                 enable = true;
                 name = "sync-go-modules";
-                entry = "${syncGoModulesCheck}/bin/syncGoModulesCheck -l";
+                entry = "${syncGoModulesCheck} -l";
                 files = "(\\.(lock|narHash)|flake.nix)$";
                 language = "system";
                 pass_filenames = false;
