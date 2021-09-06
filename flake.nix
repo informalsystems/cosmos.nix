@@ -160,7 +160,14 @@
             '';
           in
           pkgs.mkShell {
-            shellHook = self.checks.${system}.pre-commit-check.shellHook;
+            shellHook = ''
+              GIT_REMOTE="$(${pkgs.coreutils}/bin/basename $(${pkgs.git}/bin/git remote get-url origin))"
+              if [[ $GIT_REMOTE == *"cosmos.nix"* ]];
+              then
+                echo "Installing pre-commit hooks"
+                ${self.checks.${system}.pre-commit-check.shellHook}
+              fi
+            '';
             nativeBuildInputs = with pkgs; [
               rustc
               cargo
