@@ -44,21 +44,32 @@
       flake = false;
       url = github:cosmos/cosmos-sdk;
     };
+
+    # Cosmos Chains
+    terra-src = {
+      flake = false;
+      url = github:terra-money/core;
+    };
   };
 
   outputs =
     { self
     , nixpkgs
+
+      # utils
     , pre-commit-hooks
     , flake-utils
     , naersk
     , gomod2nix
+
+      # sources
     , stoml-src
     , sconfig-src
     , ibc-rs-src
     , gaia4-src
     , gaia5-src
     , cosmos-sdk-src
+    , terra-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -77,12 +88,15 @@
           sconfig = {
             inputName = "sconfig-src";
             storePath = "${sconfig-src}";
-          };
+            };
           cosmovisor = {
             inputName = "cosmos-sdk-src";
             storePath = "${cosmos-sdk-src}/cosmovisor";
           };
-          cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
+          terra = {
+            inputName = "terra-src";
+            storePath = "${terra-src}";
+          };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
@@ -129,6 +143,7 @@
             };
             gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
+            terra = (import ./terra) { inherit terra-src pkgs; };
           };
 
         # nix flake check
@@ -178,7 +193,6 @@
             buildInputs = with pkgs; [
               # need to prefix with pkgs because they shadow the name of inputs
               pkgs.gomod2nix
-
               openssl
               syncGoModulesScript
               shellcheck
@@ -201,6 +215,7 @@
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
           sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
           gm = mkApp { name = "gm"; drv = packages.gm; };
+          terra = mkApp { name = "terra"; drv = packages.gm; exePath = "/bin/terrad"; };
         };
       });
 }

@@ -260,7 +260,8 @@
         "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": "pre-commit-hooks",
         "sconfig-src": "sconfig-src",
-        "stoml-src": "stoml-src"
+        "stoml-src": "stoml-src",
+        "terra-src": "terra-src"
       }
     },
     "sconfig-src": {
@@ -292,6 +293,22 @@
       "original": {
         "owner": "freshautomations",
         "repo": "stoml",
+        "type": "github"
+      }
+    },
+    "terra-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630398596,
+        "narHash": "sha256-pctAWa50FA1Millho/Q71iwCn7qM4ntcFO4pOCHq7D0=",
+        "owner": "terra-money",
+        "repo": "core",
+        "rev": "f41a7de7e1c06ab836d50381c6fe918b64a73483",
+        "type": "github"
+      },
+      "original": {
+        "owner": "terra-money",
+        "repo": "core",
         "type": "github"
       }
     },
