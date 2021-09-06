@@ -49,6 +49,11 @@
       flake = false;
       url = github:thorchain/thornode;
     };
+
+    osmosis-src = {
+      flake = false;
+      url = github:osmosis-labs/osmosis;
+    };
   };
 
   outputs =
@@ -65,13 +70,21 @@
     , gaia5-src
     , cosmos-sdk-src
     , thor-src
+    , osmosis-src
     }:
-      with flake-utils.lib;
-      eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ gomod2nix.overlay ];
+    with flake-utils.lib;
+    eachDefaultSystem (system:
+    let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ gomod2nix.overlay ];
+      };
+      goProjectSrcs = {
+        gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
+        gaia4 = { inputName = "gaia4-src"; storePath = "${gaia4-src}"; };
+        stoml = {
+          inputName = "stoml-src";
+          storePath = "${stoml-src}";
         };
         goProjectSrcs = {
           gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
@@ -90,12 +103,17 @@
           };
           cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
           thor = { inputName = "thor-src"; storePath = "${thor-src}"; };
+          osmosis = {
+            inputName = "osmosis-src";
+            storePath = "${osmosis-src}";
+          };
         };
-        syncGoModulesInputs = with builtins; concatStringsSep " "
-          (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
-        syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
-      in
-      rec {
+      };
+      syncGoModulesInputs = with builtins; concatStringsSep " "
+        (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
+      syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
+    in
+    rec {
         # nix build .#<app>
         packages = flattenTree
           {
@@ -137,6 +155,7 @@
             gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
             thor = (import ./thor) { inherit pkgs thor-src; };
+            osmosis = (import ./osmosis) { inherit pkgs osmosis-src; };
           };
 
         # nix flake check
@@ -186,7 +205,6 @@
             buildInputs = with pkgs; [
               # need to prefix with pkgs because they shadow the name of inputs
               pkgs.gomod2nix
-
               openssl
               syncGoModulesScript
               shellcheck
@@ -212,6 +230,7 @@
           bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
           thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
           thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
+          osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
         };
       });
 }
