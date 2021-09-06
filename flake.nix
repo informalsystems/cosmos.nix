@@ -162,7 +162,7 @@
           pkgs.mkShell {
             shellHook = ''
               GIT_REMOTE="$(${pkgs.git}/bin/git remote get-url origin 2> /dev/null)"
-              REMOTE_BASENAME="$(${pkgs.coreutils}/bin/basename $GIT_REMOTE)"
+              REMOTE_BASENAME="$(${pkgs.coreutils}/bin/basename "$GIT_REMOTE")"
               if [[ $REMOTE_BASENAME == *"cosmos.nix"* && (-d .git || -f .git) ]]
               then
                 ${self.checks.${system}.pre-commit-check.shellHook}
