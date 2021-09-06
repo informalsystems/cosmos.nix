@@ -82,6 +82,23 @@ Note, you can add the suggested binary caches in addition to your existing ones.
    };
 ```
 
+## Shell
+
+If you are just here for a remote nix shell (a development environment where
+you don't need to clone the repo) you can run the following command:
+
+```bash
+nix develop github:informalsystems/cosmos.nix
+```
+
+This will build the development environment. The environment will then be
+cached in your nix store and should be very fast. If you want to pull the
+latest development environment you should run:
+
+```bash
+nix develop github:informalsystems/cosmos.nix --refresh
+```
+
 ## Sources
 
 Right now only the sources of the upstream projects are given as a Nix
