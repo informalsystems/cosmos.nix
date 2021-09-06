@@ -161,7 +161,7 @@
           in
           pkgs.mkShell {
             shellHook = ''
-              GIT_REMOTE="$(${pkgs.coreutils}/bin/basename $(${pkgs.git}/bin/git remote get-url origin))"
+              GIT_REMOTE="$(${pkgs.coreutils}/bin/basename $(${pkgs.git}/bin/git remote get-url origin) 2> /dev/null)"
               if [[ $GIT_REMOTE == *"cosmos.nix"* ]];
               then
                 echo "Installing pre-commit hooks"
