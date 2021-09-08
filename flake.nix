@@ -44,6 +44,11 @@
       flake = false;
       url = github:cosmos/cosmos-sdk;
     };
+
+    thor-src = {
+      flake = false;
+      url = github:thorchain/thornode;
+    };
   };
 
   outputs =
@@ -59,6 +64,7 @@
     , gaia4-src
     , gaia5-src
     , cosmos-sdk-src
+    , thor-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -83,6 +89,7 @@
             storePath = "${cosmos-sdk-src}/cosmovisor";
           };
           cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
+          thor = (import ./thor) { inherit pkgs thor-src; };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
@@ -201,6 +208,9 @@
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
           sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
           gm = mkApp { name = "gm"; drv = packages.gm; };
+          bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
+          thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
+          thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
         };
       });
 }

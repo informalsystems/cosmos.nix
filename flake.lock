@@ -278,7 +278,8 @@
         "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": "pre-commit-hooks",
         "sconfig-src": "sconfig-src",
-        "stoml-src": "stoml-src"
+        "stoml-src": "stoml-src",
+        "thor-src": "thor-src"
       }
     },
     "sconfig-src": {
@@ -310,6 +311,22 @@
       "original": {
         "owner": "freshautomations",
         "repo": "stoml",
+        "type": "github"
+      }
+    },
+    "thor-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1589368012,
+        "narHash": "sha256-mxRyw/ySLKyw4HO43/1S3hhHWDM4PyBrxSStCnqNURM=",
+        "owner": "thorchain",
+        "repo": "thornode",
+        "rev": "76bc0474ff8a8812299be2f9ae81d144f3b97089",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thorchain",
+        "repo": "thornode",
         "type": "github"
       }
     },
