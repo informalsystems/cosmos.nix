@@ -149,6 +149,22 @@
         "type": "github"
       }
     },
+    "iris-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630393303,
+        "narHash": "sha256-pIfM9jdul0TL5q1DBnRKX4TuE/GJJHYidDIxXClA89M=",
+        "owner": "irisnet",
+        "repo": "irishub",
+        "rev": "084ff9431f9e9cbaa87930a71cba0a427db2037a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "irisnet",
+        "repo": "irishub",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1625191069,
@@ -269,6 +285,7 @@
         "gomod2nix": "gomod2nix",
         "gravity-dex-src": "gravity-dex-src",
         "ibc-rs-src": "ibc-rs-src",
+        "iris-src": "iris-src",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs_3",
         "osmosis-src": "osmosis-src",
