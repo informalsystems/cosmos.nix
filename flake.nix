@@ -157,7 +157,7 @@
             nix-linter.enable = true;
           };
         };
-      };
+      } // packages; # adding packages here ensures that every attr gets built on check
 
       # nix develop
       devShell =
@@ -186,14 +186,14 @@
 
       # nix run .#<app>
       apps = {
-        hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
-        gaia = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-        gaia4 = utils.mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
-        gaia5 = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-        cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-        simd = utils.mkApp { name = "simd"; drv = packages.cosmos-sdk; };
-        stoml = utils.mkApp { name = "stoml"; drv = packages.stoml; };
-        sconfig = utils.mkApp { name = "sconfig"; drv = packages.sconfig; };
+        hermes = mkApp { name = "hermes"; drv = packages.hermes; };
+        gaia = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+        gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
+        gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+        cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
+        simd = mkApp { name = "simd"; drv = packages.cosmos-sdk; };
+        stoml = mkApp { name = "stoml"; drv = packages.stoml; };
+        sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
       };
     });
 }
