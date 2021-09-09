@@ -3,11 +3,11 @@
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1629214299,
-        "narHash": "sha256-4oHn4tkpH++ZCd1Hxju++sJOm8CAUvn3+B5XnLJ51RM=",
+        "lastModified": 1626794131,
+        "narHash": "sha256-g6dJz/6tTtrl5Z7jrxK+X78KB5UadlmqBVZT/f5DA0M=",
         "owner": "cosmos",
         "repo": "cosmos-sdk",
-        "rev": "49aec537ab6bd2e1624705a10b9b4cd4cc455407",
+        "rev": "12e4be34fbd2414b10756997ca3769ebaaf6bdea",
         "type": "github"
       },
       "original": {
