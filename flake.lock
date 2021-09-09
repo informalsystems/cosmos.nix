@@ -99,6 +99,22 @@
         "type": "github"
       }
     },
+    "gravity-dex-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1620416423,
+        "narHash": "sha256-07OInCtHBlIki6m1hYAYLY7z8OwHM2XAkfU77nOpPtg=",
+        "owner": "b-harvest",
+        "repo": "gravity-dex-backend",
+        "rev": "1db1c5791022c11ab4c513bb87a8be7a1c76f35f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "b-harvest",
+        "repo": "gravity-dex-backend",
+        "type": "github"
+      }
+    },
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -112,24 +128,6 @@
       "original": {
         "owner": "informalsystems",
         "repo": "ibc-rs",
-        "type": "github"
-      }
-    },
-    "naersk": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1629707199,
-        "narHash": "sha256-sGxlmfp5eXL5sAMNqHSb04Zq6gPl+JeltIZ226OYN0w=",
-        "owner": "nmattia",
-        "repo": "naersk",
-        "rev": "df71f5e4babda41cd919a8684b72218e2e809fa9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nmattia",
-        "repo": "naersk",
         "type": "github"
       }
     },
@@ -169,8 +167,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1631315520,
-        "narHash": "sha256-Y8j0JYtZMifrHaWdTfTp1mYVXZ2PLJO/P0XZxMvo7KU=",
         "lastModified": 1630879492,
         "narHash": "sha256-QSqIyHww3WEargEPAGuuJ4TXShPg65tKBXcUj5I08AU=",
         "owner": "NixOS",
@@ -271,6 +267,7 @@
         "gaia4-src": "gaia4-src",
         "gaia5-src": "gaia5-src",
         "gomod2nix": "gomod2nix",
+        "gravity-dex-src": "gravity-dex-src",
         "ibc-rs-src": "ibc-rs-src",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs_3",
@@ -348,4 +345,3 @@
   "root": "root",
   "version": 7
 }
-
