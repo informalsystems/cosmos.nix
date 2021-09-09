@@ -238,7 +238,7 @@
         "ibc-rs-src": "ibc-rs-src",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
       }
