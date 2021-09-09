@@ -8,4 +8,3 @@ pkgs.buildGoApplication {
   # and nix doesn't allow this, so we have to disable checks.
   doCheck = false;
 }
-

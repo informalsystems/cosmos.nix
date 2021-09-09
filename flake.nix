@@ -23,11 +23,6 @@
       flake = false;
     };
 
-    tendermint-rs-src = {
-      flake = false;
-      url = github:informalsystems/tendermint-rs;
-    };
-
     gaia-src = {
       flake = false;
       url = github:cosmos/gaia;
@@ -38,10 +33,6 @@
       url = github:cosmos/cosmos-sdk;
     };
 
-    ibc-go-src = {
-      flake = false;
-      url = github:cosmos/ibc-go;
-    };
   };
 
   outputs =
@@ -53,10 +44,8 @@
     , crate2nix
     , gomod2nix
     , ibc-rs-src
-    , tendermint-rs-src
     , gaia-src
     , cosmos-sdk-src
-    , ibc-go-src
     }:
     let
       utils = flake-utils.lib;
@@ -91,28 +80,41 @@
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
         };
+        cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
       };
     in
     rec {
       # nix build .#<app>
       packages = utils.flattenTree
         {
-          sources = pkgs.stdenv.mkDerivation {
-            name = "sources";
+          # We need a version of cosmos-sdk with no cosmovisor
+          # since buildGoApplication doesn't know how to handle
+          # sub-applications
+          cosmos-sdk-no-cosmovisor = pkgs.stdenv.mkDerivation {
+            name = "cosmos-sdk-no-cosmovisor";
             unpackPhase = "true";
             buildPhase = "true";
             installPhase = ''
               mkdir -p $out
-              ls -la $out
-              ln -s ${tendermint-rs-src} $out/tendermint-rs
-              ln -s ${gaia-src} $out/gaia
-              ln -s ${cosmos-sdk-src} $out/cosmos-sdk
-              ln -s ${ibc-go-src} $out/ibc-go
+
+              for x in ${cosmos-sdk-src}/*; do
+                if [ $x = "${cosmos-sdk-src}/cosmovisor" ]
+                  then continue
+                  else cp -r $x $out
+                fi
+              done
             '';
           };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           gaia = (import ./gaia) { inherit gaia-src pkgs; };
-          cosmovisor = (import ./cosmovisor) { inherit pkgs; cosmovisor-src = goProjectSrcs.cosmovisor.storePath; };
+          cosmovisor = (import ./cosmovisor) {
+            inherit pkgs;
+            cosmovisor-src = goProjectSrcs.cosmovisor.storePath;
+          };
+          cosmos-sdk = (import ./cosmos-sdk) {
+            inherit pkgs;
+            cosmos-sdk-src = packages.cosmos-sdk-no-cosmovisor;
+          };
         };
 
       # nix flake check
@@ -156,6 +158,7 @@
         hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
         gaia = utils.mkApp { name = "gaia"; drv = packages.gaia; exePath = "/bin/gaiad"; };
         cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
+        simd = utils.mkApp { name = "simd"; drv = packages.cosmos-sdk; };
       };
     });
 }
