@@ -78,18 +78,36 @@
         "type": "github"
       }
     },
-    "gaia-src": {
+    "gaia4-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1626289329,
-        "narHash": "sha256-aPQPoLzM/3ahQqscDFzqI1N/6bxXWduGghNMTgo5dz8=",
+        "lastModified": 1617918247,
+        "narHash": "sha256-M8JuM26feZpZr2HtXATcxuOP62ZdUVSLkltwc12aNAw=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "64ae891c9a77ea88e08d7c5056781388d6892e42",
+        "rev": "dbd8a6fb522c571debf958837f9113c56d418f6b",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
+        "ref": "v4.2.1",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
+    "gaia5-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1628194704,
+        "narHash": "sha256-IERWjWqK++9XJjU4yTPLkZ9MoZKOB/ZDwV9xMr8xW1M=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "2531f5c1613a09a3014f2de9d0db03315637ebd2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v5.0.5",
         "repo": "gaia",
         "type": "github"
       }
@@ -116,11 +134,11 @@
     "ibc-rs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1628083286,
-        "narHash": "sha256-d5ceOvZPzhNOLK8r0ZPlKFjv4SuUzC02/lO6PjdpPNc=",
+        "lastModified": 1629188730,
+        "narHash": "sha256-TmnGTAfTFFxDLlER65Y7GH+pPHbpe3eRJ8JnBGVFbrM=",
         "owner": "informalsystems",
         "repo": "ibc-rs",
-        "rev": "142c7dc29c7636d1c9ece51ce8fd6f7c50ca3477",
+        "rev": "882c9c0242c9c59e617eba00330139567430434c",
         "type": "github"
       },
       "original": {
@@ -147,11 +165,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1626852498,
-        "narHash": "sha256-lOXUJvi0FJUXHTVSiC5qsMRtEUgqM4mGZpMESLuGhmo=",
+        "lastModified": 1629137058,
+        "narHash": "sha256-rOOLXq8/HcqlKNTJdSiPqB+kbYdcjBaGwqq6pP5IOfQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "16105403bdd843540cbef9c63fc0f16c1c6eaa70",
+        "rev": "23485f23ff8536592b5178a5d244f84da770bc87",
         "type": "github"
       },
       "original": {
@@ -214,7 +232,8 @@
         "cosmos-sdk-src": "cosmos-sdk-src",
         "crate2nix": "crate2nix",
         "flake-utils": "flake-utils",
-        "gaia-src": "gaia-src",
+        "gaia4-src": "gaia4-src",
+        "gaia5-src": "gaia5-src",
         "gomod2nix": "gomod2nix",
         "ibc-rs-src": "ibc-rs-src",
         "nixpkgs": "nixpkgs_2",
@@ -228,11 +247,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1628302495,
-        "narHash": "sha256-FmqzWLoxxUpCaU4uvXkonSo/ftS6ebrTGD7PBEQyHko=",
+        "lastModified": 1629252735,
+        "narHash": "sha256-micxdZP3n7/EjGody+U1u3sEseqPzKZMBqpX73e0LOA=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "01dd01693bd7896529841d55c4d21a98897ef26e",
+        "rev": "a68b6b8fe61a6660db7925de8caa584773e59512",
         "type": "github"
       },
       "original": {
