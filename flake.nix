@@ -110,6 +110,9 @@
         };
         cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
       };
+      syncGoModulesInputs = with builtins; concatStringsSep " "
+        (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
+      syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
     in
     rec {
       # nix build .#<app>
@@ -156,6 +159,14 @@
           hooks = {
             nixpkgs-fmt.enable = true;
             nix-linter.enable = true;
+            sync-go-modules = {
+              enable = true;
+              name = "sync-go-modules";
+              entry = "${syncGoModulesCheck} -l";
+              files = "(\\.(lock|narHash)|flake.nix)$";
+              language = "system";
+              pass_filenames = false;
+            };
           };
         };
       } // packages; # adding packages here ensures that every attr gets built on check
@@ -166,7 +177,7 @@
           syncGoModulesInputs = with builtins; concatStringsSep " "
             (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
           syncGoModulesScript = pkgs.writeShellScriptBin "syncGoModules" ''
-            echo "${syncGoModulesInputs}" | ./syncGoModules.hs
+            echo "${syncGoModulesInputs}" | ./syncGoModules/syncGoModules.hs
           '';
         in
         pkgs.mkShell {
