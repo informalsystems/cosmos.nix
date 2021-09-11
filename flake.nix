@@ -3,7 +3,7 @@
 
   inputs = {
     # Nix Inputs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -115,26 +115,9 @@
       # nix build .#<app>
       packages = flattenTree
         {
-          # We need a version of cosmos-sdk with no cosmovisor
-          # since buildGoApplication doesn't know how to handle
-          # sub-applications
-          cosmos-sdk-no-cosmovisor = pkgs.stdenv.mkDerivation {
-            name = "cosmos-sdk-no-cosmovisor";
-            unpackPhase = "true";
-            buildPhase = "true";
-            installPhase = ''
-              mkdir -p $out
-
-              for x in ${cosmos-sdk-src}/*; do
-                if [ $x = "${cosmos-sdk-src}/cosmovisor" ]
-                  then continue
-                  else cp -r $x $out
-                fi
-              done
-            '';
-          };
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
+          gm = (import ./gm) { inherit pkgs ibc-rs-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
@@ -142,7 +125,25 @@
           };
           cosmos-sdk = (import ./cosmos-sdk) {
             inherit pkgs;
-            cosmos-sdk-src = packages.cosmos-sdk-no-cosmovisor;
+            cosmos-sdk-src =
+              # We need a version of cosmos-sdk with no cosmovisor
+              # since buildGoApplication doesn't know how to handle
+              # sub-applications
+              pkgs.stdenv.mkDerivation {
+                name = "cosmos-sdk-no-cosmovisor";
+                unpackPhase = "true";
+                buildPhase = "true";
+                installPhase = ''
+                  mkdir -p $out
+
+                  for x in ${cosmos-sdk-src}/*; do
+                    if [ $x = "${cosmos-sdk-src}/cosmovisor" ]
+                      then continue
+                      else cp -r $x $out
+                    fi
+                  done
+                '';
+              };
           };
           gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
           gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
@@ -169,19 +170,26 @@
           '';
         in
         pkgs.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          shellHook = self.checks.${system}.pre-commit-check.shellHook;
           nativeBuildInputs = with pkgs; [
             rustc
             cargo
             pkg-config
           ];
           buildInputs = with pkgs; [
-            openssl
             # need to prefix with pkgs because of they shadow the name of inputs
             pkgs.crate2nix
             pkgs.gomod2nix
+
+            openssl
             syncGoModulesScript
-          ];
+            shellcheck
+
+            # gaia manager dependencies
+            packages.stoml
+            packages.sconfig
+            gnused
+          ] ++ builtins.attrValues packages;
         };
 
       # nix run .#<app>
@@ -194,6 +202,7 @@
         simd = mkApp { name = "simd"; drv = packages.cosmos-sdk; };
         stoml = mkApp { name = "stoml"; drv = packages.stoml; };
         sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
+        gm = mkApp { name = "gm"; drv = packages.gm; };
       };
     });
 }

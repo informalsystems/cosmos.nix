@@ -4,4 +4,3 @@ pkgs.buildGoApplication {
   src = "${sconfig-src}";
   modules = ./go-modules.toml;
 }
-
