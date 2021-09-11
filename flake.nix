@@ -104,10 +104,6 @@
           inputName = "sconfig-src";
           storePath = "${sconfig-src}";
         };
-        gaia = {
-          inputName = "gaia-src";
-          storePath = "${gaia-src}";
-        };
         cosmovisor = {
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
@@ -121,11 +117,7 @@
         {
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
-          gm = (import ./gm) {
-            inherit pkgs ibc-rs-src;
-            stoml = packages.stoml;
-            sconfig = packages.sconfig;
-          };
+          gm = (import ./gm) { inherit pkgs ibc-rs-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
