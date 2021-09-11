@@ -121,8 +121,6 @@
           stoml = (import ./stoml) { inherit pkgs stoml-src; };
           sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           gm = (import ./gm) { inherit pkgs ibc-rs-src; };
-          stoml = (import ./stoml) { inherit pkgs stoml-src; };
-          sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
@@ -161,15 +159,14 @@
           hooks = {
             nixpkgs-fmt.enable = true;
             nix-linter.enable = true;
-            sync-go-modules = with builtins;
-              {
-                enable = true;
-                name = "sync-go-modules";
-                entry = "${syncGoModulesCheck} -l";
-                files = "(\\.(lock|narHash)|flake.nix)$";
-                language = "system";
-                pass_filenames = false;
-              };
+            sync-go-modules = {
+              enable = true;
+              name = "sync-go-modules";
+              entry = "${syncGoModulesCheck} -l";
+              files = "(\\.(lock|narHash)|flake.nix)$";
+              language = "system";
+              pass_filenames = false;
+            };
           };
         };
       } // packages; # adding packages here ensures that every attr gets built on check
