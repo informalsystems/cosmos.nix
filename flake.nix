@@ -17,6 +17,17 @@
     # Go Inputs
     gomod2nix.url = "github:tweag/gomod2nix";
 
+    # Freshautomations inputs
+    stoml-src = {
+      url = github:freshautomations/stoml;
+      flake = false;
+    };
+
+    sconfig-src = {
+      url = github:freshautomations/sconfig;
+      flake = false;
+    };
+
     # Cosmos Sources
     ibc-rs-src = {
       url = github:informalsystems/ibc-rs;
@@ -48,13 +59,14 @@
     , rust-overlay
     , crate2nix
     , gomod2nix
+    , stoml-src
+    , sconfig-src
     , ibc-rs-src
     , gaia4-src
     , gaia5-src
     , cosmos-sdk-src
     }:
     let
-      utils = flake-utils.lib;
       overlays = [
         rust-overlay.overlay
         (final: _: {
@@ -67,7 +79,8 @@
         gomod2nix.overlay
       ];
     in
-    utils.eachDefaultSystem (system:
+    with flake-utils.lib;
+    eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system overlays; };
       evalPkgs = import nixpkgs { system = "x86_64-linux"; inherit overlays; };
@@ -83,6 +96,14 @@
       goProjectSrcs = {
         gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
         gaia4 = { inputName = "gaia4-src"; storePath = "${gaia4-src}"; };
+        stoml = {
+          inputName = "stoml-src";
+          storePath = "${stoml-src}";
+        };
+        sconfig = {
+          inputName = "sconfig-src";
+          storePath = "${sconfig-src}";
+        };
         cosmovisor = {
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
@@ -92,7 +113,7 @@
     in
     rec {
       # nix build .#<app>
-      packages = utils.flattenTree
+      packages = flattenTree
         {
           # We need a version of cosmos-sdk with no cosmovisor
           # since buildGoApplication doesn't know how to handle
@@ -112,6 +133,8 @@
               done
             '';
           };
+          stoml = (import ./stoml) { inherit pkgs stoml-src; };
+          sconfig = (import ./sconfig) { inherit pkgs sconfig-src; };
           hermes = (import ./hermes) { inherit pkgs ibc-rs-src generateCargoNix; };
           cosmovisor = (import ./cosmovisor) {
             inherit pkgs;
@@ -134,7 +157,7 @@
             nix-linter.enable = true;
           };
         };
-      };
+      } // packages; # adding packages here ensures that every attr gets built on check
 
       # nix develop
       devShell =
@@ -163,12 +186,14 @@
 
       # nix run .#<app>
       apps = {
-        hermes = utils.mkApp { name = "hermes"; drv = packages.hermes; };
-        gaia = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-        gaia4 = utils.mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
-        gaia5 = utils.mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-        cosmovisor = utils.mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-        simd = utils.mkApp { name = "simd"; drv = packages.cosmos-sdk; };
+        hermes = mkApp { name = "hermes"; drv = packages.hermes; };
+        gaia = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+        gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
+        gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+        cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
+        simd = mkApp { name = "simd"; drv = packages.cosmos-sdk; };
+        stoml = mkApp { name = "stoml"; drv = packages.stoml; };
+        sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
       };
     });
 }

@@ -238,7 +238,9 @@
         "ibc-rs-src": "ibc-rs-src",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "sconfig-src": "sconfig-src",
+        "stoml-src": "stoml-src"
       }
     },
     "rust-overlay": {
@@ -257,6 +259,38 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sconfig-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1594094862,
+        "narHash": "sha256-jR2hkR0YlPyW2nKWJl90kL80R+9psNKGPYxGg7Y/YGw=",
+        "owner": "freshautomations",
+        "repo": "sconfig",
+        "rev": "88043754c024aec433b3b059af170b6f555931c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "freshautomations",
+        "repo": "sconfig",
+        "type": "github"
+      }
+    },
+    "stoml-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1622172633,
+        "narHash": "sha256-PvKkOjjWkmK90PzKcOBq0pUWLjHLjfYs9PRqqzAR7/8=",
+        "owner": "freshautomations",
+        "repo": "stoml",
+        "rev": "f5dab84dbf52345a1f36389aec38b02fda086a47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "freshautomations",
+        "repo": "stoml",
         "type": "github"
       }
     },
