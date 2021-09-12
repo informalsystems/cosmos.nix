@@ -28,10 +28,3 @@ jobs:
       - name: Run Shell 🐚
         run: |
           nix develop
-
-      - name: Build All 🛠️
-        run: |
-          nix build .#hermes
-          nix build .#gaia
-          nix build .#gm
-          nix build .#cosmovisor
