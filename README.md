@@ -31,12 +31,27 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
 [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
 
+##### Cache Setup with Cachix
+
+With nix installed you can run `nix-env -iA cachix -f https://cachix.org/api/v1/install`.
+You can check that this worked by running `cachix --version`.
+
+You can now run these commans to add all of our cachix caches:
+
+```bash
+$ cachix use cosmos
+$ cachix use pre-commit-hooks
+$ cachix use nix-community
+```
+
+##### Manual Cache Setup
+
 Add these lines to your Nix config (either ~/.config/nix/nix.conf [for MacOS] or
 /etc/nix/nix.conf [for flavors of Linux, depending on your distro]):
 
 ```
-extra-substituters = https://cache.nixos.org https://nix-community.cachix.org https://pre-commit-hooks.cachix.org
-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc=
+extra-substituters = https://cache.nixos.org https://nix-community.cachix.org https://pre-commit-hooks.cachix.org https://cosmos.cachix.org
+trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc= cosmos.cachix.org-1:T5U9yg6u2kM48qAOXHO/ayhO8IWFnv0LOhNcq0yKuR8=
 cores = 4 # NB: You may want to increase this on machines with more cores
 ```
 
@@ -57,10 +72,12 @@ Note, you can add the suggested binary caches in addition to your existing ones.
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://pre-commit-hooks.cachix.org"
+      "https://cosmos.cachix.org"
     ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+      "cosmos.cachix.org-1:T5U9yg6u2kM48qAOXHO/ayhO8IWFnv0LOhNcq0yKuR8="
     ];
    };
 ```

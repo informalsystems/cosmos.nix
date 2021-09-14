@@ -11,7 +11,6 @@ pkgs.stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
 
-    ls -la $out
     ln -s ${ibc-rs-src}/scripts/gm/bin/gm $out/bin/gm
     ln -s ${ibc-rs-src}/scripts/gm/bin/lib-gm $out/bin/lib-gm
     ln -s ${ibc-rs-src}/scripts/gm/bin/shell-support $out/bin/shell-support
