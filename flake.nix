@@ -136,6 +136,7 @@
             };
             gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
+            thor = (import ./thor) { inherit pkgs thor-src; };
           };
 
         # nix flake check
