@@ -89,7 +89,7 @@
             storePath = "${cosmos-sdk-src}/cosmovisor";
           };
           cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
-          thor = (import ./thor) { inherit pkgs thor-src; };
+          thor = { inputName = "thor-src"; storePath = "${thor-src}"; };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
