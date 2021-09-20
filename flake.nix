@@ -116,6 +116,10 @@
             inputName = "gravity-dex-src";
             storePath = "${gravity-dex-src}";
           };
+          iris = {
+            inputName = "iris-src";
+            storePath = "${iris-src}";
+          };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
@@ -249,3 +253,4 @@
         };
       });
 }
+
