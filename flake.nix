@@ -72,19 +72,12 @@
     , thor-src
     , osmosis-src
     }:
-    with flake-utils.lib;
-    eachDefaultSystem (system:
-    let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ gomod2nix.overlay ];
-      };
-      goProjectSrcs = {
-        gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
-        gaia4 = { inputName = "gaia4-src"; storePath = "${gaia4-src}"; };
-        stoml = {
-          inputName = "stoml-src";
-          storePath = "${stoml-src}";
+      with flake-utils.lib;
+      eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ gomod2nix.overlay ];
         };
         goProjectSrcs = {
           gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
@@ -107,13 +100,20 @@
             inputName = "osmosis-src";
             storePath = "${osmosis-src}";
           };
+          cosmovisor = {
+            inputName = "cosmos-sdk-src";
+            storePath = "${cosmos-sdk-src}/cosmovisor";
+          };
+          osmosis = {
+            inputName = "osmosis-src";
+            storePath = "${osmosis-src}";
+          };
         };
-      };
-      syncGoModulesInputs = with builtins; concatStringsSep " "
-        (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
-      syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
-    in
-    rec {
+        syncGoModulesInputs = with builtins; concatStringsSep " "
+          (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
+        syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
+      in
+      rec {
         # nix build .#<app>
         packages = flattenTree
           {
