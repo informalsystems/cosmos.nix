@@ -99,7 +99,6 @@
         "type": "github"
       }
     },
-<<<<<<< HEAD
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -120,29 +119,6 @@
       "inputs": {
         "nixpkgs": "nixpkgs_2"
       },
-||||||| parent of a427d13 (package osmosis)
-    "ibc-go-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626799724,
-        "narHash": "sha256-uvzdzHxrHyWGOQ6/GsVLHDSIZ/paZrcXold7loXaBLs=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "0afa15af41997cfb4c5dd5f98de8043961e26195",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "type": "github"
-      }
-    },
-    "ibc-rs-src": {
-      "flake": false,
-=======
-    "ibc-rs-src": {
-      "flake": false,
->>>>>>> a427d13 (package osmosis)
       "locked": {
         "lastModified": 1629707199,
         "narHash": "sha256-sGxlmfp5eXL5sAMNqHSb04Zq6gPl+JeltIZ226OYN0w=",
