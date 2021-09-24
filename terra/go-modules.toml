@@ -171,12 +171,12 @@
     sha256 = "09ncxdzy4scwmgj96lq83a40bb29nkws1y9x0nim86l9x5jmgi4b"
 
 ["github.com/CosmWasm/wasmvm"]
-  sumVersion = "v0.16.0"
+  sumVersion = "v0.16.1"
   ["github.com/CosmWasm/wasmvm".fetch]
     type = "git"
     url = "https://github.com/CosmWasm/wasmvm"
-    rev = "12c336647f937183884fa52997ca9486d9a219e8"
-    sha256 = "0jdmsi6rcnw8zvqlg418gby5z0jamr69nwlwpsrc56my18nfql5n"
+    rev = "3cf64c230a8c801ad9569abe241e00416e61dc2d"
+    sha256 = "1kqjyx17yzwjbn8mlf6vm14lgii55v29hli6sawm5bg0yg0iiwh1"
 
 ["github.com/DataDog/datadog-go"]
   sumVersion = "v3.2.0+incompatible"
@@ -685,12 +685,12 @@
     sha256 = "0nxbn0m7lr4dg0yrwnvlkfiyg3ndv8vdpssjx7b714nivpc6ar0y"
 
 ["github.com/cosmos/cosmos-sdk"]
-  sumVersion = "v0.43.0"
+  sumVersion = "v0.44.0"
   ["github.com/cosmos/cosmos-sdk".fetch]
     type = "git"
     url = "https://github.com/cosmos/cosmos-sdk"
-    rev = "3f8596c1955e40ef30e4abcd06f2237d132db3a9"
-    sha256 = "1fgi8xq4k7bislfchl8hz18iwf37ppkp5w471v5h4axq4xynpsmy"
+    rev = "ccc5245c3a1b2e5f1f584e9395fc571a1d19d989"
+    sha256 = "1vh48mwp8w21a3i71alwn56rlm8ip2na5mm7jpsj43d9d915phxp"
 
 ["github.com/cosmos/go-bip39"]
   sumVersion = "v1.0.0"
@@ -709,12 +709,12 @@
     sha256 = "0cvgzjfbxhrada3h6lmcc9pvjjsbi3hz84cxj4xfjglddsm7virj"
 
 ["github.com/cosmos/ibc-go"]
-  sumVersion = "v1.0.1"
+  sumVersion = "v1.1.0"
   ["github.com/cosmos/ibc-go".fetch]
     type = "git"
     url = "https://github.com/cosmos/ibc-go"
-    rev = "446797b77958996bf1f1d15205cb75a4dbe1f3fa"
-    sha256 = "1vyjk79c0hjigpjamc2xibgjlmrljrd1wpx2lj52j5biff46z5hk"
+    rev = "1e0a7f074726bc199a3b39c5863d9f7b1a946402"
+    sha256 = "0b63mkk67glawm8xfm1j4gk9i062x7cndqdfx3nbpa7vq2aqbznr"
 
 ["github.com/cosmos/ledger-cosmos-go"]
   sumVersion = "v0.11.2"
