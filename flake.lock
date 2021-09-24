@@ -86,16 +86,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1632498850,
-        "narHash": "sha256-hRMxaKR3Iv2i5ZWRzW4hZ8AEb1TeLvlwCLulsPhV/9c=",
-        "owner": "JonathanLorimer",
+        "lastModified": 1627572165,
+        "narHash": "sha256-MFpwnkvQpauj799b4QTBJQFEddbD02+Ln5k92QyHOSk=",
+        "owner": "tweag",
         "repo": "gomod2nix",
-        "rev": "b7e394a5b39a8eed90edea54f955c10939cabd30",
+        "rev": "67f22dd738d092c6ba88e420350ada0ed4992ae8",
         "type": "github"
       },
       "original": {
-        "owner": "JonathanLorimer",
-        "ref": "test-echos",
+        "owner": "tweag",
         "repo": "gomod2nix",
         "type": "github"
       }
@@ -300,16 +299,15 @@
     "terra-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1632493890,
-        "narHash": "sha256-38g2+WzSDSo4xBiNh0QhKMYScT5bGCRJ7Nd6sWVqh/k=",
-        "owner": "JonathanLorimer",
+        "lastModified": 1632471150,
+        "narHash": "sha256-lJE0zLAWw7vUHx82JDy9JW5o+ffkJ+f1wCvXy7zl6ZM=",
+        "owner": "terra-money",
         "repo": "core",
-        "rev": "2d01419b69186bf264445fd7d5a97532ea16a9bd",
+        "rev": "4f37d369ed60f60046724fa0e91f970bd1a8a027",
         "type": "github"
       },
       "original": {
-        "owner": "JonathanLorimer",
-        "ref": "upgrade-cosmwasm",
+        "owner": "terra-money",
         "repo": "core",
         "type": "github"
       }

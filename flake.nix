@@ -11,7 +11,7 @@
     naersk.url = "github:nmattia/naersk";
 
     # Go Inputs
-    gomod2nix.url = github:JonathanLorimer/gomod2nix/test-echos;
+    gomod2nix.url = github:tweag/gomod2nix;
 
     # Freshautomations inputs
     stoml-src = {
@@ -48,7 +48,7 @@
     # Cosmos Chains
     terra-src = {
       flake = false;
-      url = github:JonathanLorimer/core/upgrade-cosmwasm;
+      url = github:terra-money/core;
     };
   };
 
