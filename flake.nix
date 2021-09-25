@@ -44,6 +44,7 @@
       flake = false;
       url = github:cosmos/cosmos-sdk;
     };
+<<<<<<< HEAD
 
     thor-src = {
       flake = false;
@@ -64,6 +65,14 @@
       flake = false;
       url = github:irisnet/irishub;
     };
+||||||| parent of 8b07af8 (working on regen)
+=======
+
+    regen-src = {
+      flake = false;
+      url = github:JonathanLorimer/regen-ledger/gomod;
+    };
+>>>>>>> 8b07af8 (working on regen)
   };
 
   outputs =
@@ -79,10 +88,15 @@
     , gaia4-src
     , gaia5-src
     , cosmos-sdk-src
+<<<<<<< HEAD
     , thor-src
     , osmosis-src
     , gravity-dex-src
     , iris-src
+||||||| parent of 8b07af8 (working on regen)
+=======
+    , regen-src
+>>>>>>> 8b07af8 (working on regen)
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -120,12 +134,16 @@
             inputName = "iris-src";
             storePath = "${iris-src}";
           };
+          regen = {
+            inputName = "regen-src";
+            storePath = "${regen-src}";
+          };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
         syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
-      in
-      rec {
+    in
+    rec {
         # nix build .#<app>
         packages = flattenTree
           {
@@ -170,6 +188,7 @@
             osmosis = (import ./osmosis) { inherit pkgs osmosis-src; };
             gravity-dex = (import ./gravity-dex) { inherit pkgs gravity-dex-src; };
             iris = (import ./iris) { inherit iris-src pkgs; };
+            regen = (import ./regen) { inherit regen-src pkgs; };
           };
 
         # nix flake check
@@ -247,6 +266,7 @@
           osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
           gdex = mkApp { name = "gdex"; drv = packages.gravity-dex; };
           iris = mkApp { name = "iris"; drv = packages.iris; };
+          regen = mkApp { name = "regen"; drv = packages.regen; };
         };
       });
 }

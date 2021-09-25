@@ -276,6 +276,23 @@
         "type": "github"
       }
     },
+    "regen-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630990281,
+        "narHash": "sha256-r1CeGg5QOM26NNmCda6vjZBwZGJCP7Je+KIWRVXycrU=",
+        "owner": "JonathanLorimer",
+        "repo": "regen-ledger",
+        "rev": "8ebb28ea07073660bdbd8183ffc8bf4fc18b9522",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JonathanLorimer",
+        "ref": "gomod",
+        "repo": "regen-ledger",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cosmos-sdk-src": "cosmos-sdk-src",
@@ -290,6 +307,7 @@
         "nixpkgs": "nixpkgs_3",
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
+        "regen-src": "regen-src",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
         "thor-src": "thor-src"
