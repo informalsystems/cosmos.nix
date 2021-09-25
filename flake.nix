@@ -11,7 +11,7 @@
     naersk.url = "github:nmattia/naersk";
 
     # Go Inputs
-    gomod2nix.url = "github:tweag/gomod2nix";
+    gomod2nix.url = github:JonathanLorimer/gomod2nix/allow-custom-vendors;
 
     # Freshautomations inputs
     stoml-src = {
@@ -70,7 +70,7 @@
 
     regen-src = {
       flake = false;
-      url = github:JonathanLorimer/regen-ledger/gomod;
+      url = github:regen-network/regen-ledger/;
     };
 >>>>>>> 8b07af8 (working on regen)
   };
