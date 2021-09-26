@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "akash-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1632504080,
+        "narHash": "sha256-Pr0fWVTmcgaLrMOXbPYmds/BOxTwFc1p1x9z/orshts=",
+        "owner": "ovrclk",
+        "repo": "akash",
+        "rev": "b511e4efe640c79ef0e88c925f7dd208560cc7f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ovrclk",
+        "repo": "akash",
+        "type": "github"
+      }
+    },
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
@@ -93,22 +109,6 @@
       "original": {
         "owner": "tweag",
         "repo": "gomod2nix",
-        "type": "github"
-      }
-    },
-    "ibc-go-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626799724,
-        "narHash": "sha256-uvzdzHxrHyWGOQ6/GsVLHDSIZ/paZrcXold7loXaBLs=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "0afa15af41997cfb4c5dd5f98de8043961e26195",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "repo": "ibc-go",
         "type": "github"
       }
     },
@@ -242,11 +242,11 @@
     },
     "root": {
       "inputs": {
+        "akash-src": "akash-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "flake-utils": "flake-utils",
         "gaia-src": "gaia-src",
         "gomod2nix": "gomod2nix",
-        "ibc-go-src": "ibc-go-src",
         "ibc-rs-src": "ibc-rs-src",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs_3",
