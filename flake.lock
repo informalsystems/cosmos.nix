@@ -19,11 +19,11 @@
     "ethermint-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1631035764,
-        "narHash": "sha256-FL102yLvPbb8/N0Qei1dr1RkAMVMHemjUKeeu9IAM6Y=",
+        "lastModified": 1632499102,
+        "narHash": "sha256-z074ZxFk2pPE8vzOhc47CgNFCxrbnNXo1NYCYmG3B2k=",
         "owner": "tharsis",
         "repo": "ethermint",
-        "rev": "2e45a0665edb5184377f857dc235eb7f14d11c94",
+        "rev": "2088297e3d28f1fe64144a7ff095200588f50e5c",
         "type": "github"
       },
       "original": {
@@ -397,4 +397,3 @@
   "root": "root",
   "version": 7
 }
-
