@@ -69,6 +69,11 @@
       flake = false;
       url = github:regen-network/regen-ledger/;
     };
+
+    ethermint-src = {
+      flake = false;
+      url = github:tharsis/ethermint;
+    };
   };
 
   outputs =
@@ -89,6 +94,7 @@
     , gravity-dex-src
     , iris-src
     , regen-src
+    , ethermint-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -129,6 +135,10 @@
           regen = {
             inputName = "regen-src";
             storePath = "${regen-src}";
+          };
+          ethermint = {
+            inputName = "ethermint-src";
+            storePath = "${ethermint-src}";
           };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
@@ -181,6 +191,7 @@
             gravity-dex = (import ./gravity-dex) { inherit pkgs gravity-dex-src; };
             iris = (import ./iris) { inherit iris-src pkgs; };
             regen = (import ./regen) { inherit regen-src pkgs; };
+            ethermint = (import ./ethermint) { inherit ethermint-src pkgs; };
           };
 
         # nix flake check
@@ -259,6 +270,7 @@
           gdex = mkApp { name = "gdex"; drv = packages.gravity-dex; };
           iris = mkApp { name = "iris"; drv = packages.iris; };
           regen = mkApp { name = "regen"; drv = packages.regen; };
+          ethermint = mkApp { name = "ethermint"; drv = packages.ethermint; exePath = "/bin/ethermintd"; };
         };
       });
 }
