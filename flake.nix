@@ -9,10 +9,6 @@
 
     # Rust Inputs
     rust-overlay.url = "github:oxalica/rust-overlay";
-    # crate2nix = {
-    #   url = "github:yusdacra/crate2nix/feat/builtinfetchgit";
-    #   flake = false;
-    # };
     naersk.url = "github:nmattia/naersk";
 
     # Go Inputs
@@ -44,6 +40,11 @@
       flake = false;
       url = github:cosmos/cosmos-sdk;
     };
+
+    sentinel-src = {
+      flake = false;
+      url = github:sentinel-official/hub;
+    };
   };
 
   outputs =
@@ -59,6 +60,7 @@
     , ibc-rs-src
     , gaia-src
     , cosmos-sdk-src
+    , sentinel-src
     }:
     let
       overlays = [
@@ -98,6 +100,10 @@
           inputName = "cosmos-sdk-src";
           storePath = "${cosmos-sdk-src}/cosmovisor";
         };
+        sentinel = {
+          inputName = "sentinel-src";
+          storePath = "${sentinel-src}";
+        };
       };
       syncGoModulesInputs = with builtins; concatStringsSep " "
         (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
@@ -118,6 +124,7 @@
           };
           gaia = (import ./gaia) { inherit gaia-src pkgs; };
           cosmovisor = (import ./cosmovisor) { inherit pkgs; cosmovisor-src = goProjectSrcs.cosmovisor.storePath; };
+          sentinel = (import ./sentinel) { inherit sentinel-src pkgs; };
         };
 
       # nix flake check
@@ -158,7 +165,6 @@
           ];
           buildInputs = with pkgs; [
             # need to prefix with pkgs because of they shadow the name of inputs
-            pkgs.crate2nix
             pkgs.gomod2nix
 
             openssl
@@ -179,6 +185,7 @@
         stoml = mkApp { name = "stoml"; drv = packages.stoml; };
         sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
         gm = mkApp { name = "gm"; drv = packages.gm; };
+        sentinel = mkApp { name = "sentinel"; drv = packages.sentinel; };
       };
     });
 }

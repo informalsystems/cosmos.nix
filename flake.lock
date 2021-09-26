@@ -96,22 +96,6 @@
         "type": "github"
       }
     },
-    "ibc-go-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626799724,
-        "narHash": "sha256-uvzdzHxrHyWGOQ6/GsVLHDSIZ/paZrcXold7loXaBLs=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "0afa15af41997cfb4c5dd5f98de8043961e26195",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "type": "github"
-      }
-    },
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -246,13 +230,13 @@
         "flake-utils": "flake-utils",
         "gaia-src": "gaia-src",
         "gomod2nix": "gomod2nix",
-        "ibc-go-src": "ibc-go-src",
         "ibc-rs-src": "ibc-rs-src",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay",
         "sconfig-src": "sconfig-src",
+        "sentinel-src": "sentinel-src",
         "stoml-src": "stoml-src"
       }
     },
@@ -288,6 +272,22 @@
       "original": {
         "owner": "freshautomations",
         "repo": "sconfig",
+        "type": "github"
+      }
+    },
+    "sentinel-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1628802000,
+        "narHash": "sha256-wqIhdP2WVtSnUwrULzTSK+fST3aB9YLMMq76H2OGX8w=",
+        "owner": "sentinel-official",
+        "repo": "hub",
+        "rev": "47b9270cca77afc9ee676aac42a9ed0120343f3f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sentinel-official",
+        "repo": "hub",
         "type": "github"
       }
     },
