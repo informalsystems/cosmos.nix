@@ -142,8 +142,8 @@
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
         syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
-    in
-    rec {
+      in
+      rec {
         # nix build .#<app>
         packages = flattenTree
           {
