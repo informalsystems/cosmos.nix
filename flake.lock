@@ -148,21 +148,19 @@
         "type": "github"
       }
     },
-    "naersk": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
+    "juno-src": {
+      "flake": false,
       "locked": {
-        "lastModified": 1629707199,
-        "narHash": "sha256-sGxlmfp5eXL5sAMNqHSb04Zq6gPl+JeltIZ226OYN0w=",
-        "owner": "nmattia",
-        "repo": "naersk",
-        "rev": "df71f5e4babda41cd919a8684b72218e2e809fa9",
+        "lastModified": 1631699596,
+        "narHash": "sha256-H/Bm14S4JNka9kuBEihnLDYETdWWMWBRC7vxv4v5f4E=",
+        "owner": "CosmosContracts",
+        "repo": "juno",
+        "rev": "e507450f2e20aa4017e046bd24a7d8f1d3ca437a",
         "type": "github"
       },
       "original": {
-        "owner": "nmattia",
-        "repo": "naersk",
+        "owner": "CosmosContracts",
+        "repo": "juno",
         "type": "github"
       }
     },
@@ -320,6 +318,7 @@
         "gravity-dex-src": "gravity-dex-src",
         "ibc-rs-src": "ibc-rs-src",
         "iris-src": "iris-src",
+        "juno-src": "juno-src",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs_3",
         "osmosis-src": "osmosis-src",

@@ -74,6 +74,11 @@
       flake = false;
       url = github:tharsis/ethermint;
     };
+
+    juno-src = {
+      flake = false;
+      url = github:CosmosContracts/juno;
+    };
   };
 
   outputs =
@@ -95,6 +100,7 @@
     , iris-src
     , regen-src
     , ethermint-src
+    , juno-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -140,6 +146,7 @@
             inputName = "ethermint-src";
             storePath = "${ethermint-src}";
           };
+          juno = { inputName = "juno-src"; storePath = "${juno-src}"; };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
@@ -192,6 +199,7 @@
             iris = (import ./iris) { inherit iris-src pkgs; };
             regen = (import ./regen) { inherit regen-src pkgs; };
             ethermint = (import ./ethermint) { inherit ethermint-src pkgs; };
+            juno = (import ./juno) { inherit juno-src pkgs; };
           };
 
         # nix flake check
@@ -271,6 +279,7 @@
           iris = mkApp { name = "iris"; drv = packages.iris; };
           regen = mkApp { name = "regen"; drv = packages.regen; };
           ethermint = mkApp { name = "ethermint"; drv = packages.ethermint; exePath = "/bin/ethermintd"; };
+          juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
         };
       });
 }
