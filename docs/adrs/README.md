@@ -29,3 +29,5 @@ Note the context/background should be written in the present tense.
 ### Rejected
 
 ### Proposed
+
+[ADR-001: E2E Testing](https://github.com/informalsystems/cosmos.nix/tree/master/docs/adrs/adr-001-E2E-testing.md)
