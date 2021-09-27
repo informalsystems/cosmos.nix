@@ -35,9 +35,14 @@
       flake = false;
     };
 
+    gaia6-src = {
+      flake = false;
+      url = github:cosmos/gaia/v6.0.0-rc1;
+    };
+
     gaia5-src = {
       flake = false;
-      url = github:cosmos/gaia/v5.0.5;
+      url = github:cosmos/gaia/v5.0.6;
     };
 
     gaia4-src = {
@@ -98,6 +103,7 @@
     , ibc-rs-src
     , gaia4-src
     , gaia5-src
+    , gaia6-src
     , cosmos-sdk-src
     , thor-src
     , osmosis-src
@@ -116,6 +122,7 @@
           overlays = [ gomod2nix.overlay ];
         };
         goProjectSrcs = {
+          gaia6 = { inputName = "gaia6-src"; storePath = "${gaia6-src}"; };
           gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
           gaia4 = { inputName = "gaia4-src"; storePath = "${gaia4-src}"; };
           stoml = {
@@ -197,6 +204,7 @@
                   '';
                 };
             };
+            gaia6 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
             thor = (import ./thor) { inherit pkgs thor-src; };
@@ -274,6 +282,7 @@
           gaia = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
           gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
           gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6; exePath = "/bin/gaiad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
           simd = mkApp { name = "simd"; drv = packages.cosmos-sdk; };
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };

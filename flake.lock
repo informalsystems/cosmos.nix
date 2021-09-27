@@ -82,16 +82,33 @@
     "gaia5-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1628194704,
-        "narHash": "sha256-IERWjWqK++9XJjU4yTPLkZ9MoZKOB/ZDwV9xMr8xW1M=",
+        "lastModified": 1631785909,
+        "narHash": "sha256-m5fzpYteE1LRuysZmrJ7hrpmg2/lABK9Io5TomLc0NE=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "2531f5c1613a09a3014f2de9d0db03315637ebd2",
+        "rev": "8defbe08152b6d920a9d495302f8a6842d1c4232",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v5.0.5",
+        "ref": "v5.0.6",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
+    "gaia6-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631863974,
+        "narHash": "sha256-O5jdMZ3c2wiUGQuxuZd6Z2wDJR1YjKlHXNAudQCjiWo=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "f207fc03817a728c801e5a8bb7a39240e9ee2a09",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v6.0.0-rc1",
         "repo": "gaia",
         "type": "github"
       }
@@ -318,6 +335,7 @@
         "flake-utils": "flake-utils",
         "gaia4-src": "gaia4-src",
         "gaia5-src": "gaia5-src",
+        "gaia6-src": "gaia6-src",
         "gomod2nix": "gomod2nix",
         "gravity-dex-src": "gravity-dex-src",
         "ibc-rs-src": "ibc-rs-src",
