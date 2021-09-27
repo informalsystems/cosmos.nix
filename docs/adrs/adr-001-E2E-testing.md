@@ -7,7 +7,7 @@ The current system for testing ibc is a collection of shell scripts called
 `gm` for short.
 
 These shell scripts read from a TOML configuration file, and spin up the
-requesite chain infrastructure. There is also test automation via [E2E
+specified chain infrastructure. There is also test automation via [E2E
 tests](https://github.com/informalsystems/ibc-rs/tree/master/e2e) written in
 python.
 
@@ -52,7 +52,7 @@ Issues: [15](https://github.com/informalsystems/cosmos.nix/issues/15)
 I think that we should look into two approaches to testing:
 
 1. A manual testing setup that allows the user to bring their own relayer
-   implementation and spins up chains for them
+   implementation and spin up pre-packaged chains.
 2. An automated testing harness that can allow users to declaratively configure
    IBC enabled chains, and a relayer of their choice, and run a series of
    tests.
