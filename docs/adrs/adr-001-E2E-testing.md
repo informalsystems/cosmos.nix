@@ -2,27 +2,29 @@
 
 ## Context
 
-Current system for testing is a bunch of shell scripts called
+The current system for testing ibc is a collection of shell scripts called
 [gaia-manager](https://github.com/informalsystems/ibc-rs/tree/master/scripts),
 `gm` for short.
 
 These shell scripts read from a TOML configuration file, and spin up the
-requesite chain infrastructure. There are also some automated [E2E
-tests](https://github.com/informalsystems/ibc-rs/tree/master/e2e) in python.
+requesite chain infrastructure. There is also test automation via [E2E
+tests](https://github.com/informalsystems/ibc-rs/tree/master/e2e) written in
+python.
 
-This testing system looks good, and the cosmos.nix project has even made
-efforts to support this workflow by providing the
-[gm](https://github.com/informalsystems/cosmos.nix/tree/master/gm) scripts with
-its runtime dependencies on `sconfig` and `stoml` bundled.
+This testing system looks good, and the cosmos.nix project has made efforts to
+support this workflow by providing the main
+[gm](https://github.com/informalsystems/cosmos.nix/tree/master/gm) script,
+along with its runtime dependencies (`sconfig` and `stoml`) bundled into a
+single executable.
 
-There is, however, interest in providing a more powerful testing solution. By
-more powerful I mean a couple of things: all dependencies included,
-virtualization, deployability, a general solution for IBC testing, manual and
-automated.
+There is, however, interest in providing a testing solution that is enabled by
+nix.  This kind of solution would provide a few things in addition to what
+exists today: all dependencies included, virtualization, deployability, a
+general solution for IBC testing, manual and automated.
 
 - **all dependencies included**: This is handled quite well by nix, but the
-idea is that the end user should not be required to install more than 1 or 2
-things to run the testing infra.
+idea is that the end user should not be required to install more than nix and
+the flake to run the test infra.
  **virtualization**: It would be nice to be able to run these tests in a
 sandboxed environment to prevent flaky tests.
 - **deployability**: Testing locally is important, but testing across real
@@ -38,7 +40,7 @@ Issues: [15](https://github.com/informalsystems/cosmos.nix/issues/15)
 
 ### Implementation goals
 
-1. Local variant (as well as any requisite virtualization) should work on mac
+1. Local variant (as well as any required virtualization) should work on mac
    and linux
 2. Should require no knowledge, or limited knowledge of nix
 3. Should priortize testing [ibc-rs](https://github.com/informalsystems/ibc-rs)
