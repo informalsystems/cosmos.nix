@@ -44,7 +44,6 @@
       flake = false;
       url = github:cosmos/cosmos-sdk;
     };
-<<<<<<< HEAD
 
     thor-src = {
       flake = false;
@@ -65,14 +64,11 @@
       flake = false;
       url = github:irisnet/irishub;
     };
-||||||| parent of 8b07af8 (working on regen)
-=======
 
     regen-src = {
       flake = false;
       url = github:regen-network/regen-ledger/;
     };
->>>>>>> 8b07af8 (working on regen)
   };
 
   outputs =
@@ -88,15 +84,11 @@
     , gaia4-src
     , gaia5-src
     , cosmos-sdk-src
-<<<<<<< HEAD
     , thor-src
     , osmosis-src
     , gravity-dex-src
     , iris-src
-||||||| parent of 8b07af8 (working on regen)
-=======
     , regen-src
->>>>>>> 8b07af8 (working on regen)
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
