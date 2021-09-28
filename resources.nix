@@ -9,10 +9,15 @@
 with inputs;
 let
   # Cosmos packages
-  packages = {
+  packages = rec {
     stoml = (import ./resources/stoml) { inherit pkgs stoml-src; };
     sconfig = (import ./resources/sconfig) { inherit pkgs sconfig-src; };
-    gm = (import ./resources/gm) { inherit pkgs ibc-rs-src; };
+    gm = with pkgs; (import ./gm) {
+      inherit ibc-rs-src shellcheck lib makeWrapper gnused;
+      stoml = packages.stoml;
+      sconfig = packages.sconfig;
+      mkDerivation = stdenv.mkDerivation;
+    };
     hermes = naersk.lib."${system}".buildPackage {
       pname = "ibc-rs";
       root = ibc-rs-src;

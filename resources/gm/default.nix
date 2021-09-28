@@ -1,4 +1,4 @@
-{ shellcheck, makeWrapper, mkDerivation, lib, ibc-rs-src, stoml, sconfig }:
+{ shellcheck, makeWrapper, mkDerivation, lib, ibc-rs-src, stoml, sconfig, gnused }:
 mkDerivation {
   pname = "gm";
   version = "0.0.8";
@@ -22,7 +22,7 @@ mkDerivation {
   installPhase = ''
     echo "wrapping absolute paths to sconfig and stoml"
     wrapProgram $out/bin/gm \
-      --prefix PATH : ${lib.makeBinPath [ sconfig stoml ]} \
+      --prefix PATH : ${lib.makeBinPath [ sconfig stoml gnused ]} \
       --set LIB_GM $out/bin/lib-gm
   '';
 
