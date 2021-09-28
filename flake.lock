@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "ethermint-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1632499102,
+        "narHash": "sha256-z074ZxFk2pPE8vzOhc47CgNFCxrbnNXo1NYCYmG3B2k=",
+        "owner": "tharsis",
+        "repo": "ethermint",
+        "rev": "2088297e3d28f1fe64144a7ff095200588f50e5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tharsis",
+        "repo": "ethermint",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1623875721,
@@ -296,6 +312,7 @@
     "root": {
       "inputs": {
         "cosmos-sdk-src": "cosmos-sdk-src",
+        "ethermint-src": "ethermint-src",
         "flake-utils": "flake-utils",
         "gaia4-src": "gaia4-src",
         "gaia5-src": "gaia5-src",
@@ -380,4 +397,3 @@
   "root": "root",
   "version": 7
 }
-
