@@ -169,10 +169,7 @@
             thor = (import ./thor) { inherit pkgs thor-src; };
             osmosis = (import ./osmosis) { inherit pkgs osmosis-src; };
             gravity-dex = (import ./gravity-dex) { inherit pkgs gravity-dex-src; };
-            iris = {
-              inputName = "iris-src";
-              storePath = "${iris-src}";
-            };
+            iris = (import ./iris) { inherit iris-src pkgs; };
           };
 
         # nix flake check
