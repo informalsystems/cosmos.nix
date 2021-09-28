@@ -86,15 +86,16 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1627572165,
-        "narHash": "sha256-MFpwnkvQpauj799b4QTBJQFEddbD02+Ln5k92QyHOSk=",
-        "owner": "tweag",
+        "lastModified": 1632587543,
+        "narHash": "sha256-aGTfRses8JGGolYQ9kiQNANBi/dP1twBHic9AUZKilU=",
+        "owner": "JonathanLorimer",
         "repo": "gomod2nix",
-        "rev": "67f22dd738d092c6ba88e420350ada0ed4992ae8",
+        "rev": "46475f27b42a87be2d6902d1e9ca53d35ce24f2e",
         "type": "github"
       },
       "original": {
-        "owner": "tweag",
+        "owner": "JonathanLorimer",
+        "ref": "allow-custom-vendors",
         "repo": "gomod2nix",
         "type": "github"
       }
@@ -276,6 +277,22 @@
         "type": "github"
       }
     },
+    "regen-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1632410767,
+        "narHash": "sha256-rczxDzycUU8Q4w4dO6mpJDkhsk3dMvUagFEYXWDzxPk=",
+        "owner": "regen-network",
+        "repo": "regen-ledger",
+        "rev": "e8981ba915ab51e96cda67d16a0a0948d13c04e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "regen-network",
+        "repo": "regen-ledger",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cosmos-sdk-src": "cosmos-sdk-src",
@@ -290,6 +307,7 @@
         "nixpkgs": "nixpkgs_3",
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
+        "regen-src": "regen-src",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
         "thor-src": "thor-src"

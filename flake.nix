@@ -11,7 +11,7 @@
     naersk.url = "github:nmattia/naersk";
 
     # Go Inputs
-    gomod2nix.url = "github:tweag/gomod2nix";
+    gomod2nix.url = github:JonathanLorimer/gomod2nix/allow-custom-vendors;
 
     # Freshautomations inputs
     stoml-src = {
@@ -64,6 +64,11 @@
       flake = false;
       url = github:irisnet/irishub;
     };
+
+    regen-src = {
+      flake = false;
+      url = github:regen-network/regen-ledger/;
+    };
   };
 
   outputs =
@@ -83,6 +88,7 @@
     , osmosis-src
     , gravity-dex-src
     , iris-src
+    , regen-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -119,6 +125,10 @@
           iris = {
             inputName = "iris-src";
             storePath = "${iris-src}";
+          };
+          regen = {
+            inputName = "regen-src";
+            storePath = "${regen-src}";
           };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
@@ -170,6 +180,7 @@
             osmosis = (import ./osmosis) { inherit pkgs osmosis-src; };
             gravity-dex = (import ./gravity-dex) { inherit pkgs gravity-dex-src; };
             iris = (import ./iris) { inherit iris-src pkgs; };
+            regen = (import ./regen) { inherit regen-src pkgs; };
           };
 
         # nix flake check
@@ -247,6 +258,7 @@
           osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
           gdex = mkApp { name = "gdex"; drv = packages.gravity-dex; };
           iris = mkApp { name = "iris"; drv = packages.iris; };
+          regen = mkApp { name = "regen"; drv = packages.regen; };
         };
       });
 }
