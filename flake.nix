@@ -54,6 +54,11 @@
       flake = false;
       url = github:osmosis-labs/osmosis;
     };
+
+    gravity-dex-src = {
+      flake = false;
+      url = github:b-harvest/gravity-dex-backend;
+    };
   };
 
   outputs =
@@ -71,6 +76,7 @@
     , cosmos-sdk-src
     , thor-src
     , osmosis-src
+    , gravity-dex-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -99,6 +105,10 @@
           osmosis = {
             inputName = "osmosis-src";
             storePath = "${osmosis-src}";
+          };
+          gravity-dex = {
+            inputName = "gravity-dex-src";
+            storePath = "${gravity-dex-src}";
           };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
@@ -148,6 +158,7 @@
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
             thor = (import ./thor) { inherit pkgs thor-src; };
             osmosis = (import ./osmosis) { inherit pkgs osmosis-src; };
+            gravity-dex = (import ./gravity-dex) { inherit pkgs gravity-dex-src; };
           };
 
         # nix flake check
@@ -223,6 +234,7 @@
           thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
           thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
           osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
+          gdex = mkApp { name = "gdex"; drv = packages.gravity-dex; };
         };
       });
 }
