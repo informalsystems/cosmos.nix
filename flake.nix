@@ -100,10 +100,6 @@
             inputName = "osmosis-src";
             storePath = "${osmosis-src}";
           };
-          osmosis = {
-            inputName = "osmosis-src";
-            storePath = "${osmosis-src}";
-          };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
