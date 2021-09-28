@@ -107,25 +107,24 @@ updateGoModules GoSourceDetailed{..} = do
   let LockDetails{..} = detailedLockDetails
       goSrcDir = "./" <> fromText detailedSourceName
       narFile = goSrcDir <> "last-synced.narHash"
-  hasNarFile <- fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
+      hasNarFile = All . getAny <$> fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
+      narHashIsEqual = input narFile <&> \hash -> All $ (lineToText hash) == ldNarHash
 
-  let narHashIsEqual = input narFile <&> \hash -> Any $ (lineToText hash) == ldNarHash
-  shouldSync <- msum [ pure $ negateAny hasNarFile, narHashIsEqual]
+  isSynced <- msum [ hasNarFile, narHashIsEqual]
 
-  if getAny shouldSync
-     then do
-       sourceHome <- pwd
-       tmp <- mktempdir sourceHome "./tmp"
-       cd tmp
-       cptreeL (fromText detailedStorePath) "./"
-       proc "gomod2nix" [] mempty
-       cd sourceHome
-       mktree goSrcDir
-       mv (tmp <> "gomod2nix.toml") (goSrcDir <> "go-modules.toml")
-       output narFile (pure $ unsafeTextToLine ldNarHash)
-       pure (Updated, detailedSourceName)
-     else pure (Cached, detailedSourceName)
-
+  if getAll isSynced
+   then pure (Cached, detailedSourceName)
+   else do
+     sourceHome <- pwd
+     tmp <- mktempdir sourceHome "./tmp"
+     cd tmp
+     cptreeL (fromText detailedStorePath) "./"
+     proc "gomod2nix" [] mempty
+     cd sourceHome
+     mktree goSrcDir
+     mv (tmp <> "gomod2nix.toml") (goSrcDir <> "go-modules.toml")
+     output narFile (pure $ unsafeTextToLine ldNarHash)
+     pure (Updated, detailedSourceName)
 
 notifyUpdated :: (HasSyncedModules, Text) -> IO ()
 notifyUpdated (Updated, name) =
