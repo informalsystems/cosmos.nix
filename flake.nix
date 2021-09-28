@@ -100,10 +100,6 @@
             inputName = "osmosis-src";
             storePath = "${osmosis-src}";
           };
-          cosmovisor = {
-            inputName = "cosmos-sdk-src";
-            storePath = "${cosmos-sdk-src}/cosmovisor";
-          };
           osmosis = {
             inputName = "osmosis-src";
             storePath = "${osmosis-src}";
