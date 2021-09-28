@@ -229,6 +229,22 @@
         "type": "indirect"
       }
     },
+    "osmosis-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630713737,
+        "narHash": "sha256-YFLzsH7mnCXf3FEJtxLBB+WStKDSBvmWyQYm0JgpCZQ=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "558e0bea062e15666278bd090a7bc4dc52fbfdf4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -258,6 +274,7 @@
         "ibc-rs-src": "ibc-rs-src",
         "naersk": "naersk",
         "nixpkgs": "nixpkgs_3",
+        "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
@@ -331,3 +348,4 @@
   "root": "root",
   "version": 7
 }
+

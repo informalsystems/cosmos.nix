@@ -49,6 +49,11 @@
       flake = false;
       url = github:thorchain/thornode;
     };
+
+    osmosis-src = {
+      flake = false;
+      url = github:osmosis-labs/osmosis;
+    };
   };
 
   outputs =
@@ -65,6 +70,7 @@
     , gaia5-src
     , cosmos-sdk-src
     , thor-src
+    , osmosis-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -90,6 +96,10 @@
           };
           cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
           thor = { inputName = "thor-src"; storePath = "${thor-src}"; };
+          osmosis = {
+            inputName = "osmosis-src";
+            storePath = "${osmosis-src}";
+          };
         };
         syncGoModulesInputs = with builtins; concatStringsSep " "
           (attrValues (builtins.mapAttrs (name: value: "${name}:${value.inputName}${value.storePath}") goProjectSrcs));
@@ -137,6 +147,7 @@
             gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
             thor = (import ./thor) { inherit pkgs thor-src; };
+            osmosis = (import ./osmosis) { inherit pkgs osmosis-src; };
           };
 
         # nix flake check
@@ -186,7 +197,6 @@
             buildInputs = with pkgs; [
               # need to prefix with pkgs because they shadow the name of inputs
               pkgs.gomod2nix
-
               openssl
               syncGoModulesScript
               shellcheck
@@ -212,6 +222,7 @@
           bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
           thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
           thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
+          osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
         };
       });
 }
