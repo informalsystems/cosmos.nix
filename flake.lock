@@ -148,6 +148,22 @@
         "type": "github"
       }
     },
+    "iris-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630393303,
+        "narHash": "sha256-pIfM9jdul0TL5q1DBnRKX4TuE/GJJHYidDIxXClA89M=",
+        "owner": "irisnet",
+        "repo": "irishub",
+        "rev": "084ff9431f9e9cbaa87930a71cba0a427db2037a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "irisnet",
+        "repo": "irishub",
+        "type": "github"
+      }
+    },
     "juno-src": {
       "flake": false,
       "locked": {
@@ -164,19 +180,21 @@
         "type": "github"
       }
     },
-    "iris-src": {
-      "flake": false,
+    "naersk": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
       "locked": {
-        "lastModified": 1630393303,
-        "narHash": "sha256-pIfM9jdul0TL5q1DBnRKX4TuE/GJJHYidDIxXClA89M=",
-        "owner": "irisnet",
-        "repo": "irishub",
-        "rev": "084ff9431f9e9cbaa87930a71cba0a427db2037a",
+        "lastModified": 1632266297,
+        "narHash": "sha256-J1yeJk6Gud9ef2pEf6aKQemrfg1pVngYDSh+SAY94xk=",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "ee7edec50b49ab6d69b06d62f1de554efccb1ccd",
         "type": "github"
       },
       "original": {
-        "owner": "irisnet",
-        "repo": "irishub",
+        "owner": "nmattia",
+        "repo": "naersk",
         "type": "github"
       }
     },
@@ -198,11 +216,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1630879492,
-        "narHash": "sha256-QSqIyHww3WEargEPAGuuJ4TXShPg65tKBXcUj5I08AU=",
+        "lastModified": 1632869121,
+        "narHash": "sha256-F+NFBCPJSffQoSnM7kYDgHF7uO+Zb0ANo0cMyRqkeKs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1a8359692853f50121a8c236e112fdc1ba48349e",
+        "rev": "60dcbe9837101489af5f6db6171de3c3826224a2",
         "type": "github"
       },
       "original": {
@@ -240,20 +258,6 @@
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1619531122,
-        "narHash": "sha256-ovm5bo6PkZzNKh2YGXbRKYIjega0EjiEP0YDwyeXEYU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "bb80d578e8ad3cb5a607f468ac00cc546d0396dc",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
       }
     },
     "osmosis-src": {
