@@ -330,7 +330,7 @@
         "regen-src": "regen-src",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
-        "thor-src": "thor-src"
+        "thor-src": "thor-src",
         "ts-relayer-src": "ts-relayer-src"
       }
     },
