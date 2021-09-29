@@ -117,6 +117,7 @@ nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 - [ts-relayer](https://github.com/confio/ts-relayer):
   - `nix run .#ts-relayer`
   - `nix run .#ts-relayer-setup`
+- [relayer](https://github.com/cosmos/relayer): `nix run .#relayer`
 
 #### Validators
 - [thor](https://github.com/thorchain/thornode):

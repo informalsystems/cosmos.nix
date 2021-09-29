@@ -36,6 +36,7 @@ let
     juno = (import ./resources/juno) { inherit juno-src pkgs; };
     ts-relayer = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer;
     ts-relayer-setup = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer-setup;
+    relayer = ((import ./resources/relayer) { inherit relayer-src pkgs; });
   };
 
   # Script helpers

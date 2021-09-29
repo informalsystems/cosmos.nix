@@ -42,6 +42,7 @@ let go-project-srcs =
       storePath = "${ethermint-src}";
     };
     juno = { inputName = "juno-src"; storePath = "${juno-src}"; };
+    relayer = { inputName = "relayer-src"; storePath = "${relayer-src}"; };
   };
 in
 with builtins;
