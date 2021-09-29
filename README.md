@@ -105,12 +105,12 @@ nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 > that the command is run from within the cloned repo. The remote variant can be run
 > from wherever.
 >
-> Local: nix run .#<app-name>
-> Remote: nix run github:informalsystems/cosmos.nix#<app-name>
+> Local: nix run .#my-app-name
+> Remote: nix run github:informalsystems/cosmos.nix#my-pp-name
 >
 > For brevity and consistency all the commands are listed in the local variant
 
-### Packages provided
+### Executables provided
 
 #### Relayers
 - [hermes](https://hermes.informal.systems/): `nix run .#hermes`
