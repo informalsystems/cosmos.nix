@@ -12,7 +12,7 @@ let
   packages = rec {
     stoml = (import ./resources/stoml) { inherit pkgs stoml-src; };
     sconfig = (import ./resources/sconfig) { inherit pkgs sconfig-src; };
-    gm = with pkgs; (import ./gm) {
+    gm = with pkgs; (import ./resources/gm) {
       inherit ibc-rs-src shellcheck lib makeWrapper gnused;
       stoml = packages.stoml;
       sconfig = packages.sconfig;

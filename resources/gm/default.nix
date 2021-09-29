@@ -25,6 +25,4 @@ mkDerivation {
       --prefix PATH : ${lib.makeBinPath [ sconfig stoml gnused ]} \
       --set LIB_GM $out/bin/lib-gm
   '';
-
-  patches = [ ./gm_lib.patch ];
 }
