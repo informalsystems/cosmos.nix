@@ -3,6 +3,9 @@
 , pkgs
 , eval-pkgs
 }:
+# Many things come from this inputs attrset. For example naersk, anything with a `src` suffix, self which refers
+# reflexively to the flake we are building etc. If you are confused where something comes from it is probably a
+# good idea to check the inputs attrset in flake.nix!
 with inputs;
 let
   # Cosmos packages
@@ -33,7 +36,6 @@ let
     juno = (import ./resources/juno) { inherit juno-src pkgs; };
     ts-relayer = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer;
     ts-relayer-setup = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer-setup;
-
   };
 
   # Script helpers

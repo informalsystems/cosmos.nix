@@ -1,4 +1,6 @@
 { inputs }:
+# In this case inputs is mostly used in order to reference go sources (suffixed by src in this file).
+# For reference check the inputs attrset in flake.nix!
 with inputs;
 let go-project-srcs =
   {
