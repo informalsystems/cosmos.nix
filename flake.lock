@@ -328,6 +328,22 @@
         "type": "github"
       }
     },
+    "relayer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1626337542,
+        "narHash": "sha256-RjDTaMNEF+9aUYNLDq37x8rBCBg3z/3ZZP5k0FM1UoQ=",
+        "owner": "cosmos",
+        "repo": "relayer",
+        "rev": "112205bab8224295cb046badcda512d37ea1c7b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "relayer",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cosmos-sdk-src": "cosmos-sdk-src",
@@ -346,6 +362,7 @@
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
+        "relayer-src": "relayer-src",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
         "thor-src": "thor-src",

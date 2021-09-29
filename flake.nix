@@ -27,6 +27,9 @@
     ts-relayer-src.url = github:confio/ts-relayer;
     ts-relayer-src.flake = false;
 
+    relayer-src.url = github:cosmos/relayer;
+    relayer-src.flake = false;
+
     # Chain Sources
     gaia6-src.flake = false;
     gaia6-src.url = github:cosmos/gaia/v6.0.0-rc1;
