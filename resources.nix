@@ -49,9 +49,10 @@ let
     nix-shell =
       pkgs.mkShell {
         shellHook = self.checks.${system}.pre-commit-check.shellHook;
-        buildInputs = [
-          pkgs.gomod2nix
+        buildInputs = with pkgs; [
+          gomod2nix
           go-modules-sync
+          rnix-lsp
         ];
       };
     cosmos-shell =
