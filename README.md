@@ -88,7 +88,7 @@ If you are just here for a remote nix shell (a development environment where
 you don't need to clone the repo) you can run the following command:
 
 ```bash
-nix develop github:informalsystems/cosmos.nix
+nix develop github:informalsystems/cosmos.nix#cosmos-shell
 ```
 
 This will build the development environment. The environment will then be
@@ -96,29 +96,42 @@ cached in your nix store and should be very fast. If you want to pull the
 latest development environment you should run:
 
 ```bash
-nix develop github:informalsystems/cosmos.nix --refresh
+nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 ```
-
-## Sources
-
-Right now only the sources of the upstream projects are given as a Nix
-derivation. You can build them by running:
-
-```bash
-$ nix build
-$ ls result/
-cosmos-sdk  gaia  ibc-go  ibc-rs  tendermint-rs
-```
-
-This is just to show that our Nix derivations now have access to the source code
-of the upstream projects we want to support. The exact versions of the source
-code are pinned inside the `flake.lock` file, and can be updated using the `nix
-flake lock` command.
-
-We will then build actual Nix derivations based on these source files in
-upcoming development.
 
 ## Applications
 
-Here is a list of the commands you can invoke to run specific packges.
+> Note: every command has a local and a remote variant. The local variant requires
+> that the command is run from within the cloned repo. The remote variant can be run
+> from wherever.
+>
+> Local: nix run .#<app-name>
+> Remote: nix run github:informalsystems/cosmos.nix#<app-name>
+>
+> For brevity and consistency all the commands are listed in the local variant
+
+### Packages provided
+
+#### Relayers
 - [hermes](https://hermes.informal.systems/): `nix run .#hermes`
+- [ts-relayer](https://github.com/confio/ts-relayer):
+  - `nix run .#ts-relayer`
+  - `nix run .#ts-relayer-setup`
+
+#### Validators
+- [thor](https://github.com/thorchain/thornode):
+  - bifrost: `nix run .#bifrost`
+  - thorcli: `nix run .#thorcli`
+  - thord: `nix run .#thord`
+- [osmosis](https://github.com/osmosis-labs/osmosis): `nix run .#osmosis`
+- [gravity dex](https://github.com/b-harvest/gravity-dex-backend): `nix run .#gdex`
+- [iris](https://github.com/irisnet/irishub): `nix run .#iris`
+- [regen](https://github.com/regen-network/regen-ledger): `nix run .#regen`
+- [ethermint](https://github.com/tharsis/ethermint): `nix run .#ethermint`
+- [juno](https://github.com/CosmosContracts/juno): `nix run .#juno`
+
+#### Development Tools
+- [gaia](https://hub.cosmos.network/main/gaia-tutorials/what-is-gaia.html): `nix run .#gaia`
+- [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html): `nix run .#cosmovisor`
+- [simd](https://docs.cosmos.network/master/run-node/interact-node.html): `nix run .#simd`
+- [gm](https://github.com/informalsystems/ibc-rs/tree/master/scripts/gm): `nix run .#gm`

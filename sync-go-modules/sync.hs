@@ -105,7 +105,7 @@ data HasSyncedModules = Updated | Cached deriving (Show)
 updateGoModules :: GoSourceDetailed -> Shell (HasSyncedModules, Text)
 updateGoModules GoSourceDetailed{..} = do
   let LockDetails{..} = detailedLockDetails
-      goSrcDir = "./" <> fromText detailedSourceName
+      goSrcDir = "./resources/" <> fromText detailedSourceName
       narFile = goSrcDir <> "last-synced.narHash"
       hasNarFile = All . getAny <$> fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
       narHashIsEqual = input narFile <&> \hash -> All $ (lineToText hash) == ldNarHash
