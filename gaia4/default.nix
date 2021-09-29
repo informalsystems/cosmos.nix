@@ -1,6 +1,7 @@
 { pkgs, gaia4-src }:
 pkgs.buildGoApplication {
-  name = "gaia4";
+  pname = "gaia";
+  version = "4.2.1";
   src = "${gaia4-src}";
   modules = ./go-modules.toml;
 
