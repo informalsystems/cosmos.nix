@@ -330,7 +330,8 @@
         "regen-src": "regen-src",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
-        "thor-src": "thor-src"
+        "thor-src": "thor-src",
+        "ts-relayer-src": "ts-relayer-src"
       }
     },
     "sconfig-src": {
@@ -378,6 +379,22 @@
       "original": {
         "owner": "thorchain",
         "repo": "thornode",
+        "type": "github"
+      }
+    },
+    "ts-relayer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629977687,
+        "narHash": "sha256-RzI7NqcQ84GzEJjRFivHYzZKaDwqaniDMDLeMIYX+78=",
+        "owner": "confio",
+        "repo": "ts-relayer",
+        "rev": "fc2a847a97e8e8dfde918209626d3b669dc94500",
+        "type": "github"
+      },
+      "original": {
+        "owner": "confio",
+        "repo": "ts-relayer",
         "type": "github"
       }
     },

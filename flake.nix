@@ -30,6 +30,11 @@
       flake = false;
     };
 
+    ts-relayer-src = {
+      url = github:confio/ts-relayer;
+      flake = false;
+    };
+
     gaia5-src = {
       flake = false;
       url = github:cosmos/gaia/v5.0.5;
@@ -101,6 +106,7 @@
     , regen-src
     , ethermint-src
     , juno-src
+    , ts-relayer-src
     }:
       with flake-utils.lib;
       eachDefaultSystem (system:
@@ -200,6 +206,8 @@
             regen = (import ./regen) { inherit regen-src pkgs; };
             ethermint = (import ./ethermint) { inherit ethermint-src pkgs; };
             juno = (import ./juno) { inherit juno-src pkgs; };
+            ts-relayer = ((import ./ts-relayer) { inherit ts-relayer-src pkgs; }).ts-relayer;
+            ts-relayer-setup = ((import ./ts-relayer) { inherit ts-relayer-src pkgs; }).ts-relayer-setup;
           };
 
         # nix flake check
@@ -280,6 +288,8 @@
           regen = mkApp { name = "regen"; drv = packages.regen; };
           ethermint = mkApp { name = "ethermint"; drv = packages.ethermint; exePath = "/bin/ethermintd"; };
           juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
+          ts-relayer = mkApp { name = "ts-relayer"; drv = packages.ts-relayer; };
+          ts-relayer-setup = mkApp { name = "ts-relayer-setup"; drv = packages.ts-relayer-setup; };
         };
       });
 }
