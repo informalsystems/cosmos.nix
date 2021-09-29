@@ -1,95 +1,65 @@
 {
-  description = "A reproducible Cosmos";
+  description = "A reproducible package set for Cosmos";
 
   inputs = {
     # Nix Inputs
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
+    flake-utils.url = github:numtide/flake-utils;
 
     # Rust Inputs
-    naersk.url = "github:nmattia/naersk";
+    naersk.url = github:nmattia/naersk;
 
     # Go Inputs
     gomod2nix.url = github:JonathanLorimer/gomod2nix/allow-custom-vendors;
 
     # Freshautomations inputs
-    stoml-src = {
-      url = github:freshautomations/stoml;
-      flake = false;
-    };
+    stoml-src.url = github:freshautomations/stoml;
+    stoml-src.flake = false;
 
-    sconfig-src = {
-      url = github:freshautomations/sconfig;
-      flake = false;
-    };
+    sconfig-src.url = github:freshautomations/sconfig;
+    sconfig-src.flake = false;
 
     # Relayer Sources
-    ibc-rs-src = {
-      url = github:informalsystems/ibc-rs;
-      flake = false;
-    };
+    ibc-rs-src.url = github:informalsystems/ibc-rs;
+    ibc-rs-src.flake = false;
 
-    ts-relayer-src = {
-      url = github:confio/ts-relayer;
-      flake = false;
-    };
+    ts-relayer-src.url = github:confio/ts-relayer;
+    ts-relayer-src.flake = false;
 
     # Chain Sources
-    gaia6-src = {
-      flake = false;
-      url = github:cosmos/gaia/v6.0.0-rc1;
-    };
+    gaia6-src.flake = false;
+    gaia6-src.url = github:cosmos/gaia/v6.0.0-rc1;
 
-    gaia5-src = {
-      flake = false;
-      url = github:cosmos/gaia/v5.0.6;
-    };
+    gaia5-src.flake = false;
+    gaia5-src.url = github:cosmos/gaia/v5.0.6;
 
-    gaia4-src = {
-      flake = false;
-      url = github:cosmos/gaia/v4.2.1;
-    };
+    gaia4-src.flake = false;
+    gaia4-src.url = github:cosmos/gaia/v4.2.1;
 
-    cosmos-sdk-src = {
-      flake = false;
-      url = github:cosmos/cosmos-sdk;
-    };
+    cosmos-sdk-src.flake = false;
+    cosmos-sdk-src.url = github:cosmos/cosmos-sdk;
 
-    thor-src = {
-      flake = false;
-      url = github:thorchain/thornode;
-    };
+    thor-src.flake = false;
+    thor-src.url = github:thorchain/thornode;
 
-    osmosis-src = {
-      flake = false;
-      url = github:osmosis-labs/osmosis;
-    };
+    osmosis-src.flake = false;
+    osmosis-src.url = github:osmosis-labs/osmosis;
 
-    gravity-dex-src = {
-      flake = false;
-      url = github:b-harvest/gravity-dex-backend;
-    };
+    gravity-dex-src.flake = false;
+    gravity-dex-src.url = github:b-harvest/gravity-dex-backend;
 
-    iris-src = {
-      flake = false;
-      url = github:irisnet/irishub;
-    };
+    iris-src.flake = false;
+    iris-src.url = github:irisnet/irishub;
 
-    regen-src = {
-      flake = false;
-      url = github:regen-network/regen-ledger/;
-    };
+    regen-src.flake = false;
+    regen-src.url = github:regen-network/regen-ledger/;
 
-    ethermint-src = {
-      flake = false;
-      url = github:tharsis/ethermint;
-    };
+    ethermint-src.flake = false;
+    ethermint-src.url = github:tharsis/ethermint;
 
-    juno-src = {
-      flake = false;
-      url = github:CosmosContracts/juno;
-    };
+    juno-src.flake = false;
+    juno-src.url = github:CosmosContracts/juno;
   };
 
   outputs =
@@ -168,6 +138,7 @@
         syncGoModulesCheck = (import ./syncGoModules) { inherit pkgs syncGoModulesInputs; };
       in
       rec {
+
         # nix build .#<app>
         packages = flattenTree
           {
@@ -184,28 +155,7 @@
               inherit pkgs;
               cosmovisor-src = goProjectSrcs.cosmovisor.storePath;
             };
-            cosmos-sdk = (import ./cosmos-sdk) {
-              inherit pkgs;
-              cosmos-sdk-src =
-                # We need a version of cosmos-sdk with no cosmovisor
-                # since buildGoApplication doesn't know how to handle
-                # sub-applications
-                pkgs.stdenv.mkDerivation {
-                  name = "cosmos-sdk-no-cosmovisor";
-                  unpackPhase = "true";
-                  buildPhase = "true";
-                  installPhase = ''
-                    mkdir -p $out
-
-                    for x in ${cosmos-sdk-src}/*; do
-                      if [ $x = "${cosmos-sdk-src}/cosmovisor" ]
-                        then continue
-                        else cp -r $x $out
-                      fi
-                    done
-                  '';
-                };
-            };
+            cosmos-sdk = (import ./cosmos-sdk) { inherit pkgs cosmos-sdk-src; };
             gaia6 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia5 = (import ./gaia5) { inherit gaia5-src pkgs; };
             gaia4 = (import ./gaia4) { inherit gaia4-src pkgs; };
