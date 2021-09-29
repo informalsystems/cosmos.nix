@@ -106,6 +106,7 @@ nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 > from wherever.
 >
 > Local: nix run .#my-app-name
+> 
 > Remote: nix run github:informalsystems/cosmos.nix#my-pp-name
 >
 > For brevity and consistency all the commands are listed in the local variant
