@@ -1,4 +1,9 @@
-{ pkgs, eval-pkgs, ts-relayer-src }:
+{ pkgs
+, # Note: we need to use eval-pkgs for mkYarnPackage because it uses IFD, which doesn't play nicely with flakes.
+  # For reference checkout this issue on the nixpkgs repo: https://github.com/NixOS/nix/issues/4265
+  eval-pkgs
+, ts-relayer-src
+}:
 let
   ibc-relayer =
     eval-pkgs.mkYarnPackage {
