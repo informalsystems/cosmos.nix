@@ -1,7 +1,7 @@
-{ pkgs, ts-relayer-src }:
+{ pkgs, eval-pkgs, ts-relayer-src }:
 let
   ibc-relayer =
-    pkgs.mkYarnPackage {
+    eval-pkgs.mkYarnPackage {
       name = "ts-relayer";
       src = ts-relayer-src;
       packageJSON = "${ts-relayer-src}/package.json";

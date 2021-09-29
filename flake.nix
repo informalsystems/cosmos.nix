@@ -24,7 +24,7 @@
       flake = false;
     };
 
-    # Cosmos Sources
+    # Relayer Sources
     ibc-rs-src = {
       url = github:informalsystems/ibc-rs;
       flake = false;
@@ -35,6 +35,7 @@
       flake = false;
     };
 
+    # Chain Sources
     gaia6-src = {
       flake = false;
       url = github:cosmos/gaia/v6.0.0-rc1;
@@ -121,6 +122,7 @@
           inherit system;
           overlays = [ gomod2nix.overlay ];
         };
+        eval-pkgs = import nixpkgs { system = "x86_64-linux"; };
         goProjectSrcs = {
           gaia6 = { inputName = "gaia6-src"; storePath = "${gaia6-src}"; };
           gaia5 = { inputName = "gaia5-src"; storePath = "${gaia5-src}"; };
@@ -214,8 +216,8 @@
             regen = (import ./regen) { inherit regen-src pkgs; };
             ethermint = (import ./ethermint) { inherit ethermint-src pkgs; };
             juno = (import ./juno) { inherit juno-src pkgs; };
-            ts-relayer = ((import ./ts-relayer) { inherit ts-relayer-src pkgs; }).ts-relayer;
-            ts-relayer-setup = ((import ./ts-relayer) { inherit ts-relayer-src pkgs; }).ts-relayer-setup;
+            ts-relayer = ((import ./ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer;
+            ts-relayer-setup = ((import ./ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer-setup;
           };
 
         # nix flake check
