@@ -1,6 +1,6 @@
 { packages, inputs, pkgs, system }:
 let
-  go-source-inputs = (import ./go-source-inputs.nix) { inherit inputs; };
+  go-source-inputs = (import ./sync-go-modules/go-source-inputs.nix) { inherit inputs; };
   go-modules-check = (import ./sync-go-modules) { inherit pkgs go-source-inputs; };
 in
 {

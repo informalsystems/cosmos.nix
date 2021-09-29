@@ -37,7 +37,7 @@ let
   };
 
   # Script helpers
-  go-source-inputs = (import ./go-source-inputs.nix) { inherit inputs; };
+  go-source-inputs = (import ./sync-go-modules/go-source-inputs.nix) { inherit inputs; };
   go-modules-sync = pkgs.writeShellScriptBin "syncGoModules" ''
     echo "${go-source-inputs}" | ./sync-go-modules/sync.hs
   '';
