@@ -13,7 +13,7 @@ pkgs.writeTextFile
       SRC_NAME=$(echo "$REST" | ${pkgs.gawk}/bin/awk -F/ '{print $1}')
 
       NAR_HASH=$(${pkgs.jq}/bin/jq -r ".nodes[\"$SRC_NAME\"].locked.narHash" < flake.lock )
-      LAST_SYNCED="$PACKAGE_NAME/last-synced.narHash"
+      LAST_SYNCED="resources/$PACKAGE_NAME/last-synced.narHash"
 
       if [ -f "$LAST_SYNCED" ]
       then continue
