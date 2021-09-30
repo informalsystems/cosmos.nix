@@ -29,7 +29,7 @@ mkdir -p ~/.config/nix
 echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 ```
 
-4. [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
+4. [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html):
 
 ##### Cache Setup with Cachix
 
