@@ -36,7 +36,7 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 With nix installed you can run `nix-env -iA cachix -f https://cachix.org/api/v1/install`.
 You can check that this worked by running `cachix --version`.
 
-You can now run these commans to add all of our cachix caches:
+You can now run these commands to add all of our cachix caches:
 
 ```bash
 $ cachix use cosmos
