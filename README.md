@@ -10,26 +10,26 @@ as Nix packages. Use this at your own risk.
 This project is developed entirely in [Nix Flakes](https://nixos.wiki/wiki/Flakes).
 To get started, run the following:
 
-[Install Nix](https://nixos.org/download.html):
+1. [Install Nix](https://nixos.org/download.html):
 
 ```bash
 $ curl -L https://nixos.org/nix/install | sh
 ```
 
-[Install Nix Unstable](https://serokell.io/blog/practical-nix-flakes):
+2. [Install Nix Unstable](https://serokell.io/blog/practical-nix-flakes):
 
 ```bash
 $ nix-env -f '<nixpkgs>' -iA nixUnstable
 ```
 
-[Enable experimental features](https://serokell.io/blog/practical-nix-flakes):
+3. [Enable experimental features](https://serokell.io/blog/practical-nix-flakes):
 
 ```bash
 mkdir -p ~/.config/nix
 echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 ```
 
-[Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
+4. [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html)
 
 ##### Cache Setup with Cachix
 
