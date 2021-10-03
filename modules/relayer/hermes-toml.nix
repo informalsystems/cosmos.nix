@@ -1,45 +1,46 @@
 { pkgs, cfg }:
 with cfg;
 let
-  rest = with cfg.rest;
+  boolToString = bool: if bool then "true" else "false";
+  rest = with cfg.rest; with builtins;
     ''
       [rest]
-      enabled = ${enabled}
+      enabled = ${boolToString enabled}
       host = '${host}'
-      port = ${port}
+      port = ${toString port}
     '';
 
   telemetry = with cfg.telemetry;
     ''
       [telemetry]
-      enabled = ${enabled}
+      enabled = ${boolToString enabled}
       host = '${host}'
-      port = ${port}
+      port = ${toString port}
     '';
 
   chain-fold-op = accumulator: chain:
     with chain;
-    accumulator ++
+    accumulator +
     ''
       [[chains]]
       id = '${id}'
       rpc_addr = '${rpc-address}'
       grpc_addr = '${grpc-address}'
       websocket_addr = '${websocket-address}'
-      rpc_timeout = '${rpc-timeout}'
+      rpc_timeout = '${toString rpc-timeout}'
       account_prefix = '${account-prefix}'
       key_name = '${key-name}'
       store_prefix = '${store-prefix}'
-      max_gas = ${max-gas}
-      gas_price = { price = ${gas-price}, denom = '${gas-denomination}' }
-      gas_adjustment = ${gas-adjustment}
-      max_msg_num = ${max-message-number}
-      max_tx_size = ${max-transaction-size}
+      max_gas = ${toString max-gas}
+      gas_price = { price = ${toString gas-price}, denom = '${toString gas-denomination}' }
+      gas_adjustment = ${toString gas-adjustment}
+      max_msg_num = ${toString max-message-number}
+      max_tx_size = ${toString max-transaction-size}
       clock_drift = '${clock-drift}'
       trusting_period = '${trusting-period}'
       trust_threshold = {
-        numerator = '${trusting-threshold-numerator}',
-        denominator = '${trusting-threshold-numerator}'
+        numerator = '${toString trust-threshold-numerator}',
+        denominator = '${toString trust-threshold-numerator}'
       }
     '';
   chains = builtins.foldl' chain-fold-op "" cfg.chains;
@@ -49,13 +50,12 @@ pkgs.writeTextFile {
   text = ''
     [global]
     strategy = '${strategy}'
-    filter = '${filter}
+    filter = '${boolToString filter}'
     log_level = '${log-level}'
-    clear_packets_interval = ${clear-packets-interval}
-    tx_confirmation = ${tx-confirmation}
+    clear_packets_interval = ${toString clear-packets-interval}
+    tx_confirmation = ${boolToString tx-confirmation}
   ''
-  ++ rest
-  ++ telemetry
-  ++ chains;
+  + rest
+  + telemetry
+  + chains;
 }
-

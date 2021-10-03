@@ -9,7 +9,7 @@ pkgs.nixosTest {
   inherit system;
   nodes = {
     relayer = {
-      import = [ sharedModule ];
+      imports = [ sharedModule ./hermes.nix ];
       services.hermes = {
         enable = true;
         package = hermes;
@@ -28,4 +28,7 @@ pkgs.nixosTest {
       };
     };
   };
+  testScript = ''
+    start_all()
+  '';
 }

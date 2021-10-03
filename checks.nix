@@ -1,4 +1,12 @@
-{ packages, inputs, system }:
+{ packages, inputs, pkgs, system }:
+let
+  nixosTests = {
+    hermes-module = (import ./modules/relayer/hermes-test.nix) {
+      inherit (packages) hermes;
+      inherit system pkgs;
+    };
+  };
+in
 {
   pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
     src = ./.;
@@ -7,7 +15,5 @@
       nix-linter.enable = true;
     };
   };
-  hermes-module = (import ./modules/relayer/hermes-test.nix) {
-    inherit (packages) hermes system pkgs;
-  };
 } // packages # adding packages here ensures that every attr gets built on check
+  // (if pkgs.lib.strings.hasSuffix "darwin" system then { } else nixosTests)

@@ -28,6 +28,13 @@ with lib; {
         thresholds different than this will be ignored.
       '';
     };
+    log-level = mkOption {
+      type = types.enum [ "error" "warn" "info" "debug" "trace" ];
+      default = "info";
+      description = ''
+        Specify the verbosity for the relayer logging output.
+      '';
+    };
     clear-packets-interval = mkOption {
       type = types.ints.u32;
       default = 100;
@@ -55,6 +62,11 @@ with lib; {
         The REST section defines parameters for Hermes' built-in RESTful API.
         <link xlink:href="https://hermes.informal.systems/rest.html">Rest option docs</link>.
       '';
+      default = {
+        enabled = true;
+        host = "127.0.0.1";
+        port = 3000;
+      };
       type = types.submodule {
         options = {
           enabled = mkOption {
@@ -65,7 +77,7 @@ with lib; {
             '';
           };
           host = mkOption {
-            type = types.string;
+            type = types.str;
             default = "127.0.0.1";
             description = ''
               Specify the IPv4/6 host over which the built-in HTTP server will serve the RESTful.
@@ -88,6 +100,11 @@ with lib; {
         The telemetry section defines parameters for Hermes' built-in telemetry capabilities.
         <link xlink:href="https://hermes.informal.systems/telemetry.html">Telemetry option docs</link>.
       '';
+      default = {
+        enabled = true;
+        host = "127.0.0.1";
+        port = 3001;
+      };
       type = types.submodule {
         options = {
           enabled = mkOption {
@@ -98,7 +115,7 @@ with lib; {
             '';
           };
           host = mkOption {
-            type = types.string;
+            type = types.str;
             default = "127.0.0.1";
             description = ''
               Specify the IPv4/6 host over which the built-in HTTP server will serve metrics.
@@ -106,7 +123,7 @@ with lib; {
           };
           port = mkOption {
             type = types.port;
-            default = 3000;
+            default = 3001;
             description = ''
               Specify the port over which the built-in HTTP server will serve the metrics gathered.
             '';
@@ -126,37 +143,37 @@ with lib; {
           options = {
             # Required
             id = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the chain ID.
               '';
             };
             rpc-address = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the RPC address and port where the chain RPC server listens on.
               '';
             };
             grpc-address = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the GRPC address and port where the chain GRPC server listens on.
               '';
             };
             websocket-address = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the WebSocket address and port where the chain WebSocket server listens on.
               '';
             };
             account-prefix = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the prefix used by the chain.
               '';
             };
             key-name = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the name of the private key to use for signing transactions. Required
                 <link xlink:href="https://hermes.informal.systems/commands/keys/index.html#adding-keys">
@@ -171,7 +188,7 @@ with lib; {
               '';
             };
             gas-denomination = mkOption {
-              type = types.string;
+              type = types.str;
               description = ''
                 Specify the denomination of the fee to submit a transaction.
               '';
@@ -179,7 +196,7 @@ with lib; {
 
             # Optional
             rpc-timeout = mkOption {
-              type = types.string;
+              type = types.str;
               default = "10s";
               description = ''
                 Specify the maximum amount of time (duration) that the RPC requests should
@@ -187,7 +204,7 @@ with lib; {
               '';
             };
             store-prefix = mkOption {
-              type = types.string;
+              type = types.str;
               default = "ibc";
               description = ''
                 Specify the store prefix used by the on-chain IBC modules.
@@ -223,7 +240,7 @@ with lib; {
               '';
             };
             clock-drift = mkOption {
-              type = types.string;
+              type = types.str;
               default = "5s";
               description = ''
                 Specify the maximum amount of time to tolerate a clock drift.
@@ -232,7 +249,7 @@ with lib; {
               '';
             };
             trusting-period = mkOption {
-              type = types.string;
+              type = types.str;
               default = "14days";
               description = ''
                 Specify the amount of time to be used as the light client trusting period.
@@ -271,7 +288,7 @@ with lib; {
       after = [ "network.target" ];
       serviceConfig = {
         Type = "notify";
-        ExecStart = "${hermes}/bin/hermes -c ${hermes-toml} start";
+        ExecStart = "${cfg.package}/bin/hermes -c ${hermes-toml} start";
       };
     };
   };
