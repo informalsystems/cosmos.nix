@@ -4,6 +4,8 @@ let
     # Since it's common for CI not to have $DISPLAY available, we have to explicitly tell the tests "please don't expect any screen available"
     virtualisation.graphics = false;
   };
+  defaultRestPort = 3000;
+  # defaultMetricsPort = 3001;
 in
 pkgs.nixosTest {
   inherit system;
@@ -27,8 +29,19 @@ pkgs.nixosTest {
         ];
       };
     };
+    client = { imports = [ sharedModule ]; };
   };
-  testScript = ''
+  testScript = with builtins; ''
+    import json
     start_all()
+    relayer.wait_for_open_port(${toString defaultRestPort})
+
+    actual = json.loads(
+        client.succeed(
+            "${pkgs.curl}/bin/curl http://relayer:${toString defaultRestPort}"
+        )
+    )
+
+    assert actual == "", "rest port should be running"
   '';
 }
