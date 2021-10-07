@@ -152,11 +152,11 @@
     "ibc-rs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1632482511,
-        "narHash": "sha256-AlWBq7JBMbaI15prdPOIGPBs6TskUvnZWeAh6+CYtAQ=",
+        "lastModified": 1633609036,
+        "narHash": "sha256-zKR8TiKFx+kBkvpBGKNQRWKyCrrcQg2KHH1Q+e0VjiQ=",
         "owner": "informalsystems",
         "repo": "ibc-rs",
-        "rev": "4eb28ffcdd4d2217ff95635e0774899b1a459913",
+        "rev": "0f72f7697214543818686c1a378ff1a901c5636d",
         "type": "github"
       },
       "original": {
