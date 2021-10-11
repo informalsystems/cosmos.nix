@@ -283,7 +283,7 @@ with lib; {
 
   config = mkIf cfg.enable {
     systemd.services.hermes = {
-      description = "Hermes Deamon";
+      description = "Hermes Daemon";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
       serviceConfig = {

@@ -38,10 +38,7 @@ let
       max_tx_size = ${toString max-transaction-size}
       clock_drift = '${clock-drift}'
       trusting_period = '${trusting-period}'
-      trust_threshold = {
-        numerator = '${toString trust-threshold-numerator}',
-        denominator = '${toString trust-threshold-numerator}'
-      }
+      trust_threshold = { numerator = '${toString trust-threshold-numerator}', denominator = '${toString trust-threshold-denominator}' }
     '';
   chains = builtins.foldl' chain-fold-op "" cfg.chains;
 in
@@ -50,12 +47,15 @@ pkgs.writeTextFile {
   text = ''
     [global]
     strategy = '${strategy}'
-    filter = '${boolToString filter}'
+    filter = ${boolToString filter}
     log_level = '${log-level}'
     clear_packets_interval = ${toString clear-packets-interval}
     tx_confirmation = ${boolToString tx-confirmation}
   ''
+  + "\n"
   + rest
+  + "\n"
   + telemetry
+  + "\n"
   + chains;
 }

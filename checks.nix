@@ -16,4 +16,3 @@ in
     };
   };
 } // packages # adding packages here ensures that every attr gets built on check
-  // (if pkgs.lib.strings.hasSuffix "darwin" system then { } else nixosTests)

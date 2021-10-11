@@ -79,15 +79,16 @@
         };
         eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
         resources = (import ./resources.nix) { inherit inputs pkgs eval-pkgs system; };
+        tests = (import ./tests.nix) { inherit (resources) packages; inherit pkgs system; };
       in
       rec {
 
         # nix build .#<app>
-        packages = flattenTree (resources.packages // resources.devShells);
+        packages = flattenTree (resources.packages // resources.devShells // tests);
 
         # nix flake check
         checks = (import ./checks.nix) {
-          inherit inputs system;
+          inherit inputs pkgs system tests;
           packages = resources.packages;
         };
 

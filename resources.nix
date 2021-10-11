@@ -121,6 +121,7 @@ let
           rust-bin.stable.latest.default
           openssl
           shellcheck
+          libsecret
         ] ++ builtins.attrValues packages;
       };
   };
