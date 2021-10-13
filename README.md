@@ -33,8 +33,7 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
 ##### Cache Setup with Cachix
 
-With nix installed you can run `nix-env -iA cachix -f https://cachix.org/api/v1/install`.
-You can check that this worked by running `cachix --version`.
+With nix installed you can run `nix-env -iA cachix -f https://cachix.org/api/v1/install`. If you don't want to install cachix globally and just want a one time use, you can run `nix-shell -p cachix` to enter a temporary shell with `cachix` available. You can check that this worked by running `cachix --version`.
 
 You can now run these commands to add all of our cachix caches:
 
