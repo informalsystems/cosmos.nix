@@ -1,6 +1,6 @@
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/informalsystems/cosmos.nix/master/images/logo.png" />
+<img src="https://raw.githubusercontent.com/JonathanLorimer/cosmos.nix/master/images/logo.png" />
 </p>
 
 <p align="center">
