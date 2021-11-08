@@ -1,6 +1,6 @@
 <p align="center">
 
-<img src="https://raw.githubusercontent.com/informalsystems/cosmos.nix/main/images/logo.png" />
+<img src="https://raw.githubusercontent.com/informalsystems/cosmos.nix/master/images/logo.png" />
 </p>
 
 <p align="center">
@@ -11,6 +11,8 @@
   <img src="https://img.shields.io/static/v1?logo=nixos&logoColor=white&label=&message=Built%20with%20Nix&color=41439a&style=for-the-badge" alt="Built with nix" />
 </a>
 </p>
+
+
 # Cosmos.nix
 
 This is an experimental Nix project for integrating the Rust and Go projects in Cosmos
