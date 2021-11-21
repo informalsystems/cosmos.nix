@@ -617,8 +617,8 @@
   ["github.com/confio/ics23/go".fetch]
     type = "git"
     url = "https://github.com/confio/ics23"
-    rev = "53a3a58ab8d224eef792845a65c7e8fc66712b7d"
-    sha256 = "05132gdwapsc5cx4sgbpicwyzwgwhjhm8nmjljddpyiswql0mv8q"
+    rev = "6cf2f712b5ecccf0a138c29a77b726d57bdaad51"
+    sha256 = "0r1vk5lvjfri57hd5dk75dfiyzz57qaljshw6sr80aj5v8krzxsn"
 
 ["github.com/coreos/bbolt"]
   sumVersion = "v1.3.2"
@@ -2404,12 +2404,12 @@
     sha256 = "0jffnz94d6ff39fr96b5w8i8yk26pwnrfggzz8jhi8k0yihg2c9d"
 
 ["github.com/prometheus/common"]
-  sumVersion = "v0.30.0"
+  sumVersion = "v0.29.0"
   ["github.com/prometheus/common".fetch]
     type = "git"
     url = "https://github.com/prometheus/common"
-    rev = "8d1c9f84e3f78cb628a20f8e7be531c508237848"
-    sha256 = "1zjv2gq62h3x3k8qlw14wyi1ka1qw62654ldqpqphfp2chhxyvna"
+    rev = "8281fb2779ab057c7d90fec6b24ce8eb29edcc13"
+    sha256 = "09zavm3005skf5mgkr2xndpcga2m3zpm4iq2r7kwyqc5q0cpq02m"
 
 ["github.com/prometheus/procfs"]
   sumVersion = "v0.6.0"
@@ -2644,12 +2644,12 @@
     sha256 = "0yi8p0yxiidpcg4cagxg2iyqcaapsng89rak4qyxmgails2fqg37"
 
 ["github.com/spf13/cast"]
-  sumVersion = "v1.4.1"
+  sumVersion = "v1.3.1"
   ["github.com/spf13/cast".fetch]
     type = "git"
     url = "https://github.com/spf13/cast"
-    rev = "88075729b052bca4b8b6c31bf198db2fe6c9da93"
-    sha256 = "06qsfpvcbgkf2pvcvf9l46fj55kmbhp2yz382fkj5gll2bykx9ld"
+    rev = "1ffadf551085444af981432dd0f6d1160c11ec64"
+    sha256 = "0lb84788glr0qzrq2ifi36rgvp96qrgywvxrr3ggq5hrbr38hgn1"
 
 ["github.com/spf13/cobra"]
   sumVersion = "v1.2.1"
@@ -2788,12 +2788,12 @@
     sha256 = "1zcms3l5fihzg8nf4vhdk18qpn1jkbm3rpkjfpskfcrgzlxk6vi5"
 
 ["github.com/tendermint/tendermint"]
-  sumVersion = "v0.34.12"
+  sumVersion = "v0.34.11"
   ["github.com/tendermint/tendermint".fetch]
     type = "git"
     url = "https://github.com/tendermint/tendermint"
-    rev = "d030cddca01c0c3ff0ce41e051e123cdc9872a4e"
-    sha256 = "01nm9s3r00aav5j44adam3aif9mfr8fhvg4075yz4sf8n4938488"
+    rev = "c2908ef785bb5ca6e015910368e4b7a32821b9ff"
+    sha256 = "0x9hf09qqdjf77fwk8sdc1dzr7akndwbpylnhi6aaihg4an0aqvp"
 
 ["github.com/tendermint/tm-db"]
   sumVersion = "v0.6.4"

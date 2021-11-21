@@ -10,6 +10,8 @@
 
 import Prelude
 import Control.Monad
+import Control.Applicative
+import Data.Foldable (foldMap)
 import Turtle
 import Data.Either
 import Data.Bifunctor
@@ -104,27 +106,35 @@ data HasSyncedModules = Updated | Cached deriving (Show)
 
 updateGoModules :: GoSourceDetailed -> Shell (HasSyncedModules, Text)
 updateGoModules GoSourceDetailed{..} = do
-  let LockDetails{..} = detailedLockDetails
-      goSrcDir = "./resources/" <> fromText detailedSourceName
-      narFile = goSrcDir <> "last-synced.narHash"
-      hasNarFile = All . getAny <$> fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
-      narHashIsEqual = input narFile <&> \hash -> All $ (lineToText hash) == ldNarHash
+  hasNarFile <- getAny <$> fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
 
-  isSynced <- msum [ hasNarFile, narHashIsEqual]
+  if hasNarFile
+     then do
+      lastUpdatedHash <- liftIO $ lineToText <$> (single . input) narFile
+      liftIO $ print "lastUpdatedHash"
+      liftIO $ print lastUpdatedHash
+      liftIO $ print "ldNarHash"
+      liftIO $ print ldNarHash
+      if lastUpdatedHash == ldNarHash
+         then pure (Cached, detailedSourceName)
+         else syncModules
+      else syncModules
 
-  if getAll isSynced
-   then pure (Cached, detailedSourceName)
-   else do
-     sourceHome <- pwd
-     tmp <- mktempdir sourceHome "./tmp"
-     cd tmp
-     cptreeL (fromText detailedStorePath) "./"
-     proc "gomod2nix" [] mempty
-     cd sourceHome
-     mktree goSrcDir
-     mv (tmp <> "gomod2nix.toml") (goSrcDir <> "go-modules.toml")
-     output narFile (pure $ unsafeTextToLine ldNarHash)
-     pure (Updated, detailedSourceName)
+  where
+    LockDetails{..} = detailedLockDetails
+    goSrcDir = "./resources/" <> fromText detailedSourceName
+    narFile = goSrcDir <> "last-synced.narHash"
+    syncModules = do
+       sourceHome <- pwd
+       tmp <- mktempdir sourceHome "./tmp"
+       cd tmp
+       cptreeL (fromText detailedStorePath) "./"
+       proc "gomod2nix" [] mempty
+       cd sourceHome
+       mktree goSrcDir
+       mv (tmp <> "gomod2nix.toml") (goSrcDir <> "go-modules.toml")
+       output narFile (pure $ unsafeTextToLine ldNarHash)
+       pure (Updated, detailedSourceName)
 
 notifyUpdated :: (HasSyncedModules, Text) -> IO ()
 notifyUpdated (Updated, name) =

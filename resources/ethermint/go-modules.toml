@@ -858,8 +858,8 @@
   ["github.com/confio/ics23/go".fetch]
     type = "git"
     url = "https://github.com/confio/ics23"
-    rev = "53a3a58ab8d224eef792845a65c7e8fc66712b7d"
-    sha256 = "05132gdwapsc5cx4sgbpicwyzwgwhjhm8nmjljddpyiswql0mv8q"
+    rev = "6cf2f712b5ecccf0a138c29a77b726d57bdaad51"
+    sha256 = "0r1vk5lvjfri57hd5dk75dfiyzz57qaljshw6sr80aj5v8krzxsn"
 
 ["github.com/consensys/bavard"]
   sumVersion = "v0.1.8-0.20210406032232-f3452dc9b572"
