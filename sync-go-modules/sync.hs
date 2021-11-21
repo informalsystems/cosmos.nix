@@ -120,10 +120,6 @@ updateGoModules GoSourceDetailed {..} = do
   if hasNarFile
     then do
       lastUpdatedHash <- liftIO $ lineToText <$> (single . input) narFile
-      liftIO $ print "lastUpdatedHash"
-      liftIO $ print lastUpdatedHash
-      liftIO $ print "ldNarHash"
-      liftIO $ print ldNarHash
       if lastUpdatedHash == ldNarHash
         then pure (Cached, detailedSourceName)
         else syncModules
