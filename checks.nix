@@ -9,6 +9,7 @@ in
     hooks = {
       nixpkgs-fmt.enable = true;
       nix-linter.enable = true;
+      ormolu.enable = true;
       sync-go-modules = {
         enable = true;
         name = "go-modules-check";
