@@ -4,7 +4,6 @@ pkgs.buildGoApplication {
   name = "regen";
   src = "${regen-src}";
   modules = ./go-modules.toml;
-  # NOTE: we need to create a tmp home directory for gaia's tests
   preCheck = ''
     export HOME="$(mktemp -d)"
   '';
