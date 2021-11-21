@@ -99,16 +99,16 @@
     "gaia6-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1631863974,
-        "narHash": "sha256-O5jdMZ3c2wiUGQuxuZd6Z2wDJR1YjKlHXNAudQCjiWo=",
+        "lastModified": 1636639080,
+        "narHash": "sha256-VOS2hKK2K4Ys2WBWMlb22G1NAyqvr40i8yBUHQiejpw=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "f207fc03817a728c801e5a8bb7a39240e9ee2a09",
+        "rev": "07f9892a925f451ae280d0c9d1a5401d8fc252a3",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v6.0.0-rc1",
+        "ref": "v6.0.0-rc3",
         "repo": "gaia",
         "type": "github"
       }
@@ -119,11 +119,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1632587543,
-        "narHash": "sha256-aGTfRses8JGGolYQ9kiQNANBi/dP1twBHic9AUZKilU=",
+        "lastModified": 1632617337,
+        "narHash": "sha256-8e7I7oUlK3doJTE839cL1rmONrultLCEWGh3vuNHRM0=",
         "owner": "JonathanLorimer",
         "repo": "gomod2nix",
-        "rev": "46475f27b42a87be2d6902d1e9ca53d35ce24f2e",
+        "rev": "c2e45e19dad38922e84da1abe03f72913fa3f0b5",
         "type": "github"
       },
       "original": {

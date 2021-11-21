@@ -624,8 +624,8 @@
   ["github.com/confio/ics23/go".fetch]
     type = "git"
     url = "https://github.com/confio/ics23"
-    rev = "53a3a58ab8d224eef792845a65c7e8fc66712b7d"
-    sha256 = "05132gdwapsc5cx4sgbpicwyzwgwhjhm8nmjljddpyiswql0mv8q"
+    rev = "6cf2f712b5ecccf0a138c29a77b726d57bdaad51"
+    sha256 = "0r1vk5lvjfri57hd5dk75dfiyzz57qaljshw6sr80aj5v8krzxsn"
 
 ["github.com/coreos/bbolt"]
   sumVersion = "v1.3.2"
@@ -684,13 +684,13 @@
     sha256 = "0nxbn0m7lr4dg0yrwnvlkfiyg3ndv8vdpssjx7b714nivpc6ar0y"
 
 ["github.com/cosmos/cosmos-sdk"]
-  sumVersion = "v0.43.0-regen-1"
+  sumVersion = "v0.44.0-regen-1"
   vendorPath = "github.com/regen-network/cosmos-sdk"
   ["github.com/cosmos/cosmos-sdk".fetch]
     type = "git"
     url = "https://github.com/regen-network/cosmos-sdk"
-    rev = "30db931423ceb19ca2a71f47e76fd4e8c4f451e7"
-    sha256 = "13nj9dk94hb231s8i98xlriphg74l03p7qyqdzxb16b73ykaf829"
+    rev = "e78b091b3d4efa3851610954715bfa0673114900"
+    sha256 = "18fdych8gpqcd4afidaicdbacgamjvlz8c58skzamifv3r21sbzn"
 
 ["github.com/cosmos/go-bip39"]
   sumVersion = "v1.0.0"
@@ -3136,12 +3136,12 @@
     sha256 = "14mr66h7vxirpvb12106372apw1w3ppymbf89lprxkkg03srkfy8"
 
 ["golang.org/x/crypto"]
-  sumVersion = "v0.0.0-20210817164053-32db794688a5"
+  sumVersion = "v0.0.0-20210921155107-089bfa567519"
   ["golang.org/x/crypto".fetch]
     type = "git"
     url = "https://go.googlesource.com/crypto"
-    rev = "32db794688a5a24a23a43f2a984cecd5b3d8da58"
-    sha256 = "0arh5rhahrjzmlifmbgswwc0kjkgmhps6g4hzia0i6ismsk74n48"
+    rev = "089bfa5675191fd96a44247682f76ebca03d7916"
+    sha256 = "0i49ywadw5hp30i4dghwjwhbrfxq881jxskhnz7gwps5kb0bdnjf"
 
 ["golang.org/x/exp"]
   sumVersion = "v0.0.0-20200331195152-e8c3332aa8e5"
@@ -3240,12 +3240,12 @@
     sha256 = "1rhl4lyz030kwfsg63yk83yd3ivryv1afmzdz9sxbhcj84ym6h4r"
 
 ["golang.org/x/tools"]
-  sumVersion = "v0.1.5"
+  sumVersion = "v0.1.2"
   ["golang.org/x/tools".fetch]
     type = "git"
     url = "https://go.googlesource.com/tools"
-    rev = "ef97713d99aa4e69742aa68fd45a63247b5d3ea0"
-    sha256 = "1wzbbcja1q0gn8ahxvzvpl4nzj2icwmc0pppgipmx5rdnngqw80l"
+    rev = "c3e30ffe9275c0e89ef0d38049bad16987bd7fb2"
+    sha256 = "047qwlvxs8whsal3yjjhywr9w0xrp5ky7q969mfxb1x9r20k76ci"
 
 ["golang.org/x/xerrors"]
   sumVersion = "v0.0.0-20200804184101-5ec99f83aff1"
@@ -3272,12 +3272,12 @@
     sha256 = "1wkipg7xxc0ha5p6c3bj0vpgq38l18441n5l6zxdhx0gzvz5z1hs"
 
 ["google.golang.org/genproto"]
-  sumVersion = "v0.0.0-20210831024726-fe130286e0e2"
+  sumVersion = "v0.0.0-20210921142501-181ce0d877f6"
   ["google.golang.org/genproto".fetch]
     type = "git"
     url = "https://github.com/googleapis/go-genproto"
-    rev = "fe130286e0e29fb81e9d4ded08cf838f4f74b617"
-    sha256 = "1s64ffh21y22nnha1sbcanz54mv2fagv2igsl2i3bgz1p5l7ipwf"
+    rev = "181ce0d877f633434cbea7d1fff60548fe280d94"
+    sha256 = "1b3y1g4608yi7z83p4ilb7hl6v13am306yllwc1r4zbzd223j606"
 
 ["google.golang.org/grpc"]
   sumVersion = "v1.33.2"

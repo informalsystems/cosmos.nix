@@ -7,14 +7,10 @@ pkgs.buildGoApplication {
   preCheck = ''
     export HOME="$(mktemp -d)"
   '';
-  goPackagePath = "github.com/regen-network/regen-ledger";
   postConfigure = ''
     rm -rf ./orm
     rm -rf ./types
     rm -rf ./x
-  '';
-  preBuild = ''
-    ${pkgs.tree}/bin/tree /build/source/vendor/github.com/regen-network
   '';
   customVendorSrc = pkgs.stdenv.mkDerivation {
     name = "source";
