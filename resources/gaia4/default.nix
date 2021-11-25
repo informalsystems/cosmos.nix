@@ -1,7 +1,7 @@
-{ pkgs, gaia4-src }:
+{ pkgs, gaia4-src, ledgerSupport ? false }:
 let
   pname = "gaia";
-  version = "4.2.1";
+  version = "v4.2.1";
   tendermint-version = (fromTOML (builtins.readFile ./go-modules.toml))."github.com/tendermint/tendermint".sumVersion;
 in
 pkgs.buildGoApplication {
@@ -11,6 +11,7 @@ pkgs.buildGoApplication {
   preCheck = ''
     export HOME="$(mktemp -d)"
   '';
+  buildFlags = "-tags netgo" + pkgs.lib.optionalString ledgerSupport ",ledger";
   buildFlagsArray = ''
     -ldflags=
     -X github.com/cosmos/cosmos-sdk/version.Name=${pname}
