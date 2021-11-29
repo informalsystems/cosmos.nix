@@ -28,7 +28,6 @@ pkgs.nixosTest {
         state = {
           config-dir = ./validator1/config;
           data-dir = ./validator1/data;
-          validator-mnemonic = ./validator1/mnemonic.txt;
         };
         rpc-addr = "tcp://127.0.0.1:26557";
         grpc-addr = "tcp://127.0.0.1:9091";

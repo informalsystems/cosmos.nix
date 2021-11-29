@@ -25,10 +25,6 @@ with lib; {
             description = "";
             type = types.path;
           };
-          validator-mnemonic = mkOption {
-            description = "";
-            type = types.path;
-          };
         };
       });
     };
@@ -56,11 +52,6 @@ with lib; {
   config = mkIf cfg.enable {
     environment.systemPackages = [ pkgs.gnupg pkgs.pass ];
     systemd.services.gaia =
-      let
-        gaiad = "${cfg.package}/bin/gaiad";
-        grpc-addr = if cfg.grpc-addr == null then "" else "--rpc.grpc_laddr ${cfg.grpc-addr} ";
-        rpc-addr = if cfg.rpc-addr == null then "" else "--rpc.laddr ${cfg.rpc-addr} ";
-      in
       {
         description = "Gaia Daemon";
         wantedBy = [ "multi-user.target" ];
@@ -76,12 +67,15 @@ with lib; {
             [ ! -d ${cfg.gaia-home}/data ] && mkdir -p ${cfg.gaia-home}/data
             ln -s ${data-dir}/* ${cfg.gaia-home}/data
             ln -s ${config-dir}/* ${cfg.gaia-home}/config
-            cat ${validator-mnemonic} | ${gaiad} keys add validator --recover
           '';
         serviceConfig =
+          let
+            grpc-addr = if cfg.grpc-addr == null then "" else "--rpc.grpc_laddr ${cfg.grpc-addr} ";
+            rpc-addr = if cfg.rpc-addr == null then "" else "--rpc.laddr ${cfg.rpc-addr} ";
+          in
           {
             Type = "notify";
-            ExecStart = "${gaiad} start ${grpc-addr} ${rpc-addr} --home ${cfg.gaia-home}";
+            ExecStart = "${cfg.package}/bin/gaiad start ${grpc-addr} ${rpc-addr} --home ${cfg.gaia-home}";
           };
       };
   };
