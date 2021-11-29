@@ -7,4 +7,8 @@ else {
     inherit system pkgs;
     gaia = packages.gaia5;
   };
+  gaia-module-test = (import ./modules/tests/gaia-test.nix) {
+    inherit system pkgs;
+    gaia = packages.gaia6;
+  };
 }

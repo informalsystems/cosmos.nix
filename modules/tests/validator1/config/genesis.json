@@ -1,6 +1,6 @@
 {
-  "genesis_time": "2021-10-10T16:57:39.929029936Z",
-  "chain_id": "ibc-1",
+  "genesis_time": "2021-11-29T03:31:43.187204637Z",
+  "chain_id": "nixos",
   "initial_height": "1",
   "consensus_params": {
     "block": {
@@ -33,7 +33,7 @@
       "accounts": [
         {
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
-          "address": "cosmos17vl90fjw3fsq4dmd7fgp808g6rw58f9adnukr7",
+          "address": "cosmos1s0jkxz78dn84mq9kp5zpanktmyww40l84vsd0n",
           "pub_key": null,
           "account_number": "0",
           "sequence": "0"
@@ -47,11 +47,15 @@
       },
       "balances": [
         {
-          "address": "cosmos17vl90fjw3fsq4dmd7fgp808g6rw58f9adnukr7",
+          "address": "cosmos1s0jkxz78dn84mq9kp5zpanktmyww40l84vsd0n",
           "coins": [
             {
               "denom": "stake",
-              "amount": "10000000000000000000"
+              "amount": "1000000000"
+            },
+            {
+              "denom": "validatortoken",
+              "amount": "1000000000"
             }
           ]
         }
@@ -59,7 +63,11 @@
       "supply": [
         {
           "denom": "stake",
-          "amount": "10000000000000000000"
+          "amount": "1000000000"
+        },
+        {
+          "denom": "validatortoken",
+          "amount": "1000000000"
         }
       ],
       "denom_metadata": []
@@ -104,7 +112,7 @@
               {
                 "@type": "/cosmos.staking.v1beta1.MsgCreateValidator",
                 "description": {
-                  "moniker": "main",
+                  "moniker": "nixos-module-test-chain",
                   "identity": "",
                   "website": "",
                   "security_contact": "",
@@ -116,19 +124,19 @@
                   "max_change_rate": "0.010000000000000000"
                 },
                 "min_self_delegation": "1",
-                "delegator_address": "cosmos17vl90fjw3fsq4dmd7fgp808g6rw58f9adnukr7",
-                "validator_address": "cosmosvaloper17vl90fjw3fsq4dmd7fgp808g6rw58f9ag8gr0d",
+                "delegator_address": "cosmos1s0jkxz78dn84mq9kp5zpanktmyww40l84vsd0n",
+                "validator_address": "cosmosvaloper1s0jkxz78dn84mq9kp5zpanktmyww40l8scycrq",
                 "pubkey": {
                   "@type": "/cosmos.crypto.ed25519.PubKey",
-                  "key": "pMZZ7Z3pFof4IpnT6igXucO5o15i8R8HCnqeS3IoXm0="
+                  "key": "0gakFFlGn9EiD0xDtPRvux3X9TM0mCb5uuTuQ1BqdnA="
                 },
                 "value": {
                   "denom": "stake",
-                  "amount": "100000000"
+                  "amount": "1000000000"
                 }
               }
             ],
-            "memo": "fff7c77186ce56f9eb34b4fcf6efb373a5d46cb8@192.168.0.11:26656",
+            "memo": "e4cfdfa0715b578952cd184a2053e54a7fefcdf5@192.168.2.24:26656",
             "timeout_height": "0",
             "extension_options": [],
             "non_critical_extension_options": []
@@ -138,7 +146,7 @@
               {
                 "public_key": {
                   "@type": "/cosmos.crypto.secp256k1.PubKey",
-                  "key": "AsvziS8XILfbZeuzaT+3nSFt301TSFfFzlpeNg2QtEG5"
+                  "key": "AqpJLMizR9o3KH+ZeOgMXiiCVUNcFPi/xCrsvPP6cc0K"
                 },
                 "mode_info": {
                   "single": {
@@ -156,7 +164,7 @@
             }
           },
           "signatures": [
-            "vP/DICuvR7qLbS/lYanIy89abu/pRHZXnMnRYw6ox+ZHKJZJVIhcmytLw/Qpjv+PRcTblBsu+N1otZdHsF8wyw=="
+            "whLGcwt4KuRZpmM0X1lkmpwHRsH+Wtp+uPf/G0OosgdbeqXGpClso7ATkoibFSTCiHn0kEF9yaLaS4tPSiuqcg=="
           ]
         }
       ]
@@ -213,6 +221,34 @@
         "ack_sequences": [],
         "next_channel_sequence": "0"
       }
+    },
+    "liquidity": {
+      "params": {
+        "pool_types": [
+          {
+            "id": 1,
+            "name": "StandardLiquidityPool",
+            "min_reserve_coin_num": 2,
+            "max_reserve_coin_num": 2,
+            "description": "Standard liquidity pool with pool price function X/Y, ESPM constraint, and two kinds of reserve coins"
+          }
+        ],
+        "min_init_deposit_amount": "1000000",
+        "init_pool_coin_mint_amount": "1000000",
+        "max_reserve_coin_amount": "0",
+        "pool_creation_fee": [
+          {
+            "denom": "stake",
+            "amount": "40000000"
+          }
+        ],
+        "swap_fee_rate": "0.003000000000000000",
+        "withdraw_fee_rate": "0.000000000000000000",
+        "max_order_amount_ratio": "0.100000000000000000",
+        "unit_batch_height": 1,
+        "circuit_breaker_enabled": false
+      },
+      "pool_records": []
     },
     "mint": {
       "minter": {

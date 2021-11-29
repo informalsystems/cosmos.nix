@@ -8,14 +8,6 @@ let
   };
   defaultRestPort = 3000;
   defaultMetricsPort = 3001;
-  ibc1-genesis = pkgs.writeTextFile {
-    name = "ibc1-genesis";
-    text = (builtins.readFile ./ibc-1.genesis.json);
-  };
-  ibc2-genesis = pkgs.writeTextFile {
-    name = "ibc2-genesis";
-    text = (builtins.readFile ./ibc-2.genesis.json);
-  };
 in
 pkgs.nixosTest {
   inherit system;
@@ -41,7 +33,7 @@ pkgs.nixosTest {
         telemetry.port = defaultMetricsPort;
         chains = [
           {
-            id = "ibc-1";
+            id = "chain-1";
             rpc-address = "http://validator1:26557";
             grpc-address = "http://validator1:9091";
             websocket-address = "http://validator1:26557/websocket";
@@ -51,7 +43,7 @@ pkgs.nixosTest {
             gas-denomination = "stake";
           }
           {
-            id = "ibc-2";
+            id = "chain-2";
             rpc-address = "http://validator2:26557";
             grpc-address = "http://validator2:9091";
             websocket-address = "http://validator2:26557/websocket";
@@ -78,8 +70,11 @@ pkgs.nixosTest {
       services.gaia = {
         enable = true;
         package = gaia;
-        chain-id = "ibc-1";
-        genesis-file = ibc1-genesis;
+        chain-details = {
+          node-name = "my-chain1";
+          chain-id = "chain-1";
+          account-name = "my-account1";
+        };
         rpc-addr = "tcp://127.0.0.1:26557";
         grpc-addr = "tcp://127.0.0.1:9091";
       };
@@ -99,8 +94,11 @@ pkgs.nixosTest {
       services.gaia = {
         enable = true;
         package = gaia;
-        chain-id = "ibc-2";
-        genesis-file = ibc2-genesis;
+        chain-details = {
+          node-name = "my-chain2";
+          chain-id = "chain-2";
+          account-name = "my-account2";
+        };
         rpc-addr = "tcp://127.0.0.1:26557";
         grpc-addr = "tcp://127.0.0.1:9091";
       };

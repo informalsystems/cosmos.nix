@@ -1,4 +1,4 @@
-{ packages, inputs, pkgs, system }:
+{ packages, inputs, pkgs, system, tests }:
 let
   nixosTests = {
     hermes-module = (import ./modules/relayer/hermes-test.nix) {
@@ -16,3 +16,4 @@ in
     };
   };
 } // packages # adding packages here ensures that every attr gets built on check
+  // tests
