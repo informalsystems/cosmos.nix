@@ -50,13 +50,11 @@ with lib; {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.gnupg pkgs.pass ];
     systemd.services.gaia =
       {
         description = "Gaia Daemon";
         wantedBy = [ "multi-user.target" ];
         after = [ "network.target" ];
-        path = [ pkgs.gnupg pkgs.pass ];
         environment = {
           HOME = cfg.gaia-home;
           GAHOME = cfg.gaia-home;

@@ -13,6 +13,7 @@ pkgs.nixosTest {
   nodes = {
     gaia = {
       imports = [ sharedModule ../chains/gaia.nix ];
+
       networking.firewall = {
         enable = true;
         trustedInterfaces = [ "eth0" ];
@@ -22,6 +23,7 @@ pkgs.nixosTest {
           };
         };
       };
+
       services.gaia = {
         enable = true;
         package = gaia;
@@ -33,9 +35,8 @@ pkgs.nixosTest {
         grpc-addr = "tcp://127.0.0.1:9091";
       };
     };
-
-    client = { imports = [ sharedModule ]; };
   };
+
   testScript = with builtins; ''
     start_all()
 
