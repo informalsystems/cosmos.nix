@@ -128,7 +128,7 @@ pkgs.nixosTest {
     };
   };
 
-  testScript = with builtins; ''
+  testScript = ''
     import json
 
     validator1.start()

@@ -53,7 +53,7 @@ pkgs.nixosTest {
     };
   };
 
-  testScript = with builtins; ''
+  testScript = ''
     start_all()
 
     gaia.wait_for_open_port(26557)
