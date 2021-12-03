@@ -78,6 +78,7 @@ pkgs.nixosTest {
         extraHosts = ''
           192.168.2.10 validator1
           192.168.2.11 validator2
+          192.168.2.13 relayer
         '';
       };
     };
