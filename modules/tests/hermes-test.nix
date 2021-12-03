@@ -4,7 +4,6 @@ let
     # Since it's common for CI not to have $DISPLAY available, we have to explicitly tell the tests "please don't expect any screen available"
     virtualisation.graphics = false;
     networking.useDHCP = false;
-    networking.interfaces.eth0.useDHCP = false;
   };
   defaultRestPort = 3000;
   defaultMetricsPort = 3001;
