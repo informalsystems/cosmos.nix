@@ -14,14 +14,16 @@ pkgs.nixosTest {
     gaia = {
       imports = [ sharedModule ../chains/gaia.nix ];
 
-      networking.firewall = {
-        enable = true;
-        trustedInterfaces = [ "eth0" ];
-        interfaces = {
-          eth0 = {
-            allowedTCPPorts = [ 26557 9091 ];
-          };
+      networking = {
+        interfaces.eth1 = {
+          ipv4.addresses = [
+            { address = "192.168.2.11"; prefixLength = 24; }
+          ];
         };
+        firewall.allowedTCPPorts = [
+          26557
+          9092
+        ];
       };
 
       services.gaia = {
@@ -31,8 +33,23 @@ pkgs.nixosTest {
           config-dir = ./validator1/config;
           data-dir = ./validator1/data;
         };
-        rpc-addr = "tcp://127.0.0.1:26557";
-        grpc-addr = "tcp://127.0.0.1:9091";
+        rpc-addr = "tcp://0.0.0.0:26557";
+        grpc-addr = "tcp://0.0.0.0:9092";
+      };
+    };
+
+
+    client = {
+      imports = [ sharedModule ];
+      networking = {
+        interfaces.eth1 = {
+          ipv4.addresses = [
+            { address = "192.168.2.12"; prefixLength = 24; }
+          ];
+        };
+        extraHosts = ''
+          192.168.2.11 gaia
+        '';
       };
     };
   };
@@ -47,9 +64,16 @@ pkgs.nixosTest {
     print(addr)
 
     q = gaia.succeed(
-      "${gaia}/bin/gaiad query tendermint-validator-set --node http://localhost:26557 --chain-id nixos --home \"/gaia\""
+      "${gaia}/bin/gaiad query tendermint-validator-set --node http://gaia:26557 --chain-id nixos --home \"/gaia\""
     )
     print(q)
+
+    actual = client.succeed(
+      "${pkgs.curl}/bin/curl http://gaia:26557/health | ${pkgs.jq}/bin/jq -r -c -M .\"error\""
+    )
+    print(actual)
+
+    assert actual == "null\n", "rest port should be running"
   '';
 }
 
