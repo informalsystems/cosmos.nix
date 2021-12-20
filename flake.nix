@@ -32,7 +32,7 @@
 
     # Chain Sources
     gaia6-src.flake = false;
-    gaia6-src.url = github:cosmos/gaia/v6.0.0-rc3;
+    gaia6-src.url = github:cosmos/gaia/v6.0.0;
 
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.6;
@@ -116,4 +116,3 @@
         };
       });
 }
-
