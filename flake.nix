@@ -11,7 +11,7 @@
     naersk.url = github:nmattia/naersk;
 
     # Go Inputs
-    gomod2nix.url = github:tweag/gomod2nix;
+    gomod2nix.url = github:JonathanLorimer/gomod2nix/allow-custom-vendors;
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;

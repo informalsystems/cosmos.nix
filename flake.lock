@@ -119,15 +119,16 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1639197850,
-        "narHash": "sha256-Qknxy+YjVA39v/LwiUNsAcMAg9Df8aYAuqkH+EiAHRA=",
-        "owner": "tweag",
+        "lastModified": 1632617337,
+        "narHash": "sha256-8e7I7oUlK3doJTE839cL1rmONrultLCEWGh3vuNHRM0=",
+        "owner": "JonathanLorimer",
         "repo": "gomod2nix",
-        "rev": "596d01fd55ed8521853807df1f4e9d858cf75d7e",
+        "rev": "c2e45e19dad38922e84da1abe03f72913fa3f0b5",
         "type": "github"
       },
       "original": {
-        "owner": "tweag",
+        "owner": "JonathanLorimer",
+        "ref": "allow-custom-vendors",
         "repo": "gomod2nix",
         "type": "github"
       }
