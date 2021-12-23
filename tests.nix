@@ -5,7 +5,7 @@ else {
   hermes-module-test = (import ./modules/tests/hermes-test.nix) {
     inherit (packages) hermes;
     inherit system pkgs;
-    gaia = packages.gaia5;
+    gaia = packages.gaia6;
   };
   gaia-module-test = (import ./modules/tests/gaia-test.nix) {
     inherit system pkgs;
