@@ -286,6 +286,7 @@ with lib; {
       description = "Hermes Daemon";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
+      preStart = "echo \"hermes toml can be found here: ${hermes-toml}\"";
       serviceConfig = {
         Type = "notify";
         ExecStart = "${cfg.package}/bin/hermes -c ${hermes-toml} start";

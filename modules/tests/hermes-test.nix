@@ -36,7 +36,7 @@ pkgs.nixosTest {
           data-dir = ./validator1/data;
         };
         rpc-addr = "tcp://0.0.0.0:26557";
-        grpc-addr = "tcp://0.0.0.0:9091";
+        grpc-addr = "tcp://0.0.0.0:9092";
       };
     };
 
@@ -63,7 +63,7 @@ pkgs.nixosTest {
           data-dir = ./validator2/data;
         };
         rpc-addr = "tcp://0.0.0.0:26557";
-        grpc-addr = "tcp://0.0.0.0:9091";
+        grpc-addr = "tcp://0.0.0.0:9092";
       };
     };
 
@@ -107,7 +107,7 @@ pkgs.nixosTest {
           {
             id = "nixos";
             rpc-address = "http://validator1:26557";
-            grpc-address = "http://validator1:9091";
+            grpc-address = "http://validator1:9092";
             websocket-address = "ws://validator1:26557/websocket";
             account-prefix = "cosmos";
             key-name = "testkey";
@@ -117,7 +117,7 @@ pkgs.nixosTest {
           {
             id = "nixos2";
             rpc-address = "http://validator2:26557";
-            grpc-address = "http://validator2:9091";
+            grpc-address = "http://validator2:9092";
             websocket-address = "ws://validator2:26557/websocket";
             account-prefix = "cosmos";
             key-name = "testkey";
