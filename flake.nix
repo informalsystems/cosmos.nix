@@ -102,16 +102,16 @@
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
           sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
           gm = mkApp { name = "gm"; drv = packages.gm; };
-          # bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
-          # thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
-          # thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
           osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
           iris = mkApp { name = "iris"; drv = packages.iris; };
           regen = mkApp { name = "regen"; drv = packages.regen; };
           evmos = mkApp { name = "evmos"; drv = packages.evmos; exePath = "/bin/evmosd"; };
-          juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
           ts-relayer = mkApp { name = "ts-relayer"; drv = packages.ts-relayer; };
           ts-relayer-setup = mkApp { name = "ts-relayer-setup"; drv = packages.ts-relayer-setup; };
+          # bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
+          # thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
+          # thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
+          # juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
         };
       });
 }
