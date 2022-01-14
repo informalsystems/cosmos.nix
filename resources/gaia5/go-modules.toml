@@ -614,12 +614,12 @@
     sha256 = "0nxbn0m7lr4dg0yrwnvlkfiyg3ndv8vdpssjx7b714nivpc6ar0y"
 
 ["github.com/cosmos/cosmos-sdk"]
-  sumVersion = "v0.42.9"
+  sumVersion = "v0.42.10"
   ["github.com/cosmos/cosmos-sdk".fetch]
     type = "git"
     url = "https://github.com/cosmos/cosmos-sdk"
-    rev = "ed5d1656e0aea0a9b1c2c885e8d1e1bf7563f928"
-    sha256 = "0zddyfhd1h0zfzd9b1rrljs2n3vskzvz15y727h3x606hky9zlq4"
+    rev = "58270e8a2e67beed4d016bbdbfcc21b7feb192b7"
+    sha256 = "1y0wcvbkg91dg75cgx25zhm2bib24j1dd2w8hgy8ag6si5il3yw1"
 
 ["github.com/cosmos/go-bip39"]
   sumVersion = "v1.0.0"
@@ -630,12 +630,12 @@
     sha256 = "0q063bsalxffq41l3f6xlr50xa2985liw6y5niiwnjysdc5rlva2"
 
 ["github.com/cosmos/iavl"]
-  sumVersion = "v0.16.0"
+  sumVersion = "v0.17.1"
   ["github.com/cosmos/iavl".fetch]
     type = "git"
     url = "https://github.com/cosmos/iavl"
-    rev = "db56af10fd129f80dda8abb1889d5d37d31e5ac5"
-    sha256 = "0cvgzjfbxhrada3h6lmcc9pvjjsbi3hz84cxj4xfjglddsm7virj"
+    rev = "8e24bc87fc0702f0994ac3b2b55386235c3dd3cf"
+    sha256 = "1q5fbk4afkxxlgyj82xfxfmwzcpsaa4hwm431xl8b34xhpdglkdp"
 
 ["github.com/cosmos/ledger-cosmos-go"]
   sumVersion = "v0.11.1"
