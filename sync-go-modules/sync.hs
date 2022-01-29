@@ -96,7 +96,7 @@ main = sh $ do
       forM missingSrcs (\err -> errorMessage err)
       exit $ ExitFailure 126
 
-  syncedSources <- forM foundSrcs updateGoModules
+  syncedSources <- forM foundSrcs $ updateGoModules
 
   liftIO $ do
     putStrLn "\n"
@@ -116,7 +116,6 @@ data HasSyncedModules = Updated | Cached deriving (Show)
 updateGoModules :: GoSourceDetailed -> Shell (HasSyncedModules, Text)
 updateGoModules GoSourceDetailed {..} = do
   hasNarFile <- getAny <$> fold ((\p -> Any $ p == narFile) <$> ls goSrcDir) FLD.mconcat
-
   if hasNarFile
     then do
       lastUpdatedHash <- liftIO $ lineToText <$> (single . input) narFile

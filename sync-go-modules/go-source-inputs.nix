@@ -20,14 +20,9 @@ let go-project-srcs =
       storePath = "${cosmos-sdk-src}/cosmovisor";
     };
     cosmos-sdk = { inputName = "cosmos-sdk-src"; storePath = "${cosmos-sdk-src}"; };
-    thor = { inputName = "thor-src"; storePath = "${thor-src}"; };
     osmosis = {
       inputName = "osmosis-src";
       storePath = "${osmosis-src}";
-    };
-    gravity-dex = {
-      inputName = "gravity-dex-src";
-      storePath = "${gravity-dex-src}";
     };
     iris = {
       inputName = "iris-src";
@@ -37,12 +32,13 @@ let go-project-srcs =
       inputName = "regen-src";
       storePath = "${regen-src}";
     };
-    ethermint = {
-      inputName = "ethermint-src";
-      storePath = "${ethermint-src}";
+    evmos = {
+      inputName = "evmos-src";
+      storePath = "${evmos-src}";
     };
-    juno = { inputName = "juno-src"; storePath = "${juno-src}"; };
     relayer = { inputName = "relayer-src"; storePath = "${relayer-src}"; };
+    # thor = { inputName = "thor-src"; storePath = "${thor-src}"; };
+    # juno = { inputName = "juno-src"; storePath = "${juno-src}"; };
   };
 in
 with builtins;

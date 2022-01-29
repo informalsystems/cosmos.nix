@@ -21,13 +21,13 @@
     sconfig-src.flake = false;
 
     # Relayer Sources
-    ibc-rs-src.url = github:informalsystems/ibc-rs;
+    ibc-rs-src.url = github:informalsystems/ibc-rs/v0.10.0;
     ibc-rs-src.flake = false;
 
-    ts-relayer-src.url = github:confio/ts-relayer;
+    ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
     ts-relayer-src.flake = false;
 
-    relayer-src.url = github:cosmos/relayer;
+    relayer-src.url = github:cosmos/relayer/v1.0.0;
     relayer-src.flake = false;
 
     # Chain Sources
@@ -35,34 +35,34 @@
     gaia6-src.url = github:cosmos/gaia/v6.0.0;
 
     gaia5-src.flake = false;
-    gaia5-src.url = github:cosmos/gaia/v5.0.6;
+    gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
     gaia4-src.flake = false;
     gaia4-src.url = github:cosmos/gaia/v4.2.1;
 
     cosmos-sdk-src.flake = false;
-    cosmos-sdk-src.url = github:cosmos/cosmos-sdk;
-
-    thor-src.flake = false;
-    thor-src.url = github:thorchain/thornode;
+    cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis;
-
-    gravity-dex-src.flake = false;
-    gravity-dex-src.url = github:b-harvest/gravity-dex-backend;
+    osmosis-src.url = github:osmosis-labs/osmosis/v6.1.0;
 
     iris-src.flake = false;
-    iris-src.url = github:irisnet/irishub;
+    iris-src.url = github:irisnet/irishub/v1.1.1;
 
     regen-src.flake = false;
-    regen-src.url = github:regen-network/regen-ledger/;
+    regen-src.url = github:regen-network/regen-ledger/v2.1.0;
 
-    ethermint-src.flake = false;
-    ethermint-src.url = github:tharsis/ethermint;
+    evmos-src.flake = false;
+    evmos-src.url = github:tharsis/evmos/v0.4.2;
 
-    juno-src.flake = false;
-    juno-src.url = github:CosmosContracts/juno;
+    # Issue with replace directive for edwards in dcred dependency
+    # thor-src.flake = false;
+    # thor-src.url = gitlab:thorchain/thornode/v0.77.2;
+
+    # Issue with dynamically linked libwasmvm, need to figure out how to
+    # inject the dependency statically using musl
+    # juno-src.flake = false;
+    # juno-src.url = github:CosmosContracts/juno/v2.1.0;
   };
 
   outputs = inputs:
@@ -102,17 +102,16 @@
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
           sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
           gm = mkApp { name = "gm"; drv = packages.gm; };
-          bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
-          thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
-          thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
           osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
-          gdex = mkApp { name = "gdex"; drv = packages.gravity-dex; };
           iris = mkApp { name = "iris"; drv = packages.iris; };
           regen = mkApp { name = "regen"; drv = packages.regen; };
-          ethermint = mkApp { name = "ethermint"; drv = packages.ethermint; exePath = "/bin/ethermintd"; };
-          juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
+          evmos = mkApp { name = "evmos"; drv = packages.evmos; exePath = "/bin/evmosd"; };
           ts-relayer = mkApp { name = "ts-relayer"; drv = packages.ts-relayer; };
           ts-relayer-setup = mkApp { name = "ts-relayer-setup"; drv = packages.ts-relayer-setup; };
+          # bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
+          # thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
+          # thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
+          # juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
         };
       });
 }

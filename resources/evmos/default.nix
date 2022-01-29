@@ -1,7 +1,7 @@
-{ pkgs, ethermint-src }:
+{ pkgs, evmos-src }:
 pkgs.buildGoApplication {
-  name = "ethermint";
-  src = "${ethermint-src}";
+  name = "evmos";
+  src = "${evmos-src}";
   modules = ./go-modules.toml;
   preCheck = ''
     export HOME="$(mktemp -d)"
