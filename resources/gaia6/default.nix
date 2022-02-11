@@ -1,7 +1,7 @@
 { pkgs, gaia6-src, ledgerSupport ? false }:
 let
   pname = "gaia";
-  version = "v6.0.0";
+  version = "v6.0.1";
   tendermint-version = (fromTOML (builtins.readFile ./go-modules.toml))."github.com/tendermint/tendermint".sumVersion;
 in
 pkgs.buildGoApplication {
