@@ -101,16 +101,16 @@
     "gaia6-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1637748909,
-        "narHash": "sha256-3MKw6jdb8bpUK9zW2BZKXpxfLlEY4sGtNRSgM1w/bIY=",
+        "lastModified": 1644515770,
+        "narHash": "sha256-L5CeJfMTaXHpZop7lT9w9mPXnEnSBmeHHjSysZmP1c8=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "6ed5b7397a57c42112cf1b16f550bd0a6e263953",
+        "rev": "a31f839063436bdc30e0c6d1986625cbbf630d75",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v6.0.0",
+        "ref": "v6.0.1",
         "repo": "gaia",
         "type": "github"
       }

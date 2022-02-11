@@ -933,12 +933,12 @@
     sha256 = "1q5fbk4afkxxlgyj82xfxfmwzcpsaa4hwm431xl8b34xhpdglkdp"
 
 ["github.com/cosmos/ibc-go/v2"]
-  sumVersion = "v2.0.0"
+  sumVersion = "v2.0.3"
   ["github.com/cosmos/ibc-go/v2".fetch]
     type = "git"
     url = "https://github.com/cosmos/ibc-go"
-    rev = "dc416084694b6ed1d45baf50cc408b747daa90aa"
-    sha256 = "0wbw73pv7mnbaawfcjwyvpnxxkj4iz7cy8cg3d5cad3p1fmqzmx1"
+    rev = "b9e1306bc0275fd204e90c5664e3c1bb5e4acbec"
+    sha256 = "0cfbhwpw1dkbw8jxxci1jr7cdclqs8b0z86hzshdgmspivk9prq2"
 
 ["github.com/cosmos/ledger-cosmos-go"]
   sumVersion = "v0.11.1"
@@ -1230,12 +1230,12 @@
     sha256 = "0g1d52dfh5nqs9ikjbd9vgrs554s3nsb6df9dllggikya46a1p8l"
 
 ["github.com/facebookgo/ensure"]
-  sumVersion = "v0.0.0-20160127193407-b4ab57deab51"
+  sumVersion = "v0.0.0-20200202191622-63f1cf65ac4c"
   ["github.com/facebookgo/ensure".fetch]
     type = "git"
     url = "https://github.com/facebookgo/ensure"
-    rev = "b4ab57deab51ee655ae4bd85281f0715a068016d"
-    sha256 = "19icavc3sg0mdz8151q3vp2vn3ipq53mnb9h9n57w32amyyszl4d"
+    rev = "63f1cf65ac4cf1f4bd7e93292149a456001b0e0b"
+    sha256 = "05vi49g2967i5awcb1z69i2n5b5hwn06682kw90x81hbxlr0px36"
 
 ["github.com/facebookgo/stack"]
   sumVersion = "v0.0.0-20160209184415-751773369052"
@@ -1246,12 +1246,12 @@
     sha256 = "07yr05mz7h007ldpij90zjflwgixp148sbyrdlh1fj5bikr4p8m3"
 
 ["github.com/facebookgo/subset"]
-  sumVersion = "v0.0.0-20150612182917-8dac2c3c4870"
+  sumVersion = "v0.0.0-20200203212716-c811ad88dec4"
   ["github.com/facebookgo/subset".fetch]
     type = "git"
     url = "https://github.com/facebookgo/subset"
-    rev = "8dac2c3c48703541e481feddf22975953d4ff842"
-    sha256 = "0kyc2m5wxjzj4fwspybgn1mgjzhbdfnadpwy9mrw1s05bh21rgai"
+    rev = "c811ad88dec4edb3d7af0a88b34e6865d7460ba2"
+    sha256 = "1sjczgmq26mgqvh7267saypnn4sfdjx467wsm1pgdhyss77mc650"
 
 ["github.com/fatih/color"]
   sumVersion = "v1.12.0"
@@ -1985,12 +1985,12 @@
     sha256 = "12vbls1kvn3lfgj86y4r258x6papgcj3h4pcg4xbdi5l2cy1idmy"
 
 ["github.com/gravity-devs/liquidity"]
-  sumVersion = "v1.4.2"
+  sumVersion = "v1.4.4"
   ["github.com/gravity-devs/liquidity".fetch]
     type = "git"
     url = "https://github.com/gravity-devs/liquidity"
-    rev = "8c231ba7d5adf91707e5697e0752220c62bf428a"
-    sha256 = "1w88r0qgc006zrfbigx1bx2vcn9drv6dc2zn6pc6si1qrfwn747j"
+    rev = "fb546029b2481dd07b8086ef9bc97e62032bbc31"
+    sha256 = "06hf1hxwnvr00gnkfx3a3cj9w8mz7q6mjjxjc92z9gms3mzhypwc"
 
 ["github.com/gregjones/httpcache"]
   sumVersion = "v0.0.0-20190611155906-901d90724c79"
@@ -3971,12 +3971,13 @@
     sha256 = "0kyj9zizkbbdzhbr0hak306zwx4ia87cflbasfl743kvx43af1g0"
 
 ["github.com/tecbot/gorocksdb"]
-  sumVersion = "v0.0.0-20191217155057-f0fad39f321c"
+  sumVersion = "v1.2.0"
+  vendorPath = "github.com/cosmos/gorocksdb"
   ["github.com/tecbot/gorocksdb".fetch]
     type = "git"
-    url = "https://github.com/tecbot/gorocksdb"
-    rev = "f0fad39f321c61bf05fcb4a01fe259606235e712"
-    sha256 = "0brf99da00jf91hf7w0qqk6yj61zcya9ci7pm8d60q6zl40i87c5"
+    url = "https://github.com/cosmos/gorocksdb"
+    rev = "37ba422d5c751e427bef06cd17fb6d3e69818240"
+    sha256 = "14ih61qlzvw8wqc2dd8zhqgmqcfrja7vb0fk8ni317c9ibryqxzc"
 
 ["github.com/tendermint/btcd"]
   sumVersion = "v0.1.1"
@@ -4340,12 +4341,12 @@
     sha256 = "1wnpfn4bd86nz2v9dgb40xpz1ya66vahdkrhb1gj4jyyxdnnhqkh"
 
 ["go.etcd.io/bbolt"]
-  sumVersion = "v1.3.5"
+  sumVersion = "v1.3.6"
   ["go.etcd.io/bbolt".fetch]
     type = "git"
     url = "https://github.com/etcd-io/bbolt"
-    rev = "232d8fc87f50244f9c808f4745759e08a304c029"
-    sha256 = "1h64gipvcg7060byv5wjlf524kqwj12p3v08kfh4ygv46vpm8p2r"
+    rev = "685b13a4ef0053a4a38623bcebda621db6f7eaf7"
+    sha256 = "0pj5245d417za41j6p09fmkbv05797vykr1bi9a6rnwddh1dbs8d"
 
 ["go.etcd.io/etcd"]
   sumVersion = "v0.0.0-20200513171258-e048e166ab9c"
@@ -4567,12 +4568,12 @@
     sha256 = "1wkipg7xxc0ha5p6c3bj0vpgq38l18441n5l6zxdhx0gzvz5z1hs"
 
 ["google.golang.org/genproto"]
-  sumVersion = "v0.0.0-20210602131652-f16073e35f0c"
+  sumVersion = "v0.0.0-20210828152312-66f60bf46e71"
   ["google.golang.org/genproto".fetch]
     type = "git"
     url = "https://github.com/googleapis/go-genproto"
-    rev = "f16073e35f0c042fd986c71ee4c2cce346e097d9"
-    sha256 = "06n5npgcjk8is2ajf0786nma5wjwpbwca273gv3yqq7dr3bkzv48"
+    rev = "66f60bf46e712a08287e27c1726b06e93e00b6bf"
+    sha256 = "14vlk2phr8yr5nq19bvvd6z7yvn4nl3s63rvj1yk8r82b6amd63p"
 
 ["google.golang.org/grpc"]
   sumVersion = "v1.33.2"
