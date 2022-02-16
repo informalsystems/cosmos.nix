@@ -2322,6 +2322,14 @@
     rev = "8bf82d3c094dc06be9da8e5bf9d3589b6ea032ae"
     sha256 = "0cjli7prxfxayx2grianbla5jr0dq28sazk8phbnh61ac5zaya4s"
 
+["github.com/informalsystems/cosmos-sdk"]
+  sumVersion = "v0.44.2"
+  ["github.com/informalsystems/cosmos-sdk".fetch]
+    type = "git"
+    url = "https://github.com/informalsystems/cosmos-sdk"
+    rev = "68ab790a761e80d3674f821794cf18ccbfed45ee"
+    sha256 = "13rkaadk0kp3n9xyfaffqs3sh7n017nl9s2pca6i3hdf6h8s03a0"
+
 ["github.com/jackpal/go-nat-pmp"]
   sumVersion = "v1.0.2-0.20160603034137-1fa385a6f458"
   ["github.com/jackpal/go-nat-pmp".fetch]

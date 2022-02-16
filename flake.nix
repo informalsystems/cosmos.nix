@@ -32,7 +32,7 @@
 
     # Chain Sources
     gaia6-src.flake = false;
-    gaia6-src.url = github:cosmos/gaia/v6.0.1;
+    gaia6-src.url = github:informalsystems/gaia/v6.0.1-ordered;
 
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
