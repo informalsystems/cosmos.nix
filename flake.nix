@@ -77,7 +77,7 @@
 
         # nix flake check
         checks = (import ./checks.nix) {
-          inherit inputs pkgs system;
+          inherit inputs system;
           packages = resources.packages;
         };
 
