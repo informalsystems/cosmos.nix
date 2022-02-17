@@ -121,16 +121,16 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1645099355,
-        "narHash": "sha256-yB/UsyTPFwXdCvIEiwaz1YLYC+lO1rLAnh7E9DjYOZE=",
+        "lastModified": 1645100740,
+        "narHash": "sha256-R1Of3ZctEjtJ7WtMER2RXBYRWbuFLFjI601A5LaB3e4=",
         "owner": "informalsystems",
         "repo": "gomod2nix",
-        "rev": "f3c728ea1770f9f953ba95ddaac15649f1060f95",
+        "rev": "b4c542962266461e0b03512b68f0162482a89673",
         "type": "github"
       },
       "original": {
         "owner": "informalsystems",
-        "ref": "fix-replace-map",
+        "ref": "informal",
         "repo": "gomod2nix",
         "type": "github"
       }

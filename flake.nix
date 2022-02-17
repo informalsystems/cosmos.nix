@@ -11,7 +11,7 @@
     naersk.url = github:nmattia/naersk;
 
     # Go Inputs
-    gomod2nix.url = github:informalsystems/gomod2nix/fix-replace-map;
+    gomod2nix.url = github:informalsystems/gomod2nix/informal;
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
