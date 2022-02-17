@@ -924,6 +924,14 @@
     rev = "3027fe585f89a39da9b7389bd4e3482e056f6d3f"
     sha256 = "0q063bsalxffq41l3f6xlr50xa2985liw6y5niiwnjysdc5rlva2"
 
+["github.com/cosmos/gorocksdb"]
+  sumVersion = "v1.2.0"
+  ["github.com/cosmos/gorocksdb".fetch]
+    type = "git"
+    url = "https://github.com/cosmos/gorocksdb"
+    rev = "37ba422d5c751e427bef06cd17fb6d3e69818240"
+    sha256 = "14ih61qlzvw8wqc2dd8zhqgmqcfrja7vb0fk8ni317c9ibryqxzc"
+
 ["github.com/cosmos/iavl"]
   sumVersion = "v0.17.1"
   ["github.com/cosmos/iavl".fetch]
@@ -931,14 +939,6 @@
     url = "https://github.com/cosmos/iavl"
     rev = "8e24bc87fc0702f0994ac3b2b55386235c3dd3cf"
     sha256 = "1q5fbk4afkxxlgyj82xfxfmwzcpsaa4hwm431xl8b34xhpdglkdp"
-
-["github.com/cosmos/ibc-go/v2"]
-  sumVersion = "v2.0.3"
-  ["github.com/cosmos/ibc-go/v2".fetch]
-    type = "git"
-    url = "https://github.com/informalsystems/ibc-go"
-    rev = "08a171930aede7ff0ddcd972c20887137b9c7f08"
-    sha256 = "4BaZENKmGGkUDksKJzUIoRqTK7sVKP0zvFC9HWtJ33k="
 
 ["github.com/cosmos/ledger-cosmos-go"]
   sumVersion = "v0.11.1"
@@ -1646,15 +1646,6 @@
     rev = "817b4cf527e834d7d563b7329355c45801d5e02d"
     sha256 = "1jj7vr3sdk7yz8jl1kzv8473pkhd388f95byc8pdwrh6y7fh0xrq"
 
-["github.com/gogo/protobuf"]
-  sumVersion = "v1.3.3-alpha.regen.1"
-  vendorPath = "github.com/regen-network/protobuf"
-  ["github.com/gogo/protobuf".fetch]
-    type = "git"
-    url = "https://github.com/regen-network/protobuf"
-    rev = "8a70ddfdaf94e68497f7b26a6896ad75e03b6616"
-    sha256 = "0jmhiv9gq0a6brs9p8dk9phafs62yggyhlav07cqwakcq70ss6r2"
-
 ["github.com/golang/glog"]
   sumVersion = "v0.0.0-20160126235308-23def4e6c14b"
   ["github.com/golang/glog".fetch]
@@ -2329,6 +2320,14 @@
     url = "https://github.com/informalsystems/cosmos-sdk"
     rev = "68ab790a761e80d3674f821794cf18ccbfed45ee"
     sha256 = "13rkaadk0kp3n9xyfaffqs3sh7n017nl9s2pca6i3hdf6h8s03a0"
+
+["github.com/informalsystems/ibc-go/v2"]
+  sumVersion = "v2.0.3"
+  ["github.com/informalsystems/ibc-go/v2".fetch]
+    type = "git"
+    url = "https://github.com/informalsystems/ibc-go"
+    rev = "b9e1306bc0275fd204e90c5664e3c1bb5e4acbec"
+    sha256 = "0cfbhwpw1dkbw8jxxci1jr7cdclqs8b0z86hzshdgmspivk9prq2"
 
 ["github.com/jackpal/go-nat-pmp"]
   sumVersion = "v1.0.2-0.20160603034137-1fa385a6f458"
@@ -3545,6 +3544,14 @@
     rev = "f793b6157c2cfb8c1c797100e1918b2d1eb40615"
     sha256 = "05sk9jhk4qz5m4vkj0wr0swhvq9niz7v7bvpxh063vz0y6mmpj05"
 
+["github.com/regen-network/protobuf"]
+  sumVersion = "v1.3.3-alpha.regen.1"
+  ["github.com/regen-network/protobuf".fetch]
+    type = "git"
+    url = "https://github.com/regen-network/protobuf"
+    rev = "8a70ddfdaf94e68497f7b26a6896ad75e03b6616"
+    sha256 = "0jmhiv9gq0a6brs9p8dk9phafs62yggyhlav07cqwakcq70ss6r2"
+
 ["github.com/rjeczalik/notify"]
   sumVersion = "v0.9.1"
   ["github.com/rjeczalik/notify".fetch]
@@ -3977,15 +3984,6 @@
     url = "https://github.com/tdakkota/asciicheck"
     rev = "e657995f937b8362b9e1425aa31bb96798b592f2"
     sha256 = "0kyj9zizkbbdzhbr0hak306zwx4ia87cflbasfl743kvx43af1g0"
-
-["github.com/tecbot/gorocksdb"]
-  sumVersion = "v1.2.0"
-  vendorPath = "github.com/cosmos/gorocksdb"
-  ["github.com/tecbot/gorocksdb".fetch]
-    type = "git"
-    url = "https://github.com/cosmos/gorocksdb"
-    rev = "37ba422d5c751e427bef06cd17fb6d3e69818240"
-    sha256 = "14ih61qlzvw8wqc2dd8zhqgmqcfrja7vb0fk8ni317c9ibryqxzc"
 
 ["github.com/tendermint/btcd"]
   sumVersion = "v0.1.1"
