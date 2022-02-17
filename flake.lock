@@ -121,11 +121,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1640193266,
-        "narHash": "sha256-J7RhQsfxiv6+W6xrRPagmFB4+Ywa7rY1wrr7e064ml0=",
+        "lastModified": 1642289558,
+        "narHash": "sha256-1qP1JKyw6vyiAejz04O/v7zyWx6gWWoYYbnJhv+zMkc=",
         "owner": "JonathanLorimer",
         "repo": "gomod2nix",
-        "rev": "a318f455732365c586cdabb80daf9e25e054e507",
+        "rev": "34cb1a7a23820a6ca6aafdefa31f421e0b3dd2dd",
         "type": "github"
       },
       "original": {

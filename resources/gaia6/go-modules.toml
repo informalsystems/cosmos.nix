@@ -936,9 +936,9 @@
   sumVersion = "v2.0.3"
   ["github.com/cosmos/ibc-go/v2".fetch]
     type = "git"
-    url = "https://github.com/cosmos/ibc-go"
-    rev = "b9e1306bc0275fd204e90c5664e3c1bb5e4acbec"
-    sha256 = "0cfbhwpw1dkbw8jxxci1jr7cdclqs8b0z86hzshdgmspivk9prq2"
+    url = "https://github.com/informalsystems/ibc-go"
+    rev = "08a171930aede7ff0ddcd972c20887137b9c7f08"
+    sha256 = "4BaZENKmGGkUDksKJzUIoRqTK7sVKP0zvFC9HWtJ33k="
 
 ["github.com/cosmos/ledger-cosmos-go"]
   sumVersion = "v0.11.1"
