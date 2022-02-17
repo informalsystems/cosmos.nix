@@ -940,6 +940,15 @@
     rev = "8e24bc87fc0702f0994ac3b2b55386235c3dd3cf"
     sha256 = "1q5fbk4afkxxlgyj82xfxfmwzcpsaa4hwm431xl8b34xhpdglkdp"
 
+["github.com/cosmos/ibc-go/v2"]
+  sumVersion = "v2.0.3"
+  vendorPath = "github.com/informalsystems/ibc-go/v2"
+  ["github.com/cosmos/ibc-go/v2".fetch]
+    type = "git"
+    url = "https://github.com/informalsystems/ibc-go"
+    rev = "b9e1306bc0275fd204e90c5664e3c1bb5e4acbec"
+    sha256 = "0cfbhwpw1dkbw8jxxci1jr7cdclqs8b0z86hzshdgmspivk9prq2"
+
 ["github.com/cosmos/ledger-cosmos-go"]
   sumVersion = "v0.11.1"
   ["github.com/cosmos/ledger-cosmos-go".fetch]
