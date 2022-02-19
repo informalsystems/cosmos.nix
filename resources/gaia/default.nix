@@ -42,8 +42,8 @@ builtins.mapAttrs
   };
 
   gaia6 = {
-    vendorSha256 = "sha256-CNxWgIWf+8wB2CAUk+WadnIb3fi1UYftPea5sWtk/Rs=";
-    version = "v6.0.2";
+    vendorSha256 = "sha256-a0ps1vlnXIzke5JHqXyav+Jrp9j3d4ohtBq4AWy+uUI=";
+    version = "v6.0.3";
     src = gaia6-src;
     ledgerSupport = false;
   };
