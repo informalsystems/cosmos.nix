@@ -28,9 +28,6 @@
     relayer-src.flake = false;
 
     # Chain Sources
-    gaia6-ordered-src.flake = false;
-    gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.1-ordered;
-
     gaia6-src.flake = false;
     gaia6-src.url = github:cosmos/gaia/v6.0.3;
 
@@ -94,7 +91,6 @@
           gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
           gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
           gaia6 = mkApp { name = "gaia"; drv = packages.gaia6; exePath = "/bin/gaiad"; };
-          gaia6-ordered = mkApp { name = "gaia"; drv = packages.gaia6-ordered; exePath = "/bin/gaiad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
           simd = mkApp { name = "simd"; drv = packages.simd; };
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };

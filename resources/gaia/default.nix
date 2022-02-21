@@ -1,4 +1,4 @@
-{ pkgs, gaia4-src, gaia5-src, gaia6-src, gaia6-ordered-src }:
+{ pkgs, gaia4-src, gaia5-src, gaia6-src }:
 let
   parser = import ../goModParser.nix;
 in
@@ -45,13 +45,6 @@ builtins.mapAttrs
     vendorSha256 = "sha256-a0ps1vlnXIzke5JHqXyav+Jrp9j3d4ohtBq4AWy+uUI=";
     version = "v6.0.3";
     src = gaia6-src;
-    ledgerSupport = false;
-  };
-
-  gaia6-ordered = {
-    vendorSha256 = "sha256-Jtxa9SAj69iQWUbaM5YSxS8n3Sob7L/3Cf2j0SU5Q+s=";
-    version = "v6.0.1-ordered";
-    src = gaia6-ordered-src;
     ledgerSupport = false;
   };
 
