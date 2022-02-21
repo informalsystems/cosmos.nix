@@ -178,6 +178,5 @@ pkgs.nixosTest {
       assert versionDict['version'] == "${hermes.version}", "should be using correct hermes version"
     assert chains['status'] == "success", "chains endpoint should return result"
     assert chains['result'] == ["nixos", "nixos2"], "chains endpoint should return both validator chains"
-
   '';
 }
