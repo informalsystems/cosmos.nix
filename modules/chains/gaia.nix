@@ -36,12 +36,6 @@ with lib; {
       type = types.path;
     };
 
-    grpc-addr = mkOption {
-      type = types.nullOr types.str;
-      description = ''
-      '';
-    };
-
     rpc-addr = mkOption {
       type = types.nullOr types.str;
       description = ''
@@ -68,12 +62,11 @@ with lib; {
           '';
         serviceConfig =
           let
-            grpc-addr = if cfg.grpc-addr == null then "" else "--rpc.grpc_laddr ${cfg.grpc-addr} ";
             rpc-addr = if cfg.rpc-addr == null then "" else "--rpc.laddr ${cfg.rpc-addr} ";
           in
           {
             Type = "notify";
-            ExecStart = "${cfg.package}/bin/gaiad start ${grpc-addr} ${rpc-addr} --home ${cfg.gaia-home}";
+            ExecStart = "${cfg.package}/bin/gaiad start ${rpc-addr} --home ${cfg.gaia-home}";
           };
       };
   };

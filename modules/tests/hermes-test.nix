@@ -1,5 +1,7 @@
 { pkgs, hermes, gaia, system }:
 let
+  jsonRpcCurlRequest = addr: port:
+    ''${pkgs.curl}/bin/curl -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"health\",\"params\":[]}' http://${addr}:${builtins.toString port} 2>&1'';
   sharedModule = {
     # Since it's common for CI not to have $DISPLAY available, we have to explicitly tell the tests "please don't expect any screen available"
     virtualisation.graphics = false;
@@ -24,8 +26,8 @@ pkgs.nixosTest {
           };
         };
         firewall.allowedTCPPorts = [
-          26557
-          9092
+          26657
+          9090
         ];
       };
       services.gaia = {
@@ -35,8 +37,7 @@ pkgs.nixosTest {
           config-dir = ./validator1/config;
           data-dir = ./validator1/data;
         };
-        rpc-addr = "tcp://0.0.0.0:26557";
-        grpc-addr = "tcp://0.0.0.0:9092";
+        rpc-addr = "tcp://0.0.0.0:26657";
       };
     };
 
@@ -51,8 +52,8 @@ pkgs.nixosTest {
           };
         };
         firewall.allowedTCPPorts = [
-          26557
-          9092
+          26657
+          9090
         ];
       };
       services.gaia = {
@@ -62,8 +63,7 @@ pkgs.nixosTest {
           config-dir = ./validator2/config;
           data-dir = ./validator2/data;
         };
-        rpc-addr = "tcp://0.0.0.0:26557";
-        grpc-addr = "tcp://0.0.0.0:9092";
+        rpc-addr = "tcp://0.0.0.0:26657";
       };
     };
 
@@ -92,6 +92,10 @@ pkgs.nixosTest {
             { address = "192.168.2.13"; prefixLength = 24; }
           ];
         };
+        firewall.allowedTCPPorts = [
+          defaultRestPort
+          defaultMetricsPort
+        ];
         extraHosts = ''
           192.168.2.10 validator1
           192.168.2.11 validator2
@@ -101,14 +105,20 @@ pkgs.nixosTest {
       services.hermes = {
         enable = true;
         package = hermes;
-        rest.port = defaultRestPort;
-        telemetry.port = defaultMetricsPort;
+        rest = {
+          port = defaultRestPort;
+          host = "0.0.0.0";
+        };
+        telemetry = {
+          port = defaultMetricsPort;
+          host = "0.0.0.0";
+        };
         chains = [
           {
             id = "nixos";
-            rpc-address = "http://validator1:26557";
-            grpc-address = "http://validator1:9092";
-            websocket-address = "ws://validator1:26557/websocket";
+            rpc-address = "http://validator1:26657";
+            grpc-address = "http://validator1:9090";
+            websocket-address = "ws://validator1:26657/websocket";
             account-prefix = "cosmos";
             key-name = "testkey";
             gas-price = 0.001;
@@ -116,9 +126,9 @@ pkgs.nixosTest {
           }
           {
             id = "nixos2";
-            rpc-address = "http://validator2:26557";
-            grpc-address = "http://validator2:9092";
-            websocket-address = "ws://validator2:26557/websocket";
+            rpc-address = "http://validator2:26657";
+            grpc-address = "http://validator2:9090";
+            websocket-address = "ws://validator2:26657/websocket";
             account-prefix = "cosmos";
             key-name = "testkey";
             gas-price = 0.001;
@@ -129,6 +139,7 @@ pkgs.nixosTest {
     };
   };
 
+
   testScript = ''
     import json
 
@@ -136,21 +147,37 @@ pkgs.nixosTest {
     validator2.start()
     client.start()
 
-    validator1.wait_for_open_port(26557)
-    validator2.wait_for_open_port(26557)
+    validator1.wait_for_open_port(26657)
+    validator2.wait_for_open_port(26657)
+    validator1.wait_for_open_port(9090)
+    validator2.wait_for_open_port(9090)
+
+    client.succeed(
+      "${pkgs.grpcurl}/bin/grpcurl -plaintext validator1:9090 list 2>&1"
+    )
+    client.succeed("${jsonRpcCurlRequest "validator1" 26657}")
+    client.succeed("${jsonRpcCurlRequest "validator2" 26657}")
 
     relayer.start()
-
     relayer.wait_for_open_port(${toString defaultRestPort})
 
-    actual = json.loads(
+
+    version = json.loads(
         client.succeed(
-            "${pkgs.curl}/bin/curl http://relayer:${toString defaultRestPort}"
+          "${pkgs.curl}/bin/curl http://relayer:${toString defaultRestPort}/version"
         )
     )
 
-    print(actual)
+    chains = json.loads(
+        client.succeed(
+          "${pkgs.curl}/bin/curl http://relayer:${toString defaultRestPort}/chains"
+        )
+    )
 
-    assert actual == "", "rest port should be running"
+    for versionDict in version:
+      assert versionDict['version'] == "${hermes.version}", "should be using correct hermes version"
+    assert chains['status'] == "success", "chains endpoint should return result"
+    assert chains['result'] == ["nixos", "nixos2"], "chains endpoint should return both validator chains"
+
   '';
 }
