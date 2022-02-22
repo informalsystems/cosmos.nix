@@ -28,8 +28,11 @@
     relayer-src.flake = false;
 
     # Chain Sources
-    gaia6-src.flake = false;
-    gaia6-src.url = github:cosmos/gaia/v6.0.3;
+    gaia6_0_2-src.flake = false;
+    gaia6_0_2-src.url = github:cosmos/gaia/v6.0.2;
+
+    gaia6_0_3-src.flake = false;
+    gaia6_0_3-src.url = github:cosmos/gaia/v6.0.3;
 
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
@@ -90,7 +93,9 @@
           gaia = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
           gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
           gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6; exePath = "/bin/gaiad"; };
+          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
+          gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
           simd = mkApp { name = "simd"; drv = packages.simd; };
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
