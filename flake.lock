@@ -98,40 +98,37 @@
         "type": "github"
       }
     },
-    "gaia6-src": {
+    "gaia6_0_2-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1644515770,
-        "narHash": "sha256-L5CeJfMTaXHpZop7lT9w9mPXnEnSBmeHHjSysZmP1c8=",
+        "lastModified": 1645118548,
+        "narHash": "sha256-an1JVPCMcJgQYi+inx4MrAcwYjHTVFvDzw865pJc6C8=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "a31f839063436bdc30e0c6d1986625cbbf630d75",
+        "rev": "05f3795f196dd32e9233db97ed8742f8559cb483",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v6.0.1",
+        "ref": "v6.0.2",
         "repo": "gaia",
         "type": "github"
       }
     },
-    "gomod2nix": {
-      "inputs": {
-        "nixpkgs": "nixpkgs",
-        "utils": "utils"
-      },
+    "gaia6_0_3-src": {
+      "flake": false,
       "locked": {
-        "lastModified": 1640193266,
-        "narHash": "sha256-J7RhQsfxiv6+W6xrRPagmFB4+Ywa7rY1wrr7e064ml0=",
-        "owner": "JonathanLorimer",
-        "repo": "gomod2nix",
-        "rev": "a318f455732365c586cdabb80daf9e25e054e507",
+        "lastModified": 1645184577,
+        "narHash": "sha256-a24C1sooMj8mVGYYV2wL7P3kM7xj/MVzfeggj186PQo=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "8f5dd7549fd21b99099e100da043bd8919d37ac3",
         "type": "github"
       },
       "original": {
-        "owner": "JonathanLorimer",
-        "ref": "allow-custom-vendors",
-        "repo": "gomod2nix",
+        "owner": "cosmos",
+        "ref": "v6.0.3",
+        "repo": "gaia",
         "type": "github"
       }
     },
@@ -171,7 +168,7 @@
     },
     "naersk": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1639947939,
@@ -189,22 +186,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1625191069,
-        "narHash": "sha256-M8/UH9pMgQEtuzY9bFwklYw8hx0pOKtUTyQC8E2UTHY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d8079260a3028ae3221d7a5467443ee3a9edd2b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1642069818,
         "narHash": "sha256-666w6j8wl/bojfgpp0k58/UJ5rbrdYFbI2RFT2BXbSQ=",
         "owner": "NixOS",
@@ -217,7 +198,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1626852498,
         "narHash": "sha256-lOXUJvi0FJUXHTVSiC5qsMRtEUgqM4mGZpMESLuGhmo=",
@@ -233,7 +214,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1631315520,
         "narHash": "sha256-Y8j0JYtZMifrHaWdTfTp1mYVXZ2PLJO/P0XZxMvo7KU=",
@@ -269,7 +250,7 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1624971177,
@@ -326,12 +307,12 @@
         "flake-utils": "flake-utils",
         "gaia4-src": "gaia4-src",
         "gaia5-src": "gaia5-src",
-        "gaia6-src": "gaia6-src",
-        "gomod2nix": "gomod2nix",
+        "gaia6_0_2-src": "gaia6_0_2-src",
+        "gaia6_0_3-src": "gaia6_0_3-src",
         "ibc-rs-src": "ibc-rs-src",
         "iris-src": "iris-src",
         "naersk": "naersk",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
@@ -387,21 +368,6 @@
         "owner": "confio",
         "ref": "v0.4.0",
         "repo": "ts-relayer",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1623875721,
-        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }

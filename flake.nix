@@ -10,9 +10,6 @@
     # Rust Inputs
     naersk.url = github:nmattia/naersk;
 
-    # Go Inputs
-    gomod2nix.url = github:JonathanLorimer/gomod2nix/allow-custom-vendors;
-
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
     stoml-src.flake = false;
@@ -31,8 +28,11 @@
     relayer-src.flake = false;
 
     # Chain Sources
-    gaia6-src.flake = false;
-    gaia6-src.url = github:cosmos/gaia/v6.0.1;
+    gaia6_0_2-src.flake = false;
+    gaia6_0_2-src.url = github:cosmos/gaia/v6.0.2;
+
+    gaia6_0_3-src.flake = false;
+    gaia6_0_3-src.url = github:cosmos/gaia/v6.0.3;
 
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
@@ -69,10 +69,7 @@
     with inputs.flake-utils.lib;
     eachDefaultSystem (system:
       let
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          overlays = [ inputs.gomod2nix.overlay ];
-        };
+        pkgs = import inputs.nixpkgs { inherit system; };
         eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
         resources = (import ./resources.nix) { inherit inputs pkgs eval-pkgs system; };
       in
@@ -83,7 +80,7 @@
 
         # nix flake check
         checks = (import ./checks.nix) {
-          inherit inputs pkgs system;
+          inherit inputs system;
           packages = resources.packages;
         };
 
@@ -93,12 +90,14 @@
         # nix run .#<app>
         apps = {
           hermes = mkApp { name = "hermes"; drv = packages.hermes; };
-          gaia = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+          gaia = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
           gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6; exePath = "/bin/gaiad"; };
+          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
+          gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
-          simd = mkApp { name = "simd"; drv = packages.cosmos-sdk; };
+          simd = mkApp { name = "simd"; drv = packages.simd; };
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
           sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
           gm = mkApp { name = "gm"; drv = packages.gm; };

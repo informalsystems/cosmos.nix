@@ -8,46 +8,94 @@
 # good idea to check the inputs attrset in flake.nix!
 with inputs;
 let
+  cleanSourceWithRegexes = src: regexes: with pkgs.lib; with builtins; cleanSourceWith {
+    filter = (path: _:
+      any (r: match r path == null) regexes
+    );
+    inherit src;
+  };
+
   # Cosmos packages
   packages = rec {
-    stoml = (import ./resources/stoml) { inherit pkgs stoml-src; };
-    sconfig = (import ./resources/sconfig) { inherit pkgs sconfig-src; };
-    gm = with pkgs; (import ./resources/gm) {
-      inherit ibc-rs-src shellcheck lib makeWrapper gnused;
-      stoml = packages.stoml;
-      sconfig = packages.sconfig;
-      mkDerivation = stdenv.mkDerivation;
+
+    # Go packages
+    stoml = pkgs.buildGoModule {
+      name = "stoml";
+      src = stoml-src;
+      vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
     };
+    sconfig = pkgs.buildGoModule {
+      name = "sconfig";
+      src = sconfig-src;
+      vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
+    };
+    cosmovisor = pkgs.buildGoModule {
+      name = "cosmovisor";
+      src = "${cosmos-sdk-src}/cosmovisor";
+      vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
+      doCheck = false;
+    };
+    simd = pkgs.buildGoModule {
+      name = "simd";
+      src = cleanSourceWithRegexes cosmos-sdk-src [ ".*cosmovisor.*" ];
+      vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
+      doCheck = false;
+    };
+    osmosis = pkgs.buildGoModule {
+      name = "osmosis";
+      src = osmosis-src;
+      vendorSha256 = "sha256-1z9XUOwglbi13w9XK87kQxLl4Hh+OcLZlXfw8QyVGZg=";
+      preCheck = ''
+        export HOME="$(mktemp -d)"
+      '';
+    };
+    iris = pkgs.buildGoModule {
+      name = "iris";
+      src = iris-src;
+      vendorSha256 = "sha256-PBbOuSe4GywD2WTgoZZ/1QDXH5BX2UHseXU2vPrJKX8=";
+    };
+    regen = pkgs.buildGoModule {
+      name = "regen";
+      subPackages = [ "app/regen" ];
+      src = regen-src;
+      vendorSha256 = "sha256-NH7flr8ExsfNm5JWpTGMmTRmcbhRjk9YYmqOnBRVmQM=";
+      preCheck = ''
+        export HOME="$(mktemp -d)"
+      '';
+    };
+    evmos = pkgs.buildGoModule {
+      name = "evmos";
+      src = evmos-src;
+      vendorSha256 = "sha256-c2MJL52achqlTbu87ZUKehnn92Wm6fTU/DIjadCUgH4=";
+      preCheck = ''
+        export HOME="$(mktemp -d)"
+      '';
+    };
+    relayer = pkgs.buildGoModule {
+      name = "relayer";
+      src = relayer-src;
+      vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
+      doCheck = false;
+    };
+
+    # Rust resources
     hermes = naersk.lib."${system}".buildPackage {
       pname = "ibc-rs";
       root = ibc-rs-src;
       buildInputs = with pkgs; [ rustc cargo pkgconfig ];
       nativeBuildInputs = with pkgs; [ openssl ];
     };
-    cosmovisor = (import ./resources/cosmovisor) {
-      inherit pkgs;
-      cosmovisor-src = "${cosmos-sdk-src}/cosmovisor";
+
+    # Misc
+    gm = with pkgs; (import ./resources/gm) {
+      inherit ibc-rs-src shellcheck lib makeWrapper gnused;
+      stoml = packages.stoml;
+      sconfig = packages.sconfig;
+      mkDerivation = stdenv.mkDerivation;
     };
-    cosmos-sdk = (import ./resources/cosmos-sdk) { inherit pkgs cosmos-sdk-src; };
-    gaia6 = (import ./resources/gaia6) { inherit gaia6-src pkgs; };
-    gaia5 = (import ./resources/gaia5) { inherit gaia5-src pkgs; };
-    gaia4 = (import ./resources/gaia4) { inherit gaia4-src pkgs; };
-    osmosis = (import ./resources/osmosis) { inherit pkgs osmosis-src; };
-    iris = (import ./resources/iris) { inherit iris-src pkgs; };
-    regen = (import ./resources/regen) { inherit regen-src pkgs; };
-    evmos = (import ./resources/evmos) { inherit evmos-src pkgs; };
     ts-relayer = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer;
     ts-relayer-setup = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer-setup;
-    relayer = ((import ./resources/relayer) { inherit relayer-src pkgs; });
-    # thor = (import ./resources/thor) { inherit pkgs thor-src; };
-    # juno = (import ./resources/juno) { inherit juno-src pkgs; };
-  };
-
-  # Script helpers
-  go-source-inputs = (import ./sync-go-modules/go-source-inputs.nix) { inherit inputs; };
-  go-modules-sync = pkgs.writeShellScriptBin "syncGoModules" ''
-    echo "${go-source-inputs}" | ./sync-go-modules/sync.hs
-  '';
+  } // (import ./resources/gaia { inherit pkgs gaia4-src gaia5-src gaia6_0_2-src gaia6_0_3-src; });
 
   # Dev shells
   devShells = {
@@ -55,8 +103,6 @@ let
       pkgs.mkShell {
         shellHook = self.checks.${system}.pre-commit-check.shellHook;
         buildInputs = with pkgs; [
-          gomod2nix
-          go-modules-sync
           rnix-lsp
         ];
       };
