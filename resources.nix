@@ -3,7 +3,7 @@
 , pkgs
 , eval-pkgs
 }:
-# Many things come from this inputs attrset. For example naersk, anything with a `src` suffix, self which refers
+# Many things come from this inputs attrset. For example anything with a `src` suffix, self which refers
 # reflexively to the flake we are building etc. If you are confused where something comes from it is probably a
 # good idea to check the inputs attrset in flake.nix!
 with inputs;
@@ -79,11 +79,13 @@ let
     };
 
     # Rust resources
-    hermes = naersk.lib."${system}".buildPackage {
+    hermes = pkgs.rustPlatform.buildRustPackage {
       pname = "ibc-rs";
-      root = ibc-rs-src;
-      buildInputs = with pkgs; [ rustc cargo pkgconfig ];
-      nativeBuildInputs = with pkgs; [ openssl ];
+      version = "v0.12.0-rc.0";
+      src = ibc-rs-src;
+      nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
+      cargoSha256 = "sha256-iER7OQaTOBqQTUcQ/vWzcBbuawuHn4/LcB4pnrWl5D8=";
+      doCheck = false;
     };
 
     # Misc
@@ -108,13 +110,9 @@ let
       };
     cosmos-shell =
       pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [
-          go
-          rustc
-          cargo
-          pkg-config
-        ];
         buildInputs = with pkgs; [
+          go
+          rust-bin.stable.latest.default
           openssl
           shellcheck
         ] ++ builtins.attrValues packages;
