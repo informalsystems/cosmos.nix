@@ -98,6 +98,23 @@
         "type": "github"
       }
     },
+    "gaia6-ordered-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645031158,
+        "narHash": "sha256-uwNYYXhU+FhZ+9bXHfmPQTKMR+usP1wI6DVeaZa+ys4=",
+        "owner": "informalsystems",
+        "repo": "gaia",
+        "rev": "34e6f66a3d729a36f51c9a7f5ffd211bcd1cd90c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "informalsystems",
+        "ref": "v6.0.1-ordered",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
     "gaia6_0_2-src": {
       "flake": false,
       "locked": {
@@ -307,6 +324,7 @@
         "flake-utils": "flake-utils",
         "gaia4-src": "gaia4-src",
         "gaia5-src": "gaia5-src",
+        "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6_0_2-src": "gaia6_0_2-src",
         "gaia6_0_3-src": "gaia6_0_3-src",
         "ibc-rs-src": "ibc-rs-src",
