@@ -15,9 +15,8 @@ builtins.mapAttrs
         preCheck = ''
           export HOME="$(mktemp -d)"
         '';
-        buildFlags = "-tags netgo" + pkgs.lib.optionalString ledgerSupport ",ledger";
-        buildFlagsArray = ''
-          -ldflags=
+        tags = [ "netgo" ] ++ (if ledgerSupport then [ "ledger" ] else [ ]);
+        ldflags = ''
           -X github.com/cosmos/cosmos-sdk/version.Name=gaia
           -X github.com/cosmos/cosmos-sdk/version.AppName=gaiad
           -X github.com/cosmos/cosmos-sdk/version.Version=${version}
@@ -42,7 +41,7 @@ builtins.mapAttrs
   };
 
   gaia6_0_3 = {
-    vendorSha256 = "sha256-a0ps1vlnXIzke5JHqXyav+Jrp9j3d4ohtBq4AWy+uUI=";
+    vendorSha256 = "sha256-cNQOv4wW98Vd08ieU3jgsvXoSDQQYZTkeTqUD2Cty58=";
     version = "v6.0.3";
     src = gaia6_0_3-src;
     ledgerSupport = false;
