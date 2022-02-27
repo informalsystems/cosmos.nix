@@ -19,10 +19,7 @@ pkgs.nixosTest {
             { address = "192.168.2.11"; prefixLength = 24; }
           ];
         };
-        firewall.allowedTCPPorts = [
-          26557
-          9092
-        ];
+        firewall.allowedTCPPorts = [ 26557 ];
       };
 
       services.gaia = {
@@ -33,7 +30,6 @@ pkgs.nixosTest {
           data-dir = ./validator1/data;
         };
         rpc-addr = "tcp://0.0.0.0:26557";
-        grpc-addr = "tcp://0.0.0.0:9092";
       };
     };
 
