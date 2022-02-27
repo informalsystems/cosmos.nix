@@ -13,7 +13,8 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             system-features = nixos-test benchmark big-parallel kvm
-            users.users.runner.extraGroups = ["wheel" "kvm"]
+            trusted-users = runner root
+            allowed-users = *
 
       - name: Link Cachix 🔌
         uses: cachix/cachix-action@v10
