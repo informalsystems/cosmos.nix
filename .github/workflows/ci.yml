@@ -22,6 +22,11 @@ jobs:
           name: cosmos
           authToken: '${{ secrets.COSMOS_CACHE_KEY }}'
 
+      - name: KVM check
+        run: |
+          ls -ld /dev/kvm
+          whoami
+
       - name: Check 🔎
         run: |
           ls -ld /dev/kvm
