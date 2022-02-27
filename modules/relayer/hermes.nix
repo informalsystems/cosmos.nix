@@ -39,113 +39,129 @@ with lib; {
         channels.enabled = false;
       };
       type = types.submodule {
-        clients = mkOption {
-          description = "Specify the clients mode";
-          default = {
-            enabled = true;
-            refresh = true;
-            misbehaviour = true;
-          };
-          type = types.submodule {
-            enabled = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Whether or not to enable the client workers.
-              '';
+        options = {
+
+          clients = mkOption {
+            description = "Specify the clients mode";
+            default = {
+              enabled = true;
+              refresh = true;
+              misbehaviour = true;
             };
-            refresh = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Whether or not to enable periodic refresh of clients. [Default: true]
-                Note: Even if this is disabled, clients will be refreshed automatically if
-                     there is activity on a connection or channel they are involved with.
-              '';
-            };
-            misbehaviour = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Whether or not to enable misbehaviour detection for clients.
-              '';
-            };
-          };
-        };
-        packets = mkOption {
-          description = "Specify the packets mode";
-          default = {
-            enabled = true;
-            clear-interval = 100;
-            clear-on-start = false;
-            tx-confirmation = true;
-          };
-          type = types.submodule {
-            enabled = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Whether or not to enable the packet workers.
-              '';
-            };
-            clear-interval = mkOption {
-              type = types.ints.u32;
-              default = 100;
-              description = ''
-                Parametrize the periodic packet clearing feature.
-                Interval (in number of blocks) at which pending packets
-                should be eagerly cleared. A value of '0' will disable it.
-              '';
-            };
-            clear-on-start = mkOption {
-              type = types.bool;
-              default = false;
-              description = ''
-                Whether or not to clear packets on start.
-              '';
-            };
-            tx-confirmation = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Toggle the transaction confirmation mechanism.
-                The tx confirmation mechanism periodically queries the `/tx_search` RPC
-                endpoint to check that previously-submitted transactions
-                (to any chain in this config file) have delivered successfully.
-                Experimental feature. Affects telemetry if set to false.
-              '';
+            type = types.submodule {
+              options = {
+                enabled = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Whether or not to enable the client workers.
+                  '';
+                };
+                refresh = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Whether or not to enable periodic refresh of clients. [Default: true]
+                    Note: Even if this is disabled, clients will be refreshed automatically if
+                         there is activity on a connection or channel they are involved with.
+                  '';
+                };
+                misbehaviour = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Whether or not to enable misbehaviour detection for clients.
+                  '';
+                };
+              };
             };
           };
-        };
-        connections = mkOption {
-          description = "Specify the connections mode";
-          default = {
-            enabled = false;
-          };
-          type = types.submodule {
-            enabled = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Whether or not to enable the connection workers for handshake completion.
-              '';
+
+
+          packets = mkOption {
+            description = "Specify the packets mode";
+            default = {
+              enabled = true;
+              clear-interval = 100;
+              clear-on-start = false;
+              tx-confirmation = true;
+            };
+            type = types.submodule {
+              options = {
+                enabled = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Whether or not to enable the packet workers.
+                  '';
+                };
+                clear-interval = mkOption {
+                  type = types.ints.u32;
+                  default = 100;
+                  description = ''
+                    Parametrize the periodic packet clearing feature.
+                    Interval (in number of blocks) at which pending packets
+                    should be eagerly cleared. A value of '0' will disable it.
+                  '';
+                };
+                clear-on-start = mkOption {
+                  type = types.bool;
+                  default = false;
+                  description = ''
+                    Whether or not to clear packets on start.
+                  '';
+                };
+                tx-confirmation = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Toggle the transaction confirmation mechanism.
+                    The tx confirmation mechanism periodically queries the `/tx_search` RPC
+                    endpoint to check that previously-submitted transactions
+                    (to any chain in this config file) have delivered successfully.
+                    Experimental feature. Affects telemetry if set to false.
+                  '';
+                };
+              };
             };
           };
-        };
-        channels = mkOption {
-          description = "Specify the channels mode";
-          default = {
-            enabled = false;
-          };
-          type = types.submodule {
-            enabled = mkOption {
-              type = types.bool;
-              default = true;
-              description = ''
-                Whether or not to enable the channel workers for handshake completion.
-              '';
+
+          connections = mkOption {
+            description = "Specify the connections mode";
+            default = {
+              enabled = false;
+            };
+            type = types.submodule {
+              options = {
+                enabled = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Whether or not to enable the connection workers for handshake completion.
+                  '';
+                };
+              };
             };
           };
+
+          channels = mkOption {
+            description = "Specify the channels mode";
+            default = {
+              enabled = false;
+            };
+            type = types.submodule {
+              options = {
+                enabled = mkOption {
+                  type = types.bool;
+                  default = true;
+                  description = ''
+                    Whether or not to enable the channel workers for handshake completion.
+                  '';
+                };
+              };
+            };
+          };
+
         };
       };
     };
