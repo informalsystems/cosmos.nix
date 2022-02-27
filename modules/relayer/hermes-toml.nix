@@ -69,7 +69,7 @@ pkgs.writeTextFile {
     log_level = '${log-level}'
   ''
   + "\n"
-  # + mode
+  + mode
   + "\n"
   + rest
   + "\n"

@@ -1,12 +1,4 @@
-{ packages, inputs, pkgs, system, tests }:
-let
-  nixosTests = {
-    hermes-module = (import ./modules/relayer/hermes-test.nix) {
-      inherit (packages) hermes;
-      inherit system pkgs;
-    };
-  };
-in
+{ packages, inputs, system, tests }:
 {
   pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
     src = ./.;
