@@ -22,8 +22,8 @@ jobs:
 
       - name: Check 🔎
         run: |
-          nix flake check
+          sudo nix flake check
 
       - name: Run Shell 🐚
         run: |
-          nix develop
+          sudo nix develop
