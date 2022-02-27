@@ -7,8 +7,6 @@
     flake-utils.url = github:numtide/flake-utils;
     rust-overlay.url = github:oxalica/rust-overlay;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
-    # pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
-    # pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
