@@ -174,9 +174,13 @@ pkgs.nixosTest {
         )
     )
 
+    chainsStatus = chains['status']
+    chainsResult = chains['result']
+
     for versionDict in version:
-      assert versionDict['version'] == "${hermes.version}", "should be using correct hermes version"
-    assert chains['status'] == "success", "chains endpoint should return result"
-    assert chains['result'] == ["nixos", "nixos2"], "chains endpoint should return both validator chains"
+      hermesVersion = versionDict['version']
+      assert hermesVersion == "${hermes.version}", f'should be using correct hermes version expected ${hermes.version}, but got {hermesVersion}'
+    assert chainsStatus == "success", f'chains endpoint should return status success but instead got {chainsStatus}'
+    assert chainsResult == ["nixos", "nixos2"], f'chains endpoint should return both validator chains, but instead got {chainsResult}'
   '';
 }

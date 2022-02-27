@@ -13,21 +13,6 @@ with lib; {
         The hermes (ibc-rs) software to run.
       '';
     };
-    strategy = mkOption {
-      type = types.enum [ "packets" "all" ];
-      default = "packets";
-      description = ''
-      '';
-    };
-    filter = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        Filter for all activities based on client state trust threshold; this filter
-        is parametrized with (numerator = 1, denominator = 3), so that clients with
-        thresholds different than this will be ignored.
-      '';
-    };
     log-level = mkOption {
       type = types.enum [ "error" "warn" "info" "debug" "trace" ];
       default = "info";
@@ -35,14 +20,134 @@ with lib; {
         Specify the verbosity for the relayer logging output.
       '';
     };
-    clear-packets-interval = mkOption {
-      type = types.ints.u32;
-      default = 100;
-      description = ''
-        Parametrize the periodic packet clearing feature.
-        Interval (in number of blocks) at which pending packets
-        should be eagerly cleared. A value of '0' will disable it.
-      '';
+
+    mode = mkOption {
+      description = "Specify the mode to be used by the relayer";
+      default = {
+        clients = {
+          enabled = true;
+          refresh = true;
+          misbehaviour = true;
+        };
+        packets = {
+          enabled = true;
+          clear-interval = 100;
+          clear-on-start = false;
+          tx-confirmation = true;
+        };
+        connections.enabled = false;
+        channels.enabled = false;
+      };
+      type = types.submodule {
+        clients = mkOption {
+          description = "Specify the clients mode";
+          default = {
+            enabled = true;
+            refresh = true;
+            misbehaviour = true;
+          };
+          type = types.submodule {
+            enabled = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Whether or not to enable the client workers.
+              '';
+            };
+            refresh = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Whether or not to enable periodic refresh of clients. [Default: true]
+                Note: Even if this is disabled, clients will be refreshed automatically if
+                     there is activity on a connection or channel they are involved with.
+              '';
+            };
+            misbehaviour = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Whether or not to enable misbehaviour detection for clients.
+              '';
+            };
+          };
+        };
+        packets = mkOption {
+          description = "Specify the packets mode";
+          default = {
+            enabled = true;
+            clear-interval = 100;
+            clear-on-start = false;
+            tx-confirmation = true;
+          };
+          type = types.submodule {
+            enabled = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Whether or not to enable the packet workers.
+              '';
+            };
+            clear-interval = mkOption {
+              type = types.ints.u32;
+              default = 100;
+              description = ''
+                Parametrize the periodic packet clearing feature.
+                Interval (in number of blocks) at which pending packets
+                should be eagerly cleared. A value of '0' will disable it.
+              '';
+            };
+            clear-on-start = mkOption {
+              type = types.bool;
+              default = false;
+              description = ''
+                Whether or not to clear packets on start.
+              '';
+            };
+            tx-confirmation = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Toggle the transaction confirmation mechanism.
+                The tx confirmation mechanism periodically queries the `/tx_search` RPC
+                endpoint to check that previously-submitted transactions
+                (to any chain in this config file) have delivered successfully.
+                Experimental feature. Affects telemetry if set to false.
+              '';
+            };
+          };
+        };
+        connections = mkOption {
+          description = "Specify the connections mode";
+          default = {
+            enabled = false;
+          };
+          type = types.submodule {
+            enabled = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Whether or not to enable the connection workers for handshake completion.
+              '';
+            };
+          };
+        };
+        channels = mkOption {
+          description = "Specify the channels mode";
+          default = {
+            enabled = false;
+          };
+          type = types.submodule {
+            enabled = mkOption {
+              type = types.bool;
+              default = true;
+              description = ''
+                Whether or not to enable the channel workers for handshake completion.
+              '';
+            };
+          };
+        };
+      };
     };
     tx-confirmation = mkOption {
       type = types.bool;

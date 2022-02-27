@@ -41,17 +41,35 @@ let
       trust_threshold = { numerator = '${toString trust-threshold-numerator}', denominator = '${toString trust-threshold-denominator}' }
     '';
   chains = builtins.foldl' chain-fold-op "" cfg.chains;
+  mode = with cfg.mode; ''
+    [mode]
+
+    [mode.clients]
+    enabled = ${boolToString clients.enabled}
+    refresh = ${boolToString clients.refresh}
+    misbehaviour = ${boolToString clients.misbehaviour}
+
+    [mode.connections]
+    enabled = ${boolToString connections.enabled}
+
+    [mode.channels]
+    enabled = ${boolToString channels.enabled}
+
+    [mode.packets]
+    enabled = ${boolToString packets.enabled}
+    clear_interval = ${toString packets.clear-interval}
+    clear_on_start = ${boolToString packets.clear-on-start}
+    tx_confirmation = ${boolToString packets.tx-confirmation}
+  '';
 in
 pkgs.writeTextFile {
   name = "config.toml";
   text = ''
     [global]
-    strategy = '${strategy}'
-    filter = ${boolToString filter}
     log_level = '${log-level}'
-    clear_packets_interval = ${toString clear-packets-interval}
-    tx_confirmation = ${boolToString tx-confirmation}
   ''
+  + "\n"
+  # + mode
   + "\n"
   + rest
   + "\n"
