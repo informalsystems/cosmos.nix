@@ -24,6 +24,7 @@ jobs:
 
       - name: Check 🔎
         run: |
+          ls -ld /dev/kvm
           whoami
           nix flake check
 
