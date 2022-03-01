@@ -64,6 +64,22 @@
         "type": "github"
       }
     },
+    "gaia-ica-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646130307,
+        "narHash": "sha256-8pDPEoBsXIT3pgrKkQM4JitgTZVU8En5Prl5A8YSxmA=",
+        "owner": "cosmos",
+        "repo": "interchain-accounts-demo",
+        "rev": "de1ac14f41791c653d16ad17597ef90fbd9f70dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "interchain-accounts-demo",
+        "type": "github"
+      }
+    },
     "gaia4-src": {
       "flake": false,
       "locked": {
@@ -305,6 +321,7 @@
         "cosmos-sdk-src": "cosmos-sdk-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
+        "gaia-ica-src": "gaia-ica-src",
         "gaia4-src": "gaia4-src",
         "gaia5-src": "gaia5-src",
         "gaia6_0_2-src": "gaia6_0_2-src",

@@ -27,6 +27,9 @@
     relayer-src.url = github:cosmos/relayer/v1.0.0;
     relayer-src.flake = false;
 
+    gaia-ica-src.flake = false;
+    gaia-ica-src.url = github:cosmos/interchain-accounts-demo;
+
     # Chain Sources
     gaia6_0_2-src.flake = false;
     gaia6_0_2-src.url = github:cosmos/gaia/v6.0.2;
