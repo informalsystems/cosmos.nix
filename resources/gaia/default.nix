@@ -57,7 +57,7 @@ builtins.mapAttrs
 
   gaia-ica = {
     vendorSha256 = "sha256-M0uxLfVAqP/bmexC46QlVVq9gR38B2npoBEoTCyxKx8=";
-    version = "ica";
+    version = "v6.0.0-ica";
     src = gaia-ica-src;
     ledgerSupport = false;
   };
