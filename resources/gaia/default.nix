@@ -1,4 +1,4 @@
-{ pkgs, gaia4-src, gaia5-src, gaia6_0_2-src, gaia6_0_3-src }:
+{ pkgs, gaia4-src, gaia5-src, gaia6_0_2-src, gaia6_0_3-src, gaia7-src }:
 let
   parser = import ../goModParser.nix;
 in
@@ -55,5 +55,10 @@ builtins.mapAttrs
     ledgerSupport = false;
   };
 
+  gaia7 = {
+    vendorSha256 = "sha256-G+iqzfy1dlaTsGuxq0ffXgEI4RJ7ZwbU8GlTWKXp/sU=";
+    version = "v7.0.0-rc0";
+    src = gaia7-src;
+    ledgerSupport = false;
+  };
 }
-
