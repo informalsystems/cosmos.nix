@@ -27,8 +27,8 @@
     relayer-src.url = github:cosmos/relayer/v1.0.0;
     relayer-src.flake = false;
 
-    gaia-ica-src.flake = false;
-    gaia-ica-src.url = github:cosmos/interchain-accounts-demo;
+    ica-src.flake = false;
+    ica-src.url = github:cosmos/interchain-accounts-demo;
 
     # Chain Sources
     gaia6_0_2-src.flake = false;
@@ -99,6 +99,7 @@
           gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
           gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          ica = mkApp { name = "icad"; drv = packages.ica; exePath = "/bin/icad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
           simd = mkApp { name = "simd"; drv = packages.simd; };
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };

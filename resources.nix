@@ -78,6 +78,12 @@ let
       doCheck = false;
     };
 
+    ica = pkgs.buildGoModule {
+      name = "ica";
+      src = ica-src;
+      vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
+    };
+
     # Rust resources
     hermes = naersk.lib."${system}".buildPackage {
       pname = "ibc-rs";
@@ -95,7 +101,7 @@ let
     };
     ts-relayer = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer;
     ts-relayer-setup = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer-setup;
-  } // (import ./resources/gaia { inherit pkgs gaia4-src gaia5-src gaia6_0_2-src gaia6_0_3-src gaia-ica-src; });
+  } // (import ./resources/gaia { inherit pkgs gaia4-src gaia5-src gaia6_0_2-src gaia6_0_3-src; });
 
   # Dev shells
   devShells = {

@@ -1,4 +1,4 @@
-{ pkgs, gaia4-src, gaia5-src, gaia6_0_2-src, gaia6_0_3-src, gaia-ica-src }:
+{ pkgs, gaia4-src, gaia5-src, gaia6_0_2-src, gaia6_0_3-src }:
 let
   parser = import ../goModParser.nix;
 in
@@ -54,12 +54,4 @@ builtins.mapAttrs
     src = gaia6_0_2-src;
     ledgerSupport = false;
   };
-
-  gaia-ica = {
-    vendorSha256 = "sha256-M0uxLfVAqP/bmexC46QlVVq9gR38B2npoBEoTCyxKx8=";
-    version = "v6.0.0-ica";
-    src = gaia-ica-src;
-    ledgerSupport = false;
-  };
-
 }
