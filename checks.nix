@@ -1,4 +1,4 @@
-{ packages, inputs, system, tests }:
+{ packages, inputs, system }:
 {
   pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
     src = ./.;
@@ -8,4 +8,3 @@
     };
   };
 } // packages # adding packages here ensures that every attr gets built on check
-  // tests
