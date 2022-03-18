@@ -112,6 +112,8 @@ let
         shellHook = self.checks.${system}.pre-commit-check.shellHook;
         buildInputs = with pkgs; [
           rnix-lsp
+          pass
+          gnupg
         ];
       };
     cosmos-shell =
