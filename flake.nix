@@ -4,11 +4,9 @@
   inputs = {
     # Nix Inputs
     nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
-    pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
     flake-utils.url = github:numtide/flake-utils;
-
-    # Rust Inputs
-    naersk.url = github:nmattia/naersk;
+    rust-overlay.url = github:oxalica/rust-overlay;
+    pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
@@ -18,7 +16,7 @@
     sconfig-src.flake = false;
 
     # Relayer Sources
-    ibc-rs-src.url = github:informalsystems/ibc-rs/v0.10.0;
+    ibc-rs-src.url = github:informalsystems/ibc-rs/v0.13.0-rc.0;
     ibc-rs-src.flake = false;
 
     ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
@@ -75,7 +73,10 @@
     with inputs.flake-utils.lib;
     eachDefaultSystem (system:
       let
-        pkgs = import inputs.nixpkgs { inherit system; };
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [ inputs.rust-overlay.overlay ];
+        };
         eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
         resources = (import ./resources.nix) { inherit inputs pkgs eval-pkgs system; };
       in
