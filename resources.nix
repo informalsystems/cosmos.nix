@@ -81,10 +81,10 @@ let
     # Rust resources
     hermes = pkgs.rustPlatform.buildRustPackage {
       pname = "ibc-rs";
-      version = "v0.12.0-rc.0";
+      version = "v0.13.0-rc.0";
       src = ibc-rs-src;
       nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
-      cargoSha256 = "sha256-iER7OQaTOBqQTUcQ/vWzcBbuawuHn4/LcB4pnrWl5D8=";
+      cargoSha256 = "sha256-lIMnZQw46prUFHlAzCWPkKzSNi4F9D+1+aG1vt/5Bvo=";
       doCheck = false;
     };
 
