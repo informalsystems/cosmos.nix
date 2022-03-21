@@ -38,6 +38,9 @@
     gaia6_0_3-src.flake = false;
     gaia6_0_3-src.url = github:cosmos/gaia/v6.0.3;
 
+    gaia6_0_4-src.flake = false;
+    gaia6_0_4-src.url = github:cosmos/gaia/v6.0.4;
+
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
@@ -101,9 +104,10 @@
           gaia = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
           gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
           gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
           gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6_0_4 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
           gaia7 = mkApp { name = "gaia"; drv = packages.gaia7; exePath = "/bin/gaiad"; };
           ica = mkApp { name = "icad"; drv = packages.ica; exePath = "/bin/icad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };

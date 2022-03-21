@@ -1,6 +1,13 @@
-{ pkgs, gaia4-src, gaia5-src, gaia6_0_2-src, gaia6_0_3-src, gaia7-src }:
+{ pkgs, gaia4-src, gaia5-src, gaia6_0_2-src, gaia6_0_3-src, gaia6_0_4-src, gaia7-src }:
 let
   parser = import ../goModParser.nix;
+
+  gaia6_0_4 = {
+    vendorSha256 = "sha256-KeF3gO5sUJEXWqb6EVYBYXpVBfhvyXZ4f03l63wYTjE=";
+    version = "v6.0.4";
+    src = gaia6_0_4-src;
+    ledgerSupport = false;
+  };
 in
 builtins.mapAttrs
   (
@@ -39,6 +46,10 @@ builtins.mapAttrs
     src = gaia5-src;
     ledgerSupport = false;
   };
+
+  gaia6 = gaia6_0_4;
+
+  inherit gaia6_0_4;
 
   gaia6_0_3 = {
     vendorSha256 = "sha256-cNQOv4wW98Vd08ieU3jgsvXoSDQQYZTkeTqUD2Cty58=";
