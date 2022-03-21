@@ -103,7 +103,9 @@ let
     };
     ts-relayer = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer;
     ts-relayer-setup = ((import ./resources/ts-relayer) { inherit ts-relayer-src pkgs eval-pkgs; }).ts-relayer-setup;
-  } // (import ./resources/gaia { inherit pkgs gaia4-src gaia5-src gaia6_0_2-src gaia6_0_3-src gaia7-src; });
+  } // (import ./resources/gaia {
+    inherit pkgs gaia4-src gaia5-src gaia6_0_2-src gaia6_0_3-src gaia6_0_4-src gaia7-src;
+  });
 
   # Dev shells
   devShells = {
