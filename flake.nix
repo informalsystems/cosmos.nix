@@ -47,6 +47,12 @@
     gaia4-src.flake = false;
     gaia4-src.url = github:cosmos/gaia/v4.2.1;
 
+    ibc-go-v2-src.flake = false;
+    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
+
+    ibc-go-v3-src.flake = false;
+    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.0.0;
+
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
 

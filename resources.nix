@@ -35,6 +35,18 @@ let
       vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
       doCheck = false;
     };
+    ibc-go-v2-simapp = pkgs.buildGoModule {
+      name = "simapp";
+      src = "${inputs.ibc-go-v2-src}";
+      vendorSha256 = "sha256-Af47uEEPCFsX1JiMiw3LprGDiVb/0HA0sMeuDdAVXu8=";
+      doCheck = false;
+    };
+    ibc-go-v3-simapp = pkgs.buildGoModule {
+      name = "simapp";
+      src = "${inputs.ibc-go-v3-src}";
+      vendorSha256 = "sha256-W05fH/y7InNgY68aJLlm32c8DpAKFnO3ehH8CzzYdPI=";
+      doCheck = false;
+    };
     simd = pkgs.buildGoModule {
       name = "simd";
       src = cleanSourceWithRegexes cosmos-sdk-src [ ".*cosmovisor.*" ];
