@@ -181,6 +181,23 @@
         "type": "github"
       }
     },
+    "ibc-go-ics29-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647958967,
+        "narHash": "sha256-QZ/BQ+qnz+dmosx7/bptIoAyufeWRdT2i420p2ujqf8=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "ab90f07e9a776a8aafe333a25f91fa43a0e42560",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "ics29-fee-middleware",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-go-v2-src": {
       "flake": false,
       "locked": {
@@ -392,6 +409,7 @@
         "gaia6_0_3-src": "gaia6_0_3-src",
         "gaia6_0_4-src": "gaia6_0_4-src",
         "gaia7-src": "gaia7-src",
+        "ibc-go-ics29-src": "ibc-go-ics29-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",
         "ibc-rs-src": "ibc-rs-src",

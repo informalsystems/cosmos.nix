@@ -47,6 +47,12 @@ let
       vendorSha256 = "sha256-W05fH/y7InNgY68aJLlm32c8DpAKFnO3ehH8CzzYdPI=";
       doCheck = false;
     };
+    ibc-go-ics29-simapp = pkgs.buildGoModule {
+      name = "simapp";
+      src = "${inputs.ibc-go-ics29-src}";
+      vendorSha256 = "sha256-e2aA/mme24hi3ERl/ooZc1YsshlvHmXak/VEwGe5Q3I=";
+      doCheck = false;
+    };
     simd = pkgs.buildGoModule {
       name = "simd";
       src = cleanSourceWithRegexes cosmos-sdk-src [ ".*cosmovisor.*" ];

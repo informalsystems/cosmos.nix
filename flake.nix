@@ -53,6 +53,9 @@
     ibc-go-v3-src.flake = false;
     ibc-go-v3-src.url = github:cosmos/ibc-go/v3.0.0;
 
+    ibc-go-ics29-src.flake = false;
+    ibc-go-ics29-src.url = github:cosmos/ibc-go/ics29-fee-middleware;
+
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
 
