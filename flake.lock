@@ -181,6 +181,57 @@
         "type": "github"
       }
     },
+    "ibc-go-ics29-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647958967,
+        "narHash": "sha256-QZ/BQ+qnz+dmosx7/bptIoAyufeWRdT2i420p2ujqf8=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "ab90f07e9a776a8aafe333a25f91fa43a0e42560",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "ics29-fee-middleware",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
+    "ibc-go-v2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647351578,
+        "narHash": "sha256-n2xo3CGyO9wgIPvHgKqDfPjhhy3eHNGX6XDn707BTwk=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "bfb76858a34489d85c0404e4fdd597389229787d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v2.2.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
+    "ibc-go-v3-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647356202,
+        "narHash": "sha256-wX3kUzK5dkPeNgmBGP0mE8QeNR4LRo1obVGasZSLSpE=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "46e020640e66f9043c14c53a4d215a5b457d6703",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v3.0.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -358,6 +409,9 @@
         "gaia6_0_3-src": "gaia6_0_3-src",
         "gaia6_0_4-src": "gaia6_0_4-src",
         "gaia7-src": "gaia7-src",
+        "ibc-go-ics29-src": "ibc-go-ics29-src",
+        "ibc-go-v2-src": "ibc-go-v2-src",
+        "ibc-go-v3-src": "ibc-go-v3-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "iris-src": "iris-src",
