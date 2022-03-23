@@ -137,6 +137,7 @@
           pass
           gnupg
           alejandra
+          nix-linter
         ];
       };
     cosmos-shell =
