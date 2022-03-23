@@ -4,11 +4,9 @@
   inputs = {
     # Nix Inputs
     nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
-    pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
     flake-utils.url = github:numtide/flake-utils;
-
-    # Rust Inputs
-    naersk.url = github:nmattia/naersk;
+    rust-overlay.url = github:oxalica/rust-overlay;
+    pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
@@ -18,7 +16,7 @@
     sconfig-src.flake = false;
 
     # Relayer Sources
-    ibc-rs-src.url = github:informalsystems/ibc-rs/v0.10.0;
+    ibc-rs-src.url = github:informalsystems/ibc-rs/v0.13.0-rc.0;
     ibc-rs-src.flake = false;
 
     ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
@@ -27,7 +25,13 @@
     relayer-src.url = github:cosmos/relayer/v1.0.0;
     relayer-src.flake = false;
 
+    ica-src.flake = false;
+    ica-src.url = github:cosmos/interchain-accounts-demo;
+
     # Chain Sources
+    gaia7-src.flake = false;
+    gaia7-src.url = github:cosmos/gaia/v7.0.0-rc0;
+
     gaia6_0_2-src.flake = false;
     gaia6_0_2-src.url = github:cosmos/gaia/v6.0.2;
 
@@ -35,13 +39,25 @@
     gaia6_0_3-src.url = github:cosmos/gaia/v6.0.3;
 
     gaia6-ordered-src.flake = false;
-    gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.1-ordered;
+    gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.4-ordered;
+
+    gaia6_0_4-src.flake = false;
+    gaia6_0_4-src.url = github:cosmos/gaia/v6.0.4;
 
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
     gaia4-src.flake = false;
     gaia4-src.url = github:cosmos/gaia/v4.2.1;
+
+    ibc-go-v2-src.flake = false;
+    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
+
+    ibc-go-v3-src.flake = false;
+    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.0.0;
+
+    ibc-go-ics29-src.flake = false;
+    ibc-go-ics29-src.url = github:cosmos/ibc-go/ics29-fee-middleware;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
@@ -72,14 +88,18 @@
     with inputs.flake-utils.lib;
     eachDefaultSystem (system:
       let
-        pkgs = import inputs.nixpkgs { inherit system; };
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [ inputs.rust-overlay.overlay ];
+        };
         eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
         resources = (import ./resources.nix) { inherit inputs pkgs eval-pkgs system; };
+        tests = (import ./tests.nix) { inherit (resources) packages; inherit pkgs system; };
       in
       rec {
 
         # nix build .#<app>
-        packages = flattenTree (resources.packages // resources.devShells);
+        packages = flattenTree (resources.packages // resources.devShells // tests);
 
         # nix flake check
         checks = (import ./checks.nix) {
@@ -96,10 +116,13 @@
           gaia = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
           gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
-          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
           gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
           gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
           gaia6-ordered = mkApp { name = "gaia"; drv = packages.gaia6-ordered; exePath = "/bin/gaiad"; };
+          gaia6_0_4 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
+          gaia7 = mkApp { name = "gaia"; drv = packages.gaia7; exePath = "/bin/gaiad"; };
+          ica = mkApp { name = "icad"; drv = packages.ica; exePath = "/bin/icad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
           simd = mkApp { name = "simd"; drv = packages.simd; };
           stoml = mkApp { name = "stoml"; drv = packages.stoml; };
