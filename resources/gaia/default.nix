@@ -9,7 +9,7 @@ rec {
     name = "gaia";
     vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
     version = "v5.0.6";
-    src = inputs.inputs.gaia5-src;
+    src = inputs.gaia5-src;
     ledgerSupport = false;
   };
 
