@@ -70,6 +70,15 @@ builtins.mapAttrs
     src = inputs.gaia6_0_2-src;
     ledgerSupport = false;
   };
+
+  gaia6-ordered = {
+    name = "gaia";
+    vendorSha256 = "sha256-4gBFn+zY3JK2xGKdIlYgRbK3WWjmtKFdEaUc1+nT4zw=";
+    version = "v6.0.4-ordered";
+    src = inputs.gaia6-ordered-src;
+    ledgerSupport = false;
+  };
+
   gaia7 = {
     name = "gaia";
     vendorSha256 = "sha256-G+iqzfy1dlaTsGuxq0ffXgEI4RJ7ZwbU8GlTWKXp/sU=";

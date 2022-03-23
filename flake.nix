@@ -38,6 +38,9 @@
     gaia6_0_3-src.flake = false;
     gaia6_0_3-src.url = github:cosmos/gaia/v6.0.3;
 
+    gaia6-ordered-src.flake = false;
+    gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.4-ordered;
+
     gaia6_0_4-src.flake = false;
     gaia6_0_4-src.url = github:cosmos/gaia/v6.0.4;
 
@@ -116,6 +119,7 @@
           gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
           gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
           gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6-ordered = mkApp { name = "gaia"; drv = packages.gaia6-ordered; exePath = "/bin/gaiad"; };
           gaia6_0_4 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
           gaia7 = mkApp { name = "gaia"; drv = packages.gaia7; exePath = "/bin/gaiad"; };
           ica = mkApp { name = "icad"; drv = packages.ica; exePath = "/bin/icad"; };
