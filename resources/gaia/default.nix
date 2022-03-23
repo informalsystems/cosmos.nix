@@ -6,14 +6,6 @@ with inputs;
 builtins.mapAttrs
   (_: mkCosmosGoApp)
 rec {
-  gaia4 = {
-    name = "gaia";
-    vendorSha256 = "sha256-e8/xrLwzZ4/B2Rr/+e8n6iAm6PQxcEynL9wLYD3jKY4=";
-    version = "v4.2.1";
-    src = gaia4-src;
-    ledgerSupport = false;
-  };
-
   gaia5 = {
     name = "gaia";
     vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
