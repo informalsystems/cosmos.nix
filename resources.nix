@@ -15,35 +15,39 @@ let
     inherit pkgs inputs;
   };
 
+  ibc-packages = import ./resources/ibc-go {
+    inherit pkgs inputs;
+  };
+
   # Cosmos packages
-  packages = rec {
+  packages = with inputs; rec {
 
     # Go packages
     stoml = pkgs.buildGoModule {
       name = "stoml";
-      src = inputs.stoml-src;
+      src = stoml-src;
       vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
     };
     sconfig = pkgs.buildGoModule {
       name = "sconfig";
-      src = inputs.sconfig-src;
+      src = sconfig-src;
       vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
     };
     cosmovisor = pkgs.buildGoModule {
       name = "cosmovisor";
-      src = "${inputs.cosmos-sdk-src}/cosmovisor";
+      src = "${cosmos-sdk-src}/cosmovisor";
       vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
       doCheck = false;
     };
     simd = pkgs.buildGoModule {
       name = "simd";
-      src = cleanSourceWithRegexes inputs.cosmos-sdk-src [ ".*cosmovisor.*" ];
+      src = cleanSourceWithRegexes cosmos-sdk-src [ ".*cosmovisor.*" ];
       vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
       doCheck = false;
     };
     osmosis = pkgs.buildGoModule {
       name = "osmosis";
-      src = inputs.osmosis-src;
+      src = osmosis-src;
       vendorSha256 = "sha256-1z9XUOwglbi13w9XK87kQxLl4Hh+OcLZlXfw8QyVGZg=";
       preCheck = ''
         export HOME="$(mktemp -d)"
@@ -51,13 +55,13 @@ let
     };
     iris = pkgs.buildGoModule {
       name = "iris";
-      src = inputs.iris-src;
+      src = iris-src;
       vendorSha256 = "sha256-PBbOuSe4GywD2WTgoZZ/1QDXH5BX2UHseXU2vPrJKX8=";
     };
     regen = pkgs.buildGoModule {
       name = "regen";
       subPackages = [ "app/regen" ];
-      src = inputs.regen-src;
+      src = regen-src;
       vendorSha256 = "sha256-NH7flr8ExsfNm5JWpTGMmTRmcbhRjk9YYmqOnBRVmQM=";
       preCheck = ''
         export HOME="$(mktemp -d)"
@@ -65,7 +69,7 @@ let
     };
     evmos = pkgs.buildGoModule {
       name = "evmos";
-      src = inputs.evmos-src;
+      src = evmos-src;
       vendorSha256 = "sha256-c2MJL52achqlTbu87ZUKehnn92Wm6fTU/DIjadCUgH4=";
       preCheck = ''
         export HOME="$(mktemp -d)"
@@ -73,14 +77,14 @@ let
     };
     relayer = pkgs.buildGoModule {
       name = "relayer";
-      src = inputs.relayer-src;
+      src = relayer-src;
       vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
       doCheck = false;
     };
 
     ica = pkgs.buildGoModule {
       name = "ica";
-      src = inputs.ica-src;
+      src = ica-src;
       vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
     };
 
@@ -110,7 +114,8 @@ let
       inherit pkgs eval-pkgs;
       inherit (inputs) ts-relayer-src;
     }).ts-relayer-setup;
-  } // gaia-packages;
+  } // gaia-packages
+  // ibc-packages;
 
   # Dev shells
   devShells = {
