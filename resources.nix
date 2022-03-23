@@ -20,34 +20,34 @@ let
   };
 
   # Cosmos packages
-  packages = with inputs; rec {
+  packages = rec {
 
     # Go packages
     stoml = pkgs.buildGoModule {
       name = "stoml";
-      src = stoml-src;
+      src = inputs.stoml-src;
       vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
     };
     sconfig = pkgs.buildGoModule {
       name = "sconfig";
-      src = sconfig-src;
+      src = inputs.sconfig-src;
       vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
     };
     cosmovisor = pkgs.buildGoModule {
       name = "cosmovisor";
-      src = "${cosmos-sdk-src}/cosmovisor";
+      src = "${inputs.cosmos-sdk-src}/cosmovisor";
       vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
       doCheck = false;
     };
     simd = pkgs.buildGoModule {
       name = "simd";
-      src = cleanSourceWithRegexes cosmos-sdk-src [ ".*cosmovisor.*" ];
+      src = cleanSourceWithRegexes inputs.cosmos-sdk-src [ ".*cosmovisor.*" ];
       vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
       doCheck = false;
     };
     osmosis = pkgs.buildGoModule {
       name = "osmosis";
-      src = osmosis-src;
+      src = inputs.osmosis-src;
       vendorSha256 = "sha256-1z9XUOwglbi13w9XK87kQxLl4Hh+OcLZlXfw8QyVGZg=";
       preCheck = ''
         export HOME="$(mktemp -d)"
@@ -55,13 +55,13 @@ let
     };
     iris = pkgs.buildGoModule {
       name = "iris";
-      src = iris-src;
+      src = inputs.iris-src;
       vendorSha256 = "sha256-PBbOuSe4GywD2WTgoZZ/1QDXH5BX2UHseXU2vPrJKX8=";
     };
     regen = pkgs.buildGoModule {
       name = "regen";
       subPackages = [ "app/regen" ];
-      src = regen-src;
+      src = inputs.regen-src;
       vendorSha256 = "sha256-NH7flr8ExsfNm5JWpTGMmTRmcbhRjk9YYmqOnBRVmQM=";
       preCheck = ''
         export HOME="$(mktemp -d)"
@@ -69,7 +69,7 @@ let
     };
     evmos = pkgs.buildGoModule {
       name = "evmos";
-      src = evmos-src;
+      src = inputs.evmos-src;
       vendorSha256 = "sha256-c2MJL52achqlTbu87ZUKehnn92Wm6fTU/DIjadCUgH4=";
       preCheck = ''
         export HOME="$(mktemp -d)"
@@ -77,14 +77,14 @@ let
     };
     relayer = pkgs.buildGoModule {
       name = "relayer";
-      src = relayer-src;
+      src = inputs.relayer-src;
       vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
       doCheck = false;
     };
 
     ica = pkgs.buildGoModule {
       name = "ica";
-      src = ica-src;
+      src = inputs.ica-src;
       vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
     };
 
