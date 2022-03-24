@@ -7,9 +7,6 @@
     flake-utils.url = github:numtide/flake-utils;
     rust-overlay.url = github:oxalica/rust-overlay;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
-    # Has to follow flake-utils in order to get aarch64-darwin
-    # can revert after https://github.com/cachix/pre-commit-hooks.nix/pull/142
-    pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
@@ -89,18 +86,18 @@
 
   outputs = inputs:
     with inputs.flake-utils.lib;
-      eachDefaultSystem (system: let
+    eachDefaultSystem (system:
+      let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = [inputs.rust-overlay.overlay];
+          overlays = [ inputs.rust-overlay.overlay ];
         };
-        eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-        resources = (import ./resources.nix) {inherit inputs pkgs eval-pkgs system;};
-        tests = (import ./tests.nix) {
-          inherit (resources) packages;
-          inherit pkgs system;
-        };
-      in rec {
+        eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+        resources = (import ./resources.nix) { inherit inputs pkgs eval-pkgs system; };
+        tests = (import ./tests.nix) { inherit (resources) packages; inherit pkgs system; };
+      in
+      rec {
+
         # nix build .#<app>
         packages = flattenTree (resources.packages // resources.devShells // tests);
 
@@ -115,106 +112,28 @@
 
         # nix run .#<app>
         apps = {
-          hermes = mkApp {
-            name = "hermes";
-            drv = packages.hermes;
-          };
-          gaia = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_3;
-            exePath = "/bin/gaiad";
-          };
-          gaia4 = mkApp {
-            name = "gaia";
-            drv = packages.gaia4;
-            exePath = "/bin/gaiad";
-          };
-          gaia5 = mkApp {
-            name = "gaia";
-            drv = packages.gaia5;
-            exePath = "/bin/gaiad";
-          };
-          gaia6 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_4;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_2 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_2;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_3 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_3;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_4 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_4;
-            exePath = "/bin/gaiad";
-          };
-          gaia6-ordered = mkApp {
-            name = "gaia";
-            drv = packages.gaia6-ordered;
-            exePath = "/bin/gaiad";
-          };
-          gaia7 = mkApp {
-            name = "gaia";
-            drv = packages.gaia7;
-            exePath = "/bin/gaiad";
-          };
-          ica = mkApp {
-            name = "icad";
-            drv = packages.ica;
-            exePath = "/bin/icad";
-          };
-          cosmovisor = mkApp {
-            name = "cosmovisor";
-            drv = packages.cosmovisor;
-          };
-          simd = mkApp {
-            name = "simd";
-            drv = packages.simd;
-          };
-          stoml = mkApp {
-            name = "stoml";
-            drv = packages.stoml;
-          };
-          sconfig = mkApp {
-            name = "sconfig";
-            drv = packages.sconfig;
-          };
-          gm = mkApp {
-            name = "gm";
-            drv = packages.gm;
-          };
-          osmosis = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis;
-            exePath = "/bin/osmosisd";
-          };
-          iris = mkApp {
-            name = "iris";
-            drv = packages.iris;
-          };
-          regen = mkApp {
-            name = "regen";
-            drv = packages.regen;
-          };
-          evmos = mkApp {
-            name = "evmos";
-            drv = packages.evmos;
-            exePath = "/bin/evmosd";
-          };
-          ts-relayer = mkApp {
-            name = "ts-relayer";
-            drv = packages.ts-relayer;
-          };
-          ts-relayer-setup = mkApp {
-            name = "ts-relayer-setup";
-            drv = packages.ts-relayer-setup;
-          };
+          hermes = mkApp { name = "hermes"; drv = packages.hermes; };
+          gaia = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia4 = mkApp { name = "gaia"; drv = packages.gaia4; exePath = "/bin/gaiad"; };
+          gaia5 = mkApp { name = "gaia"; drv = packages.gaia5; exePath = "/bin/gaiad"; };
+          gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
+          gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
+          gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
+          gaia6-ordered = mkApp { name = "gaia"; drv = packages.gaia6-ordered; exePath = "/bin/gaiad"; };
+          gaia6_0_4 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
+          gaia7 = mkApp { name = "gaia"; drv = packages.gaia7; exePath = "/bin/gaiad"; };
+          ica = mkApp { name = "icad"; drv = packages.ica; exePath = "/bin/icad"; };
+          cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };
+          simd = mkApp { name = "simd"; drv = packages.simd; };
+          stoml = mkApp { name = "stoml"; drv = packages.stoml; };
+          sconfig = mkApp { name = "sconfig"; drv = packages.sconfig; };
+          gm = mkApp { name = "gm"; drv = packages.gm; };
+          osmosis = mkApp { name = "osmosis"; drv = packages.osmosis; exePath = "/bin/osmosisd"; };
+          iris = mkApp { name = "iris"; drv = packages.iris; };
+          regen = mkApp { name = "regen"; drv = packages.regen; };
+          evmos = mkApp { name = "evmos"; drv = packages.evmos; exePath = "/bin/evmosd"; };
+          ts-relayer = mkApp { name = "ts-relayer"; drv = packages.ts-relayer; };
+          ts-relayer-setup = mkApp { name = "ts-relayer-setup"; drv = packages.ts-relayer-setup; };
           # bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
           # thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
           # thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
