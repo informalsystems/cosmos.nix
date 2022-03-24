@@ -50,9 +50,6 @@
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
-    gaia4-src.flake = false;
-    gaia4-src.url = github:cosmos/gaia/v4.2.1;
-
     ibc-go-v2-src.flake = false;
     ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
 

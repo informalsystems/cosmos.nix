@@ -8,14 +8,6 @@ in
     builtins.mapAttrs
     (_: mkCosmosGoApp)
     rec {
-      gaia4 = {
-        name = "gaia";
-        vendorSha256 = "sha256-e8/xrLwzZ4/B2Rr/+e8n6iAm6PQxcEynL9wLYD3jKY4=";
-        version = "v4.2.1";
-        src = gaia4-src;
-        ledgerSupport = false;
-      };
-
       gaia5 = {
         name = "gaia";
         vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
@@ -24,19 +16,19 @@ in
         ledgerSupport = false;
       };
 
-      gaia6_0_3 = {
-        name = "gaia";
-        vendorSha256 = "sha256-cNQOv4wW98Vd08ieU3jgsvXoSDQQYZTkeTqUD2Cty58=";
-        version = "v6.0.3";
-        src = gaia6_0_3-src;
-        ledgerSupport = false;
-      };
-
       gaia6_0_2 = {
         name = "gaia";
         vendorSha256 = "sha256-CNxWgIWf+8wB2CAUk+WadnIb3fi1UYftPea5sWtk/Rs=";
         version = "v6.0.2";
         src = gaia6_0_2-src;
+        ledgerSupport = false;
+      };
+
+      gaia6_0_3 = {
+        name = "gaia";
+        vendorSha256 = "sha256-cNQOv4wW98Vd08ieU3jgsvXoSDQQYZTkeTqUD2Cty58=";
+        version = "v6.0.3";
+        src = gaia6_0_3-src;
         ledgerSupport = false;
       };
 
