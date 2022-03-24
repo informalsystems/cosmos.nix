@@ -22,9 +22,11 @@
       pname = name;
       tags =
         ["netgo"]
-        ++ (if ledgerSupport
-        then ["ledger"]
-        else []);
+        ++ (
+          if ledgerSupport
+          then ["ledger"]
+          else []
+        );
       preCheck =
         if preCheck == null
         then ''export HOME="$(mktemp -d)"''

@@ -129,27 +129,25 @@
 
   # Dev shells
   devShells = {
-    nix-shell =
-      pkgs.mkShell {
-        shellHook = inputs.self.checks.${system}.pre-commit-check.shellHook;
-        buildInputs = with pkgs; [
-          rnix-lsp
-          pass
-          gnupg
-          alejandra
-          nix-linter
-        ];
-      };
-    cosmos-shell =
-      pkgs.mkShell {
-        buildInputs = with pkgs;
-          [
-            go
-            rust-bin.stable.latest.default
-            openssl
-            shellcheck
-          ]
-          ++ builtins.attrValues packages;
-      };
+    nix-shell = pkgs.mkShell {
+      shellHook = inputs.self.checks.${system}.pre-commit-check.shellHook;
+      buildInputs = with pkgs; [
+        rnix-lsp
+        pass
+        gnupg
+        alejandra
+        nix-linter
+      ];
+    };
+    cosmos-shell = pkgs.mkShell {
+      buildInputs = with pkgs;
+        [
+          go
+          rust-bin.stable.latest.default
+          openssl
+          shellcheck
+        ]
+        ++ builtins.attrValues packages;
+    };
   };
 in {inherit packages devShells;}
