@@ -1,28 +1,32 @@
-{ pkgs }:
-{
-  mkCosmosGoApp =
-    { name
-    , version
-    , src
-    , ledgerSupport
-    , vendorSha256
-    , doCheck ? true
-    , appName ? null
-    , preCheck ? null
-    }:
-    let
-      parser = import ./goModParser.nix;
-      go-mod = parser (builtins.readFile "${src}/go.mod");
-      tendermint-version = go-mod.require."github.com/tendermint/tendermint".version;
-      ldFlagAppName =
-        if appName == null
-        then "${name}d"
-        else appName;
-    in
+{pkgs}: {
+  mkCosmosGoApp = {
+    name,
+    version,
+    src,
+    ledgerSupport,
+    vendorSha256,
+    doCheck ? true,
+    appName ? null,
+    preCheck ? null,
+  }: let
+    parser = import ./goModParser.nix;
+    go-mod = parser (builtins.readFile "${src}/go.mod");
+    tendermint-version = go-mod.require."github.com/tendermint/tendermint".version;
+    ldFlagAppName =
+      if appName == null
+      then "${name}d"
+      else appName;
+  in
     pkgs.buildGoModule {
       inherit version src vendorSha256 doCheck;
       pname = name;
-      tags = [ "netgo" ] ++ (if ledgerSupport then [ "ledger" ] else [ ]);
+      tags =
+        ["netgo"]
+        ++ (
+          if ledgerSupport
+          then ["ledger"]
+          else []
+        );
       preCheck =
         if preCheck == null
         then ''export HOME="$(mktemp -d)"''
