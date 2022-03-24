@@ -15,6 +15,10 @@ let
     inherit pkgs inputs;
   };
 
+  ibc-packages = import ./resources/ibc-go {
+    inherit pkgs inputs;
+  };
+
   # Cosmos packages
   packages = rec {
 
@@ -110,7 +114,8 @@ let
       inherit pkgs eval-pkgs;
       inherit (inputs) ts-relayer-src;
     }).ts-relayer-setup;
-  } // gaia-packages;
+  } // gaia-packages
+  // ibc-packages;
 
   # Dev shells
   devShells = {

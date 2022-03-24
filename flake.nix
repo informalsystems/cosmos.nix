@@ -47,9 +47,6 @@
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
-    gaia4-src.flake = false;
-    gaia4-src.url = github:cosmos/gaia/v4.2.1;
-
     ibc-go-v2-src.flake = false;
     ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
 
@@ -119,8 +116,8 @@
           gaia6 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
           gaia6_0_2 = mkApp { name = "gaia"; drv = packages.gaia6_0_2; exePath = "/bin/gaiad"; };
           gaia6_0_3 = mkApp { name = "gaia"; drv = packages.gaia6_0_3; exePath = "/bin/gaiad"; };
-          gaia6-ordered = mkApp { name = "gaia"; drv = packages.gaia6-ordered; exePath = "/bin/gaiad"; };
           gaia6_0_4 = mkApp { name = "gaia"; drv = packages.gaia6_0_4; exePath = "/bin/gaiad"; };
+          gaia6-ordered = mkApp { name = "gaia"; drv = packages.gaia6-ordered; exePath = "/bin/gaiad"; };
           gaia7 = mkApp { name = "gaia"; drv = packages.gaia7; exePath = "/bin/gaiad"; };
           ica = mkApp { name = "icad"; drv = packages.ica; exePath = "/bin/icad"; };
           cosmovisor = mkApp { name = "cosmovisor"; drv = packages.cosmovisor; };

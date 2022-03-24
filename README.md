@@ -120,7 +120,7 @@ nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 > from wherever.
 >
 > Local: nix run .#my-app-name
-> 
+>
 > Remote: nix run github:informalsystems/cosmos.nix#my-app-name
 >
 > For brevity and consistency all the commands are listed in the local variant
@@ -143,11 +143,11 @@ nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 - [gravity dex](https://github.com/b-harvest/gravity-dex-backend): `nix run .#gdex`
 - [iris](https://github.com/irisnet/irishub): `nix run .#iris`
 - [regen](https://github.com/regen-network/regen-ledger): `nix run .#regen`
-- [ethermint](https://github.com/tharsis/ethermint): `nix run .#ethermint`
-- [juno](https://github.com/CosmosContracts/juno): `nix run .#juno`
+- [evmos](https://github.com/tharsis/evmos): `nix run .#evmos`
 
 #### Development Tools
 - [gaia](https://hub.cosmos.network/main/gaia-tutorials/what-is-gaia.html): `nix run .#gaia`
+- [ica](https://github.com/cosmos/interchain-accounts-demo): `nix run .#ica`
 - [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html): `nix run .#cosmovisor`
 - [simd](https://docs.cosmos.network/master/run-node/interact-node.html): `nix run .#simd`
 - [gm](https://github.com/informalsystems/ibc-rs/tree/master/scripts/gm): `nix run .#gm`
