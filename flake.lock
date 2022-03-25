@@ -20,16 +20,16 @@
     "evmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1639242686,
-        "narHash": "sha256-Vh+E88PVQJQLj2elXnc7hfuOAgohot8w/yVgeH+MSbY=",
+        "lastModified": 1648233712,
+        "narHash": "sha256-LCNGZPt6SwzN+4DHU6WcOl3ROhMOdXlIIeFJiJGYidc=",
         "owner": "tharsis",
         "repo": "evmos",
-        "rev": "4b6bf2c53286d92b9154caf605c0b4c4257664af",
+        "rev": "2e886b2882d61081c9b0a6f5aa10d96cd78aff7a",
         "type": "github"
       },
       "original": {
         "owner": "tharsis",
-        "ref": "v0.4.2",
+        "ref": "v3.0.0-beta",
         "repo": "evmos",
         "type": "github"
       }
@@ -313,23 +313,6 @@
         "type": "github"
       }
     },
-    "osmosis-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1642052048,
-        "narHash": "sha256-w9VGpAwVsOYQBK1f7a6BX6Ro39699EX/6wrGopCir+g=",
-        "owner": "osmosis-labs",
-        "repo": "osmosis",
-        "rev": "f8da5c17d04e25d1be9814bf146faa4d2149774e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "osmosis-labs",
-        "ref": "v6.1.0",
-        "repo": "osmosis",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": [
@@ -354,16 +337,16 @@
     "regen-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1637707735,
-        "narHash": "sha256-jMlqmTlosMroa3AHvwCJjnRd08EWYu5JqGOUiAV3JV0=",
+        "lastModified": 1645832054,
+        "narHash": "sha256-lDb0/Bw4hAX71jsCQJUju1mKYNacWEVezx6+KdIdu6Q=",
         "owner": "regen-network",
         "repo": "regen-ledger",
-        "rev": "d22117ebf4566238bfcd9605485d6d5e22596a08",
+        "rev": "5fb6268ed18a488ab88fb3bfa4b84e10892a7562",
         "type": "github"
       },
       "original": {
         "owner": "regen-network",
-        "ref": "v2.1.0",
+        "ref": "v3.0.0",
         "repo": "regen-ledger",
         "type": "github"
       }
@@ -403,7 +386,6 @@
         "ica-src": "ica-src",
         "iris-src": "iris-src",
         "nixpkgs": "nixpkgs",
-        "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",

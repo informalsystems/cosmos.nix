@@ -62,17 +62,14 @@
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
 
-    osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v6.1.0;
-
     iris-src.flake = false;
     iris-src.url = github:irisnet/irishub/v1.1.1;
 
     regen-src.flake = false;
-    regen-src.url = github:regen-network/regen-ledger/v2.1.0;
+    regen-src.url = github:regen-network/regen-ledger/v3.0.0;
 
     evmos-src.flake = false;
-    evmos-src.url = github:tharsis/evmos/v0.4.2;
+    evmos-src.url = github:tharsis/evmos/v3.0.0-beta;
 
     # Issue with replace directive for edwards in dcred dependency
     # thor-src.flake = false;
@@ -82,6 +79,9 @@
     # inject the dependency statically using musl
     # juno-src.flake = false;
     # juno-src.url = github:CosmosContracts/juno/v2.1.0;
+
+    # osmosis-src.flake = false;
+    # osmosis-src.url = github:osmosis-labs/osmosis/v7.0.4;
   };
 
   outputs = inputs:
@@ -186,11 +186,11 @@
             name = "gm";
             drv = packages.gm;
           };
-          osmosis = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis;
-            exePath = "/bin/osmosisd";
-          };
+          # osmosis = mkApp {
+          #   name = "osmosis";
+          #   drv = packages.osmosis;
+          #   exePath = "/bin/osmosisd";
+          # };
           iris = mkApp {
             name = "iris";
             drv = packages.iris;

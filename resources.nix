@@ -10,7 +10,7 @@
       cleanSourceWith {
         filter = (
           path: _:
-            any (r: match r path == null) regexes
+            all (r: match r path == null) regexes
         );
         inherit src;
       };
@@ -22,6 +22,8 @@
   ibc-packages = import ./resources/ibc-go {
     inherit pkgs inputs;
   };
+
+  mkCosmosGoApp = (import ./resources/utilities.nix {inherit pkgs;}).mkCosmosGoApp;
 
   # Cosmos packages
   packages = with inputs;
@@ -49,35 +51,26 @@
         vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
         doCheck = false;
       };
-      osmosis = pkgs.buildGoModule {
-        name = "osmosis";
-        src = osmosis-src;
-        vendorSha256 = "sha256-1z9XUOwglbi13w9XK87kQxLl4Hh+OcLZlXfw8QyVGZg=";
-        preCheck = ''
-          export HOME="$(mktemp -d)"
-        '';
+      # osmosis = mkCosmosGoApp {
+      #   name = "osmosis";
+      #   version = "v7.0.4";
+      #   src = osmosis-src;
+      #   vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
+      #   tags = ["netgo"];
+      # };
+      regen = mkCosmosGoApp {
+        name = "regen-ledger";
+        version = "v3.0.0";
+        src = {inherit (regen-src) rev;} // cleanSourceWithRegexes regen-src [".*\/orm(\/.*|$|\W)" ".*\/types(\/.*|$|\W)" ".*\/x(\/.*|$|\W)"];
+        vendorSha256 = "sha256-IdxIvL8chuGD71q4V7c+RWZ7PoEAVQ7++Crdlz2q/XI=";
+        tags = ["netgo"];
       };
-      iris = pkgs.buildGoModule {
-        name = "iris";
-        src = iris-src;
-        vendorSha256 = "sha256-PBbOuSe4GywD2WTgoZZ/1QDXH5BX2UHseXU2vPrJKX8=";
-      };
-      regen = pkgs.buildGoModule {
-        name = "regen";
-        subPackages = ["app/regen"];
-        src = regen-src;
-        vendorSha256 = "sha256-NH7flr8ExsfNm5JWpTGMmTRmcbhRjk9YYmqOnBRVmQM=";
-        preCheck = ''
-          export HOME="$(mktemp -d)"
-        '';
-      };
-      evmos = pkgs.buildGoModule {
+      evmos = mkCosmosGoApp {
         name = "evmos";
+        version = "v3.0.0-beta";
         src = evmos-src;
-        vendorSha256 = "sha256-c2MJL52achqlTbu87ZUKehnn92Wm6fTU/DIjadCUgH4=";
-        preCheck = ''
-          export HOME="$(mktemp -d)"
-        '';
+        vendorSha256 = "sha256-4zA5JSnhvZAJZ+4tM/kStq6lTTu/fq7GB8tpKgbA/bs";
+        tags = ["netgo"];
       };
       relayer = pkgs.buildGoModule {
         name = "relayer";
