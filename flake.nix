@@ -80,8 +80,11 @@
     # juno-src.flake = false;
     # juno-src.url = github:CosmosContracts/juno/v2.1.0;
 
-    # osmosis-src.flake = false;
-    # osmosis-src.url = github:osmosis-labs/osmosis/v7.0.4;
+    osmosis-src.flake = false;
+    osmosis-src.url = github:osmosis-labs/osmosis/v7.0.4;
+
+    wasmvm-src.flake = false;
+    wasmvm-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
   };
 
   outputs = inputs:
@@ -92,10 +95,28 @@
           overlays = [inputs.rust-overlay.overlay];
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-        resources = (import ./resources.nix) {inherit inputs pkgs eval-pkgs system;};
+        resources = (import ./resources.nix) {
+          inherit inputs pkgs eval-pkgs system rustPlatformStatic;
+        };
         tests = (import ./tests.nix) {
           inherit (resources) packages;
           inherit pkgs system;
+        };
+        rustStaticPkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [inputs.rust-overlay.overlay];
+          crossSystem =
+            pkgs.lib.systems.examples.gnu64
+            // {
+              rustc.config = pkgs.lib.systems.examples.musl64.config;
+            };
+        };
+        rustStatic = pkgs.rust-bin.stable.latest.default.override {
+          targets = ["x86_64-unknown-linux-musl"];
+        };
+        rustPlatformStatic = rustStaticPkgs.makeRustPlatform {
+          cargo = rustStatic;
+          rustc = rustStatic;
         };
       in rec {
         # nix build .#<app>
@@ -186,11 +207,11 @@
             name = "gm";
             drv = packages.gm;
           };
-          # osmosis = mkApp {
-          #   name = "osmosis";
-          #   drv = packages.osmosis;
-          #   exePath = "/bin/osmosisd";
-          # };
+          osmosis = mkApp {
+            name = "osmosis";
+            drv = packages.osmosis;
+            exePath = "/bin/osmosisd";
+          };
           iris = mkApp {
             name = "iris";
             drv = packages.iris;

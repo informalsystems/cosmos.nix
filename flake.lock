@@ -313,6 +313,23 @@
         "type": "github"
       }
     },
+    "osmosis-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646876870,
+        "narHash": "sha256-cRrGlMvgZI4GK0IdSF7mtEo/+zq42gbcJEHpE74vJdc=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "e55ad888546b4c970c7474a26e7c60fe079ca686",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v7.0.4",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": [
@@ -386,13 +403,15 @@
         "ica-src": "ica-src",
         "iris-src": "iris-src",
         "nixpkgs": "nixpkgs",
+        "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
         "rust-overlay": "rust-overlay",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
-        "ts-relayer-src": "ts-relayer-src"
+        "ts-relayer-src": "ts-relayer-src",
+        "wasmvm-src": "wasmvm-src"
       }
     },
     "rust-overlay": {
@@ -460,6 +479,23 @@
         "owner": "confio",
         "ref": "v0.4.0",
         "repo": "ts-relayer",
+        "type": "github"
+      }
+    },
+    "wasmvm-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646675433,
+        "narHash": "sha256-tt9aAPLxtIRsG1VFM1YAIHSotuBl170EiBcHSWTtARI=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "f7015565a59255cd09ebfcbf9345f3c87666fedd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.0.0-beta7",
+        "repo": "wasmvm",
         "type": "github"
       }
     }

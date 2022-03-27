@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   eval-pkgs,
+  rustPlatformStatic,
 }: let
   cleanSourceWithRegexes = src: regexes:
     with pkgs.lib;
@@ -51,13 +52,41 @@
         vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
         doCheck = false;
       };
-      # osmosis = mkCosmosGoApp {
-      #   name = "osmosis";
-      #   version = "v7.0.4";
-      #   src = osmosis-src;
-      #   vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
-      #   tags = ["netgo"];
-      # };
+      osmosis = mkCosmosGoApp {
+        name = "osmosis";
+        version = "v7.0.4";
+        src = osmosis-src;
+        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
+        tags = ["netgo"];
+        preFixup = ''
+          old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd)
+          new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
+          echo "new_rpath"
+          echo "$new_rpath"
+          ${pkgs.patchelf}/bin/patchelf --remove-rpath $out/bin/osmosisd
+          ${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd
+          ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/osmosisd
+          ${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd
+        '';
+        postFixup = ''
+          ${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd
+        '';
+        buildInputs = with pkgs; [pkg-config makeWrapper libwasmvm];
+        # CGO_ENABLED = 1;
+        doCheck = false;
+      };
+      osmosis-static = mkCosmosGoApp {
+        name = "osmosis-static";
+        version = "v7.0.4";
+        src = osmosis-src;
+        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
+        tags = ["netgo" "muslc"];
+        preBuild = ''
+          ln -s /lib/libwasmvm_muslc.a ${libwasmvm-static}/lib/libwasmvm_muslc.a
+        '';
+        buildInputs = [libwasmvm];
+        doCheck = false;
+      };
       regen = mkCosmosGoApp {
         name = "regen-ledger";
         version = "v3.0.0";
@@ -95,6 +124,43 @@
         doCheck = false;
       };
 
+      libwasmvm = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm-src}/libwasmvm";
+        version = "v1.0.0-beta7";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+        '';
+        cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
+        doCheck = false;
+      };
+
+      libwasmvm-static = rustPlatformStatic.buildRustPackage (
+        let
+          buildType = "release";
+          target = "x86_64-unknown-linux-musl";
+          releaseDir = "target/${target}/${buildType}";
+          tmpDir = "${releaseDir}-tmp";
+        in {
+          inherit buildType target;
+          pname = "libwasmvm";
+          version = "v1.0.0-beta9";
+          cargoBuildFlags = ["--example" "muslc"];
+          src = "${inputs.wasmvm-src}/libwasmvm";
+          # nativeBuildInputs = [rustStatic pkgs.pkgsStatic.stdenv.cc];
+          cargoSha256 = "sha256-Ht0PYUkBZcd82/2igO4X6WhlPGssaWyo8ISX0AU6fuI=";
+          # CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER = "${pkgs.llvmPackages_10.lld}/bin/lld";
+          doCheck = false;
+          # This is a horrible hack
+          postBuild = ''
+            echo "Making tmp dir"
+            mkdir -p ${tmpDir}
+            cp ${releaseDir}/examples/libmuslc.a ${tmpDir}/libwasmvm_muslc.a
+          '';
+        }
+      );
+
       # Misc
       gm = with pkgs;
         (import ./resources/gm) {
@@ -130,6 +196,7 @@
         gnupg
         alejandra
         nix-linter
+        patchelf
       ];
     };
     cosmos-shell = pkgs.mkShell {
