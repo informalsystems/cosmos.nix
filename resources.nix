@@ -101,6 +101,15 @@
         vendorSha256 = "sha256-4zA5JSnhvZAJZ+4tM/kStq6lTTu/fq7GB8tpKgbA/bs";
         tags = ["netgo"];
       };
+
+      thor = mkCosmosGoApp {
+        name = "thor";
+        version = "v1.83.0";
+        src = thor-src;
+        vendorSha256 = pkgs.lib.fakeSha256;
+        tags = ["netgo"];
+      };
+
       relayer = pkgs.buildGoModule {
         name = "relayer";
         src = relayer-src;
@@ -197,6 +206,7 @@
         alejandra
         nix-linter
         patchelf
+        go_1_18
       ];
     };
     cosmos-shell = pkgs.mkShell {
