@@ -3,7 +3,6 @@
   inputs,
   pkgs,
   eval-pkgs,
-  rustPlatformStatic,
 }: let
   cleanSourceWithRegexes = src: regexes:
     with pkgs.lib;
@@ -24,102 +23,94 @@
     inherit pkgs inputs;
   };
 
-  mkCosmosGoApp = (import ./resources/utilities.nix {inherit pkgs;}).mkCosmosGoApp;
+  utilities = (import ./resources/utilities.nix {inherit pkgs;});
 
   # Cosmos packages
-  packages = with inputs;
+  packages =
     rec {
       # Go packages
       stoml = pkgs.buildGoModule {
         name = "stoml";
-        src = stoml-src;
+        src = inputs.stoml-src;
         vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
       };
       sconfig = pkgs.buildGoModule {
         name = "sconfig";
-        src = sconfig-src;
+        src = inputs.sconfig-src;
         vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
       };
       cosmovisor = pkgs.buildGoModule {
         name = "cosmovisor";
-        src = "${cosmos-sdk-src}/cosmovisor";
+        src = "${inputs.cosmos-sdk-src}/cosmovisor";
         vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
         doCheck = false;
       };
       simd = pkgs.buildGoModule {
         name = "simd";
-        src = cleanSourceWithRegexes cosmos-sdk-src [".*cosmovisor.*"];
+        src = cleanSourceWithRegexes inputs.cosmos-sdk-src [".*cosmovisor.*"];
         vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
         doCheck = false;
       };
-      osmosis = mkCosmosGoApp {
-        name = "osmosis";
-        version = "v7.0.4";
-        src = osmosis-src;
-        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
-        tags = ["netgo"];
-        preFixup = ''
-          old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd)
-          new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
-          echo "new_rpath"
-          echo "$new_rpath"
-          ${pkgs.patchelf}/bin/patchelf --remove-rpath $out/bin/osmosisd
-          ${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd
-          ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/osmosisd
-          ${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd
-        '';
-        postFixup = ''
-          ${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/osmosisd
-        '';
-        buildInputs = with pkgs; [pkg-config makeWrapper libwasmvm];
-        # CGO_ENABLED = 1;
-        doCheck = false;
-      };
-      osmosis-static = mkCosmosGoApp {
-        name = "osmosis-static";
-        version = "v7.0.4";
-        src = osmosis-src;
-        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
-        tags = ["netgo" "muslc"];
-        preBuild = ''
-          ln -s /lib/libwasmvm_muslc.a ${libwasmvm-static}/lib/libwasmvm_muslc.a
-        '';
-        buildInputs = [libwasmvm];
-        doCheck = false;
-      };
-      regen = mkCosmosGoApp {
+
+      regen = utilities.mkCosmosGoApp {
         name = "regen-ledger";
         version = "v3.0.0";
-        src = {inherit (regen-src) rev;} // cleanSourceWithRegexes regen-src [".*\/orm(\/.*|$|\W)" ".*\/types(\/.*|$|\W)" ".*\/x(\/.*|$|\W)"];
+        src = {inherit (inputs.regen-src) rev;} // cleanSourceWithRegexes inputs.regen-src [".*\/orm(\/.*|$|\W)" ".*\/types(\/.*|$|\W)" ".*\/x(\/.*|$|\W)"];
         vendorSha256 = "sha256-IdxIvL8chuGD71q4V7c+RWZ7PoEAVQ7++Crdlz2q/XI=";
         tags = ["netgo"];
       };
-      evmos = mkCosmosGoApp {
+
+      evmos = utilities.mkCosmosGoApp {
         name = "evmos";
         version = "v3.0.0-beta";
-        src = evmos-src;
+        src = inputs.evmos-src;
         vendorSha256 = "sha256-4zA5JSnhvZAJZ+4tM/kStq6lTTu/fq7GB8tpKgbA/bs";
         tags = ["netgo"];
       };
 
-      thor = mkCosmosGoApp {
-        name = "thor";
-        version = "v1.83.0";
-        src = thor-src;
-        vendorSha256 = pkgs.lib.fakeSha256;
+      osmosis = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v7.0.4";
+        src = inputs.osmosis-src;
+        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
         tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+      };
+
+      juno = utilities.mkCosmosGoApp {
+        name = "juno";
+        version = "v2.3.0-beta.2";
+        src = inputs.juno-src;
+        vendorSha256 = "sha256-2/uu546UYHDBiTMr8QL95aEF7hI8bTkO/JCYMcLM5kw=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "junod";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+      };
+
+      terra = utilities.mkCosmosGoApp {
+        name = "terra";
+        version = "v0.5.17";
+        src = inputs.terra-src;
+        vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "terrad";
+        dontStrip = true;
+        buildInputs = [libwasmvm_0_16_3];
       };
 
       relayer = pkgs.buildGoModule {
         name = "relayer";
-        src = relayer-src;
+        src = inputs.relayer-src;
         vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
         doCheck = false;
       };
 
       ica = pkgs.buildGoModule {
         name = "ica";
-        src = ica-src;
+        src = inputs.ica-src;
         vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
       };
 
@@ -133,42 +124,29 @@
         doCheck = false;
       };
 
-      libwasmvm = pkgs.rustPlatform.buildRustPackage {
+      libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
-        src = "${inputs.wasmvm-src}/libwasmvm";
+        src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
         version = "v1.0.0-beta7";
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         postInstall = ''
           cp ./bindings.h $out/lib/
         '';
-        cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
+        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
         doCheck = false;
       };
 
-      libwasmvm-static = rustPlatformStatic.buildRustPackage (
-        let
-          buildType = "release";
-          target = "x86_64-unknown-linux-musl";
-          releaseDir = "target/${target}/${buildType}";
-          tmpDir = "${releaseDir}-tmp";
-        in {
-          inherit buildType target;
-          pname = "libwasmvm";
-          version = "v1.0.0-beta9";
-          cargoBuildFlags = ["--example" "muslc"];
-          src = "${inputs.wasmvm-src}/libwasmvm";
-          # nativeBuildInputs = [rustStatic pkgs.pkgsStatic.stdenv.cc];
-          cargoSha256 = "sha256-Ht0PYUkBZcd82/2igO4X6WhlPGssaWyo8ISX0AU6fuI=";
-          # CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER = "${pkgs.llvmPackages_10.lld}/bin/lld";
-          doCheck = false;
-          # This is a horrible hack
-          postBuild = ''
-            echo "Making tmp dir"
-            mkdir -p ${tmpDir}
-            cp ${releaseDir}/examples/libmuslc.a ${tmpDir}/libwasmvm_muslc.a
-          '';
-        }
-      );
+      libwasmvm_0_16_3 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
+        version = "v0.16.3";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+        '';
+        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
+        doCheck = false;
+      };
 
       # Misc
       gm = with pkgs;

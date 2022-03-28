@@ -71,20 +71,20 @@
     evmos-src.flake = false;
     evmos-src.url = github:tharsis/evmos/v3.0.0-beta;
 
-    # Issue with replace directive for edwards in dcred dependency
-    thor-src.flake = false;
-    thor-src.url = gitlab:JonathanLorimer/thornode/develop;
-
-    # Issue with dynamically linked libwasmvm, need to figure out how to
-    # inject the dependency statically using musl
-    # juno-src.flake = false;
-    # juno-src.url = github:CosmosContracts/juno/v2.1.0;
+    juno-src.flake = false;
+    juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v7.0.4;
 
-    wasmvm-src.flake = false;
-    wasmvm-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
+    terra-src.flake = false;
+    terra-src.url = github:terra-money/core/v0.5.17;
+
+    wasmvm_1_beta7-src.flake = false;
+    wasmvm_1_beta7-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
+
+    wasmvm_0_16_3-src.flake = false;
+    wasmvm_0_16_3-src.url = github:CosmWasm/wasmvm/v0.16.3;
   };
 
   outputs = inputs:
@@ -96,27 +96,11 @@
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
         resources = (import ./resources.nix) {
-          inherit inputs pkgs eval-pkgs system rustPlatformStatic;
+          inherit inputs pkgs eval-pkgs system;
         };
         tests = (import ./tests.nix) {
           inherit (resources) packages;
           inherit pkgs system;
-        };
-        rustStaticPkgs = import inputs.nixpkgs {
-          inherit system;
-          overlays = [inputs.rust-overlay.overlay];
-          crossSystem =
-            pkgs.lib.systems.examples.gnu64
-            // {
-              rustc.config = pkgs.lib.systems.examples.musl64.config;
-            };
-        };
-        rustStatic = pkgs.rust-bin.stable.latest.default.override {
-          targets = ["x86_64-unknown-linux-musl"];
-        };
-        rustPlatformStatic = rustStaticPkgs.makeRustPlatform {
-          cargo = rustStatic;
-          rustc = rustStatic;
         };
       in rec {
         # nix build .#<app>
@@ -233,22 +217,16 @@
             name = "ts-relayer-setup";
             drv = packages.ts-relayer-setup;
           };
-          bifrost = mkApp {
-            name = "thor";
-            drv = packages.thor;
-            exePath = "/bin/bifrost";
+          juno = mkApp {
+            name = "juno";
+            drv = packages.juno;
+            exePath = "/bin/junod";
           };
-          thorcli = mkApp {
-            name = "thor";
-            drv = packages.thor;
-            exePath = "/bin/thorcli";
+          terra = mkApp {
+            name = "terra";
+            drv = packages.terra;
+            exePath = "/bin/terrad";
           };
-          thord = mkApp {
-            name = "thor";
-            drv = packages.thor;
-            exePath = "/bin/thord";
-          };
-          # juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
         };
       });
 }

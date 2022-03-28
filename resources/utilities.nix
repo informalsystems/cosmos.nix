@@ -33,4 +33,10 @@
       '';
     }
     // buildGoModuleArgs);
+
+  wasmdPreFixupPhase = binName: ''
+    old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
+    new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
+    ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
+  '';
 }

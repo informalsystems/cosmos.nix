@@ -267,6 +267,23 @@
         "type": "github"
       }
     },
+    "juno-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647987514,
+        "narHash": "sha256-Mtiin+GOH/dyrr7cO+18er+uwYjCpQDY8xhA+kkzniM=",
+        "owner": "CosmosContracts",
+        "repo": "juno",
+        "rev": "9a1c32f508e6314fb73e57db35313cb329639424",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmosContracts",
+        "ref": "v2.3.0-beta.2",
+        "repo": "juno",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1647350163,
@@ -402,6 +419,7 @@
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "iris-src": "iris-src",
+        "juno-src": "juno-src",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
@@ -410,9 +428,10 @@
         "rust-overlay": "rust-overlay",
         "sconfig-src": "sconfig-src",
         "stoml-src": "stoml-src",
-        "thor-src": "thor-src",
+        "terra-src": "terra-src",
         "ts-relayer-src": "ts-relayer-src",
-        "wasmvm-src": "wasmvm-src"
+        "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
+        "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
     "rust-overlay": {
@@ -466,21 +485,21 @@
         "type": "github"
       }
     },
-    "thor-src": {
+    "terra-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1648432311,
-        "narHash": "sha256-2FOaG2Oaku/g1YfDBN2/e5YZ1QN+TcLHVtmPYG6q98o=",
-        "owner": "JonathanLorimer",
-        "repo": "thornode",
-        "rev": "17ffe2ee1e49bac6a75e3291f975b09e3434b7e8",
-        "type": "gitlab"
+        "lastModified": 1645516218,
+        "narHash": "sha256-7cmVYWFLeOZJtbfw8qaVKLDMVafoeFDXOcrmrMS9buE=",
+        "owner": "terra-money",
+        "repo": "core",
+        "rev": "a6b93b72a7d4fabbbb85fb89e685426f5d07cac1",
+        "type": "github"
       },
       "original": {
-        "owner": "JonathanLorimer",
-        "ref": "develop",
-        "repo": "thornode",
-        "type": "gitlab"
+        "owner": "terra-money",
+        "ref": "v0.5.17",
+        "repo": "core",
+        "type": "github"
       }
     },
     "ts-relayer-src": {
@@ -500,7 +519,24 @@
         "type": "github"
       }
     },
-    "wasmvm-src": {
+    "wasmvm_0_16_3-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1640251271,
+        "narHash": "sha256-XvgAMDvAgzWaH7Q+mNZUBoaVhqAVlZ4ucIL0QFyNvWw=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "458e983721624548e66c0dcdd35140383966515e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v0.16.3",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_beta7-src": {
       "flake": false,
       "locked": {
         "lastModified": 1646675433,
