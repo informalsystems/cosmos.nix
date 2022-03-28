@@ -132,7 +132,7 @@
         postInstall = ''
           cp ./bindings.h $out/lib/
         '';
-        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
+        cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
         doCheck = false;
       };
 
