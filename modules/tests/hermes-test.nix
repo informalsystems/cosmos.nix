@@ -2,7 +2,6 @@
   pkgs,
   hermes,
   gaia,
-  system,
 }: let
   jsonRpcCurlRequest = addr: port: ''${pkgs.curl}/bin/curl -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"health\",\"params\":[]}' http://${addr}:${builtins.toString port} 2>&1'';
   sharedModule = {
@@ -14,7 +13,6 @@
   defaultMetricsPort = 3001;
 in
   pkgs.nixosTest {
-    inherit system;
     name = "hermes-module-test";
     nodes = {
       validator1 = {

@@ -174,7 +174,8 @@
     // ibc-packages;
 
   # Dev shells
-  devShells = {
+  devShells = rec {
+    default = nix-shell;
     nix-shell = pkgs.mkShell {
       shellHook = inputs.self.checks.${system}.pre-commit-check.shellHook;
       buildInputs = with pkgs; [

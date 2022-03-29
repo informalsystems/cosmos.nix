@@ -113,7 +113,7 @@
         };
 
         # nix develop
-        devShell = resources.devShells.nix-shell;
+        devShells = resources.devShells;
 
         # nix run .#<app>
         apps = {
