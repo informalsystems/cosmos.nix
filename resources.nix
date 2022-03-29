@@ -55,7 +55,8 @@
       regen = utilities.mkCosmosGoApp {
         name = "regen-ledger";
         version = "v3.0.0";
-        src = {inherit (inputs.regen-src) rev;} // cleanSourceWithRegexes inputs.regen-src [".*\/orm(\/.*|$|\W)" ".*\/types(\/.*|$|\W)" ".*\/x(\/.*|$|\W)"];
+        subPackages = ["app/regen"];
+        src = inputs.regen-src;
         vendorSha256 = "sha256-IdxIvL8chuGD71q4V7c+RWZ7PoEAVQ7++Crdlz2q/XI=";
         tags = ["netgo"];
       };
