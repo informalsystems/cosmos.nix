@@ -95,6 +95,9 @@
     sifchain-src.flake = false;
     sifchain-src.url = github:Sifchain/sifnode/v0.12.1;
 
+    wasmd-src.flake = false;
+    wasmd-src.url = github:CosmWasm/wasmd/v0.24.0;
+
     wasmvm_1_beta7-src.flake = false;
     wasmvm_1_beta7-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
 
@@ -265,6 +268,10 @@
             name = "sifchain";
             drv = packages.sifchain;
             exePath = "/bin/sifnoded";
+          };
+          wasmd = mkApp {
+            name = "wasmd";
+            drv = packages.wasmd;
           };
         };
       });

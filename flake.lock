@@ -469,6 +469,7 @@
         "terra-src": "terra-src",
         "ts-relayer-src": "ts-relayer-src",
         "umee-src": "umee-src",
+        "wasmd-src": "wasmd-src",
         "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
@@ -606,6 +607,23 @@
         "owner": "umee-network",
         "ref": "v2.0.0",
         "repo": "umee",
+        "type": "github"
+      }
+    },
+    "wasmd-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646852618,
+        "narHash": "sha256-3ifvKZhdv50E6yA8jDiVnartZZ34Ji09VJbtkkW7Lig=",
+        "owner": "CosmWasm",
+        "repo": "wasmd",
+        "rev": "3bc0bdeab3fa2b3f7de745622226ff36c2ec6d6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v0.24.0",
+        "repo": "wasmd",
         "type": "github"
       }
     },

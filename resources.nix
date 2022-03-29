@@ -168,6 +168,17 @@
         vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
       };
 
+      wasmd = utilities.mkCosmosGoApp {
+        name = "wasm";
+        version = "v0.24.0";
+        src = inputs.wasmd-src;
+        vendorSha256 = "sha256-+Hz3AKGmf2GbcnMCmEU3QQK2E98F88hNGzLV+G2FQMU=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "wasmd";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+      };
+
       # Rust resources
       hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "ibc-rs";
