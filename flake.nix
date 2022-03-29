@@ -95,6 +95,9 @@
     sifchain-src.flake = false;
     sifchain-src.url = github:Sifchain/sifnode/v0.12.1;
 
+    crescent-src.flake = false;
+    crescent-src.url = github:crescent-network/crescent/v1.0.0-rc3;
+
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.24.0;
 
@@ -268,6 +271,11 @@
             name = "sifchain";
             drv = packages.sifchain;
             exePath = "/bin/sifnoded";
+          };
+          crescent = mkApp {
+            name = "crescent";
+            drv = packages.crescent;
+            exePath = "/bin/crescentd";
           };
           wasmd = mkApp {
             name = "wasmd";

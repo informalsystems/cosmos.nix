@@ -155,6 +155,17 @@
         doCheck = false;
       };
 
+      crescent = utilities.mkCosmosGoApp {
+        name = "crescent";
+        version = "v1.0.0-rc3";
+        src = inputs.crescent-src;
+        vendorSha256 = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
+        tags = ["netgo"];
+        additionalLdFlags = ''
+          -X github.com/cosmos/cosmos-sdk/types.reDnmString=[a-zA-Z][a-zA-Z0-9/:]{2,127}
+        '';
+      };
+
       relayer = pkgs.buildGoModule {
         name = "relayer";
         src = inputs.relayer-src;

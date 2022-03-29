@@ -34,6 +34,23 @@
         "type": "github"
       }
     },
+    "crescent-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647869429,
+        "narHash": "sha256-c1xiTB/HgtQJSwD3ccFQIoSHPbJK6rf1nSjnM3r0oCE=",
+        "owner": "crescent-network",
+        "repo": "crescent",
+        "rev": "01980cfd06b06786109eaba78c154e6db1adc3d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crescent-network",
+        "ref": "v1.0.0-rc3",
+        "repo": "crescent",
+        "type": "github"
+      }
+    },
     "evmos-src": {
       "flake": false,
       "locked": {
@@ -440,6 +457,7 @@
       "inputs": {
         "akash-src": "akash-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
+        "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
         "gaia5-src": "gaia5-src",
