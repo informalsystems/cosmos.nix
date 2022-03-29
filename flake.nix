@@ -80,6 +80,21 @@
     terra-src.flake = false;
     terra-src.url = github:terra-money/core/v0.5.17;
 
+    sentinel-src.flake = false;
+    sentinel-src.url = github:sentinel-official/hub/v0.9.0-rc0;
+
+    akash-src.flake = false;
+    akash-src.url = github:ovrclk/akash/v0.15.0-rc17;
+
+    umee-src.flake = false;
+    umee-src.url = github:umee-network/umee/v2.0.0;
+
+    ixo-src.flake = false;
+    ixo-src.url = github:ixofoundation/ixo-blockchain/v0.18.0-rc1;
+
+    sifchain-src.flake = false;
+    sifchain-src.url = github:Sifchain/sifnode/v0.12.1;
+
     wasmvm_1_beta7-src.flake = false;
     wasmvm_1_beta7-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
 
@@ -226,6 +241,30 @@
             name = "terra";
             drv = packages.terra;
             exePath = "/bin/terrad";
+          };
+          sentinel = mkApp {
+            name = "sentinel";
+            drv = packages.sentinel;
+            exePath = "/bin/sentinelhub";
+          };
+          akash = mkApp {
+            name = "akash";
+            drv = packages.akash;
+          };
+          umee = mkApp {
+            name = "umee";
+            drv = packages.umee;
+            exePath = "/bin/umeed";
+          };
+          ixo = mkApp {
+            name = "ixo";
+            drv = packages.ixo;
+            exePath = "/bin/ixod";
+          };
+          sifchain = mkApp {
+            name = "sifchain";
+            drv = packages.sifchain;
+            exePath = "/bin/sifnoded";
           };
         };
       });

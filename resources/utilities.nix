@@ -4,6 +4,7 @@
     version,
     src,
     vendorSha256,
+    additionalLdFlags ? "",
     appName ? null,
     preCheck ? null,
     ...
@@ -30,6 +31,7 @@
         -X github.com/cosmos/cosmos-sdk/version.Version=${version}
         -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
         -X github.com/tendermint/tendermint/version.TMCoreSemVer=${tendermint-version}
+        ${additionalLdFlags}
       '';
     }
     // buildGoModuleArgs);

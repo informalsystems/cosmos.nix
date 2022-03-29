@@ -25,7 +25,6 @@
 
   utilities = (import ./resources/utilities.nix {inherit pkgs;});
 
-  # Cosmos packages
   packages =
     rec {
       # Go packages
@@ -34,17 +33,20 @@
         src = inputs.stoml-src;
         vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
       };
+
       sconfig = pkgs.buildGoModule {
         name = "sconfig";
         src = inputs.sconfig-src;
         vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
       };
+
       cosmovisor = pkgs.buildGoModule {
         name = "cosmovisor";
         src = "${inputs.cosmos-sdk-src}/cosmovisor";
         vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
         doCheck = false;
       };
+
       simd = pkgs.buildGoModule {
         name = "simd";
         src = cleanSourceWithRegexes inputs.cosmos-sdk-src [".*cosmovisor.*"];
@@ -100,6 +102,57 @@
         preFixup = utilities.wasmdPreFixupPhase "terrad";
         dontStrip = true;
         buildInputs = [libwasmvm_0_16_3];
+      };
+
+      sentinel = utilities.mkCosmosGoApp {
+        name = "sentinel";
+        version = "v9.0.0-rc0";
+        appName = "sentinelhub";
+        src = inputs.sentinel-src;
+        vendorSha256 = "sha256-ktIKTw7J4EYKWu6FBfxzvYm8ldHG00KakRY5QR8cjrI=";
+        tags = ["netgo"];
+      };
+
+      akash = utilities.mkCosmosGoApp {
+        name = "akash";
+        version = "v0.15.0-rc17";
+        appName = "akash";
+        src = inputs.akash-src;
+        vendorSha256 = "sha256-p7GVC1DkOdekfXMaHkXeIZw/CjtTpQCSO0ivDZkmx4c=";
+        tags = ["netgo"];
+        doCheck = false;
+      };
+
+      umee = utilities.mkCosmosGoApp {
+        name = "umee";
+        version = "v2.0.0";
+        subPackages = ["cmd/umeed"];
+        src = inputs.umee-src;
+        vendorSha256 = "sha256-HONlFCC6iHgKQwqAiEV29qmSHsLdloUlAeJkxViUG7w=";
+        tags = ["netgo"];
+      };
+
+      ixo = pkgs.buildGoModule {
+        name = "ixo";
+        version = "v0.18.0-rc1";
+        src = inputs.ixo-src;
+        vendorSha256 = "sha256-g6dKujkFZLpFGpxgzb7v1YOo4cdeP6eEAbUjMzAIkF8=";
+        tags = ["netgo"];
+        doCheck = false;
+      };
+
+      sifchain = utilities.mkCosmosGoApp {
+        name = "sifchain";
+        version = "v0.12.1";
+        src = inputs.sifchain-src;
+        vendorSha256 = "sha256-AX5jLfH9RnoGZm5MVyM69NnxVjYMR45CNaKzQn5hsXg=";
+        tags = ["netgo"];
+        additionalLdFlags = ''
+          -X github.com/cosmos/cosmos-sdk/version.ServerName=sifnoded
+          -X github.com/cosmos/cosmos-sdk/version.ClientName=sifnoded
+        '';
+        appName = "sifnoded";
+        doCheck = false;
       };
 
       relayer = pkgs.buildGoModule {
