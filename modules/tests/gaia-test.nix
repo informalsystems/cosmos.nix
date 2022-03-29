@@ -1,7 +1,6 @@
 {
   pkgs,
   gaia,
-  system,
 }: let
   sharedModule = {
     # Since it's common for CI not to have $DISPLAY available, we have to explicitly tell the tests "please don't expect any screen available"
@@ -10,7 +9,6 @@
   };
 in
   pkgs.nixosTest {
-    inherit system;
     name = "gaia-module-test";
     nodes = {
       gaia = {

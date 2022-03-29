@@ -62,26 +62,47 @@
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
 
-    osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v6.1.0;
-
     iris-src.flake = false;
     iris-src.url = github:irisnet/irishub/v1.1.1;
 
     regen-src.flake = false;
-    regen-src.url = github:regen-network/regen-ledger/v2.1.0;
+    regen-src.url = github:regen-network/regen-ledger/v3.0.0;
 
     evmos-src.flake = false;
-    evmos-src.url = github:tharsis/evmos/v0.4.2;
+    evmos-src.url = github:tharsis/evmos/v3.0.0-beta;
 
-    # Issue with replace directive for edwards in dcred dependency
-    # thor-src.flake = false;
-    # thor-src.url = gitlab:thorchain/thornode/v0.77.2;
+    juno-src.flake = false;
+    juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
-    # Issue with dynamically linked libwasmvm, need to figure out how to
-    # inject the dependency statically using musl
-    # juno-src.flake = false;
-    # juno-src.url = github:CosmosContracts/juno/v2.1.0;
+    osmosis-src.flake = false;
+    osmosis-src.url = github:osmosis-labs/osmosis/v7.0.4;
+
+    terra-src.flake = false;
+    terra-src.url = github:terra-money/core/v0.5.17;
+
+    sentinel-src.flake = false;
+    sentinel-src.url = github:sentinel-official/hub/v0.9.0-rc0;
+
+    akash-src.flake = false;
+    akash-src.url = github:ovrclk/akash/v0.15.0-rc17;
+
+    umee-src.flake = false;
+    umee-src.url = github:umee-network/umee/v2.0.0;
+
+    ixo-src.flake = false;
+    ixo-src.url = github:ixofoundation/ixo-blockchain/v0.18.0-rc1;
+
+    sifchain-src.flake = false;
+    sifchain-src.url = github:Sifchain/sifnode/v0.12.1;
+
+    wasmd-src.flake = false;
+    wasmd-src.url = github:CosmWasm/wasmd/v0.24.0;
+
+    wasmvm_1_beta7-src.flake = false;
+    wasmvm_1_beta7-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
+
+    wasmvm_0_16_3-src.flake = false;
+    wasmvm_0_16_3-src.url = github:CosmWasm/wasmvm/v0.16.3;
   };
 
   outputs = inputs:
@@ -92,7 +113,9 @@
           overlays = [inputs.rust-overlay.overlay];
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-        resources = (import ./resources.nix) {inherit inputs pkgs eval-pkgs system;};
+        resources = (import ./resources.nix) {
+          inherit inputs pkgs eval-pkgs system;
+        };
         tests = (import ./tests.nix) {
           inherit (resources) packages;
           inherit pkgs system;
@@ -108,7 +131,7 @@
         };
 
         # nix develop
-        devShell = resources.devShells.nix-shell;
+        devShells = resources.devShells;
 
         # nix run .#<app>
         apps = {
@@ -212,10 +235,44 @@
             name = "ts-relayer-setup";
             drv = packages.ts-relayer-setup;
           };
-          # bifrost = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/bifrost"; };
-          # thorcli = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thorcli"; };
-          # thord = mkApp { name = "thor"; drv = packages.thor; exePath = "/bin/thord"; };
-          # juno = mkApp { name = "juno"; drv = packages.juno; exePath = "/bin/junod"; };
+          juno = mkApp {
+            name = "juno";
+            drv = packages.juno;
+            exePath = "/bin/junod";
+          };
+          terra = mkApp {
+            name = "terra";
+            drv = packages.terra;
+            exePath = "/bin/terrad";
+          };
+          sentinel = mkApp {
+            name = "sentinel";
+            drv = packages.sentinel;
+            exePath = "/bin/sentinelhub";
+          };
+          akash = mkApp {
+            name = "akash";
+            drv = packages.akash;
+          };
+          umee = mkApp {
+            name = "umee";
+            drv = packages.umee;
+            exePath = "/bin/umeed";
+          };
+          ixo = mkApp {
+            name = "ixo";
+            drv = packages.ixo;
+            exePath = "/bin/ixod";
+          };
+          sifchain = mkApp {
+            name = "sifchain";
+            drv = packages.sifchain;
+            exePath = "/bin/sifnoded";
+          };
+          wasmd = mkApp {
+            name = "wasmd";
+            drv = packages.wasmd;
+          };
         };
       });
 }

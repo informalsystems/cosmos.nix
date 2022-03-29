@@ -10,7 +10,7 @@
       cleanSourceWith {
         filter = (
           path: _:
-            any (r: match r path == null) regexes
+            all (r: match r path == null) regexes
         );
         inherit src;
       };
@@ -23,73 +23,160 @@
     inherit pkgs inputs;
   };
 
-  # Cosmos packages
-  packages = with inputs;
+  utilities = (import ./resources/utilities.nix {inherit pkgs;});
+
+  packages =
     rec {
       # Go packages
       stoml = pkgs.buildGoModule {
         name = "stoml";
-        src = stoml-src;
+        src = inputs.stoml-src;
         vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
       };
+
       sconfig = pkgs.buildGoModule {
         name = "sconfig";
-        src = sconfig-src;
+        src = inputs.sconfig-src;
         vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
       };
+
       cosmovisor = pkgs.buildGoModule {
         name = "cosmovisor";
-        src = "${cosmos-sdk-src}/cosmovisor";
+        src = "${inputs.cosmos-sdk-src}/cosmovisor";
         vendorSha256 = "sha256-OAXWrwpartjgSP7oeNvDJ7cTR9lyYVNhEM8HUnv3acE=";
         doCheck = false;
       };
+
       simd = pkgs.buildGoModule {
         name = "simd";
-        src = cleanSourceWithRegexes cosmos-sdk-src [".*cosmovisor.*"];
+        src = cleanSourceWithRegexes inputs.cosmos-sdk-src [".*cosmovisor.*"];
         vendorSha256 = "sha256-kYoGoNT9W7x8iVjXyMCe72TCeq1RNILw53SmNpv/VXg=";
         doCheck = false;
       };
-      osmosis = pkgs.buildGoModule {
-        name = "osmosis";
-        src = osmosis-src;
-        vendorSha256 = "sha256-1z9XUOwglbi13w9XK87kQxLl4Hh+OcLZlXfw8QyVGZg=";
-        preCheck = ''
-          export HOME="$(mktemp -d)"
-        '';
-      };
-      iris = pkgs.buildGoModule {
-        name = "iris";
-        src = iris-src;
-        vendorSha256 = "sha256-PBbOuSe4GywD2WTgoZZ/1QDXH5BX2UHseXU2vPrJKX8=";
-      };
-      regen = pkgs.buildGoModule {
-        name = "regen";
+
+      regen = utilities.mkCosmosGoApp {
+        name = "regen-ledger";
+        version = "v3.0.0";
         subPackages = ["app/regen"];
-        src = regen-src;
-        vendorSha256 = "sha256-NH7flr8ExsfNm5JWpTGMmTRmcbhRjk9YYmqOnBRVmQM=";
-        preCheck = ''
-          export HOME="$(mktemp -d)"
-        '';
+        src = inputs.regen-src;
+        vendorSha256 = "sha256-IdxIvL8chuGD71q4V7c+RWZ7PoEAVQ7++Crdlz2q/XI=";
+        tags = ["netgo"];
       };
-      evmos = pkgs.buildGoModule {
+
+      evmos = utilities.mkCosmosGoApp {
         name = "evmos";
-        src = evmos-src;
-        vendorSha256 = "sha256-c2MJL52achqlTbu87ZUKehnn92Wm6fTU/DIjadCUgH4=";
-        preCheck = ''
-          export HOME="$(mktemp -d)"
-        '';
+        version = "v3.0.0-beta";
+        src = inputs.evmos-src;
+        vendorSha256 = "sha256-4zA5JSnhvZAJZ+4tM/kStq6lTTu/fq7GB8tpKgbA/bs";
+        tags = ["netgo"];
       };
+
+      osmosis = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v7.0.4";
+        src = inputs.osmosis-src;
+        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+      };
+
+      juno = utilities.mkCosmosGoApp {
+        name = "juno";
+        version = "v2.3.0-beta.2";
+        src = inputs.juno-src;
+        vendorSha256 = "sha256-2/uu546UYHDBiTMr8QL95aEF7hI8bTkO/JCYMcLM5kw=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "junod";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+      };
+
+      terra = utilities.mkCosmosGoApp {
+        name = "terra";
+        version = "v0.5.17";
+        src = inputs.terra-src;
+        vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "terrad";
+        dontStrip = true;
+        buildInputs = [libwasmvm_0_16_3];
+      };
+
+      sentinel = utilities.mkCosmosGoApp {
+        name = "sentinel";
+        version = "v9.0.0-rc0";
+        appName = "sentinelhub";
+        src = inputs.sentinel-src;
+        vendorSha256 = "sha256-ktIKTw7J4EYKWu6FBfxzvYm8ldHG00KakRY5QR8cjrI=";
+        tags = ["netgo"];
+      };
+
+      akash = utilities.mkCosmosGoApp {
+        name = "akash";
+        version = "v0.15.0-rc17";
+        appName = "akash";
+        src = inputs.akash-src;
+        vendorSha256 = "sha256-p7GVC1DkOdekfXMaHkXeIZw/CjtTpQCSO0ivDZkmx4c=";
+        tags = ["netgo"];
+        doCheck = false;
+      };
+
+      umee = utilities.mkCosmosGoApp {
+        name = "umee";
+        version = "v2.0.0";
+        subPackages = ["cmd/umeed"];
+        src = inputs.umee-src;
+        vendorSha256 = "sha256-HONlFCC6iHgKQwqAiEV29qmSHsLdloUlAeJkxViUG7w=";
+        tags = ["netgo"];
+      };
+
+      ixo = pkgs.buildGoModule {
+        name = "ixo";
+        version = "v0.18.0-rc1";
+        src = inputs.ixo-src;
+        vendorSha256 = "sha256-g6dKujkFZLpFGpxgzb7v1YOo4cdeP6eEAbUjMzAIkF8=";
+        tags = ["netgo"];
+        doCheck = false;
+      };
+
+      sifchain = utilities.mkCosmosGoApp {
+        name = "sifchain";
+        version = "v0.12.1";
+        src = inputs.sifchain-src;
+        vendorSha256 = "sha256-AX5jLfH9RnoGZm5MVyM69NnxVjYMR45CNaKzQn5hsXg=";
+        tags = ["netgo"];
+        additionalLdFlags = ''
+          -X github.com/cosmos/cosmos-sdk/version.ServerName=sifnoded
+          -X github.com/cosmos/cosmos-sdk/version.ClientName=sifnoded
+        '';
+        appName = "sifnoded";
+        doCheck = false;
+      };
+
       relayer = pkgs.buildGoModule {
         name = "relayer";
-        src = relayer-src;
+        src = inputs.relayer-src;
         vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
         doCheck = false;
       };
 
       ica = pkgs.buildGoModule {
         name = "ica";
-        src = ica-src;
+        src = inputs.ica-src;
         vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
+      };
+
+      wasmd = utilities.mkCosmosGoApp {
+        name = "wasm";
+        version = "v0.24.0";
+        src = inputs.wasmd-src;
+        vendorSha256 = "sha256-+Hz3AKGmf2GbcnMCmEU3QQK2E98F88hNGzLV+G2FQMU=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "wasmd";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
       };
 
       # Rust resources
@@ -99,6 +186,30 @@
         src = inputs.ibc-rs-src;
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         cargoSha256 = "sha256-lIMnZQw46prUFHlAzCWPkKzSNi4F9D+1+aG1vt/5Bvo=";
+        doCheck = false;
+      };
+
+      libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
+        version = "v1.0.0-beta7";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+        '';
+        cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
+        doCheck = false;
+      };
+
+      libwasmvm_0_16_3 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
+        version = "v0.16.3";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+        '';
+        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
         doCheck = false;
       };
 
@@ -128,7 +239,8 @@
     // ibc-packages;
 
   # Dev shells
-  devShells = {
+  devShells = rec {
+    default = nix-shell;
     nix-shell = pkgs.mkShell {
       shellHook = inputs.self.checks.${system}.pre-commit-check.shellHook;
       buildInputs = with pkgs; [
@@ -137,6 +249,8 @@
         gnupg
         alejandra
         nix-linter
+        patchelf
+        go_1_18
       ];
     };
     cosmos-shell = pkgs.mkShell {

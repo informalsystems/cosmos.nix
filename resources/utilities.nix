@@ -3,30 +3,24 @@
     name,
     version,
     src,
-    ledgerSupport,
     vendorSha256,
-    doCheck ? true,
+    additionalLdFlags ? "",
     appName ? null,
     preCheck ? null,
-  }: let
+    ...
+  } @ args: let
     parser = import ./goModParser.nix;
     go-mod = parser (builtins.readFile "${src}/go.mod");
     tendermint-version = go-mod.require."github.com/tendermint/tendermint".version;
+    buildGoModuleArgs = pkgs.lib.filterAttrs (n: _: builtins.all (a: a != n) ["src" "name" "version" "vendorSha256" "appName"]) args;
     ldFlagAppName =
       if appName == null
       then "${name}d"
       else appName;
   in
-    pkgs.buildGoModule {
-      inherit version src vendorSha256 doCheck;
+    pkgs.buildGoModule ({
+      inherit version src vendorSha256;
       pname = name;
-      tags =
-        ["netgo"]
-        ++ (
-          if ledgerSupport
-          then ["ledger"]
-          else []
-        );
       preCheck =
         if preCheck == null
         then ''export HOME="$(mktemp -d)"''
@@ -37,6 +31,14 @@
         -X github.com/cosmos/cosmos-sdk/version.Version=${version}
         -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
         -X github.com/tendermint/tendermint/version.TMCoreSemVer=${tendermint-version}
+        ${additionalLdFlags}
       '';
-    };
+    }
+    // buildGoModuleArgs);
+
+  wasmdPreFixupPhase = binName: ''
+    old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
+    new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
+    ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
+  '';
 }

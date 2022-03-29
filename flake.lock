@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "akash-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648485085,
+        "narHash": "sha256-33FPy0dn6QuqneEqZYkFoCRm9agG7PE+9C/pYH9Gwx4=",
+        "owner": "ovrclk",
+        "repo": "akash",
+        "rev": "5b8b6bbede6c9fbb2df1ca536b8edfcf5652adf8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ovrclk",
+        "ref": "v0.15.0-rc17",
+        "repo": "akash",
+        "type": "github"
+      }
+    },
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
@@ -20,16 +37,16 @@
     "evmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1639242686,
-        "narHash": "sha256-Vh+E88PVQJQLj2elXnc7hfuOAgohot8w/yVgeH+MSbY=",
+        "lastModified": 1648233712,
+        "narHash": "sha256-LCNGZPt6SwzN+4DHU6WcOl3ROhMOdXlIIeFJiJGYidc=",
         "owner": "tharsis",
         "repo": "evmos",
-        "rev": "4b6bf2c53286d92b9154caf605c0b4c4257664af",
+        "rev": "2e886b2882d61081c9b0a6f5aa10d96cd78aff7a",
         "type": "github"
       },
       "original": {
         "owner": "tharsis",
-        "ref": "v0.4.2",
+        "ref": "v3.0.0-beta",
         "repo": "evmos",
         "type": "github"
       }
@@ -267,13 +284,47 @@
         "type": "github"
       }
     },
+    "ixo-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645476442,
+        "narHash": "sha256-Ewp9UyoH6z7YGrcXVpYJveRvDq02c1mNZj2hzlOoW8s=",
+        "owner": "ixofoundation",
+        "repo": "ixo-blockchain",
+        "rev": "2bef5d79205057be71677837dc1174be848e13e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ixofoundation",
+        "ref": "v0.18.0-rc1",
+        "repo": "ixo-blockchain",
+        "type": "github"
+      }
+    },
+    "juno-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647987514,
+        "narHash": "sha256-Mtiin+GOH/dyrr7cO+18er+uwYjCpQDY8xhA+kkzniM=",
+        "owner": "CosmosContracts",
+        "repo": "juno",
+        "rev": "9a1c32f508e6314fb73e57db35313cb329639424",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmosContracts",
+        "ref": "v2.3.0-beta.2",
+        "repo": "juno",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1647350163,
-        "narHash": "sha256-OcMI+PFEHTONthXuEQNddt16Ml7qGvanL3x8QOl2Aao=",
+        "lastModified": 1648219316,
+        "narHash": "sha256-Ctij+dOi0ZZIfX5eMhgwugfvB+WZSrvVNAyAuANOsnQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3eb07eeafb52bcbf02ce800f032f18d666a9498d",
+        "rev": "30d3d79b7d3607d56546dd2a6b49e156ba0ec634",
         "type": "github"
       },
       "original": {
@@ -316,16 +367,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1642052048,
-        "narHash": "sha256-w9VGpAwVsOYQBK1f7a6BX6Ro39699EX/6wrGopCir+g=",
+        "lastModified": 1646876870,
+        "narHash": "sha256-cRrGlMvgZI4GK0IdSF7mtEo/+zq42gbcJEHpE74vJdc=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "f8da5c17d04e25d1be9814bf146faa4d2149774e",
+        "rev": "e55ad888546b4c970c7474a26e7c60fe079ca686",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v6.1.0",
+        "ref": "v7.0.4",
         "repo": "osmosis",
         "type": "github"
       }
@@ -354,16 +405,16 @@
     "regen-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1637707735,
-        "narHash": "sha256-jMlqmTlosMroa3AHvwCJjnRd08EWYu5JqGOUiAV3JV0=",
+        "lastModified": 1645832054,
+        "narHash": "sha256-lDb0/Bw4hAX71jsCQJUju1mKYNacWEVezx6+KdIdu6Q=",
         "owner": "regen-network",
         "repo": "regen-ledger",
-        "rev": "d22117ebf4566238bfcd9605485d6d5e22596a08",
+        "rev": "5fb6268ed18a488ab88fb3bfa4b84e10892a7562",
         "type": "github"
       },
       "original": {
         "owner": "regen-network",
-        "ref": "v2.1.0",
+        "ref": "v3.0.0",
         "repo": "regen-ledger",
         "type": "github"
       }
@@ -387,6 +438,7 @@
     },
     "root": {
       "inputs": {
+        "akash-src": "akash-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
@@ -402,6 +454,8 @@
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "iris-src": "iris-src",
+        "ixo-src": "ixo-src",
+        "juno-src": "juno-src",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
@@ -409,8 +463,15 @@
         "relayer-src": "relayer-src",
         "rust-overlay": "rust-overlay",
         "sconfig-src": "sconfig-src",
+        "sentinel-src": "sentinel-src",
+        "sifchain-src": "sifchain-src",
         "stoml-src": "stoml-src",
-        "ts-relayer-src": "ts-relayer-src"
+        "terra-src": "terra-src",
+        "ts-relayer-src": "ts-relayer-src",
+        "umee-src": "umee-src",
+        "wasmd-src": "wasmd-src",
+        "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
+        "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
     "rust-overlay": {
@@ -448,6 +509,40 @@
         "type": "github"
       }
     },
+    "sentinel-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647195309,
+        "narHash": "sha256-+ZobsjLNxVL3+zi6OEFQhff6Gbd9kng8B0haqcOoiP0=",
+        "owner": "sentinel-official",
+        "repo": "hub",
+        "rev": "7001dc8bc4517efa33cfcc83e8b127528b5bdf2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sentinel-official",
+        "ref": "v0.9.0-rc0",
+        "repo": "hub",
+        "type": "github"
+      }
+    },
+    "sifchain-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648486445,
+        "narHash": "sha256-n5fmWtdrc0Rhs6Uo+zjcSXmyEFVIsA5L9dlrbRXGDmU=",
+        "owner": "Sifchain",
+        "repo": "sifnode",
+        "rev": "269cfadf6a4c08879247c2b8373323ae7239a425",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sifchain",
+        "ref": "v0.12.1",
+        "repo": "sifnode",
+        "type": "github"
+      }
+    },
     "stoml-src": {
       "flake": false,
       "locked": {
@@ -461,6 +556,23 @@
       "original": {
         "owner": "freshautomations",
         "repo": "stoml",
+        "type": "github"
+      }
+    },
+    "terra-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645516218,
+        "narHash": "sha256-7cmVYWFLeOZJtbfw8qaVKLDMVafoeFDXOcrmrMS9buE=",
+        "owner": "terra-money",
+        "repo": "core",
+        "rev": "a6b93b72a7d4fabbbb85fb89e685426f5d07cac1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "terra-money",
+        "ref": "v0.5.17",
+        "repo": "core",
         "type": "github"
       }
     },
@@ -478,6 +590,74 @@
         "owner": "confio",
         "ref": "v0.4.0",
         "repo": "ts-relayer",
+        "type": "github"
+      }
+    },
+    "umee-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648176855,
+        "narHash": "sha256-s7MnAaM+O84JDO1uBNZm1qGN6ZfYmhXD5rCvns4u/rc=",
+        "owner": "umee-network",
+        "repo": "umee",
+        "rev": "3c9b8db04d6ab19d31e89df65232abc35d1a8a59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "umee-network",
+        "ref": "v2.0.0",
+        "repo": "umee",
+        "type": "github"
+      }
+    },
+    "wasmd-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646852618,
+        "narHash": "sha256-3ifvKZhdv50E6yA8jDiVnartZZ34Ji09VJbtkkW7Lig=",
+        "owner": "CosmWasm",
+        "repo": "wasmd",
+        "rev": "3bc0bdeab3fa2b3f7de745622226ff36c2ec6d6a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v0.24.0",
+        "repo": "wasmd",
+        "type": "github"
+      }
+    },
+    "wasmvm_0_16_3-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1640251271,
+        "narHash": "sha256-XvgAMDvAgzWaH7Q+mNZUBoaVhqAVlZ4ucIL0QFyNvWw=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "458e983721624548e66c0dcdd35140383966515e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v0.16.3",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_beta7-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646675433,
+        "narHash": "sha256-tt9aAPLxtIRsG1VFM1YAIHSotuBl170EiBcHSWTtARI=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "f7015565a59255cd09ebfcbf9345f3c87666fedd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.0.0-beta7",
+        "repo": "wasmvm",
         "type": "github"
       }
     }
