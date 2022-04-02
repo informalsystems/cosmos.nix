@@ -98,6 +98,9 @@
     crescent-src.flake = false;
     crescent-src.url = github:crescent-network/crescent/v1.0.0-rc3;
 
+    stargaze-src.flake = false;
+    stargaze-src.url = github:public-awesome/stargaze/v3.0.0;
+
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.24.0;
 
@@ -276,6 +279,11 @@
             name = "crescent";
             drv = packages.crescent;
             exePath = "/bin/crescentd";
+          };
+          stargaze = mkApp {
+            name = "stargaze";
+            drv = packages.stargaze;
+            exePath = "/bin/starsd";
           };
           wasmd = mkApp {
             name = "wasmd";
