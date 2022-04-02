@@ -10,6 +10,10 @@
 <a href="https://nixos.org/">
   <img src="https://img.shields.io/static/v1?logo=nixos&logoColor=white&label=&message=Built%20with%20Nix&color=41439a&style=for-the-badge" alt="Built with nix" />
 </a>
+<a href="https://github.com/informalsystems/cosmos.nix/blob/master/LICENSE">
+  <img src="https://img.shields.io/badge/license-GPL%20v3.0-brightgreen.svg?style=for-the-badge" alt="License" />
+</a>
+
 </p>
 
 
