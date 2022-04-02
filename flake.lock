@@ -483,6 +483,7 @@
         "sconfig-src": "sconfig-src",
         "sentinel-src": "sentinel-src",
         "sifchain-src": "sifchain-src",
+        "stargaze-src": "stargaze-src",
         "stoml-src": "stoml-src",
         "terra-src": "terra-src",
         "ts-relayer-src": "ts-relayer-src",
@@ -558,6 +559,23 @@
         "owner": "Sifchain",
         "ref": "v0.12.1",
         "repo": "sifnode",
+        "type": "github"
+      }
+    },
+    "stargaze-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1645539964,
+        "narHash": "sha256-5I5pdnBJHwNaI2Soet+zH3aH+pUbYdC9TgHBjOd1TmA=",
+        "owner": "public-awesome",
+        "repo": "stargaze",
+        "rev": "6ee57f18714a6d94cc6205afcd1af2ab655f8f0f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "public-awesome",
+        "ref": "v3.0.0",
+        "repo": "stargaze",
         "type": "github"
       }
     },
