@@ -23,7 +23,9 @@
     inherit pkgs inputs;
   };
 
-  utilities = (import ./resources/utilities.nix {inherit pkgs;});
+  utilities = import ./resources/utilities.nix {inherit pkgs;};
+
+  scripts = import ./scripts {inherit pkgs;};
 
   packages =
     rec {
@@ -265,15 +267,17 @@
     default = nix-shell;
     nix-shell = pkgs.mkShell {
       shellHook = inputs.self.checks.${system}.pre-commit-check.shellHook;
-      buildInputs = with pkgs; [
-        rnix-lsp
-        pass
-        gnupg
-        alejandra
-        nix-linter
-        patchelf
-        go_1_18
-      ];
+      buildInputs = with pkgs;
+        [
+          rnix-lsp
+          pass
+          gnupg
+          alejandra
+          nix-linter
+          patchelf
+          go_1_18
+        ]
+        ++ scripts;
     };
     cosmos-shell = pkgs.mkShell {
       buildInputs = with pkgs;

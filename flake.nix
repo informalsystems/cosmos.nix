@@ -10,6 +10,7 @@
     # Has to follow flake-utils in order to get aarch64-darwin
     # can revert after https://github.com/cachix/pre-commit-hooks.nix/pull/142
     pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
@@ -113,13 +114,12 @@
 
   outputs = inputs:
     with inputs.flake-utils.lib;
-    eachDefaultSystem (system:
-      let
+      eachDefaultSystem (system: let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = [ inputs.rust-overlay.overlay ];
+          overlays = [inputs.rust-overlay.overlay];
         };
-        eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+        eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
         resources = (import ./resources.nix) {
           inherit inputs pkgs eval-pkgs system;
         };
@@ -127,8 +127,7 @@
           inherit (resources) packages;
           inherit pkgs system;
         };
-      in
-      rec {
+      in rec {
         # nix build .#<app>
         packages = flattenTree (resources.packages // resources.devShells // tests);
 

@@ -19,22 +19,22 @@
       else appName;
   in
     pkgs.buildGoModule ({
-      inherit version src vendorSha256;
-      pname = name;
-      preCheck =
-        if preCheck == null
-        then ''export HOME="$(mktemp -d)"''
-        else preCheck;
-      ldflags = ''
-        -X github.com/cosmos/cosmos-sdk/version.Name=${name}
-        -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
-        -X github.com/cosmos/cosmos-sdk/version.Version=${version}
-        -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
-        -X github.com/tendermint/tendermint/version.TMCoreSemVer=${tendermint-version}
-        ${additionalLdFlags}
-      '';
-    }
-    // buildGoModuleArgs);
+        inherit version src vendorSha256;
+        pname = name;
+        preCheck =
+          if preCheck == null
+          then ''export HOME="$(mktemp -d)"''
+          else preCheck;
+        ldflags = ''
+          -X github.com/cosmos/cosmos-sdk/version.Name=${name}
+          -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
+          -X github.com/cosmos/cosmos-sdk/version.Version=${version}
+          -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
+          -X github.com/tendermint/tendermint/version.TMCoreSemVer=${tendermint-version}
+          ${additionalLdFlags}
+        '';
+      }
+      // buildGoModuleArgs);
 
   wasmdPreFixupPhase = binName: ''
     old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
