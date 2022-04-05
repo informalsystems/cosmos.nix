@@ -33,7 +33,7 @@
 
     # Chain Sources
     gaia7-src.flake = false;
-    gaia7-src.url = github:cosmos/gaia/v7.0.0-rc0;
+    gaia7-src.url = github:cosmos/gaia/v7.0.0;
 
     gaia6_0_2-src.flake = false;
     gaia6_0_2-src.url = github:cosmos/gaia/v6.0.2;
@@ -113,12 +113,13 @@
 
   outputs = inputs:
     with inputs.flake-utils.lib;
-      eachDefaultSystem (system: let
+    eachDefaultSystem (system:
+      let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = [inputs.rust-overlay.overlay];
+          overlays = [ inputs.rust-overlay.overlay ];
         };
-        eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+        eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
         resources = (import ./resources.nix) {
           inherit inputs pkgs eval-pkgs system;
         };
@@ -126,7 +127,8 @@
           inherit (resources) packages;
           inherit pkgs system;
         };
-      in rec {
+      in
+      rec {
         # nix build .#<app>
         packages = flattenTree (resources.packages // resources.devShells // tests);
 

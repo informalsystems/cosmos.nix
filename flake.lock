@@ -186,16 +186,16 @@
     "gaia7-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1647437161,
-        "narHash": "sha256-p1TXDiBmkRvAInLbP5HuCIwEnuL3Lwj7TyhZgxMMYTE=",
+        "lastModified": 1648134734,
+        "narHash": "sha256-A9EqVHR2GiyuemTrjeaJWyIm6e3XUQ3nSm9dBF9gwvk=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "dfa0e381b3c4b7421fd6a59be02890cb22b6febf",
+        "rev": "79fcf71689358b6212ae91f41070de9669421cf5",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v7.0.0-rc0",
+        "ref": "v7.0.0",
         "repo": "gaia",
         "type": "github"
       }
