@@ -113,6 +113,16 @@ latest development environment you should run:
 nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 ```
 
+## Development
+
+#### Formatting
+  
+Formatting will be run via pre-commit hook if you are in the nix shell, otherise you can manually format using the `format` command like so:
+
+```bash
+nix develop -c format
+``` 
+
 ## Applications
 
 > Note: every command has a local and a remote variant. The local variant requires
