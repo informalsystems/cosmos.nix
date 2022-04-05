@@ -10,6 +10,7 @@
     # Has to follow flake-utils in order to get aarch64-darwin
     # can revert after https://github.com/cachix/pre-commit-hooks.nix/pull/142
     pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
+    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     # Freshautomations inputs
     stoml-src.url = github:freshautomations/stoml;
@@ -33,7 +34,7 @@
 
     # Chain Sources
     gaia7-src.flake = false;
-    gaia7-src.url = github:cosmos/gaia/v7.0.0-rc0;
+    gaia7-src.url = github:cosmos/gaia/v7.0.0;
 
     gaia6_0_2-src.flake = false;
     gaia6_0_2-src.url = github:cosmos/gaia/v6.0.2;

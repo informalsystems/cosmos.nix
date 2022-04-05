@@ -52,9 +52,12 @@ in
 
       gaia7 = {
         name = "gaia";
-        vendorSha256 = "sha256-G+iqzfy1dlaTsGuxq0ffXgEI4RJ7ZwbU8GlTWKXp/sU=";
-        version = "v7.0.0-rc0";
+        vendorSha256 = "sha256-fGRLYkxZDowkuHcX26aRclLind0PRKkC64CQBVrnBr8=";
+        version = "v7.0.0";
         src = gaia7-src;
         tags = ["netgo"];
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
       };
     }
