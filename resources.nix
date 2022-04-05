@@ -25,6 +25,15 @@
 
   utilities = (import ./resources/utilities.nix {inherit pkgs;});
 
+  rustNightly = pkgs.rust-bin.nightly.latest.default;
+
+  craneLib = (inputs.crane.mkLib pkgs).overrideScope' (_: _: {
+    cargo = rustNightly;
+    clippy = rustNightly;
+    rustc = rustNightly;
+    rustfmt = rustNightly;
+  });
+
   packages =
     rec {
       # Go packages
@@ -211,6 +220,30 @@
         doCheck = false;
       };
 
+      nomic = craneLib.buildPackage (rec {
+        src = inputs.nomic-src;
+        nativeBuildInputs = with pkgs; [openssl pkg-config];
+        doCheck = false;
+        cargoArtifacts = craneLib.buildDepsOnly {
+          preBuild = ''
+            mkdir -p /build/dummy-src/target/release/build/bitcoind-f47a754296ba5f28/out/bitcoin/bitcoin-22.0/bin
+            ln -s ${pkgs.bitcoind}/bin/bitcoind /build/dummy-src/target/release/build/bitcoind-f47a754296ba5f28/out/bitcoin/bitcoin-22.0/bin/bitcoind
+            ${pkgs.tree}/bin/tree .
+          '';
+          cargoBuildCommand = "RUST_BACKTRACE=1 cargo build --workspace --release --verbose";
+          nativeBuildInputs = with pkgs; [
+            openssl
+            pkg-config
+            llvmPackages.libclang
+            clang
+            bitcoind
+          ];
+          LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+          BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${pkgs.llvmPackages.libclang.lib}/lib/clang/${pkgs.lib.getVersion pkgs.clang}/include";
+          inherit src;
+        };
+      });
+
       libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
@@ -273,6 +306,11 @@
         nix-linter
         patchelf
         go_1_18
+        rust-bin.nightly.latest.default
+        pkg-config
+        openssl
+        llvmPackages.libclang
+        clang
       ];
     };
     cosmos-shell = pkgs.mkShell {

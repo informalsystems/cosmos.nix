@@ -7,6 +7,8 @@
     flake-utils.url = github:numtide/flake-utils;
     rust-overlay.url = github:oxalica/rust-overlay;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
+    crane.url = "github:ipetkov/crane";
+    crane.inputs.nixpkgs.follows = "nixpkgs";
     # Has to follow flake-utils in order to get aarch64-darwin
     # can revert after https://github.com/cachix/pre-commit-hooks.nix/pull/142
     pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
@@ -100,6 +102,9 @@
 
     stargaze-src.flake = false;
     stargaze-src.url = github:public-awesome/stargaze/v3.0.0;
+
+    nomic-src.flake = false;
+    nomic-src.url = github:nomic-io/nomic/stakenet2;
 
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.24.0;
