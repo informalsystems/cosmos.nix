@@ -258,42 +258,9 @@ let
           inherit (inputs) ts-relayer-src;
         }).ts-relayer-setup;
 
-      apalache = pkgs.sbt.mkDerivation {
-        pname = "apalache";
-        version = "0.23.1";
-        depsSha256 = "sha256-wHPaGIhmurnmbRbM8+erDiE6ZX0opt3h0JIrmcWMdpQ=";
-
-        src = inputs.apalache-src;
-
-        patches = [
-          # ./diff.patch
-          (builtins.toFile "diff.patch"
-            ''
-              diff --git a/build.sbt b/build.sbt
-              index c052ebc8..fa4568d7 100644
-              --- a/build.sbt
-              +++ b/build.sbt
-              @@ -184,7 +184,7 @@
-                     // See https://github.com/sbt/sbt-buildinfo
-                     buildInfoPackage := "apalache",
-                     buildInfoKeys := {
-              -        val build = scala.sys.process.Process("git describe --tags --always").!!.trim
-              +        val build = "v0.23.1"
-                       Seq[BuildInfoKey](
-                           BuildInfoKey.map(version) { case (k, v) =>
-                             if (isSnapshot.value) (k -> build) else (k -> v)
-            '')
-        ];
-
-        buildPhase = ''
-          ls -la
-          sbt apalacheCurrentPackage
-        '';
-
-        installPhase = ''
-          ls -la
-          mv target/universal/apalache-0.23.1-SNAPSHOT $out
-        '';
+      apalache = import ./resources/apalache.nix {
+        inherit pkgs;
+        inherit (inputs) apalache-src;
       };
     }
     // gaia-packages
