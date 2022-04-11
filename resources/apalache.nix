@@ -5,9 +5,11 @@
   version = "v0.23.1";
 
   # Patch the build.sbt file so that it does not call the `diff` command,
-  # which is unavailable inside the Nix shell. Note that the diff has a
-  # single space indentation, so auto re-indentation inside the editor
-  # may break the diff.
+  # which is not available when sbt-derivation is using build.sbt to
+  # compute the Scala dependencies.
+  #
+  # Note that the diff has a single space indentation, so auto re-indentation
+  # inside the editor may break the diff.
   patch = ''
     diff --git a/build.sbt b/build.sbt
     index c052ebc8..fa4568d7 100644
