@@ -137,6 +137,8 @@
           packages = resources.packages;
         };
 
+        devShell = resources.devShells.default;
+
         # nix develop
         devShells = resources.devShells;
 

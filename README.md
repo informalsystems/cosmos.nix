@@ -34,7 +34,7 @@ $ curl -L https://nixos.org/nix/install | sh
 2. [Install Nix Unstable](https://serokell.io/blog/practical-nix-flakes):
 
 ```bash
-$ nix-env -f '<nixpkgs>' -iA nixUnstable
+$ nix-env -iA nixpkgs.nixFlakes
 ```
 
 3. [Enable experimental features](https://serokell.io/blog/practical-nix-flakes):
@@ -116,12 +116,12 @@ nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 ## Development
 
 #### Formatting
-  
+
 Formatting will be run via pre-commit hook if you are in the nix shell, otherise you can manually format using the `format` command like so:
 
 ```bash
 nix develop -c format
-``` 
+```
 
 ## Applications
 
