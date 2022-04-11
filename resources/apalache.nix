@@ -34,6 +34,8 @@ in
 
     src = apalache-src;
 
+    buildInputs = [pkgs.makeWrapper];
+
     patches = [
       (builtins.toFile "diff.patch" patch)
     ];
@@ -43,7 +45,10 @@ in
     '';
 
     installPhase = ''
-      mkdir $out
-      cp -r target/universal/current-pkg/* $out/
+      mkdir -p $out/lib
+      mkdir -p $out/bin
+      cp -r target/universal/current-pkg/lib/apalache.jar $out/lib/apalache.jar
+      echo "exec ${pkgs.jre}/bin/java -Xmx4096m -jar $out/lib/apalache.jar $@" >> $out/bin/apalache
+      chmod +x $out/bin/apalache
     '';
   }

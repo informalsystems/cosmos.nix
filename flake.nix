@@ -310,7 +310,6 @@
           apalache = mkApp {
             name = "apalache";
             drv = packages.apalache;
-            exePath = "/bin/apalache-mc";
           };
         };
       });
