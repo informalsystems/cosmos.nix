@@ -47,8 +47,14 @@ in
     installPhase = ''
       mkdir -p $out/lib
       mkdir -p $out/bin
+
       cp -r target/universal/current-pkg/lib/apalache.jar $out/lib/apalache.jar
-      echo "exec ${pkgs.jre}/bin/java -Xmx4096m -jar $out/lib/apalache.jar $@" >> $out/bin/apalache
+
+      cat > $out/bin/apalache <<- EOM
+      #!${pkgs.bash}/bin/bash
+      exec ${pkgs.jre}/bin/java -Xmx4096m -jar $out/lib/apalache.jar $@
+      EOM
+
       chmod +x $out/bin/apalache
     '';
   }
