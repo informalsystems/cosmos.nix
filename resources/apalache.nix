@@ -1,8 +1,7 @@
-{ apalache-src
-, pkgs
-,
-}:
-let
+{
+  apalache-src,
+  pkgs,
+}: let
   version = "v0.23.1";
 
   # Patch the build.sbt file so that it does not call the `diff` command,
@@ -24,26 +23,25 @@ let
                  BuildInfoKey.map(version) { case (k, v) =>
                    if (isSnapshot.value) (k -> build) else (k -> v)
   '';
-
 in
-pkgs.sbt.mkDerivation {
-  pname = "apalache";
-  inherit version;
+  pkgs.sbt.mkDerivation {
+    pname = "apalache";
+    inherit version;
 
-  depsSha256 = "sha256-wHPaGIhmurnmbRbM8+erDiE6ZX0opt3h0JIrmcWMdpQ=";
+    depsSha256 = "sha256-wHPaGIhmurnmbRbM8+erDiE6ZX0opt3h0JIrmcWMdpQ=";
 
-  src = apalache-src;
+    src = apalache-src;
 
-  patches = [
-    (builtins.toFile "diff.patch" patch)
-  ];
+    patches = [
+      (builtins.toFile "diff.patch" patch)
+    ];
 
-  buildPhase = ''
-    sbt apalacheCurrentPackage
-  '';
+    buildPhase = ''
+      sbt apalacheCurrentPackage
+    '';
 
-  installPhase = ''
-    mkdir $out
-    cp -r target/universal/current-pkg/* $out/
-  '';
-}
+    installPhase = ''
+      mkdir $out
+      cp -r target/universal/current-pkg/* $out/
+    '';
+  }
