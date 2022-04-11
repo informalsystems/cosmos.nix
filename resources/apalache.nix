@@ -36,8 +36,6 @@ in
 
     src = apalache-src;
 
-    buildInputs = [pkgs.makeWrapper];
-
     patches = [
       (builtins.toFile "diff.patch" patch)
     ];
