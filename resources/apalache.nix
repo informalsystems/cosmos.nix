@@ -28,7 +28,7 @@ in
     pname = "apalache";
     inherit version;
 
-    depsSha256 = "sha256-wHPaGIhmurnmbRbM8+erDiE6ZX0opt3h0JIrmcWMdpQ=";
+    depsSha256 = "sha256-xKLKlkOHysNtSCDtj9JKwLYyCCuRrc36+QsBWFjLnFI=";
 
     src = apalache-src;
 
