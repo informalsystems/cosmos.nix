@@ -119,191 +119,198 @@
 
   outputs = inputs:
     with inputs.flake-utils.lib;
-    eachDefaultSystem (system:
-      let
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          overlays = [
-            inputs.rust-overlay.overlay
-            inputs.sbt-derivation.overlay
-          ];
-        };
-        eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
-        resources = (import ./resources.nix) {
-          inherit inputs pkgs eval-pkgs system;
-        };
-        tests = (import ./tests.nix) {
-          inherit (resources) packages;
-          inherit pkgs system;
-        };
-      in
-      rec {
-        # nix build .#<app>
-        packages = flattenTree (resources.packages // resources.devShells // tests);
+    eachSystem
+      [
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ]
+      (system:
+        let
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [
+              inputs.rust-overlay.overlay
+              inputs.sbt-derivation.overlay
+            ];
+          };
+          eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+          resources = (import ./resources.nix) {
+            inherit inputs pkgs eval-pkgs system;
+          };
+          tests = (import ./tests.nix) {
+            inherit (resources) packages;
+            inherit pkgs system;
+          };
+        in
+        rec {
+          # nix build .#<app>
+          packages = flattenTree (resources.packages // resources.devShells // tests);
 
-        # nix flake check
-        checks = (import ./checks.nix) {
-          inherit inputs system;
-          packages = resources.packages;
-        };
+          # nix flake check
+          checks = (import ./checks.nix) {
+            inherit inputs system;
+            packages = resources.packages;
+          };
 
-        # nix develop
-        devShells = resources.devShells;
+          # nix develop
+          devShells = resources.devShells;
 
-        # nix run .#<app>
-        apps = {
-          hermes = mkApp {
-            name = "hermes";
-            drv = packages.hermes;
+          # nix run .#<app>
+          apps = {
+            hermes = mkApp {
+              name = "hermes";
+              drv = packages.hermes;
+            };
+            gaia = mkApp {
+              name = "gaia";
+              drv = packages.gaia6_0_3;
+              exePath = "/bin/gaiad";
+            };
+            gaia4 = mkApp {
+              name = "gaia";
+              drv = packages.gaia4;
+              exePath = "/bin/gaiad";
+            };
+            gaia5 = mkApp {
+              name = "gaia";
+              drv = packages.gaia5;
+              exePath = "/bin/gaiad";
+            };
+            gaia6 = mkApp {
+              name = "gaia";
+              drv = packages.gaia6_0_4;
+              exePath = "/bin/gaiad";
+            };
+            gaia6_0_2 = mkApp {
+              name = "gaia";
+              drv = packages.gaia6_0_2;
+              exePath = "/bin/gaiad";
+            };
+            gaia6_0_3 = mkApp {
+              name = "gaia";
+              drv = packages.gaia6_0_3;
+              exePath = "/bin/gaiad";
+            };
+            gaia6_0_4 = mkApp {
+              name = "gaia";
+              drv = packages.gaia6_0_4;
+              exePath = "/bin/gaiad";
+            };
+            gaia6-ordered = mkApp {
+              name = "gaia";
+              drv = packages.gaia6-ordered;
+              exePath = "/bin/gaiad";
+            };
+            gaia7 = mkApp {
+              name = "gaia";
+              drv = packages.gaia7;
+              exePath = "/bin/gaiad";
+            };
+            ica = mkApp {
+              name = "icad";
+              drv = packages.ica;
+              exePath = "/bin/icad";
+            };
+            cosmovisor = mkApp {
+              name = "cosmovisor";
+              drv = packages.cosmovisor;
+            };
+            simd = mkApp {
+              name = "simd";
+              drv = packages.simd;
+            };
+            stoml = mkApp {
+              name = "stoml";
+              drv = packages.stoml;
+            };
+            sconfig = mkApp {
+              name = "sconfig";
+              drv = packages.sconfig;
+            };
+            gm = mkApp {
+              name = "gm";
+              drv = packages.gm;
+            };
+            osmosis = mkApp {
+              name = "osmosis";
+              drv = packages.osmosis;
+              exePath = "/bin/osmosisd";
+            };
+            iris = mkApp {
+              name = "iris";
+              drv = packages.iris;
+            };
+            regen = mkApp {
+              name = "regen";
+              drv = packages.regen;
+            };
+            evmos = mkApp {
+              name = "evmos";
+              drv = packages.evmos;
+              exePath = "/bin/evmosd";
+            };
+            ts-relayer = mkApp {
+              name = "ts-relayer";
+              drv = packages.ts-relayer;
+            };
+            ts-relayer-setup = mkApp {
+              name = "ts-relayer-setup";
+              drv = packages.ts-relayer-setup;
+            };
+            juno = mkApp {
+              name = "juno";
+              drv = packages.juno;
+              exePath = "/bin/junod";
+            };
+            terra = mkApp {
+              name = "terra";
+              drv = packages.terra;
+              exePath = "/bin/terrad";
+            };
+            sentinel = mkApp {
+              name = "sentinel";
+              drv = packages.sentinel;
+              exePath = "/bin/sentinelhub";
+            };
+            akash = mkApp {
+              name = "akash";
+              drv = packages.akash;
+            };
+            umee = mkApp {
+              name = "umee";
+              drv = packages.umee;
+              exePath = "/bin/umeed";
+            };
+            ixo = mkApp {
+              name = "ixo";
+              drv = packages.ixo;
+              exePath = "/bin/ixod";
+            };
+            sifchain = mkApp {
+              name = "sifchain";
+              drv = packages.sifchain;
+              exePath = "/bin/sifnoded";
+            };
+            crescent = mkApp {
+              name = "crescent";
+              drv = packages.crescent;
+              exePath = "/bin/crescentd";
+            };
+            stargaze = mkApp {
+              name = "stargaze";
+              drv = packages.stargaze;
+              exePath = "/bin/starsd";
+            };
+            wasmd = mkApp {
+              name = "wasmd";
+              drv = packages.wasmd;
+            };
+            apalache = mkApp {
+              name = "apalache";
+              drv = packages.apalache;
+            };
           };
-          gaia = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_3;
-            exePath = "/bin/gaiad";
-          };
-          gaia4 = mkApp {
-            name = "gaia";
-            drv = packages.gaia4;
-            exePath = "/bin/gaiad";
-          };
-          gaia5 = mkApp {
-            name = "gaia";
-            drv = packages.gaia5;
-            exePath = "/bin/gaiad";
-          };
-          gaia6 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_4;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_2 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_2;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_3 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_3;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_4 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_4;
-            exePath = "/bin/gaiad";
-          };
-          gaia6-ordered = mkApp {
-            name = "gaia";
-            drv = packages.gaia6-ordered;
-            exePath = "/bin/gaiad";
-          };
-          gaia7 = mkApp {
-            name = "gaia";
-            drv = packages.gaia7;
-            exePath = "/bin/gaiad";
-          };
-          ica = mkApp {
-            name = "icad";
-            drv = packages.ica;
-            exePath = "/bin/icad";
-          };
-          cosmovisor = mkApp {
-            name = "cosmovisor";
-            drv = packages.cosmovisor;
-          };
-          simd = mkApp {
-            name = "simd";
-            drv = packages.simd;
-          };
-          stoml = mkApp {
-            name = "stoml";
-            drv = packages.stoml;
-          };
-          sconfig = mkApp {
-            name = "sconfig";
-            drv = packages.sconfig;
-          };
-          gm = mkApp {
-            name = "gm";
-            drv = packages.gm;
-          };
-          osmosis = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis;
-            exePath = "/bin/osmosisd";
-          };
-          iris = mkApp {
-            name = "iris";
-            drv = packages.iris;
-          };
-          regen = mkApp {
-            name = "regen";
-            drv = packages.regen;
-          };
-          evmos = mkApp {
-            name = "evmos";
-            drv = packages.evmos;
-            exePath = "/bin/evmosd";
-          };
-          ts-relayer = mkApp {
-            name = "ts-relayer";
-            drv = packages.ts-relayer;
-          };
-          ts-relayer-setup = mkApp {
-            name = "ts-relayer-setup";
-            drv = packages.ts-relayer-setup;
-          };
-          juno = mkApp {
-            name = "juno";
-            drv = packages.juno;
-            exePath = "/bin/junod";
-          };
-          terra = mkApp {
-            name = "terra";
-            drv = packages.terra;
-            exePath = "/bin/terrad";
-          };
-          sentinel = mkApp {
-            name = "sentinel";
-            drv = packages.sentinel;
-            exePath = "/bin/sentinelhub";
-          };
-          akash = mkApp {
-            name = "akash";
-            drv = packages.akash;
-          };
-          umee = mkApp {
-            name = "umee";
-            drv = packages.umee;
-            exePath = "/bin/umeed";
-          };
-          ixo = mkApp {
-            name = "ixo";
-            drv = packages.ixo;
-            exePath = "/bin/ixod";
-          };
-          sifchain = mkApp {
-            name = "sifchain";
-            drv = packages.sifchain;
-            exePath = "/bin/sifnoded";
-          };
-          crescent = mkApp {
-            name = "crescent";
-            drv = packages.crescent;
-            exePath = "/bin/crescentd";
-          };
-          stargaze = mkApp {
-            name = "stargaze";
-            drv = packages.stargaze;
-            exePath = "/bin/starsd";
-          };
-          wasmd = mkApp {
-            name = "wasmd";
-            drv = packages.wasmd;
-          };
-          apalache = mkApp {
-            name = "apalache";
-            drv = packages.apalache;
-          };
-        };
-      });
+        });
 }
