@@ -17,6 +17,23 @@
         "type": "github"
       }
     },
+    "apalache-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649641733,
+        "narHash": "sha256-2CsKxrl8gJLxBojv1QJIdGqktoaSb/EkC4dFqF7zoEg=",
+        "owner": "informalsystems",
+        "repo": "apalache",
+        "rev": "eec238683fde4590c060fa572429c577638a1a44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "informalsystems",
+        "ref": "v0.23.1",
+        "repo": "apalache",
+        "type": "github"
+      }
+    },
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
@@ -444,6 +461,7 @@
     "root": {
       "inputs": {
         "akash-src": "akash-src",
+        "apalache-src": "apalache-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
@@ -468,6 +486,7 @@
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
         "rust-overlay": "rust-overlay",
+        "sbt-derivation": "sbt-derivation",
         "sconfig-src": "sconfig-src",
         "sentinel-src": "sentinel-src",
         "sifchain-src": "sifchain-src",
@@ -497,6 +516,21 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sbt-derivation": {
+      "locked": {
+        "lastModified": 1617466857,
+        "narHash": "sha256-Z7eWMLreLtiSiJ3nWDWBy1w9WNEFexkYCgT/dWZF7yo=",
+        "owner": "zaninime",
+        "repo": "sbt-derivation",
+        "rev": "920b6f187937493371e2b1687261017e6e014cf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zaninime",
+        "repo": "sbt-derivation",
         "type": "github"
       }
     },
