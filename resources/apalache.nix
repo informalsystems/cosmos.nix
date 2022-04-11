@@ -52,7 +52,7 @@ in
 
       cat > $out/bin/apalache-mc <<- EOM
       #!${pkgs.bash}/bin/bash
-      exec ${pkgs.jre}/bin/java -Xmx4096m -jar $out/lib/apalache.jar $@
+      exec ${pkgs.jre}/bin/java -Xmx4096m -jar "$out/lib/apalache.jar" "\$@"
       EOM
 
       chmod +x $out/bin/apalache-mc
