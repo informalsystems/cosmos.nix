@@ -4,9 +4,11 @@
 }: let
   version = "v0.23.1";
 
-  # Patch the build.sbt file so that it does not call the `diff` command,
-  # which is not available when sbt-derivation is using build.sbt to
-  # compute the Scala dependencies.
+  # Patch the build.sbt file so that it does not call the `git describe` command.
+  # This is called by sbt-derivation to resolve the Scala dependencies, however
+  # inside the Nix build environment for sbt-derivation, the git command is
+  # not available, hence the dependency resolution would fail. As a workaround,
+  # we use the version string provided in Nix as the build version.
   #
   # Note that the diff has a single space indentation, so auto re-indentation
   # inside the editor may break the diff.
