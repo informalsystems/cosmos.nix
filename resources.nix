@@ -258,6 +258,11 @@
           inherit (inputs) ts-relayer-src;
         })
         .ts-relayer-setup;
+
+      apalache = import ./resources/apalache.nix {
+        inherit pkgs;
+        inherit (inputs) apalache-src;
+      };
     }
     // gaia-packages
     // ibc-packages;

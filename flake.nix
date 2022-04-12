@@ -7,6 +7,8 @@
     flake-utils.url = github:numtide/flake-utils;
     rust-overlay.url = github:oxalica/rust-overlay;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
+    sbt-derivation.url = github:zaninime/sbt-derivation;
+
     # Has to follow flake-utils in order to get aarch64-darwin
     # can revert after https://github.com/cachix/pre-commit-hooks.nix/pull/142
     pre-commit-hooks.inputs.flake-utils.follows = "flake-utils";
@@ -110,14 +112,27 @@
 
     wasmvm_0_16_3-src.flake = false;
     wasmvm_0_16_3-src.url = github:CosmWasm/wasmvm/v0.16.3;
+
+    apalache-src.flake = false;
+    apalache-src.url = github:informalsystems/apalache/v0.23.1;
   };
 
   outputs = inputs:
     with inputs.flake-utils.lib;
-      eachDefaultSystem (system: let
+      eachSystem
+      [
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ]
+      (system: let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = [inputs.rust-overlay.overlay];
+          overlays = [
+            inputs.rust-overlay.overlay
+            inputs.sbt-derivation.overlay
+          ];
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
         resources = (import ./resources.nix) {
@@ -137,9 +152,9 @@
           packages = resources.packages;
         };
 
+        # nix develop
         devShell = resources.devShells.default;
 
-        # nix develop
         devShells = resources.devShells;
 
         # nix run .#<app>
@@ -291,6 +306,11 @@
           wasmd = mkApp {
             name = "wasmd";
             drv = packages.wasmd;
+          };
+          apalache = mkApp {
+            name = "apalache";
+            drv = packages.apalache;
+            exePath = "/bin/apalache-mc";
           };
         };
       });
