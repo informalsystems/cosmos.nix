@@ -159,12 +159,33 @@
 
       crescent = utilities.mkCosmosGoApp {
         name = "crescent";
-        version = "v1.0.0-rc3";
+        version = "v1.1.0";
         src = inputs.crescent-src;
         vendorSha256 = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
         tags = ["netgo"];
         additionalLdFlags = ''
           -X github.com/cosmos/cosmos-sdk/types.reDnmString=[a-zA-Z][a-zA-Z0-9/:]{2,127}
+        '';
+      };
+
+      crescent-genesis = pkgs.stdenv.mkDerivation {
+        name = "crescent-genesis";
+        src = inputs.crescent-genesis-src;
+        buildPhase = ''
+          ${pkgs.gnutar}/bin/tar -zxvf ./mainnet/crescent-1/genesis.json.tar.gz
+        '';
+        checkPhase = ''
+          GENESIS_SHA=${pkgs.jq}/bin/jq -S -c -M \'\' ./genesis.json | shasum -a 256
+          if ["$GENESIS_SHA" = "7e1dcc12fc0dccb4230768bf91311980313d5a6f67da5e4b97d29304b293ce2b"] do
+            then exit 0
+            else
+              echo "expected sha of 7e1dcc12fc0dccb4230768bf91311980313d5a6f67da5e4b97d29304b293ce2b but got $GENESIS_SHA"
+              exit 1
+          fi
+        '';
+        installPhase = ''
+          mkdir -p $out/static
+          cp ./genesis.json $out/static/genesis.json
         '';
       };
 

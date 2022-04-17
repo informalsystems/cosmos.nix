@@ -51,19 +51,35 @@
         "type": "github"
       }
     },
-    "crescent-src": {
+    "crescent-genesis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1647869429,
-        "narHash": "sha256-c1xiTB/HgtQJSwD3ccFQIoSHPbJK6rf1nSjnM3r0oCE=",
+        "lastModified": 1650010731,
+        "narHash": "sha256-xphK3MXuvhCg0Pk/RjmjHcx3WlinVUY1NY0YHOdGqLA=",
         "owner": "crescent-network",
-        "repo": "crescent",
-        "rev": "01980cfd06b06786109eaba78c154e6db1adc3d6",
+        "repo": "launch",
+        "rev": "2928824252382afa27786f3390db4617a2bc5f24",
         "type": "github"
       },
       "original": {
         "owner": "crescent-network",
-        "ref": "v1.0.0-rc3",
+        "repo": "launch",
+        "type": "github"
+      }
+    },
+    "crescent-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649924331,
+        "narHash": "sha256-9CGbF0B3PvFSyXuCpJhfuPbZekU2Qz/2orKp613dOF4=",
+        "owner": "crescent-network",
+        "repo": "crescent",
+        "rev": "eb46f9727e895dea1a20e81dc34d51b98401db49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crescent-network",
+        "ref": "v1.1.0",
         "repo": "crescent",
         "type": "github"
       }
@@ -463,6 +479,7 @@
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
+        "crescent-genesis-src": "crescent-genesis-src",
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
