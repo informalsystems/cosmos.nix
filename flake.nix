@@ -114,7 +114,7 @@
     wasmvm_0_16_3-src.url = github:CosmWasm/wasmvm/v0.16.3;
 
     apalache-src.flake = false;
-    apalache-src.url = github:informalsystems/apalache/v0.23.1;
+    apalache-src.url = github:informalsystems/apalache/v0.24.0;
   };
 
   outputs = inputs:

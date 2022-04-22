@@ -20,16 +20,16 @@
     "apalache-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1649641733,
-        "narHash": "sha256-2CsKxrl8gJLxBojv1QJIdGqktoaSb/EkC4dFqF7zoEg=",
+        "lastModified": 1650241137,
+        "narHash": "sha256-15jzwbBc7ByxHJbpHmIukSNvih9oxTXeinNamgXirCU=",
         "owner": "informalsystems",
         "repo": "apalache",
-        "rev": "eec238683fde4590c060fa572429c577638a1a44",
+        "rev": "40d9ec66b3defe8e72803ca9241a73366497eeee",
         "type": "github"
       },
       "original": {
         "owner": "informalsystems",
-        "ref": "v0.23.1",
+        "ref": "v0.24.0",
         "repo": "apalache",
         "type": "github"
       }

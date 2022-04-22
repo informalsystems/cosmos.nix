@@ -32,7 +32,7 @@ in
     pname = "apalache";
     inherit version;
 
-    depsSha256 = "sha256-xKLKlkOHysNtSCDtj9JKwLYyCCuRrc36+QsBWFjLnFI=";
+    depsSha256 = "sha256-9wGlIFmvKW4N8NQqhOlxjhl48JptHCSI8F8EFF9mYrw=";
 
     src = apalache-src;
 
@@ -41,14 +41,17 @@ in
     ];
 
     buildPhase = ''
-      sbt apalacheCurrentPackage
+      make dist
     '';
 
     installPhase = ''
       mkdir -p $out/lib
       mkdir -p $out/bin
+      mkdir -p target/out
 
-      cp -r target/universal/current-pkg/lib/apalache.jar $out/lib/apalache.jar
+      tar xf target/universal/apalache.tgz -C target/out
+
+      cp -r target/out/apalache/lib/apalache.jar $out/lib/apalache.jar
 
       cat > $out/bin/apalache-mc <<- EOM
       #!${pkgs.bash}/bin/bash
