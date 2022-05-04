@@ -9,10 +9,10 @@ else {
   hermes-module-test = (import ./modules/tests/hermes-test.nix) {
     inherit (packages) hermes;
     inherit pkgs;
-    gaia = packages.gaia6_0_3;
+    gaia = packages.gaia7;
   };
   gaia-module-test = (import ./modules/tests/gaia-test.nix) {
     inherit pkgs;
-    gaia = packages.gaia6_0_3;
+    gaia = packages.gaia7;
   };
 }

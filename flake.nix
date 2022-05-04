@@ -174,22 +174,7 @@
           };
           gaia6 = mkApp {
             name = "gaia";
-            drv = packages.gaia6_0_4;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_2 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_2;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_3 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_3;
-            exePath = "/bin/gaiad";
-          };
-          gaia6_0_4 = mkApp {
-            name = "gaia";
-            drv = packages.gaia6_0_4;
+            drv = packages.gaia6;
             exePath = "/bin/gaiad";
           };
           gaia6-ordered = mkApp {
