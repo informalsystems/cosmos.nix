@@ -24,11 +24,11 @@ in
         tags = ["netgo"];
       };
 
-      ibc-go-ics29-simapp = {
+      ibc-go-main-simapp = {
         name = "simapp";
-        version = "v6.0.0-ics29";
-        src = ibc-go-ics29-src;
-        vendorSha256 = "sha256-e2aA/mme24hi3ERl/ooZc1YsshlvHmXak/VEwGe5Q3I=";
+        version = "v7.0.0-main";
+        src = ibc-go-main-src;
+        vendorSha256 = "sha256-2RBZNUIZVdPPI63FzkmOOPSlYlFE+UjzMMnqKEjayNY=";
         tags = ["netgo"];
       };
     }
