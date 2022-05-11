@@ -183,14 +183,31 @@
         "type": "github"
       }
     },
+    "ibc-go-ics29-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1652196479,
+        "narHash": "sha256-kdSJwSIA2MvPFLguvCPe6TnzMkmQI3pIVJNhN/B7gwU=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "dcd0681d8f07c624f53b9a9ffe9de2f122486207",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "ics29-beta2",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-go-main-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1651571071,
-        "narHash": "sha256-AwTTN6p5/Q5tnoipuylv1qF8Gw4I7YHASLvIwtLxvLA=",
+        "lastModified": 1652196479,
+        "narHash": "sha256-kdSJwSIA2MvPFLguvCPe6TnzMkmQI3pIVJNhN/B7gwU=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "bd086506f9256c4d5776bc38d2e930b523eb5125",
+        "rev": "dcd0681d8f07c624f53b9a9ffe9de2f122486207",
         "type": "github"
       },
       "original": {
@@ -435,6 +452,7 @@
         "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6-src": "gaia6-src",
         "gaia7-src": "gaia7-src",
+        "ibc-go-ics29-src": "ibc-go-ics29-src",
         "ibc-go-main-src": "ibc-go-main-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",
