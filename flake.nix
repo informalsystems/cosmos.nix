@@ -77,6 +77,9 @@
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v10.0.1;
 
+    osmosis7-src.flake = false;
+    osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
+
     terra-src.flake = false;
     terra-src.url = github:terra-money/core/v0.5.17;
 

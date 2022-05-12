@@ -81,6 +81,22 @@
         doCheck = false;
       };
 
+      osmosis7 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v7.3.0";
+        src = inputs.osmosis7-src // utilities.cleanSourceWithRegexes inputs.osmosis7-src [".*tests/e2e.*"];
+        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
+        tags = ["netgo"];
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase "osmosisd"}
+          ${utilities.wasmdPreFixupPhase "chain_init"}
+        '';
+        buildInputs = [libwasmvm_1];
+
+        # Test has to be skipped as end-to-end testing requires network access
+        doCheck = false;
+      };
+
       juno = utilities.mkCosmosGoApp {
         name = "juno";
         version = "v2.3.0-beta.2";
