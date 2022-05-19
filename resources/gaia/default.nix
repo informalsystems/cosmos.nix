@@ -42,4 +42,15 @@ in
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
       };
+
+      gaia-rho = {
+        name = "gaia";
+        vendorSha256 = "sha256-YWR8Pp5uJ+a5giV4xfpt5iqMbsIBRujVz4YHBc2pLSI=";
+        version = "v8.0.0";
+        src = gaia-rho-src;
+        tags = ["netgo"];
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
     }
