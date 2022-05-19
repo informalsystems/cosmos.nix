@@ -115,6 +115,23 @@
         "type": "github"
       }
     },
+    "gaia-rho-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1652962673,
+        "narHash": "sha256-m9bSBLvpOA07USV8ecTx7a3Odfauyo3u2m4VLz1t7c0=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "7394d2bb89c72a40da35bf2322709c73375de780",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "rho-ibc",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
     "gaia5-src": {
       "flake": false,
       "locked": {
@@ -431,6 +448,7 @@
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
+        "gaia-rho-src": "gaia-rho-src",
         "gaia5-src": "gaia5-src",
         "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6-src": "gaia6-src",

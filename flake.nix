@@ -47,6 +47,9 @@
     gaia5-src.flake = false;
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
+    gaia-rho-src.flake = false;
+    gaia-rho-src.url = github:cosmos/gaia/rho-ibc;
+
     ibc-go-v2-src.flake = false;
     ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
 
