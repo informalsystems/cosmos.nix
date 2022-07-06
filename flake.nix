@@ -60,7 +60,7 @@
     ibc-go-ics29-src.url = github:cosmos/ibc-go/ics29-beta3;
 
     ibc-go-main-src.flake = false;
-    ibc-go-main-src.url = github:cosmos/ibc-go/6c4a44243e6a381293920aab483c44aa840cf556;
+    ibc-go-main-src.url = github:cosmos/ibc-go;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
