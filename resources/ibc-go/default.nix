@@ -11,32 +11,40 @@ in
       ibc-go-v2-simapp = {
         name = "simapp";
         src = ibc-go-v2-src;
-        version = "v6.0.0-v3";
+        version = "v2.0.0";
         vendorSha256 = "sha256-Af47uEEPCFsX1JiMiw3LprGDiVb/0HA0sMeuDdAVXu8=";
         tags = ["netgo"];
       };
 
       ibc-go-v3-simapp = {
         name = "simapp";
-        version = "v6.0.0-v3";
+        version = "v3.0.0";
         src = ibc-go-v3-src;
-        vendorSha256 = "sha256-W05fH/y7InNgY68aJLlm32c8DpAKFnO3ehH8CzzYdPI=";
+        vendorSha256 = "sha256-kefoBLr1pbyycUjel6rZ8VsqCLbPFY5hUHUVyO+Y2wc=";
+        tags = ["netgo"];
+      };
+
+      ibc-go-v4-simapp = {
+        name = "simapp";
+        version = "v4.0.0";
+        src = ibc-go-v3-src;
+        vendorSha256 = "sha256-kefoBLr1pbyycUjel6rZ8VsqCLbPFY5hUHUVyO+Y2wc=";
         tags = ["netgo"];
       };
 
       ibc-go-main-simapp = {
         name = "simapp";
-        version = "v7.0.0-main";
+        version = "v4.0.0-main";
         src = ibc-go-main-src;
-        vendorSha256 = "sha256-PkMF36VY85zueSc0uWJ40TlvcLE1NjL4Xojk7gQEM84=";
+        vendorSha256 = "sha256-7NJoasvGMUtJqZpqLDm6+aVrKQw3VYO/13udb8wKz5s=";
         tags = ["netgo"];
       };
 
       ibc-go-ics29-simapp = {
         name = "simapp";
-        version = "v7.0.0-ics29-beta2";
+        version = "v4.0.0-ics29-beta3";
         src = ibc-go-ics29-src;
-        vendorSha256 = "sha256-2RBZNUIZVdPPI63FzkmOOPSlYlFE+UjzMMnqKEjayNY=";
+        vendorSha256 = "sha256-Fxdi71yKS00xTrmRCKOS/7uoULif4OGhbUqd0NSAjZM=";
         tags = ["netgo"];
       };
     }

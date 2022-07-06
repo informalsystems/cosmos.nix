@@ -51,10 +51,13 @@
     ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
 
     ibc-go-v3-src.flake = false;
-    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.0.0;
+    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.1.0;
+
+    ibc-go-v4-src.flake = false;
+    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.0.0-rc0;
 
     ibc-go-ics29-src.flake = false;
-    ibc-go-ics29-src.url = github:cosmos/ibc-go/ics29-beta2;
+    ibc-go-ics29-src.url = github:cosmos/ibc-go/ics29-beta3;
 
     ibc-go-main-src.flake = false;
     ibc-go-main-src.url = github:cosmos/ibc-go;

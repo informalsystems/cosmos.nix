@@ -186,16 +186,16 @@
     "ibc-go-ics29-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1652196479,
-        "narHash": "sha256-kdSJwSIA2MvPFLguvCPe6TnzMkmQI3pIVJNhN/B7gwU=",
+        "lastModified": 1655712472,
+        "narHash": "sha256-1KoCoWezR+A+rwy2U77kZrmckcwtOc2brfpiksUHmOk=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "dcd0681d8f07c624f53b9a9ffe9de2f122486207",
+        "rev": "6c034bc085e1701a7cbaa26476eb33e958b3a57c",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "ics29-beta2",
+        "ref": "ics29-beta3",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -203,11 +203,11 @@
     "ibc-go-main-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1656015845,
-        "narHash": "sha256-5y+7CrbXW7Gy6IzLavd/b1jWWQemrjXxcpAnSc2JLzI=",
+        "lastModified": 1657010958,
+        "narHash": "sha256-N+f1EeX6qJVBJXpJISlpqgerNJuapYG7MaDJqZt5tCM=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "20ffa6f1aca8adddccdcd714488eead2256a420d",
+        "rev": "7d181821314d4bc6d0f8a5b885f293f5b975aed0",
         "type": "github"
       },
       "original": {
@@ -236,16 +236,33 @@
     "ibc-go-v3-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1647356202,
-        "narHash": "sha256-wX3kUzK5dkPeNgmBGP0mE8QeNR4LRo1obVGasZSLSpE=",
+        "lastModified": 1655212180,
+        "narHash": "sha256-68YXAToz6p5cmiFEkdfMmcAsOb8EnLYLls5695V94CY=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "46e020640e66f9043c14c53a4d215a5b457d6703",
+        "rev": "bf062ad92329a659b3b20122b7c3bc5823c040e1",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v3.0.0",
+        "ref": "v3.1.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
+    "ibc-go-v4-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1656924495,
+        "narHash": "sha256-WeIpJOgLO3hNbSfkrnzRcXE3NrBago9nhdtT2XDDXKA=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "efda07d984a65ad4099fc6d9c82f71a28d66a411",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v4.0.0-rc0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -456,6 +473,7 @@
         "ibc-go-main-src": "ibc-go-main-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",
+        "ibc-go-v4-src": "ibc-go-v4-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "iris-src": "iris-src",
