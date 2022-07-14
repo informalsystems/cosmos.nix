@@ -200,7 +200,7 @@
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "wasmd";
         dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
+        buildInputs = [libwasmvm_1];
       };
 
       # Rust resources
@@ -210,6 +210,19 @@
         src = inputs.ibc-rs-src;
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         cargoSha256 = "sha256-lIMnZQw46prUFHlAzCWPkKzSNi4F9D+1+aG1vt/5Bvo=";
+        doCheck = false;
+      };
+
+      libwasmvm_1 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1-src}/libwasmvm";
+        version = "v1.0.0";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-Q8j9wESn2RBb05LcS7FiKGTPLgIPxWA0GZqHlTjkqpU=";
         doCheck = false;
       };
 
