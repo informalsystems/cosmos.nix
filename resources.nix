@@ -194,9 +194,9 @@
 
       wasmd = utilities.mkCosmosGoApp {
         name = "wasm";
-        version = "v0.24.0";
+        version = "v0.27.0";
         src = inputs.wasmd-src;
-        vendorSha256 = "sha256-+Hz3AKGmf2GbcnMCmEU3QQK2E98F88hNGzLV+G2FQMU=";
+        vendorSha256 = "sha256-NgneotrMk0tPEIvPGyaJ+eD30SAOWVHNNcYnfOEiuvk=";
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "wasmd";
         dontStrip = true;
