@@ -183,23 +183,6 @@
         "type": "github"
       }
     },
-    "ibc-go-ics29-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1655712472,
-        "narHash": "sha256-1KoCoWezR+A+rwy2U77kZrmckcwtOc2brfpiksUHmOk=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "6c034bc085e1701a7cbaa26476eb33e958b3a57c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "ref": "ics29-beta3",
-        "repo": "ibc-go",
-        "type": "github"
-      }
-    },
     "ibc-go-main-src": {
       "flake": false,
       "locked": {
@@ -469,7 +452,6 @@
         "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6-src": "gaia6-src",
         "gaia7-src": "gaia7-src",
-        "ibc-go-ics29-src": "ibc-go-ics29-src",
         "ibc-go-main-src": "ibc-go-main-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",

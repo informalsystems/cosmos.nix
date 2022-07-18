@@ -39,12 +39,4 @@ in
         vendorSha256 = "sha256-7NJoasvGMUtJqZpqLDm6+aVrKQw3VYO/13udb8wKz5s=";
         tags = ["netgo"];
       };
-
-      ibc-go-ics29-simapp = {
-        name = "simapp";
-        version = "v4.0.0-ics29-beta3";
-        src = ibc-go-ics29-src;
-        vendorSha256 = "sha256-Fxdi71yKS00xTrmRCKOS/7uoULif4OGhbUqd0NSAjZM=";
-        tags = ["netgo"];
-      };
     }
