@@ -75,7 +75,7 @@
     juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v7.0.4;
+    osmosis-src.url = github:osmosis-labs/osmosis/v10.0.1;
 
     terra-src.flake = false;
     terra-src.url = github:terra-money/core/v0.5.17;
