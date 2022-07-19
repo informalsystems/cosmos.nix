@@ -67,9 +67,9 @@
 
       evmos = utilities.mkCosmosGoApp {
         name = "evmos";
-        version = "v3.0.0-beta";
+        version = "v6.0.2";
         src = inputs.evmos-src;
-        vendorSha256 = "sha256-4zA5JSnhvZAJZ+4tM/kStq6lTTu/fq7GB8tpKgbA/bs";
+        vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
         tags = ["netgo"];
       };
 
