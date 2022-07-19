@@ -75,13 +75,18 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v7.0.4";
+        version = "v10.0.1";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-29pmra7bN76Th7VHw4/qyYoGjzVz3nYneB5hEakVVto=";
+        vendorSha256 = "sha256-3EmJXxHZD/JcTm/agobnINm7qS4iHfC7bw5FiogaXiE=";
         tags = ["netgo"];
-        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
-        dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase "osmosisd"}
+          ${utilities.wasmdPreFixupPhase "chain_init"}
+        '';
+        buildInputs = [libwasmvm_1];
+
+        # Test has to be skipped as end-to-end testing requires network access
+        doCheck = false;
       };
 
       juno = utilities.mkCosmosGoApp {
