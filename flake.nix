@@ -36,7 +36,7 @@
 
     # Chain Sources
     gaia7-src.flake = false;
-    gaia7-src.url = github:cosmos/gaia/v7.0.1;
+    gaia7-src.url = github:cosmos/gaia/v7.0.3;
 
     gaia6-ordered-src.flake = false;
     gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.4-ordered;
@@ -48,19 +48,19 @@
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
     ibc-go-v2-src.flake = false;
-    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.2.0;
+    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.3.1;
 
     ibc-go-v3-src.flake = false;
-    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.1.0;
+    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.1.1;
 
     ibc-go-v4-src.flake = false;
-    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.0.0-rc0;
+    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.0.0-rc2;
 
-    ibc-go-main-src.flake = false;
-    ibc-go-main-src.url = github:cosmos/ibc-go;
+    ibc-go-v5-src.flake = false;
+    ibc-go-v5-src.url = github:cosmos/ibc-go/v5.0.0-beta1;
 
     cosmos-sdk-src.flake = false;
-    cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.45.0-rc1;
+    cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
 
     iris-src.flake = false;
     iris-src.url = github:irisnet/irishub/v1.1.1;

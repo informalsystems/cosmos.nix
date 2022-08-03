@@ -9,9 +9,6 @@
     preCheck ? null,
     ...
   } @ args: let
-    parser = import ./goModParser.nix;
-    go-mod = parser (builtins.readFile "${src}/go.mod");
-    tendermint-version = go-mod.require."github.com/tendermint/tendermint".version;
     buildGoModuleArgs = pkgs.lib.filterAttrs (n: _: builtins.all (a: a != n) ["src" "name" "version" "vendorSha256" "appName"]) args;
     ldFlagAppName =
       if appName == null
@@ -30,7 +27,6 @@
           -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
           -X github.com/cosmos/cosmos-sdk/version.Version=${version}
           -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
-          -X github.com/tendermint/tendermint/version.TMCoreSemVer=${tendermint-version}
           ${additionalLdFlags}
         '';
       }
