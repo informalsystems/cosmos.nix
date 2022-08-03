@@ -4,17 +4,6 @@
   pkgs,
   eval-pkgs,
 }: let
-  cleanSourceWithRegexes = src: regexes:
-    with pkgs.lib;
-    with builtins;
-      cleanSourceWith {
-        filter = (
-          path: _:
-            all (r: match r path == null) regexes
-        );
-        inherit src;
-      };
-
   gaia-packages = import ./resources/gaia {
     inherit pkgs inputs;
   };
@@ -51,9 +40,12 @@
 
       simd = pkgs.buildGoModule {
         name = "simd";
-        src = cleanSourceWithRegexes inputs.cosmos-sdk-src [".*cosmovisor.*"];
+        src = inputs.cosmos-sdk-src;
         vendorSha256 = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
         doCheck = false;
+        patchPhase = ''
+          rm -r client/v2 cosmovisor container core db errors math orm store/tools
+        '';
       };
 
       regen = utilities.mkCosmosGoApp {
