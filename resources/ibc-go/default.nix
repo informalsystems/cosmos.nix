@@ -11,16 +11,16 @@ in
       ibc-go-v2-simapp = {
         name = "simapp";
         src = ibc-go-v2-src;
-        version = "v2.0.0";
-        vendorSha256 = "sha256-Af47uEEPCFsX1JiMiw3LprGDiVb/0HA0sMeuDdAVXu8=";
+        version = "v2.3.1";
+        vendorSha256 = "sha256-B1ZAnE62cqRte0hvSCWtsc5zD5moeN8x/beLgBhpvIw=";
         tags = ["netgo"];
       };
 
       ibc-go-v3-simapp = {
         name = "simapp";
-        version = "v3.0.0";
+        version = "v3.1.1";
         src = ibc-go-v3-src;
-        vendorSha256 = "sha256-kefoBLr1pbyycUjel6rZ8VsqCLbPFY5hUHUVyO+Y2wc=";
+        vendorSha256 = "sha256-jN2qO+jmCouc5/s/yx4hhfKZkvZuK/ii6j+Hvxfh7sM=";
         tags = ["netgo"];
       };
 
@@ -32,11 +32,14 @@ in
         tags = ["netgo"];
       };
 
-      ibc-go-main-simapp = {
+      ibc-go-v5-simapp = {
         name = "simapp";
-        version = "v4.0.0-main";
-        src = ibc-go-main-src;
-        vendorSha256 = "sha256-7NJoasvGMUtJqZpqLDm6+aVrKQw3VYO/13udb8wKz5s=";
+        version = "v5.0.0";
+        src = ibc-go-v5-src;
+        vendorSha256 = "sha256-vPkvYrdk5yOC/imtDobHSFWSXmvT7vfHpe0WGoxZ490=";
         tags = ["netgo"];
+        patchPhase = ''
+          rm -r e2e
+        '';
       };
     }

@@ -34,8 +34,8 @@ in
 
       gaia7 = {
         name = "gaia";
-        vendorSha256 = "sha256-OLo/pQNqYguQXeOyUgEMeghjiBq2Tp0JrOz52uy+e/A=";
-        version = "v7.0.0";
+        vendorSha256 = "sha256-rohPqCjPC3yr8wDNpndbhP6t7AgjY+kyqRGJYApCMgs=";
+        version = "v7.0.3";
         src = gaia7-src;
         tags = ["netgo"];
 
