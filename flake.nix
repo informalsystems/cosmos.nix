@@ -8,6 +8,7 @@
     rust-overlay.url = github:oxalica/rust-overlay;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
     sbt-derivation.url = github:zaninime/sbt-derivation;
+    nix-std.url = github:chessai/nix-std;
 
     # Has to follow flake-utils in order to get aarch64-darwin
     # can revert after https://github.com/cachix/pre-commit-hooks.nix/pull/142
@@ -153,8 +154,6 @@
         };
 
         # nix develop
-        devShell = resources.devShells.default;
-
         devShells = resources.devShells;
 
         # nix run .#<app>
