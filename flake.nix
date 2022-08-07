@@ -232,6 +232,11 @@
             drv = packages.osmosis;
             exePath = "/bin/osmosisd";
           };
+          osmosis7 = mkApp {
+            name = "osmosis";
+            drv = packages.osmosis7;
+            exePath = "/bin/osmosisd";
+          };
           osmosis6 = mkApp {
             name = "osmosis";
             drv = packages.osmosis6;

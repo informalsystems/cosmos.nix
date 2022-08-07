@@ -85,12 +85,9 @@
         name = "osmosis";
         version = "v7.3.0";
         src = inputs.osmosis7-src // utilities.cleanSourceWithRegexes inputs.osmosis7-src [".*tests/e2e.*"];
-        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
+        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
         tags = ["netgo"];
-        preFixup = ''
-          ${utilities.wasmdPreFixupPhase "osmosisd"}
-          ${utilities.wasmdPreFixupPhase "chain_init"}
-        '';
+        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
         buildInputs = [libwasmvm_1];
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -100,7 +97,7 @@
       osmosis8 = utilities.mkCosmosGoApp {
         name = "osmosis";
         version = "v8.0.0";
-        src = inputs.osmosis8-src // cleanSourceWithRegexes inputs.osmosis8-src [".*tests/e2e.*"];
+        src = inputs.osmosis8-src // utilities.cleanSourceWithRegexes inputs.osmosis8-src [".*tests/e2e.*"];
         vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "osmosisd";
@@ -111,20 +108,7 @@
       osmosis6 = utilities.mkCosmosGoApp {
         name = "osmosis";
         version = "v6.4.1";
-        src =
-          pkgs.stdenv.mkDerivation {
-            version = "v6.4.1";
-            name = "osmosis6-src-fixed";
-            src = inputs.osmosis6-src // cleanSourceWithRegexes inputs.osmosis6-src [".*tests/e2e.*"];
-            patches = [./fix-hanging-directive.patch];
-            buildPhase = "true";
-            installPhase = ''
-              ls -lah
-              mkdir -p $out
-              cp -r ./ $out
-            '';
-          }
-          // {rev = inputs.osmosis6-src.rev;};
+        src = inputs.osmosis6-src // utilities.cleanSourceWithRegexes inputs.osmosis6-src [".*tests/e2e.*"];
         vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
         tags = ["netgo"];
       };
