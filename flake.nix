@@ -80,6 +80,12 @@
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
 
+    osmosis6-src.flake = false;
+    osmosis6-src.url = github:osmosis-labs/osmosis/v6.4.1;
+
+    osmosis8-src.flake = false;
+    osmosis8-src.url = github:osmosis-labs/osmosis/v8.0.0;
+
     terra-src.flake = false;
     terra-src.url = github:terra-money/core/v0.5.17;
 
@@ -224,6 +230,16 @@
           osmosis = mkApp {
             name = "osmosis";
             drv = packages.osmosis;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis6 = mkApp {
+            name = "osmosis";
+            drv = packages.osmosis6;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis8 = mkApp {
+            name = "osmosis";
+            drv = packages.osmosis8;
             exePath = "/bin/osmosisd";
           };
           iris = mkApp {

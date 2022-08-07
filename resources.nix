@@ -97,6 +97,38 @@
         doCheck = false;
       };
 
+      osmosis8 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v8.0.0";
+        src = inputs.osmosis8-src // cleanSourceWithRegexes inputs.osmosis8-src [".*tests/e2e.*"];
+        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+      };
+
+      osmosis6 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v6.4.1";
+        src =
+          pkgs.stdenv.mkDerivation {
+            version = "v6.4.1";
+            name = "osmosis6-src-fixed";
+            src = inputs.osmosis6-src // cleanSourceWithRegexes inputs.osmosis6-src [".*tests/e2e.*"];
+            patches = [./fix-hanging-directive.patch];
+            buildPhase = "true";
+            installPhase = ''
+              ls -lah
+              mkdir -p $out
+              cp -r ./ $out
+            '';
+          }
+          // {rev = inputs.osmosis6-src.rev;};
+        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
+        tags = ["netgo"];
+      };
+
       juno = utilities.mkCosmosGoApp {
         name = "juno";
         version = "v2.3.0-beta.2";
@@ -319,6 +351,25 @@
           shellcheck
         ]
         ++ builtins.attrValues packages;
+    };
+    osmosis-shell = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        wget
+        jq
+        curl
+        lz4
+        python39
+        packages.osmosis8
+        packages.cosmovisor
+      ];
+      shellHook = ''
+        export DAEMON_NAME=osmosisd
+        export DAEMON_HOME=$HOME/.osmosisd
+        export DAEMON_ALLOW_DOWNLOAD_BINARIES=false
+        export DAEMON_LOG_BUFFER_SIZE=512
+        export DAEMON_RESTART_AFTER_UPGRADE=true
+        export UNSAFE_SKIP_BACKUP=true
+      '';
     };
   };
 in {inherit packages devShells;}
