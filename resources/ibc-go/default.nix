@@ -2,7 +2,12 @@
   pkgs,
   inputs,
 }: let
-  mkCosmosGoApp = (import ../utilities.nix {inherit pkgs;}).mkCosmosGoApp;
+  mkCosmosGoApp =
+    (import ../utilities.nix {
+      inherit pkgs;
+      inherit (inputs) nix-std;
+    })
+    .mkCosmosGoApp;
 in
   with inputs;
     builtins.mapAttrs

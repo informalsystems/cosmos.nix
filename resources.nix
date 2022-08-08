@@ -12,7 +12,10 @@
     inherit pkgs inputs;
   };
 
-  utilities = import ./resources/utilities.nix {inherit pkgs;};
+  utilities = import ./resources/utilities.nix {
+    inherit pkgs;
+    inherit (inputs) nix-std;
+  };
 
   scripts = import ./scripts {inherit pkgs;};
 

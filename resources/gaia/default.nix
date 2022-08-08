@@ -2,12 +2,17 @@
   pkgs,
   inputs,
 }: let
-  mkCosmosGoApp = (import ../utilities.nix {inherit pkgs;}).mkCosmosGoApp;
+  mkCosmosGoApp =
+    (import ../utilities.nix {
+      inherit pkgs;
+      inherit (inputs) nix-std;
+    })
+    .mkCosmosGoApp;
 in
   with inputs;
     builtins.mapAttrs
     (_: mkCosmosGoApp)
-    rec {
+    {
       gaia5 = {
         name = "gaia";
         vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
