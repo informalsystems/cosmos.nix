@@ -81,10 +81,19 @@
         doCheck = false;
       };
 
+      osmosis6 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v6.4.1";
+        src = inputs.osmosis6-src;
+        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
+        tags = ["netgo"];
+      };
+
       osmosis7 = utilities.mkCosmosGoApp {
         name = "osmosis";
         version = "v7.3.0";
-        src = inputs.osmosis7-src // utilities.cleanSourceWithRegexes inputs.osmosis7-src [".*tests/e2e.*"];
+        src = inputs.osmosis7-src;
+        excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "osmosisd";
@@ -97,20 +106,16 @@
       osmosis8 = utilities.mkCosmosGoApp {
         name = "osmosis";
         version = "v8.0.0";
-        src = inputs.osmosis8-src // utilities.cleanSourceWithRegexes inputs.osmosis8-src [".*tests/e2e.*"];
+        src = inputs.osmosis8-src;
+        excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "osmosisd";
         dontStrip = true;
         buildInputs = [libwasmvm_1beta7];
-      };
 
-      osmosis6 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v6.4.1";
-        src = inputs.osmosis6-src // utilities.cleanSourceWithRegexes inputs.osmosis6-src [".*tests/e2e.*"];
-        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
-        tags = ["netgo"];
+        # Test has to be skipped as end-to-end testing requires network access
+        doCheck = false;
       };
 
       juno = utilities.mkCosmosGoApp {
