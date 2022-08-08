@@ -37,14 +37,4 @@
     new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
     ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
   '';
-  cleanSourceWithRegexes = src: regexes:
-    with pkgs.lib;
-    with builtins;
-      cleanSourceWith {
-        filter = (
-          path: _:
-            all (r: match r path == null) regexes
-        );
-        inherit src;
-      };
 }
