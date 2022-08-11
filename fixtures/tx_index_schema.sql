@@ -101,6 +101,7 @@ CREATE VIEW tx_events AS
   WHERE event_attributes.tx_id IS NOT NULL;
 
 
+-- A view of non-ibc transfers on a chain
 CREATE MATERIALIZED VIEW chain_internal_transfers AS
 SELECT
   tr.chain_id,
@@ -120,29 +121,3 @@ WHERE tr.key = 'recipient'
   AND tr.type = 'transfer'
   AND ts.type = 'transfer'
   AND tv.type = 'transfer';
-
-
-CREATE MATERIALIZED VIEW cosmos_osmosis_ibc_transfers AS
-  SELECT
-    data.chain_id,
-    data.event_id,
-    cast(data.value AS json) ->> 'receiver' as recipient,
-    cast(data.value AS json) ->> 'sender' as sender,
-    cast(data.value AS json) ->> 'amount' || 'uatom' as amount,
-    data.created_at
-  FROM tx_events data
-  JOIN tx_events source
-    ON source.event_id = data.event_id
-  JOIN tx_events destination
-    ON destination.event_id = data.event_id
-  WHERE (data.composite_key = 'send_packet.packet_data'
-        OR data.composite_key = 'recv_packet.packet_data')
-    AND ((source.composite_key = 'send_packet.packet_src_channel'
-          AND source.value = 'channel-141')
-        OR (source.composite_key = 'recv_packet.packet_src_channel'
-          AND source.value = 'channel-0'))
-    AND ((destination.composite_key = 'send_packet.packet_dst_channel'
-          AND destination.value = 'channel-0')
-        OR (destination.composite_key = 'recv_packet.packet_dst_channel'
-          AND destination.value = 'channel-141'))
-    AND data.chain_id = 'cosmoshub-4';
