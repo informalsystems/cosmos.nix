@@ -84,6 +84,43 @@
         doCheck = false;
       };
 
+      osmosis6 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v6.4.1";
+        src = inputs.osmosis6-src;
+        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
+        tags = ["netgo"];
+      };
+
+      osmosis7 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v7.3.0";
+        src = inputs.osmosis7-src;
+        excludedPackages = "./tests/e2e";
+        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        buildInputs = [libwasmvm_1];
+
+        # Test has to be skipped as end-to-end testing requires network access
+        doCheck = false;
+      };
+
+      osmosis8 = utilities.mkCosmosGoApp {
+        name = "osmosis";
+        version = "v8.0.0";
+        src = inputs.osmosis8-src;
+        excludedPackages = "./tests/e2e";
+        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
+        tags = ["netgo"];
+        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        dontStrip = true;
+        buildInputs = [libwasmvm_1beta7];
+
+        # Test has to be skipped as end-to-end testing requires network access
+        doCheck = false;
+      };
+
       juno = utilities.mkCosmosGoApp {
         name = "juno";
         version = "v2.3.0-beta.2";
@@ -306,6 +343,25 @@
           shellcheck
         ]
         ++ builtins.attrValues packages;
+    };
+    osmosis-shell = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        wget
+        jq
+        curl
+        lz4
+        python39
+        packages.osmosis8
+        packages.cosmovisor
+      ];
+      shellHook = ''
+        export DAEMON_NAME=osmosisd
+        export DAEMON_HOME=$HOME/.osmosisd
+        export DAEMON_ALLOW_DOWNLOAD_BINARIES=false
+        export DAEMON_LOG_BUFFER_SIZE=512
+        export DAEMON_RESTART_AFTER_UPGRADE=true
+        export UNSAFE_SKIP_BACKUP=true
+      '';
     };
   };
 in {inherit packages devShells;}

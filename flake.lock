@@ -399,6 +399,57 @@
         "type": "github"
       }
     },
+    "osmosis7-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651600564,
+        "narHash": "sha256-aY6L+5Iw5tu/QOZ1ZgZq163MCy4ZZDHVl53MhZ8AyS4=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "ab02323b075e2573cd7a54736d705c88797d11c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v7.3.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis6-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1646678581,
+        "narHash": "sha256-fGcz33PPA5dJ4J9vgfbYvBxNydu3/YuKSCf8pZkn5PM=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "2b61fd38505dbcbad08e78c96b7ab17e7ae1c85d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v6.4.1",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis8-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1652595598,
+        "narHash": "sha256-upQzIJnzswT+HO6H0welw/X5n4F/K1k/dP4FQMOeC8Q=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "16e3b51f19a58f815a4eabcbcee11886eb33e026",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v8.0.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": [
@@ -480,6 +531,9 @@
         "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
+        "osmosis7-src": "osmosis7-src",
+        "osmosis6-src": "osmosis6-src",
+        "osmosis8-src": "osmosis8-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
