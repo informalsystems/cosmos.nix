@@ -46,9 +46,17 @@
         src = inputs.cosmos-sdk-src;
         vendorSha256 = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
         doCheck = false;
-        patchPhase = ''
-          rm -r client/v2 cosmovisor container core db errors math orm store/tools
-        '';
+        excludedPackages = [
+          "./client/v2"
+          "./cosmovisor"
+          "./container"
+          "./core"
+          "./db"
+          "./errors"
+          "./math"
+          "./orm"
+          "./store/tools"
+        ];
       };
 
       regen = utilities.mkCosmosGoApp {
