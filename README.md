@@ -24,6 +24,9 @@ as Nix packages. Use this at your own risk.
 
 ## Setup
 
+NOTE: If you already have nix installed, make sure you are on version >=2.7.
+Instructions to upgrade nix can be found [here](https://nixos.org/manual/nix/unstable/installation/upgrading.html)
+
 ### Non-NixOS
 
 This project is developed entirely in [Nix Flakes](https://nixos.wiki/wiki/Flakes).
