@@ -49,13 +49,13 @@
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
     ibc-go-v2-src.flake = false;
-    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.3.1;
+    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.4.0;
 
     ibc-go-v3-src.flake = false;
-    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.1.1;
+    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.2.0;
 
     ibc-go-v4-src.flake = false;
-    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.0.0-rc2;
+    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.0.0;
 
     ibc-go-v5-src.flake = false;
     ibc-go-v5-src.url = github:cosmos/ibc-go/v5.0.0-beta1;

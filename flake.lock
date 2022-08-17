@@ -186,16 +186,16 @@
     "ibc-go-v2-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1659443514,
-        "narHash": "sha256-U7eaZLmQ7VTFb2SasxUXUDsYxut+8sf1cPy0cvYNr2o=",
+        "lastModified": 1660292613,
+        "narHash": "sha256-WAxfIhi24upo8kqxE66oY7addBgtdvKuwr8V5lxyXW8=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "0aec7cefccf320e5ab26213158ecdbce33705b21",
+        "rev": "3477d33316031ce0e76d1cc34465e5e0698dcbd0",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v2.3.1",
+        "ref": "v2.4.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -203,16 +203,16 @@
     "ibc-go-v3-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1659443482,
-        "narHash": "sha256-YmdIe1M9Q/L8RGixWzrCgEkLQku3pcSYHeypCcVzqz4=",
+        "lastModified": 1660292652,
+        "narHash": "sha256-/gW47acy0usOf6CRu8D5msCM7ayfJB+o+numqMebmFQ=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "28b925ec30c9aceb9f05ce1f2ef5153364d98e6c",
+        "rev": "ce44f4d4664482a325bc77c21a58e4c5db1976b6",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v3.1.1",
+        "ref": "v3.2.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -220,16 +220,16 @@
     "ibc-go-v4-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1659099948,
-        "narHash": "sha256-tAVxGURtizHinscQkW38uW4IFWqs7DLwGkEywKuglq8=",
+        "lastModified": 1660295222,
+        "narHash": "sha256-1y7QusVPBqNbMUc+XH5aK3xBmU2KOBWgMB8zDllQCBs=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "bc534e94441319aae93bdccef531d066d9aececb",
+        "rev": "2b7c969066fbcb18f90c7f5bd256439ca12535c7",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v4.0.0-rc2",
+        "ref": "v4.0.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -399,23 +399,6 @@
         "type": "github"
       }
     },
-    "osmosis7-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1651600564,
-        "narHash": "sha256-aY6L+5Iw5tu/QOZ1ZgZq163MCy4ZZDHVl53MhZ8AyS4=",
-        "owner": "osmosis-labs",
-        "repo": "osmosis",
-        "rev": "ab02323b075e2573cd7a54736d705c88797d11c5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "osmosis-labs",
-        "ref": "v7.3.0",
-        "repo": "osmosis",
-        "type": "github"
-      }
-    },
     "osmosis6-src": {
       "flake": false,
       "locked": {
@@ -429,6 +412,23 @@
       "original": {
         "owner": "osmosis-labs",
         "ref": "v6.4.1",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis7-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651600564,
+        "narHash": "sha256-aY6L+5Iw5tu/QOZ1ZgZq163MCy4ZZDHVl53MhZ8AyS4=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "ab02323b075e2573cd7a54736d705c88797d11c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v7.3.0",
         "repo": "osmosis",
         "type": "github"
       }
@@ -531,8 +531,8 @@
         "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
-        "osmosis7-src": "osmosis7-src",
         "osmosis6-src": "osmosis6-src",
+        "osmosis7-src": "osmosis7-src",
         "osmosis8-src": "osmosis8-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
