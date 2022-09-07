@@ -41,7 +41,7 @@ in
         name = "simapp";
         version = "v5.0.0";
         src = ibc-go-v5-src;
-        vendorSha256 = "sha256-3doRb8bVzRhHhD26TngAocvoXSCCpDr7UbMOVsVy2pQ=";
+        vendorSha256 = "sha256-hxffp0n0kchyUb6T4UzXqUZKGH4t4aHjuQhFQUjeUgA=";
         tags = ["netgo"];
         excludedPackages = ["./e2e"];
       };
