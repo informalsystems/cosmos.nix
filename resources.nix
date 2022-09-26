@@ -72,8 +72,9 @@
         vendorSha256 = "sha256-P1NYgvdobi6qy1sSKFwkBwPRpLuvCJE5rCD2s/vvm14=";
         doCheck = false;
         ldflags = ''
-          -X github.com/cosmos/cosmos-sdk/version.Head=${name}
-          -X github.com/cosmos/cosmos-sdk/version.Date=${builtins.toString (src.lastModified)}
+          -X github.com/ignite/cli/ignite/version.Head=${src.rev}
+          -X github.com/ignite/cli/ignite/version.Version=v0.24.0
+          -X github.com/ignite/cli/ignite/version.Date=${builtins.toString (src.lastModified)}
         '';
       };
 
