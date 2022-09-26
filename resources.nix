@@ -66,6 +66,17 @@
         '';
       };
 
+      ignite-cli = pkgs.buildGoModule rec {
+        name = "ignite-cli";
+        src = inputs.ignite-cli-src;
+        vendorSha256 = "sha256-P1NYgvdobi6qy1sSKFwkBwPRpLuvCJE5rCD2s/vvm14=";
+        doCheck = false;
+        ldflags = ''
+          -X github.com/cosmos/cosmos-sdk/version.Head=${name}
+          -X github.com/cosmos/cosmos-sdk/version.Date=${builtins.toString (src.lastModified)}
+        '';
+      };
+
       regen = utilities.mkCosmosGoApp {
         name = "regen-ledger";
         version = "v3.0.0";
