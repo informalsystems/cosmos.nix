@@ -19,6 +19,8 @@
 
   scripts = import ./scripts {inherit pkgs;};
 
+  cosmos-sdk-version = "v0.46.0";
+
   packages =
     rec {
       # Go packages
@@ -41,7 +43,7 @@
         doCheck = false;
       };
 
-      simd = pkgs.buildGoModule {
+      simd = pkgs.buildGoModule rec {
         name = "simd";
         src = inputs.cosmos-sdk-src;
         vendorSha256 = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
@@ -57,6 +59,11 @@
           "./orm"
           "./store/tools"
         ];
+        ldflags = ''
+          -X github.com/cosmos/cosmos-sdk/version.AppName=${name}
+          -X github.com/cosmos/cosmos-sdk/version.Version=${cosmos-sdk-version}
+          -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
+        '';
       };
 
       regen = utilities.mkCosmosGoApp {
