@@ -71,6 +71,7 @@
         src = inputs.ignite-cli-src;
         vendorSha256 = "sha256-P1NYgvdobi6qy1sSKFwkBwPRpLuvCJE5rCD2s/vvm14=";
         doCheck = false;
+        allowGoReference = true;
         ldflags = ''
           -X github.com/ignite/cli/ignite/version.Head=${src.rev}
           -X github.com/ignite/cli/ignite/version.Version=v0.24.0
