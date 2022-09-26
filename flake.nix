@@ -125,6 +125,9 @@
 
     apalache-src.flake = false;
     apalache-src.url = github:informalsystems/apalache/v0.24.0;
+
+    ignite-cli-src.flake = false;
+    ignite-cli-src.url = github:ignite/cli/v0.24.0;
   };
 
   outputs = inputs:
@@ -213,6 +216,11 @@
           simd = mkApp {
             name = "simd";
             drv = packages.simd;
+          };
+          ignite-cli = mkApp {
+            name = "ignite-cli";
+            exePath = "/bin/ignite";
+            drv = packages.ignite-cli;
           };
           stoml = mkApp {
             name = "stoml";

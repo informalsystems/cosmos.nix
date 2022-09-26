@@ -284,6 +284,23 @@
         "type": "github"
       }
     },
+    "ignite-cli-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662991379,
+        "narHash": "sha256-sVgIjecswxD8OBXRXoVk2BNsTXzUcYAb6QZk0rVrQqo=",
+        "owner": "ignite",
+        "repo": "cli",
+        "rev": "21c6430cfcc17c69885524990c448d4a3f56461c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ignite",
+        "ref": "v0.24.0",
+        "repo": "cli",
+        "type": "github"
+      }
+    },
     "iris-src": {
       "flake": false,
       "locked": {
@@ -525,6 +542,7 @@
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
+        "ignite-cli-src": "ignite-cli-src",
         "iris-src": "iris-src",
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
