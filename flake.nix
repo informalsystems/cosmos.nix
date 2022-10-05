@@ -36,6 +36,10 @@
     ica-src.url = github:cosmos/interchain-accounts-demo;
 
     # Chain Sources
+
+    gaia-main-src.flake = false;
+    gaia-main-src.url = github:cosmos/gaia;
+
     gaia7-src.flake = false;
     gaia7-src.url = github:cosmos/gaia/v7.0.3;
 
@@ -49,16 +53,16 @@
     gaia5-src.url = github:cosmos/gaia/v5.0.8;
 
     ibc-go-v2-src.flake = false;
-    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.4.0;
+    ibc-go-v2-src.url = github:cosmos/ibc-go/v2.4.1;
 
     ibc-go-v3-src.flake = false;
-    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.2.0;
+    ibc-go-v3-src.url = github:cosmos/ibc-go/v3.3.0;
 
     ibc-go-v4-src.flake = false;
-    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.0.0;
+    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.1.0;
 
     ibc-go-v5-src.flake = false;
-    ibc-go-v5-src.url = github:cosmos/ibc-go/v5.0.0-rc1;
+    ibc-go-v5-src.url = github:cosmos/ibc-go/v5.0.0;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
@@ -76,7 +80,7 @@
     juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v10.0.1;
+    osmosis-src.url = github:osmosis-labs/osmosis/v12.1.0;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
@@ -202,6 +206,11 @@
           gaia7 = mkApp {
             name = "gaia";
             drv = packages.gaia7;
+            exePath = "/bin/gaiad";
+          };
+          gaia-main = mkApp {
+            name = "gaia";
+            drv = packages.gaia-main;
             exePath = "/bin/gaiad";
           };
           ica = mkApp {

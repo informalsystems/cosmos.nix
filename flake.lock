@@ -115,6 +115,22 @@
         "type": "github"
       }
     },
+    "gaia-main-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664958609,
+        "narHash": "sha256-w9tJJXimf0AhYhgColCjdHGh14sAId0Svtz/hHNYNlI=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "4d3a104f6ce6f441e6588cdb8fa6e600396ad3ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
     "gaia5-src": {
       "flake": false,
       "locked": {
@@ -186,16 +202,16 @@
     "ibc-go-v2-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1660292613,
-        "narHash": "sha256-WAxfIhi24upo8kqxE66oY7addBgtdvKuwr8V5lxyXW8=",
+        "lastModified": 1663274791,
+        "narHash": "sha256-LuJvlXmGRyJAiM6+uk+NuamjIsEqMqF20twBmB0p8+k=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "3477d33316031ce0e76d1cc34465e5e0698dcbd0",
+        "rev": "e45fa32d1cf91c36807428f688d8e2ec88947940",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v2.4.0",
+        "ref": "v2.4.1",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -203,16 +219,16 @@
     "ibc-go-v3-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1660292652,
-        "narHash": "sha256-/gW47acy0usOf6CRu8D5msCM7ayfJB+o+numqMebmFQ=",
+        "lastModified": 1663683283,
+        "narHash": "sha256-Er24B1unLYR/gG4JSrV+vZ/cPD6t7OFvtqp7AJCtDSE=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "ce44f4d4664482a325bc77c21a58e4c5db1976b6",
+        "rev": "250157f3fd40abaf9f8f1452cd78bf3304c38c72",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v3.2.0",
+        "ref": "v3.3.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -220,16 +236,16 @@
     "ibc-go-v4-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1660295222,
-        "narHash": "sha256-1y7QusVPBqNbMUc+XH5aK3xBmU2KOBWgMB8zDllQCBs=",
+        "lastModified": 1663683227,
+        "narHash": "sha256-+7qCyWKsDg0R/zoj++IuLGdG1C4n6Q9C4RcLMqlwV5A=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "2b7c969066fbcb18f90c7f5bd256439ca12535c7",
+        "rev": "197555e7b879032cdbda32d1dba60b6164f9a0f6",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v4.0.0",
+        "ref": "v4.1.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -237,16 +253,16 @@
     "ibc-go-v5-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1661459211,
-        "narHash": "sha256-A/8BZj132RcZlEK5cb8/UJ5xqkmX8rabdnMbPKdVsx8=",
+        "lastModified": 1664375342,
+        "narHash": "sha256-FrMSigZVRkwv66pWW85GZTYcsnITRl3ERptaoN4W1oA=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "37aa2ebec4f63a178659db2de2761f3cbafb583c",
+        "rev": "ed56c0b7bf64f44fb9e87ad2756bea1d6ca6ce54",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v5.0.0-rc1",
+        "ref": "v5.0.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -402,16 +418,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1656101515,
-        "narHash": "sha256-N0DpoLS2LxzmXZ7YBg1ZGxn3mFaDv9htlvVqwqWbE4Q=",
+        "lastModified": 1664825894,
+        "narHash": "sha256-AiGjvTxWt03ccNVgYfb/t2xXNdBDhw9y5eapGR8kxCI=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "aa85f6ae62c51394bd92c6aec9790d6721bf003d",
+        "rev": "8329e9e7dfdd232430602d7f6a2b7df0e4acc1bd",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v10.0.1",
+        "ref": "v12.1.0",
         "repo": "osmosis",
         "type": "github"
       }
@@ -532,6 +548,7 @@
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
+        "gaia-main-src": "gaia-main-src",
         "gaia5-src": "gaia5-src",
         "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6-src": "gaia6-src",

@@ -13,6 +13,14 @@ in
     builtins.mapAttrs
     (_: mkCosmosGoApp)
     {
+      gaia-main = {
+        name = "gaia";
+        vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
+        version = "v8.0.0";
+        src = gaia5-src;
+        tags = ["netgo"];
+      };
+
       gaia5 = {
         name = "gaia";
         vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
