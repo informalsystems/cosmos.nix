@@ -23,9 +23,9 @@ in
 
       ibc-go-v3-simapp = {
         name = "simapp";
-        version = "v3.3.30";
+        version = "v3.3.0";
         src = ibc-go-v3-src;
-        vendorSha256 = "sha256-edKJYHKYOkpdXs1xHEdFjlNT1m4IhhhyyzIKjYvhE38=";
+        vendorSha256 = "sha256-jI1Ky8SzwZ3PhAZrDJQknAWUnu0G9rktAyaE4J/o8Cw=";
         tags = ["netgo"];
       };
 
