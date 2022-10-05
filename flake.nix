@@ -147,7 +147,7 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
-            inputs.rust-overlay.overlay
+            inputs.rust-overlay.overlays.default
             inputs.sbt-derivation.overlay
           ];
         };
