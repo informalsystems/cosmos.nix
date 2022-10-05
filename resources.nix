@@ -104,6 +104,7 @@
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
           ${utilities.wasmdPreFixupPhase "chain"}
+          ${utilities.wasmdPreFixupPhase "node"}
         '';
         buildInputs = [libwasmvm_1];
 
