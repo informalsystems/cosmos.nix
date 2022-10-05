@@ -103,7 +103,7 @@
         tags = ["netgo"];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
-          ${utilities.wasmdPreFixupPhase "chain_init"}
+          ${utilities.wasmdPreFixupPhase "chain"}
         '';
         buildInputs = [libwasmvm_1];
 

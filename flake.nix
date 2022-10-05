@@ -23,7 +23,7 @@
     sconfig-src.flake = false;
 
     # Relayer Sources
-    ibc-rs-src.url = github:informalsystems/ibc-rs/v0.13.0-rc.0;
+    ibc-rs-src.url = github:informalsystems/ibc-rs/v1.0.0;
     ibc-rs-src.flake = false;
 
     ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
