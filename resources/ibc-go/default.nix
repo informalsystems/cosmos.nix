@@ -45,4 +45,13 @@ in
         tags = ["netgo"];
         excludedPackages = ["./e2e"];
       };
+
+      ibc-go-v6-simapp = {
+        name = "simapp";
+        version = "v6.0.0";
+        src = ibc-go-v6-src;
+        vendorSha256 = "sha256-hxffp0n0kchyUb6T4UzXqUZKGH4t4aHjuQhFQUjeUgA=";
+        tags = ["netgo"];
+        excludedPackages = ["./e2e"];
+      };
     }
