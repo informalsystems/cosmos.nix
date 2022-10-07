@@ -244,6 +244,16 @@
         tags = ["netgo"];
       };
 
+      interchain-security = utilities.mkCosmosGoApp {
+        name = "interchain-security";
+        appName = "interchain-security";
+        version = "v1.0.4";
+        src = inputs.interchain-security-src;
+        vendorSha256 = "sha256-BLadou3/JfumdjbXVJnVMZahARXxVDpvSWJzzK6ilxA=";
+        tags = ["netgo"];
+        doCheck = false; # tests are currently failing
+      };
+
       relayer = pkgs.buildGoModule {
         name = "relayer";
         src = inputs.relayer-src;
