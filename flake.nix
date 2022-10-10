@@ -135,6 +135,9 @@
 
     ignite-cli-src.flake = false;
     ignite-cli-src.url = github:ignite/cli/v0.24.0;
+
+    interchain-security-src.flake = false;
+    interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
   };
 
   outputs = inputs:
@@ -233,6 +236,10 @@
             name = "ignite-cli";
             exePath = "/bin/ignite";
             drv = packages.ignite-cli;
+          };
+          interchain-security = mkApp {
+            name = "interchain-security";
+            drv = packages.interchain-security;
           };
           stoml = mkApp {
             name = "stoml";

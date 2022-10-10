@@ -334,6 +334,23 @@
         "type": "github"
       }
     },
+    "interchain-security-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1662985265,
+        "narHash": "sha256-MhH5R1eEKel8nX1UIw4PAsSTPraP7ivrPU/+StqaD6U=",
+        "owner": "cosmos",
+        "repo": "interchain-security",
+        "rev": "1162655c89221588d4b440717b2ca1c65170aec2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v0.1.4",
+        "repo": "interchain-security",
+        "type": "github"
+      }
+    },
     "iris-src": {
       "flake": false,
       "locked": {
@@ -578,6 +595,7 @@
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "ignite-cli-src": "ignite-cli-src",
+        "interchain-security-src": "interchain-security-src",
         "iris-src": "iris-src",
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
