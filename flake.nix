@@ -175,6 +175,11 @@
           packages = resources.packages;
         };
 
+        # Exported modules
+        nixosModules = {
+          osmosis = import ./modules/chains/osmosis.nix;
+        };
+
         # nix develop
         devShells = resources.devShells;
 

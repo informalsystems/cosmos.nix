@@ -7,8 +7,8 @@
   cfg = config.services.osmosis;
 in
   with lib; {
-    options.services.osmosis = {
-      enable = mkEnableOption "osmosis";
+    options.services.osmosisd = {
+      enable = mkEnableOption "osmosisd";
       package = mkOption {
         type = types.package;
         default = pkgs.osmosis;
@@ -16,22 +16,23 @@ in
         '';
       };
 
-      config-dir = mkOption {
-        description = "";
-        type = types.path;
-      };
-
-      home = mkOption {
+      cosmovisor = mkOption {
+        type = types.package;
+        default = pkgs.cosmovisor;
         description = ''
         '';
-        default = "/osmosis";
-        type = types.path;
       };
 
-      rpc-addr = mkOption {
-        type = types.nullOr types.str;
+      node-name = mkOption {
+        type = types.string;
+        default = "osmosis-daemon";
         description = ''
         '';
+      };
+
+      genesis-file = mkOption {
+        type = types.path;
+        required = true;
       };
     };
 
@@ -42,19 +43,31 @@ in
         after = ["network.target"];
         environment = {
           HOME = cfg.home;
+          DAEMON_NAME = "osmosisd";
+          DAEMON_HOME = "~/.osmosisd";
+          DAEMON_RESTART_AFTER_UPGRADE = "true";
+          DAEMON_ALLOW_DOWNLOAD_BINARIES = "false";
+          DAEMON_LOG_BUFFER_SIZE = "512";
+          UNSAFE_SKIP_BACKUP = "true";
         };
         preStart = ''
-          [ ! -d ${cfg.home}/config ] && mkdir -p ${cfg.home}/config
-          ln -s ${cfgconfig-dir}/* ${cfg.home}/config
+          ${cfg.package}/bin/osmosisd init
+          cp ${cfg.gensis-file} ~/.osmosisd/config/genesis.json
+          mkdir -p ~/.osmosisd
+          mkdir -p ~/.osmosisd/cosmovisor
+          mkdir -p ~/.osmosisd/cosmovisor/genesis
+          mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
+          mkdir -p ~/.osmosisd/cosmovisor/upgrades
+          ln -s ${cfg.package}/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
         '';
-        serviceConfig = let
-          rpc-addr =
-            if cfg.rpc-addr == null
-            then ""
-            else "--rpc.laddr ${cfg.rpc-addr} ";
-        in {
+        path = [cfg.package];
+        serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.package}/bin/osmosisd start ${rpc-addr} --home ${cfg.home}";
+          ExecStart = "${cfg.package}/bin/osmosisd start";
+          RestartSec = 3;
+          Restart = "always";
+          LimitNOFILE = "infinity";
+          LimitNPROC = "infinity";
         };
       };
     };
