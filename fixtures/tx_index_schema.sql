@@ -1,9 +1,3 @@
-/*
-  This file defines the database schema for the PostgresQL ("psql") event sink
-  implementation in Tendermint. The operator must create a database and install
-  this schema before using the database to index events.
- */
-
 -- The blocks table records metadata about each block.
 -- The block record does not include its events or transactions (see tx_results).
 CREATE TABLE blocks (
@@ -30,7 +24,7 @@ CREATE TABLE tx_results (
   -- The block to which this transaction belongs.
   block_id BIGINT NOT NULL REFERENCES blocks(rowid),
   -- The sequential index of the transaction within the block.
-  index INTEGER NOT NULL,
+  idx INTEGER NOT NULL,
   -- When this result record was logged into the sink, in UTC.
   created_at TIMESTAMPTZ NOT NULL,
   -- The hex-encoded hash of the transaction.
@@ -38,7 +32,7 @@ CREATE TABLE tx_results (
   -- The protobuf wire encoding of the TxResult message.
   tx_result BYTEA NOT NULL,
 
-  UNIQUE (block_id, index)
+  UNIQUE (block_id, idx)
 );
 
 -- The events table records events. All events (both block and transaction) are
@@ -53,9 +47,8 @@ CREATE TABLE events (
 
   -- The application-defined type label for the event.
   type VARCHAR NOT NULL
-)
+);
 
-CREATE INDEX idx_blocks_height_chain ON blocks(height, chain_id);
 CREATE INDEX idx_events_type ON events(type);
 
 -- The attributes table records event attributes.
@@ -86,7 +79,7 @@ CREATE VIEW block_events AS
 -- A joined view of all transaction events.
 CREATE VIEW tx_events AS
  SELECT blocks.height,
-    tx_results.index,
+    tx_results.idx,
     tx_results.rowid AS tx_id,
     event_attributes.event_id,
     blocks.chain_id,
