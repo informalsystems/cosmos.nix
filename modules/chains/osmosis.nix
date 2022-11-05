@@ -32,7 +32,6 @@ in
 
       genesis-file = mkOption {
         type = types.path;
-        required = true;
       };
     };
 
