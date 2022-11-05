@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.services.osmosis;
+  cfg = config.services.osmosisd;
 in
   with lib; {
     options.services.osmosisd = {
