@@ -36,7 +36,7 @@ in
     };
 
     config = mkIf cfg.enable {
-      systemd.services.osmosis = {
+      systemd.services.osmosisd = {
         description = "Osmosis Daemon";
         wantedBy = ["multi-user.target"];
         after = ["network.target"];
