@@ -175,11 +175,6 @@
           packages = resources.packages;
         };
 
-        # Exported modules
-        nixosModules = {
-          osmosis = import ./modules/chains/osmosis.nix;
-        };
-
         # nix develop
         devShells = resources.devShells;
 
@@ -353,5 +348,11 @@
             exePath = "/bin/apalache-mc";
           };
         };
-      });
+      })
+      // {
+        # Exported modules
+        nixosModules = {
+          osmosis = import ./modules/chains/osmosis.nix;
+        };
+      };
 }
