@@ -43,7 +43,7 @@ in
         environment = {
           HOME = "/root";
           DAEMON_NAME = "osmosisd";
-          DAEMON_HOME = "root/.osmosisd";
+          DAEMON_HOME = "/root/.osmosisd";
           DAEMON_RESTART_AFTER_UPGRADE = "true";
           DAEMON_ALLOW_DOWNLOAD_BINARIES = "false";
           DAEMON_LOG_BUFFER_SIZE = "512";
@@ -65,7 +65,7 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
           echo "Symlinking osmosisd to cosmovisor dir"
-          ln -s /root/.osmosisd/cosmovisor/genesis/bin ${cfg.package}/bin/osmosisd
+          [ ! -f "/root/.osmosisd/cosmovisor/genesis/bin" ] && ln -s /root/.osmosisd/cosmovisor/genesis/bin ${cfg.package}/bin/osmosisd
         '';
         path = [cfg.package];
         serviceConfig = {
