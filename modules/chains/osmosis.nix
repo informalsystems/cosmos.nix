@@ -51,13 +51,13 @@ in
         };
         preStart = ''
           ${cfg.package}/bin/osmosisd init ${cfg.node-name}
-          cat ${cfg.genesis-file} > root/.osmosisd/config/genesis.json
-          mkdir -p root/osmosisd
-          mkdir -p root/.osmosisd/cosmovisor
-          mkdir -p root/.osmosisd/cosmovisor/genesis
-          mkdir -p root/.osmosisd/cosmovisor/genesis/bin
-          mkdir -p root/.osmosisd/cosmovisor/upgrades
-          ln -s ${cfg.package}/bin/osmosisd root/.osmosisd/cosmovisor/genesis/bin
+          cat ${cfg.genesis-file} > /root/.osmosisd/config/genesis.json
+          mkdir -p /root/osmosisd
+          mkdir -p /root/.osmosisd/cosmovisor
+          mkdir -p /root/.osmosisd/cosmovisor/genesis
+          mkdir -p /root/.osmosisd/cosmovisor/genesis/bin
+          mkdir -p /root/.osmosisd/cosmovisor/upgrades
+          ln -s ${cfg.package}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
         '';
         path = [cfg.package];
         serviceConfig = {
