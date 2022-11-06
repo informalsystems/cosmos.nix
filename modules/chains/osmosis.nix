@@ -50,7 +50,7 @@ in
           UNSAFE_SKIP_BACKUP = "true";
         };
         preStart = ''
-          ${cfg.package}/bin/osmosisd init
+          ${cfg.package}/bin/osmosisd init ${cfg.node-name}
           cp ${cfg.genesis-file} root/.osmosisd/config/genesis.json
           mkdir -p root/osmosisd
           mkdir -p root/.osmosisd/cosmovisor
@@ -62,7 +62,7 @@ in
         path = [cfg.package];
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.package}/bin/osmosisd start";
+          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor start";
           RestartSec = 3;
           Restart = "always";
           LimitNOFILE = "infinity";
