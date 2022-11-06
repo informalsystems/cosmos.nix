@@ -70,7 +70,7 @@ in
         path = [cfg.package];
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run";
+          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run start";
           RestartSec = 3;
           Restart = "always";
           LimitNOFILE = "infinity";
