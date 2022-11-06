@@ -41,6 +41,7 @@ in
         wantedBy = ["multi-user.target"];
         after = ["network.target"];
         environment = {
+          HOME = "/root";
           DAEMON_NAME = "osmosisd";
           DAEMON_HOME = "root/.osmosisd";
           DAEMON_RESTART_AFTER_UPGRADE = "true";
