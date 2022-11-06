@@ -24,7 +24,7 @@ in
       };
 
       node-name = mkOption {
-        type = types.string;
+        type = types.str;
         default = "osmosis-daemon";
         description = ''
         '';
