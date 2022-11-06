@@ -65,7 +65,9 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
           echo "Symlinking osmosisd to cosmovisor dir"
-          [ ! -f "/root/.osmosisd/cosmovisor/genesis/bin" ] && ln -s ${cfg.package}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
+          [ ! -f "/root/.osmosisd/cosmovisor/genesis/bin" ] \
+            && [ ! -L "/root/.osmosisd/cosmovisor/genesis/bin" \
+            && ln -s ${cfg.package}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
         '';
         path = [cfg.package];
         serviceConfig = {
