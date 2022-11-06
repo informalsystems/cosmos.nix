@@ -42,7 +42,7 @@ in
         after = ["network.target"];
         environment = {
           DAEMON_NAME = "osmosisd";
-          DAEMON_HOME = "~/.osmosisd";
+          DAEMON_HOME = "root/.osmosisd";
           DAEMON_RESTART_AFTER_UPGRADE = "true";
           DAEMON_ALLOW_DOWNLOAD_BINARIES = "false";
           DAEMON_LOG_BUFFER_SIZE = "512";
@@ -50,13 +50,13 @@ in
         };
         preStart = ''
           ${cfg.package}/bin/osmosisd init
-          cp ${cfg.genesis-file} ~/.osmosisd/config/genesis.json
-          mkdir -p ~/.osmosisd
-          mkdir -p ~/.osmosisd/cosmovisor
-          mkdir -p ~/.osmosisd/cosmovisor/genesis
-          mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
-          mkdir -p ~/.osmosisd/cosmovisor/upgrades
-          ln -s ${cfg.package}/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
+          cp ${cfg.genesis-file} root/.osmosisd/config/genesis.json
+          mkdir -p root/osmosisd
+          mkdir -p root/.osmosisd/cosmovisor
+          mkdir -p root/.osmosisd/cosmovisor/genesis
+          mkdir -p root/.osmosisd/cosmovisor/genesis/bin
+          mkdir -p root/.osmosisd/cosmovisor/upgrades
+          ln -s ${cfg.package}/bin/osmosisd root/.osmosisd/cosmovisor/genesis/bin
         '';
         path = [cfg.package];
         serviceConfig = {
