@@ -51,7 +51,7 @@ in
         };
         preStart = ''
           ${cfg.package}/bin/osmosisd init ${cfg.node-name}
-          cp ${cfg.genesis-file} root/.osmosisd/config/genesis.json
+          cat ${cfg.genesis-file} > root/.osmosisd/config/genesis.json
           mkdir -p root/osmosisd
           mkdir -p root/.osmosisd/cosmovisor
           mkdir -p root/.osmosisd/cosmovisor/genesis
