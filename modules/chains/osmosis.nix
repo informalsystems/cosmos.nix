@@ -51,7 +51,7 @@ in
         };
         preStart = ''
           echo "Initializing osmosisd"
-          ${cfg.package}/bin/osmosisd init ${cfg.node-name}
+          [ ! -d "/root/.osmosisd" ] && ${cfg.package}/bin/osmosisd init ${cfg.node-name}
 
           echo "Copying genesis file"
           echo "${cfg.genesis-file}"
@@ -70,7 +70,7 @@ in
         path = [cfg.package];
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor start";
+          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run";
           RestartSec = 3;
           Restart = "always";
           LimitNOFILE = "infinity";
