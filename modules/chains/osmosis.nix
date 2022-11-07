@@ -191,7 +191,6 @@ in
             ln -s ${cfg.packages.v12}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
           fi
         '';
-        path = [cfg.package];
         serviceConfig = {
           Type = "notify";
           ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run start";
