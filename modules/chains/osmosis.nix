@@ -73,6 +73,13 @@ in
         default = null;
       };
 
+      minimum-gas-fee = mkOption {
+        type = types.str;
+        description = ''
+        '';
+        default = "0.001uosmo";
+      };
+
       cosmovisor = mkOption {
         type = types.package;
         default = pkgs.cosmovisor;
@@ -132,8 +139,9 @@ in
           ${
             if builtins.isNull cfg.peers
             then ""
-            else "${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.peers ${builtins.concatStringsSep "," cfg.peers}"
+            else "${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.persistent_peers ${builtins.concatStringsSep "," cfg.persistent-peers}"
           }
+          ${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/app.toml .minimum-gas-prices ${cfg.minimum-gas-fee}
 
           if [[ ! -e "/root/.osmosisd/cosmovisor/genesis/bin/osmosisd" ]];
           then
