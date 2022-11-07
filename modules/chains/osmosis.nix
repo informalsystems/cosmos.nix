@@ -119,12 +119,6 @@ in
             ln -s ${cfg.packages.genesis}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
           fi
 
-          echo "Symlinking osmosis v1 binary"
-          if [[ ! -f "/root/.osmosisd/cosmovisor/v1/bin" && ! -L "/root/.osmosisd/cosmovisor/v1/bin" ]]
-          then
-            ln -s ${cfg.packages.v1}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
-          fi
-
           echo "Symlinking osmosis v2 binary"
           if [[ ! -f "/root/.osmosisd/cosmovisor/v2/bin" && ! -L "/root/.osmosisd/cosmovisor/v2/bin" ]]
           then
