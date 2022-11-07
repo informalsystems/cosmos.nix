@@ -200,6 +200,7 @@ in
           Restart = "always";
           LimitNOFILE = "infinity";
           LimitNPROC = "infinity";
+          TimeoutStartSec = "infinity";
         };
       };
     };
