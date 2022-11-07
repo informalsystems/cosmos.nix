@@ -66,7 +66,7 @@ in
         };
       };
 
-      peers = mkOption {
+      persistent-peers = mkOption {
         type = types.nullOr (types.listOf types.str);
         description = ''
         '';
