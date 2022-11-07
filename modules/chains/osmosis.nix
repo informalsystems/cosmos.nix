@@ -115,7 +115,7 @@ in
         };
         preStart = ''
           echo "Initializing osmosisd"
-          {cfg.packages.v12}/bin/osmosisd config chain-id osmosis-1
+          ${cfg.packages.v12}/bin/osmosisd config chain-id osmosis-1
           [ ! -d "/root/.osmosisd" ] && ${cfg.packages.v12}/bin/osmosisd init --chain-id=osmosis-1 ${cfg.node-name}
 
           echo "Copying genesis file"
