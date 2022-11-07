@@ -55,4 +55,15 @@ in
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
       };
+
+      gaia8 = {
+        name = "gaia";
+        vendorSha256 = "sha256-MfFCMZDMknbsPkLU9vkkLA9AO4hB8WwfjDv5yrsc3bo=";
+        version = "v8.0.0-rc";
+        src = gaia8-src;
+        tags = ["netgo"];
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
     }
