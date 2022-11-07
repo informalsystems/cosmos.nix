@@ -97,6 +97,13 @@ in
       genesis-file = mkOption {
         type = types.path;
       };
+
+      snapshot-sync-url = mkOption {
+        type = types.nullOr types.string;
+        description = ''
+        '';
+        default = null;
+      };
     };
 
     config = mkIf cfg.enable {
@@ -136,6 +143,12 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/v11/bin
           mkdir -p /root/.osmosisd/cosmovisor/v12/bin
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
+
+          ${
+            if builtins.isNull cfg.snapshot-sync-url
+            then ""
+            else "${pkgs.curl}/bin/curl -o - -L ${cfg.snapshot-sync-url} | ${pkgs.lz4}/bin/lz4 -c -d - | ${pkgs.gnutar}/bin/tar -x -C /root/.osmosisd"
+          }
 
           ${
             if builtins.isNull cfg.persistent-peers
