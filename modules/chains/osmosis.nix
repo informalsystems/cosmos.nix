@@ -107,10 +107,18 @@ in
           cat ${cfg.genesis-file} > /root/.osmosisd/config/genesis.json
 
           echo "Creating cosmovisor directories"
-          mkdir -p /root/.osmosisd
-          mkdir -p /root/.osmosisd/cosmovisor
-          mkdir -p /root/.osmosisd/cosmovisor/genesis
           mkdir -p /root/.osmosisd/cosmovisor/genesis/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v2/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v3/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v4/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v5/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v6/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v7/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v8/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v9/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v10/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v11/bin
+          mkdir -p /root/.osmosisd/cosmovisor/v12/bin
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
           echo "Symlinking osmosis genesis binary"
