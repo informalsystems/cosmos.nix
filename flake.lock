@@ -34,19 +34,19 @@
         "type": "github"
       }
     },
-    "cosmos-sdk-src": {
+    "cosmovisor-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1658846655,
-        "narHash": "sha256-Xs83vbgt4+YH2LRJx7692nIjRBr5QCYoUHI17njsjlw=",
+        "lastModified": 1666733749,
+        "narHash": "sha256-EEGrjvtw+1qV67Th7UrdFbnMmI0MjQBTmqjqD61SoQM=",
         "owner": "cosmos",
         "repo": "cosmos-sdk",
-        "rev": "a1143138716b64bc4fa0aa53c0f0fa59eb675bb7",
+        "rev": "a19c3a60e4efff8dfd9d07b6fe68a4cfd1331b8c",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v0.46.0",
+        "ref": "tools/cosmovisor/v1.4.0",
         "repo": "cosmos-sdk",
         "type": "github"
       }
@@ -449,19 +449,138 @@
         "type": "github"
       }
     },
-    "osmosis-src": {
+    "osmosis1-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1664825894,
-        "narHash": "sha256-AiGjvTxWt03ccNVgYfb/t2xXNdBDhw9y5eapGR8kxCI=",
+        "lastModified": 1625725475,
+        "narHash": "sha256-5paXhtI0xgHfeJMReI1oF5Jefl1B8VJRGBH6dITMRnk=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "8329e9e7dfdd232430602d7f6a2b7df0e4acc1bd",
+        "rev": "5bd55ad827f7d394f47133fa84a68fe9da51e960",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v12.1.0",
+        "ref": "v1.0.3",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis10-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659534520,
+        "narHash": "sha256-VCaD3H6VSeYsg8YhVBQIW/RN7EDy28BS7KDy0wU8ivQ=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "9e178a631f91ffc91c51f3665ed915c9f15e1807",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v10.2.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis11-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660586385,
+        "narHash": "sha256-PJ+F17eANVZH3vgPYKBWzL2Y01K0ehNbQxa3CASRLCs=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "50d49dd7cea50f09c7347f447bcb1e1872343220",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v11.0.1",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis12-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1665770986,
+        "narHash": "sha256-HlYrHqkeHa2wxjge+i32jyN4R6ynzxvd3DAw5Kil0/s=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "ab00b76f792f051d69c700e7c6563ad27563e3a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v12.2.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1627976098,
+        "narHash": "sha256-sCJxAR/xRvbeFOJzRjiVr9V3g54pNSqauhIfAb+n3I8=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "bbea7fee759103b17505cb0939e1804eb47e67c0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v2.0.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis3-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1628302267,
+        "narHash": "sha256-0BuBJsOZ3x00kLu9a+DUSh0PFn2o6XUplcB7cLETu18=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "13916d1e10bca718b6ea7f4b84715710bc319e6d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v3.1.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis4-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1635530379,
+        "narHash": "sha256-W/lpqbIamxA4iPAGab6K7JyxrE9eQfTVa+rx1Eg/Fq0=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "e79fc9f47f2bd4518d9e16567a369c25a0820fa6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v4.2.0",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis5-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1639187873,
+        "narHash": "sha256-SaDYq9APe4xArgm3egV6rzT6C1W7Ns7hO9/UbdLMrPE=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "568729a666266c6751fa881b66a56bfe19bf93aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v5.0.0",
         "repo": "osmosis",
         "type": "github"
       }
@@ -503,16 +622,33 @@
     "osmosis8-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1652595598,
-        "narHash": "sha256-upQzIJnzswT+HO6H0welw/X5n4F/K1k/dP4FQMOeC8Q=",
+        "lastModified": 1653829145,
+        "narHash": "sha256-OQ8SDSwOcHDQ2QHNOQEPAXWupK+kuh66wOSiYhRse/w=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "16e3b51f19a58f815a4eabcbcee11886eb33e026",
+        "rev": "a9d8933733e7de7fda54e62ddddc8210a6fc7d90",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v8.0.0",
+        "ref": "v8.0.1",
+        "repo": "osmosis",
+        "type": "github"
+      }
+    },
+    "osmosis9-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654109723,
+        "narHash": "sha256-1ENVP8kdsqOiRcuv5m0jYpF+EYE1AsQJlqAYCEKlM6s=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "3a131a06366cb4de4590facc8b3ed2e704acdf6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v9.0.0",
         "repo": "osmosis",
         "type": "github"
       }
@@ -578,7 +714,7 @@
       "inputs": {
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
-        "cosmos-sdk-src": "cosmos-sdk-src",
+        "cosmovisor-src": "cosmovisor-src",
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
@@ -601,10 +737,18 @@
         "juno-src": "juno-src",
         "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
-        "osmosis-src": "osmosis-src",
+        "osmosis1-src": "osmosis1-src",
+        "osmosis10-src": "osmosis10-src",
+        "osmosis11-src": "osmosis11-src",
+        "osmosis12-src": "osmosis12-src",
+        "osmosis2-src": "osmosis2-src",
+        "osmosis3-src": "osmosis3-src",
+        "osmosis4-src": "osmosis4-src",
+        "osmosis5-src": "osmosis5-src",
         "osmosis6-src": "osmosis6-src",
         "osmosis7-src": "osmosis7-src",
         "osmosis8-src": "osmosis8-src",
+        "osmosis9-src": "osmosis9-src",
         "pre-commit-hooks": "pre-commit-hooks",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
@@ -613,6 +757,7 @@
         "sconfig-src": "sconfig-src",
         "sentinel-src": "sentinel-src",
         "sifchain-src": "sifchain-src",
+        "simapp-src": "simapp-src",
         "stargaze-src": "stargaze-src",
         "stoml-src": "stoml-src",
         "terra-src": "terra-src",
@@ -705,6 +850,23 @@
         "owner": "Sifchain",
         "ref": "v0.12.1",
         "repo": "sifnode",
+        "type": "github"
+      }
+    },
+    "simapp-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667320349,
+        "narHash": "sha256-dI0Od6w0dnFXyn+lcRePLJvbcSHazmU/FUFBypPwdgY=",
+        "owner": "cosmos",
+        "repo": "cosmos-sdk",
+        "rev": "eb1e3ebf6fcfd56e1f1d8f4c0a6192740bd8a6c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v0.46.4",
+        "repo": "cosmos-sdk",
         "type": "github"
       }
     },

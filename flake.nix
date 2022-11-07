@@ -67,8 +67,11 @@
     ibc-go-v6-src.flake = false;
     ibc-go-v6-src.url = github:cosmos/ibc-go/v6.0.0-alpha1;
 
-    cosmos-sdk-src.flake = false;
-    cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
+    cosmovisor-src.flake = false;
+    cosmovisor-src.url = github:cosmos/cosmos-sdk/tools/cosmovisor/v1.4.0;
+
+    simapp-src.flake = false;
+    simapp-src.url = github:cosmos/cosmos-sdk/v0.46.4;
 
     iris-src.flake = false;
     iris-src.url = github:irisnet/irishub/v1.1.1;
@@ -82,17 +85,41 @@
     juno-src.flake = false;
     juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
-    osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v12.1.0;
+    osmosis1-src.url = github:osmosis-labs/osmosis/v1.0.3;
+    osmosis1-src.flake = false;
 
-    osmosis7-src.flake = false;
-    osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
+    osmosis2-src.url = github:osmosis-labs/osmosis/v2.0.0;
+    osmosis2-src.flake = false;
 
-    osmosis6-src.flake = false;
+    osmosis3-src.url = github:osmosis-labs/osmosis/v3.1.0;
+    osmosis3-src.flake = false;
+
+    osmosis4-src.url = github:osmosis-labs/osmosis/v4.2.0;
+    osmosis4-src.flake = false;
+
+    osmosis5-src.url = github:osmosis-labs/osmosis/v5.0.0;
+    osmosis5-src.flake = false;
+
     osmosis6-src.url = github:osmosis-labs/osmosis/v6.4.1;
+    osmosis6-src.flake = false;
 
+    osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
+    osmosis7-src.flake = false;
+
+    osmosis8-src.url = github:osmosis-labs/osmosis/v8.0.1;
     osmosis8-src.flake = false;
-    osmosis8-src.url = github:osmosis-labs/osmosis/v8.0.0;
+
+    osmosis9-src.url = github:osmosis-labs/osmosis/v9.0.0;
+    osmosis9-src.flake = false;
+
+    osmosis10-src.url = github:osmosis-labs/osmosis/v10.2.0;
+    osmosis10-src.flake = false;
+
+    osmosis11-src.url = github:osmosis-labs/osmosis/v11.0.1;
+    osmosis11-src.flake = false;
+
+    osmosis12-src.url = github:osmosis-labs/osmosis/v12.2.0;
+    osmosis12-src.flake = false;
 
     terra-src.flake = false;
     terra-src.url = github:terra-money/core/v0.5.17;
@@ -253,24 +280,64 @@
             name = "gm";
             drv = packages.gm;
           };
-          osmosis = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis;
+          osmosis1 = mkApp {
+            name = "osmosis-v1";
+            drv = packages.osmosis1;
             exePath = "/bin/osmosisd";
           };
-          osmosis7 = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis7;
+          osmosis2 = mkApp {
+            name = "osmosis-v2";
+            drv = packages.osmosis2;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis3 = mkApp {
+            name = "osmosis-v3";
+            drv = packages.osmosis3;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis4 = mkApp {
+            name = "osmosis-v4";
+            drv = packages.osmosis4;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis5 = mkApp {
+            name = "osmosis-v5";
+            drv = packages.osmosis5;
             exePath = "/bin/osmosisd";
           };
           osmosis6 = mkApp {
-            name = "osmosis";
+            name = "osmosis-v6";
             drv = packages.osmosis6;
             exePath = "/bin/osmosisd";
           };
+          osmosis7 = mkApp {
+            name = "osmosis-v7";
+            drv = packages.osmosis7;
+            exePath = "/bin/osmosisd";
+          };
           osmosis8 = mkApp {
-            name = "osmosis";
+            name = "osmosis-v8";
             drv = packages.osmosis8;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis9 = mkApp {
+            name = "osmosis-v9";
+            drv = packages.osmosis9;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis10 = mkApp {
+            name = "osmosis-v10";
+            drv = packages.osmosis10;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis11 = mkApp {
+            name = "osmosis-v11";
+            drv = packages.osmosis11;
+            exePath = "/bin/osmosisd";
+          };
+          osmosis12 = mkApp {
+            name = "osmosis-v12";
+            drv = packages.osmosis12;
             exePath = "/bin/osmosisd";
           };
           iris = mkApp {

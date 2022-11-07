@@ -8,6 +8,10 @@
     inherit pkgs inputs;
   };
 
+  osmosis-packages = import ./resources/osmosis {
+    inherit pkgs inputs libwasmvm_1;
+  };
+
   ibc-packages = import ./resources/ibc-go {
     inherit pkgs inputs;
   };
@@ -20,6 +24,43 @@
   scripts = import ./scripts {inherit pkgs;};
 
   cosmos-sdk-version = "v0.46.0";
+
+  libwasmvm_1 = pkgs.rustPlatform.buildRustPackage {
+    pname = "libwasmvm";
+    src = "${inputs.wasmvm_1-src}/libwasmvm";
+    version = "v1.0.0";
+    nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+    postInstall = ''
+      cp ./bindings.h $out/lib/
+      ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+    '';
+    cargoSha256 = "sha256-Q8j9wESn2RBb05LcS7FiKGTPLgIPxWA0GZqHlTjkqpU=";
+    doCheck = false;
+  };
+
+  libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage {
+    pname = "libwasmvm";
+    src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
+    version = "v1.0.0-beta7";
+    nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+    postInstall = ''
+      cp ./bindings.h $out/lib/
+    '';
+    cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
+    doCheck = false;
+  };
+
+  libwasmvm_0_16_3 = pkgs.rustPlatform.buildRustPackage {
+    pname = "libwasmvm";
+    src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
+    version = "v0.16.3";
+    nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+    postInstall = ''
+      cp ./bindings.h $out/lib/
+    '';
+    cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
+    doCheck = false;
+  };
 
   packages =
     rec {
@@ -38,14 +79,14 @@
 
       cosmovisor = pkgs.buildGoModule {
         name = "cosmovisor";
-        src = "${inputs.cosmos-sdk-src}/cosmovisor";
-        vendorSha256 = "sha256-APJ+mt8e2zHiO/8UI7Zt63P5HFxEG2ogLf5uxfp58cQ=";
+        src = "${inputs.cosmovisor-src}/tools/cosmovisor";
+        vendorSha256 = "sha256-nWGAzsBis9FsHzacumMOR8DMgdLzjhsCuCRkfEPpjB8=";
         doCheck = false;
       };
 
       simd = pkgs.buildGoModule rec {
         name = "simd";
-        src = inputs.cosmos-sdk-src;
+        src = inputs.simapp-src;
         vendorSha256 = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
         doCheck = false;
         excludedPackages = [
@@ -93,60 +134,6 @@
         src = inputs.evmos-src;
         vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
         tags = ["netgo"];
-      };
-
-      osmosis = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v12.1.0";
-        src = inputs.osmosis-src;
-        vendorSha256 = "sha256-1dcG5yqLxH2X5oGVDhuqXUlno3i95SmEPT1aOYCrFuA=";
-        tags = ["netgo"];
-        preFixup = ''
-          ${utilities.wasmdPreFixupPhase "osmosisd"}
-          ${utilities.wasmdPreFixupPhase "chain"}
-          ${utilities.wasmdPreFixupPhase "node"}
-        '';
-        buildInputs = [libwasmvm_1];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
-      };
-
-      osmosis6 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v6.4.1";
-        src = inputs.osmosis6-src;
-        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
-        tags = ["netgo"];
-      };
-
-      osmosis7 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v7.3.0";
-        src = inputs.osmosis7-src;
-        excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
-        tags = ["netgo"];
-        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
-        buildInputs = [libwasmvm_1];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
-      };
-
-      osmosis8 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v8.0.0";
-        src = inputs.osmosis8-src;
-        excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
-        tags = ["netgo"];
-        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
-        dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
       };
 
       juno = utilities.mkCosmosGoApp {
@@ -288,43 +275,6 @@
         doCheck = false;
       };
 
-      libwasmvm_1 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1-src}/libwasmvm";
-        version = "v1.0.0";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-Q8j9wESn2RBb05LcS7FiKGTPLgIPxWA0GZqHlTjkqpU=";
-        doCheck = false;
-      };
-
-      libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
-        version = "v1.0.0-beta7";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-        '';
-        cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
-        doCheck = false;
-      };
-
-      libwasmvm_0_16_3 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
-        version = "v0.16.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-        '';
-        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
-        doCheck = false;
-      };
-
       # Misc
       gm = with pkgs;
         (import ./resources/gm) {
@@ -358,6 +308,7 @@
       };
     }
     // gaia-packages
+    // osmosis-packages
     // ibc-packages;
 
   # Dev shells
@@ -386,25 +337,6 @@
           shellcheck
         ]
         ++ builtins.attrValues packages;
-    };
-    osmosis-shell = pkgs.mkShell {
-      buildInputs = with pkgs; [
-        wget
-        jq
-        curl
-        lz4
-        python39
-        packages.osmosis8
-        packages.cosmovisor
-      ];
-      shellHook = ''
-        export DAEMON_NAME=osmosisd
-        export DAEMON_HOME=$HOME/.osmosisd
-        export DAEMON_ALLOW_DOWNLOAD_BINARIES=false
-        export DAEMON_LOG_BUFFER_SIZE=512
-        export DAEMON_RESTART_AFTER_UPGRADE=true
-        export UNSAFE_SKIP_BACKUP=true
-      '';
     };
   };
 in {inherit packages devShells;}
