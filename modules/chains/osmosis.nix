@@ -67,9 +67,10 @@ in
       };
 
       peers = mkOption {
-        type = types.listOf types.str;
+        type = types.nullOr (types.listOf types.str);
         description = ''
         '';
+        default = null;
       };
 
       cosmovisor = mkOption {
@@ -128,7 +129,11 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/v12/bin
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
-          ${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.peers ${builtins.concatStringsSep "," cfg.peers}
+          ${
+            if builtins.isNull cfg.peers
+            then ""
+            else "${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.peers ${builtins.concatStringsSep "," cfg.peers}"
+          }
 
           if [[ ! -e "/root/.osmosisd/cosmovisor/genesis/bin/osmosisd" ]];
           then
