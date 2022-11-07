@@ -106,7 +106,7 @@
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
     osmosis7-src.flake = false;
 
-    osmosis8-src.url = github:osmosis-labs/osmosis/v8.0.1;
+    osmosis8-src.url = github:osmosis-labs/osmosis/v8.0.0;
     osmosis8-src.flake = false;
 
     osmosis9-src.url = github:osmosis-labs/osmosis/v9.0.0;

@@ -76,7 +76,7 @@ in
 
       osmosis8 = {
         name = "osmosis";
-        version = "v8.0.1";
+        version = "v8.0.0";
         src = inputs.osmosis8-src;
         excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";

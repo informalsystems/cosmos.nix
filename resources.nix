@@ -87,11 +87,12 @@
       simd = pkgs.buildGoModule rec {
         name = "simd";
         src = inputs.simapp-src;
-        vendorSha256 = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
+        vendorSha256 = "sha256-kpm65oo7+5P8EDpKlo1pKm771gAkd0LEvKl4ybMle1M=";
         doCheck = false;
         excludedPackages = [
-          "./client/v2"
-          "./cosmovisor"
+          "./client"
+          "./codec"
+          "./tools"
           "./container"
           "./core"
           "./db"
@@ -99,6 +100,9 @@
           "./math"
           "./orm"
           "./store/tools"
+          "./crypto"
+          "./cosmovisor"
+          "./ics23/go"
         ];
         ldflags = ''
           -X github.com/cosmos/cosmos-sdk/version.AppName=${name}
