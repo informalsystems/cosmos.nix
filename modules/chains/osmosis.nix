@@ -115,7 +115,8 @@ in
         };
         preStart = ''
           echo "Initializing osmosisd"
-          [ ! -d "/root/.osmosisd" ] && ${cfg.packages.v12}/bin/osmosisd init ${cfg.node-name}
+          {cfg.packages.v12}/bin/osmosisd config chain-id osmosis-1
+          [ ! -d "/root/.osmosisd" ] && ${cfg.packages.v12}/bin/osmosisd init --chain-id=osmosis-1 ${cfg.node-name}
 
           echo "Copying genesis file"
           echo "${cfg.genesis-file}"
@@ -217,7 +218,7 @@ in
         '';
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run start";
+          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run start --x-crisis-skip-assert-invariants";
           RestartSec = 3;
           Restart = "always";
           LimitNOFILE = "infinity";
