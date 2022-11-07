@@ -137,7 +137,7 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
           ${
-            if builtins.isNull cfg.peers
+            if builtins.isNull cfg.persistent-peers
             then ""
             else "${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.persistent_peers ${builtins.concatStringsSep "," cfg.persistent-peers}"
           }
