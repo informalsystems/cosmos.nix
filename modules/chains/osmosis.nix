@@ -128,7 +128,7 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/v12/bin
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
-          ${pkgs.dasel}/bin/dasel put string -f ./config.toml .p2p.peers ${builtins.concatStringsSep "," cfg.peers}
+          ${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.peers ${builtins.concatStringsSep "," cfg.peers}
 
           if [[ ! -e "/root/.osmosisd/cosmovisor/genesis/bin" ]];
           then
