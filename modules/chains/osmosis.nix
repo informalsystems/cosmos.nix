@@ -130,76 +130,76 @@ in
 
           ${pkgs.dasel}/bin/dasel put string -f /root/.osmosisd/config/config.toml .p2p.peers ${builtins.concatStringsSep "," cfg.peers}
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/genesis/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/genesis/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis genesis binary"
-            ln -s ${cfg.packages.genesis}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
+            ln -s ${cfg.packages.genesis}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v2/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v2/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v2 binary"
-            ln -s ${cfg.packages.v2}/bin/osmosisd /root/.osmosisd/cosmovisor/v2/bin
+            ln -s ${cfg.packages.v2}/bin/osmosisd /root/.osmosisd/cosmovisor/v2/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v3/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v3/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v3 binary"
-            ln -s ${cfg.packages.v3}/bin/osmosisd /root/.osmosisd/cosmovisor/v3/bin
+            ln -s ${cfg.packages.v3}/bin/osmosisd /root/.osmosisd/cosmovisor/v3/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v4/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v4/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v4 binary"
-            ln -s ${cfg.packages.v4}/bin/osmosisd /root/.osmosisd/cosmovisor/v4/bin
+            ln -s ${cfg.packages.v4}/bin/osmosisd /root/.osmosisd/cosmovisor/v4/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v5/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v5/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v5 binary"
-            ln -s ${cfg.packages.v5}/bin/osmosisd /root/.osmosisd/cosmovisor/v5/bin
+            ln -s ${cfg.packages.v5}/bin/osmosisd /root/.osmosisd/cosmovisor/v5/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v6/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v6/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v6 binary"
-            ln -s ${cfg.packages.v6}/bin/osmosisd /root/.osmosisd/cosmovisor/v6/bin
+            ln -s ${cfg.packages.v6}/bin/osmosisd /root/.osmosisd/cosmovisor/v6/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v7/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v7/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v7 binary"
-            ln -s ${cfg.packages.v7}/bin/osmosisd /root/.osmosisd/cosmovisor/v7/bin
+            ln -s ${cfg.packages.v7}/bin/osmosisd /root/.osmosisd/cosmovisor/v7/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v8/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v8/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v8 binary"
-            ln -s ${cfg.packages.v8}/bin/osmosisd /root/.osmosisd/cosmovisor/v8/bin
+            ln -s ${cfg.packages.v8}/bin/osmosisd /root/.osmosisd/cosmovisor/v8/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v9/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v9/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v9 binary"
-            ln -s ${cfg.packages.v9}/bin/osmosisd /root/.osmosisd/cosmovisor/v9/bin
+            ln -s ${cfg.packages.v9}/bin/osmosisd /root/.osmosisd/cosmovisor/v9/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v10/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v10/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v10 binary"
-            ln -s ${cfg.packages.v10}/bin/osmosisd /root/.osmosisd/cosmovisor/v10/bin
+            ln -s ${cfg.packages.v10}/bin/osmosisd /root/.osmosisd/cosmovisor/v10/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v11/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v11/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v11 binary"
-            ln -s ${cfg.packages.v11}/bin/osmosisd /root/.osmosisd/cosmovisor/v11/bin
+            ln -s ${cfg.packages.v11}/bin/osmosisd /root/.osmosisd/cosmovisor/v11/bin/osmosisd
           fi
 
-          if [[ ! -e "/root/.osmosisd/cosmovisor/v12/bin" ]];
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v12/bin/osmosisd" ]];
           then
             echo "Symlinking osmosis v12 binary"
-            ln -s ${cfg.packages.v12}/bin/osmosisd /root/.osmosisd/cosmovisor/v12/bin
+            ln -s ${cfg.packages.v12}/bin/osmosisd /root/.osmosisd/cosmovisor/v12/bin/osmosisd
           fi
         '';
         serviceConfig = {
