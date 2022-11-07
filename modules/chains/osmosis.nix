@@ -195,7 +195,7 @@ in
         '';
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run start --log_level \"trace\"";
+          ExecStart = "${cfg.cosmovisor}/bin/cosmovisor run start";
           RestartSec = 3;
           Restart = "always";
           LimitNOFILE = "infinity";
