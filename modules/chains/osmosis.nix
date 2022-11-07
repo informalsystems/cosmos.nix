@@ -9,6 +9,7 @@ in
   with lib; {
     options.services.osmosisd = {
       enable = mkEnableOption "osmosisd";
+
       packages = mkOption {
         description = "";
         type = types.submodule {
@@ -63,6 +64,12 @@ in
             };
           };
         };
+      };
+
+      peers = mkOption {
+        type = types.listOf types.str;
+        description = ''
+        '';
       };
 
       cosmovisor = mkOption {
@@ -121,73 +128,75 @@ in
           mkdir -p /root/.osmosisd/cosmovisor/v12/bin
           mkdir -p /root/.osmosisd/cosmovisor/upgrades
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/genesis/bin" ]
+          ${pkgs.dasel}/bin/dasel put string -f ./config.toml .p2p.peers ${builtins.concatStringSep "," cfg.peers}
+
+          if [[ ! -e "/root/.osmosisd/cosmovisor/genesis/bin" ]];
           then
             echo "Symlinking osmosis genesis binary"
             ln -s ${cfg.packages.genesis}/bin/osmosisd /root/.osmosisd/cosmovisor/genesis/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v2/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v2/bin" ]];
           then
             echo "Symlinking osmosis v2 binary"
             ln -s ${cfg.packages.v2}/bin/osmosisd /root/.osmosisd/cosmovisor/v2/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v3/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v3/bin" ]];
           then
             echo "Symlinking osmosis v3 binary"
             ln -s ${cfg.packages.v3}/bin/osmosisd /root/.osmosisd/cosmovisor/v3/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v4/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v4/bin" ]];
           then
             echo "Symlinking osmosis v4 binary"
             ln -s ${cfg.packages.v4}/bin/osmosisd /root/.osmosisd/cosmovisor/v4/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v5/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v5/bin" ]];
           then
             echo "Symlinking osmosis v5 binary"
             ln -s ${cfg.packages.v5}/bin/osmosisd /root/.osmosisd/cosmovisor/v5/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v6/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v6/bin" ]];
           then
             echo "Symlinking osmosis v6 binary"
             ln -s ${cfg.packages.v6}/bin/osmosisd /root/.osmosisd/cosmovisor/v6/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v7/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v7/bin" ]];
           then
             echo "Symlinking osmosis v7 binary"
             ln -s ${cfg.packages.v7}/bin/osmosisd /root/.osmosisd/cosmovisor/v7/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v8/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v8/bin" ]];
           then
             echo "Symlinking osmosis v8 binary"
             ln -s ${cfg.packages.v8}/bin/osmosisd /root/.osmosisd/cosmovisor/v8/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v9/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v9/bin" ]];
           then
             echo "Symlinking osmosis v9 binary"
             ln -s ${cfg.packages.v9}/bin/osmosisd /root/.osmosisd/cosmovisor/v9/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v10/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v10/bin" ]];
           then
             echo "Symlinking osmosis v10 binary"
             ln -s ${cfg.packages.v10}/bin/osmosisd /root/.osmosisd/cosmovisor/v10/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v11/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v11/bin" ]];
           then
             echo "Symlinking osmosis v11 binary"
             ln -s ${cfg.packages.v11}/bin/osmosisd /root/.osmosisd/cosmovisor/v11/bin
           fi
 
-          if [ ! -f "/root/.osmosisd/cosmovisor/v12/bin" ]
+          if [[ ! -e "/root/.osmosisd/cosmovisor/v12/bin" ]];
           then
             echo "Symlinking osmosis v12 binary"
             ln -s ${cfg.packages.v12}/bin/osmosisd /root/.osmosisd/cosmovisor/v12/bin
