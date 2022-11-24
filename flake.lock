@@ -253,16 +253,16 @@
     "ibc-go-v4-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1663683227,
-        "narHash": "sha256-+7qCyWKsDg0R/zoj++IuLGdG1C4n6Q9C4RcLMqlwV5A=",
+        "lastModified": 1667809128,
+        "narHash": "sha256-R1/AH6laXdaMftgwnV4t/pL3QoKnZ1UaBGoqOipOvQI=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "197555e7b879032cdbda32d1dba60b6164f9a0f6",
+        "rev": "ecb845d5e43f53decf48f8ed88c7847a9a4375cb",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v4.1.0",
+        "ref": "v4.2.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -270,16 +270,16 @@
     "ibc-go-v5-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1664375342,
-        "narHash": "sha256-FrMSigZVRkwv66pWW85GZTYcsnITRl3ERptaoN4W1oA=",
+        "lastModified": 1668024626,
+        "narHash": "sha256-+Z78PyGODLr2Y5G8evubsoQE3tyUcxCHJDsLXKTmdlI=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "ed56c0b7bf64f44fb9e87ad2756bea1d6ca6ce54",
+        "rev": "c0acd5bd1778f2b7ecdf593006f56bd3e273bd49",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v5.0.0",
+        "ref": "v5.1.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -287,16 +287,16 @@
     "ibc-go-v6-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1664530583,
-        "narHash": "sha256-COUx/eEmrXBfyisMF/32Vi89DzqGxIkVkWm5AZWlZWk=",
+        "lastModified": 1668246281,
+        "narHash": "sha256-H1HEXtNBIYaMdd5JohPYOCkn6DWrlRoqCllYbVg4oMk=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "ad7fb5dbfceaf336887ab3857b7858df73eb3be7",
+        "rev": "6415cc4f402b23bf44b459f30d64b838b084b160",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v6.0.0-alpha1",
+        "ref": "v6.0.0-rc0",
         "repo": "ibc-go",
         "type": "github"
       }
