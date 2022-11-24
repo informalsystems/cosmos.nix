@@ -44,7 +44,7 @@
     gaia8-src.url = github:cosmos/gaia/v8.0.0-rc;
 
     gaia7-src.flake = false;
-    gaia7-src.url = github:cosmos/gaia/v7.0.3;
+    gaia7-src.url = github:cosmos/gaia/v7.1.0;
 
     gaia6-ordered-src.flake = false;
     gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.4-ordered;

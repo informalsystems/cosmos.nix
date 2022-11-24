@@ -185,16 +185,16 @@
     "gaia7-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1659460265,
-        "narHash": "sha256-rCqt18n2XoFZQ0yXYZZhQ9I7OTMA2HuPp6rGFZlFbqI=",
+        "lastModified": 1665762684,
+        "narHash": "sha256-hsDqDASwTPIb1BGOqa9nu4C5Y5q3hBoXYhkAFY7B9Cs=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "d0884c29aac4c1e647b0a82f3df31515d2bd06a3",
+        "rev": "5db8fcc9a229730f5115bed82d0f85b6db7184b4",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v7.0.3",
+        "ref": "v7.1.0",
         "repo": "gaia",
         "type": "github"
       }
@@ -436,11 +436,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1659464610,
-        "narHash": "sha256-X67Sbnn4lbo+RFWDjlG9oJsSWE6zg4S+LuQ5TLB2lCo=",
+        "lastModified": 1669076005,
+        "narHash": "sha256-uzMji2q9Pk3jUH+e5nEFtoOZCP4VV1PDRJRLVmriY0M=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f310f24f0d4cd5e8660ccde49e8cbd8dbf0295fa",
+        "rev": "69335c46c48a73f291d5c6f332fb9fe8b8e22b30",
         "type": "github"
       },
       "original": {

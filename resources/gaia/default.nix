@@ -47,8 +47,8 @@ in
 
       gaia7 = {
         name = "gaia";
-        vendorSha256 = "sha256-rohPqCjPC3yr8wDNpndbhP6t7AgjY+kyqRGJYApCMgs=";
-        version = "v7.0.3";
+        vendorSha256 = "sha256-bNeSSZ1n1fEvO9ITGGJzsc+S2QE7EoB703mPHzrEqAg=";
+        version = "v7.1.0";
         src = gaia7-src;
         tags = ["netgo"];
 
@@ -58,10 +58,11 @@ in
 
       gaia8 = {
         name = "gaia";
-        vendorSha256 = "sha256-MfFCMZDMknbsPkLU9vkkLA9AO4hB8WwfjDv5yrsc3bo=";
+        vendorSha256 = "sha256-FBxb53B4cZH08VTy45i7IY2uWgOjCCkwJUNSI8ScGwM=";
         version = "v8.0.0-rc";
         src = gaia8-src;
         tags = ["netgo"];
+        proxyVendor = true;
 
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
