@@ -31,17 +31,17 @@ in
 
       ibc-go-v4-simapp = {
         name = "simapp";
-        version = "v4.1.0";
+        version = "v4.2.0";
         src = ibc-go-v4-src;
-        vendorSha256 = "sha256-jI1Ky8SzwZ3PhAZrDJQknAWUnu0G9rktAyaE4J/o8Cw=";
+        vendorSha256 = "sha256-M8N6IPBnhOQp4LsCgdKc0NOtdeLNkAcXtGsvHS00D+g=";
         tags = ["netgo"];
       };
 
       ibc-go-v5-simapp = {
         name = "simapp";
-        version = "v5.0.0";
+        version = "v5.1.0";
         src = ibc-go-v5-src;
-        vendorSha256 = "sha256-hxffp0n0kchyUb6T4UzXqUZKGH4t4aHjuQhFQUjeUgA=";
+        vendorSha256 = "sha256-KajTi+hCMM8AoLsGmWV7qVGbYA8vZhn+0tmG20zJgPI=";
         tags = ["netgo"];
         excludedPackages = ["./e2e"];
       };
@@ -50,7 +50,7 @@ in
         name = "simapp";
         version = "v6.0.0";
         src = ibc-go-v6-src;
-        vendorSha256 = "sha256-hxffp0n0kchyUb6T4UzXqUZKGH4t4aHjuQhFQUjeUgA=";
+        vendorSha256 = "sha256-RrFwhpcraLBNdsYKNHAtsDDvGHZ7LsnDDj+B1ezepO8=";
         tags = ["netgo"];
         excludedPackages = ["./e2e"];
       };

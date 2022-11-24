@@ -40,8 +40,11 @@
     gaia-main-src.flake = false;
     gaia-main-src.url = github:cosmos/gaia;
 
+    gaia8-src.flake = false;
+    gaia8-src.url = github:cosmos/gaia/v8.0.0-rc;
+
     gaia7-src.flake = false;
-    gaia7-src.url = github:cosmos/gaia/v7.0.3;
+    gaia7-src.url = github:cosmos/gaia/v7.1.0;
 
     gaia6-ordered-src.flake = false;
     gaia6-ordered-src.url = github:informalsystems/gaia/v6.0.4-ordered;
@@ -59,13 +62,13 @@
     ibc-go-v3-src.url = github:cosmos/ibc-go/v3.3.0;
 
     ibc-go-v4-src.flake = false;
-    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.1.0;
+    ibc-go-v4-src.url = github:cosmos/ibc-go/v4.2.0;
 
     ibc-go-v5-src.flake = false;
-    ibc-go-v5-src.url = github:cosmos/ibc-go/v5.0.0;
+    ibc-go-v5-src.url = github:cosmos/ibc-go/v5.1.0;
 
     ibc-go-v6-src.flake = false;
-    ibc-go-v6-src.url = github:cosmos/ibc-go/v6.0.0-alpha1;
+    ibc-go-v6-src.url = github:cosmos/ibc-go/v6.0.0-rc0;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
@@ -212,6 +215,11 @@
           gaia7 = mkApp {
             name = "gaia";
             drv = packages.gaia7;
+            exePath = "/bin/gaiad";
+          };
+          gaia8 = mkApp {
+            name = "gaia";
+            drv = packages.gaia8;
             exePath = "/bin/gaiad";
           };
           gaia-main = mkApp {
