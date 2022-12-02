@@ -141,6 +141,9 @@
 
     interchain-security-src.flake = false;
     interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
+
+    stride-src.flake = false;
+    stride-src.url = github:Stride-Labs/stride/v3.0.1;
   };
 
   outputs = inputs:
@@ -354,6 +357,11 @@
             name = "apalache";
             drv = packages.apalache;
             exePath = "/bin/apalache-mc";
+          };
+          stride3 = mkApp {
+            name = "stride";
+            drv = packages.stride3;
+            exePath = "/bin/strided";
           };
         };
       });

@@ -278,6 +278,13 @@
         buildInputs = [libwasmvm_1];
       };
 
+      strided = utilities.mkCosmosGoApp {
+        name = "stride";
+        version = "v3.0.1";
+        src = inputs.stride-src;
+        vendorSha256 = "sha256-Hro3nS/Dq6Nv4rg4Vtk21HabTpT1Id5XywM4LFeKUIE=";
+      };
+
       # Rust resources
       hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";
