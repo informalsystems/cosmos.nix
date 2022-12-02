@@ -633,6 +633,7 @@
         "sifchain-src": "sifchain-src",
         "stargaze-src": "stargaze-src",
         "stoml-src": "stoml-src",
+        "stride-src": "stride-src",
         "terra-src": "terra-src",
         "ts-relayer-src": "ts-relayer-src",
         "umee-src": "umee-src",
@@ -756,6 +757,23 @@
       "original": {
         "owner": "freshautomations",
         "repo": "stoml",
+        "type": "github"
+      }
+    },
+    "stride-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1669073860,
+        "narHash": "sha256-3C1pmWVDFLuSofU27H58Y5bKloZh+EivW0T5ng7Y0IM=",
+        "owner": "Stride-Labs",
+        "repo": "stride",
+        "rev": "613e85711485d3bebeeb5777ba35e701cc795a43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Stride-Labs",
+        "ref": "v3.0.1",
+        "repo": "stride",
         "type": "github"
       }
     },
