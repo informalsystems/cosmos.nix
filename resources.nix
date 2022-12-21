@@ -93,6 +93,7 @@
         src = inputs.evmos-src;
         vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
         tags = ["netgo"];
+        proxyVendor = true;
       };
 
       osmosis = utilities.mkCosmosGoApp {
@@ -107,6 +108,7 @@
           ${utilities.wasmdPreFixupPhase "node"}
         '';
         buildInputs = [libwasmvm_1];
+        proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
         doCheck = false;
