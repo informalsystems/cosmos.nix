@@ -71,16 +71,16 @@
     "evmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1657722808,
-        "narHash": "sha256-WHo4DEaTwJXs3QGSGIRxqkaJFS6D96/zyXVmkaH867s=",
+        "lastModified": 1670619229,
+        "narHash": "sha256-S/ImcDY/ScwDHoiyXxpBKqB2gr3VGgU+RtTLqk7p2Fs=",
         "owner": "tharsis",
         "repo": "evmos",
-        "rev": "5f59c0f8393e15ff5894e6450567b534c498a428",
+        "rev": "8a70711bf421e3e2eb6fde30ed5e417646667b08",
         "type": "github"
       },
       "original": {
         "owner": "tharsis",
-        "ref": "v6.0.2",
+        "ref": "v10.0.0-rc2",
         "repo": "evmos",
         "type": "github"
       }
@@ -469,16 +469,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1664825894,
-        "narHash": "sha256-AiGjvTxWt03ccNVgYfb/t2xXNdBDhw9y5eapGR8kxCI=",
+        "lastModified": 1670616193,
+        "narHash": "sha256-tn+uPzkUQYdcbbTrU2zxuNC7JsjRH7YTFI3X2XhwpBY=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "8329e9e7dfdd232430602d7f6a2b7df0e4acc1bd",
+        "rev": "28234a55c3cfc98f19b8b7c81902cb9e43f8e261",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v12.1.0",
+        "ref": "v13.1.2",
         "repo": "osmosis",
         "type": "github"
       }

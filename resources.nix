@@ -89,7 +89,7 @@
 
       evmos = utilities.mkCosmosGoApp {
         name = "evmos";
-        version = "v6.0.2";
+        version = "v10.0.0-rc2";
         src = inputs.evmos-src;
         vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
         tags = ["netgo"];
@@ -97,7 +97,7 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v12.1.0";
+        version = "v13.1.2";
         src = inputs.osmosis-src;
         vendorSha256 = "sha256-1dcG5yqLxH2X5oGVDhuqXUlno3i95SmEPT1aOYCrFuA=";
         tags = ["netgo"];

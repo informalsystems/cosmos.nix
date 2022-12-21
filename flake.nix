@@ -80,13 +80,13 @@
     regen-src.url = github:regen-network/regen-ledger/v3.0.0;
 
     evmos-src.flake = false;
-    evmos-src.url = github:tharsis/evmos/v6.0.2;
+    evmos-src.url = github:tharsis/evmos/v10.0.0-rc2;
 
     juno-src.flake = false;
     juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v12.1.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v13.1.2;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
