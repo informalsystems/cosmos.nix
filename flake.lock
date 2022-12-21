@@ -831,16 +831,16 @@
     "wasmd-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1652950226,
-        "narHash": "sha256-hN7XJDoZ8El2tvwJnW67abhwg37e1ckFyreytN2AwZ0=",
+        "lastModified": 1669987561,
+        "narHash": "sha256-F0p555FEeA405tuLn82yUEbRZpJLs85GrUKvSrjTdjk=",
         "owner": "CosmWasm",
         "repo": "wasmd",
-        "rev": "d63bea442bedf5b3055f3821472c7e6cafc3d813",
+        "rev": "a347ace2ff41539fe06c68168bc6f28d6ca9fa52",
         "type": "github"
       },
       "original": {
         "owner": "CosmWasm",
-        "ref": "v0.27.0",
+        "ref": "v0.30.0",
         "repo": "wasmd",
         "type": "github"
       }
