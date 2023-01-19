@@ -62,5 +62,6 @@ in
         vendorSha256 = "sha256-tTQ7kODkWvp9rSoP6yJ/JKuJkqvRh5klNNENC0CJMDM";
         tags = ["netgo"];
         excludedPackages = ["./e2e"];
+        proxyVendor = true;
       };
     }
