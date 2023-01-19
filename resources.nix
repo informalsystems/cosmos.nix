@@ -275,7 +275,7 @@
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "wasmd";
         dontStrip = true;
-        buildInputs = [libwasmvm_1];
+        buildInputs = [libwasmvm_1_1_1];
       };
 
       strided = utilities.mkCosmosGoApp {
@@ -292,6 +292,19 @@
         src = inputs.ibc-rs-src;
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         cargoSha256 = "sha256-0GZN3xq/5FC/jYXGVDIOrha+sB+Gv/6nzlFvpCAYO3M=";
+        doCheck = false;
+      };
+
+      libwasmvm_1_1_1 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_1_1-src}/libwasmvm";
+        version = "v1.1.1";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-97BhqI1FZyDbVrT5hdyEK7VPtpE9lQgWduc/siH6NqE";
         doCheck = false;
       };
 
