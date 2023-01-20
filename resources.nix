@@ -371,11 +371,6 @@
         inherit pkgs;
         inherit (inputs) apalache-src;
       };
-
-      tx-database-migration = pkgs.writeTextFile {
-        name = "tx_index_schema.sql";
-        text = builtins.readFile ./fixtures/tx_index_schema.sql;
-      };
     }
     // gaia-packages
     // ibc-packages;
@@ -397,6 +392,7 @@
         ]
         ++ scripts;
     };
+
     cosmos-shell = pkgs.mkShell {
       buildInputs = with pkgs;
         [
@@ -407,6 +403,7 @@
         ]
         ++ builtins.attrValues packages;
     };
+
     osmosis-shell = pkgs.mkShell {
       buildInputs = with pkgs; [
         wget
