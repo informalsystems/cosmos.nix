@@ -58,8 +58,8 @@ in
 
       gaia8 = {
         name = "gaia";
-        vendorSha256 = "sha256-FBxb53B4cZH08VTy45i7IY2uWgOjCCkwJUNSI8ScGwM=";
-        version = "v8.0.0-rc";
+        vendorSha256 = "sha256-41I37KNgR50MF0DQ/Ipw59Yt5td2Xv2vhF7zpLGXVik";
+        version = "v8.0.0-rc3";
         src = gaia8-src;
         tags = ["netgo"];
         proxyVendor = true;
