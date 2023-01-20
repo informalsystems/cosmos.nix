@@ -8,7 +8,6 @@
     src = ./.;
     hooks = {
       alejandra.enable = true;
-      nix-linter.enable = true;
     };
   };
 }

@@ -1,2 +1,0 @@
-alejandra .
-nix-linter -r .

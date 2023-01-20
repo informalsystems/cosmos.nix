@@ -2,8 +2,8 @@
   sa = pkgs.writeShellApplication;
   format = sa {
     name = "format";
-    text = builtins.readFile ./format.sh;
-    runtimeInputs = with pkgs; [alejandra nix-linter];
+    text = "alejandra .";
+    runtimeInputs = with pkgs; [alejandra];
   };
 in [
   format
