@@ -44,7 +44,7 @@
       then "${name}d"
       else appName;
   in
-    pkgs.buildGo118Module ({
+    pkgs.buildGo119Module ({
         inherit version src vendorSha256;
         pname = name;
         preCheck =

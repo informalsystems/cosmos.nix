@@ -378,12 +378,12 @@
           pass
           gnupg
           alejandra
-          nix-linter
           patchelf
-          go_1_18
+          go
         ]
         ++ scripts;
     };
+
     cosmos-shell = pkgs.mkShell {
       buildInputs = with pkgs;
         [
@@ -394,6 +394,7 @@
         ]
         ++ builtins.attrValues packages;
     };
+
     osmosis-shell = pkgs.mkShell {
       buildInputs = with pkgs; [
         wget
