@@ -283,6 +283,8 @@
         version = "v5.1.1";
         src = inputs.stride-src;
         vendorSha256 = "sha256-Hro3ns/Dq6Nv4rg4Vtk21HabTpT1Id5XywM4LFeKUIE=";
+
+        patches = [./patches/stride-no-admin-check.patch];
       };
 
       # Rust resources

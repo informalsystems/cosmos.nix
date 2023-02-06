@@ -1,0 +1,14 @@
+diff --git a/utils/utils.go b/utils/utils.go
+index 0f6642ef..d778a298 100644
+--- a/utils/utils.go
++++ b/utils/utils.go
+@@ -34,9 +34,6 @@ func Int64ToCoinString(amount int64, denom string) string {
+ }
+ 
+ func ValidateAdminAddress(address string) error {
+-	if !Admins[address] {
+-		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, fmt.Sprintf("invalid creator address (%s)", address))
+-	}
+ 	return nil
+ }
+ 
