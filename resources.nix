@@ -282,9 +282,19 @@
         name = "stride";
         version = "v5.1.1";
         src = inputs.stride-src;
-        vendorSha256 = "sha256-Hro3ns/Dq6Nv4rg4Vtk21HabTpT1Id5XywM4LFeKUIE=";
+        vendorSha256 = "sha256-3WdQKFxDk+bn76Q0F6JU2gGHTMBhaUaXX8sqQF+4DYg=";
+
+        doCheck = false;
+      };
+
+      stride-no-admin = utilities.mkCosmosGoApp {
+        name = "stride-no-admin";
+        version = "v5.1.1";
+        src = inputs.stride-src;
+        vendorSha256 = "sha256-3WdQKFxDk+bn76Q0F6JU2gGHTMBhaUaXX8sqQF+4DYg=";
 
         patches = [./patches/stride-no-admin-check.patch];
+        doCheck = false;
       };
 
       # Rust resources

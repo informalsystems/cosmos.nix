@@ -369,6 +369,11 @@
             drv = packages.stride;
             exePath = "/bin/strided";
           };
+          stride-no-admin = mkApp {
+            name = "stride-no-admin";
+            drv = packages.stride;
+            exePath = "/bin/strided";
+          };
         };
       });
 }
