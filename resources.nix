@@ -278,11 +278,23 @@
         buildInputs = [libwasmvm_1_1_1];
       };
 
-      strided = utilities.mkCosmosGoApp {
+      stride = utilities.mkCosmosGoApp {
         name = "stride";
-        version = "v3.0.1";
+        version = "v5.1.1";
         src = inputs.stride-src;
-        vendorSha256 = "sha256-Hro3nS/Dq6Nv4rg4Vtk21HabTpT1Id5XywM4LFeKUIE=";
+        vendorSha256 = "sha256-3WdQKFxDk+bn76Q0F6JU2gGHTMBhaUaXX8sqQF+4DYg=";
+
+        doCheck = false;
+      };
+
+      stride-no-admin = utilities.mkCosmosGoApp {
+        name = "stride-no-admin";
+        version = "v5.1.1";
+        src = inputs.stride-src;
+        vendorSha256 = "sha256-3WdQKFxDk+bn76Q0F6JU2gGHTMBhaUaXX8sqQF+4DYg=";
+
+        patches = [./patches/stride-no-admin-check.patch];
+        doCheck = false;
       };
 
       # Rust resources
