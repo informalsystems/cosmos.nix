@@ -127,9 +127,6 @@
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
 
-    wasmvm_1_1_1-src.flake = false;
-    wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
-
     wasmvm_1-src.flake = false;
     wasmvm_1-src.url = github:CosmWasm/wasmvm/v1.0.0;
 
