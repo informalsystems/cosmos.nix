@@ -99,7 +99,7 @@
         name = "osmosis";
         version = "v14.0.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-zx36ZQWBPT0xkT6f/o7A30GLXi/I/ho4zmapJCNO/1I=";
+        vendorSha256 = "sha256-wmhvk2cLdSch2Q5j3VhsVeELITdxDNyJXOla8cilx1U=";
         tags = ["netgo"];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
