@@ -94,7 +94,7 @@
         vendorSha256 = "sha256-EOKGx+3M/N2rEr1ze5w1cRMNiZBES2T2tdNJqFxsTUE=";
         tags = ["netgo"];
         buildInputs = [
-          pkgs.glibc
+          pkgs.libusb
         ];
       };
 
