@@ -469,16 +469,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1670616193,
-        "narHash": "sha256-tn+uPzkUQYdcbbTrU2zxuNC7JsjRH7YTFI3X2XhwpBY=",
+        "lastModified": 1673971085,
+        "narHash": "sha256-u14TpwHMheenEjdwXYZdW9HoG1/iktEPwjnluKyOlNk=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "28234a55c3cfc98f19b8b7c81902cb9e43f8e261",
+        "rev": "62587bfa0db9309804ca84cfceca6a19ac0aae44",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v13.1.2",
+        "ref": "v14.0.0",
         "repo": "osmosis",
         "type": "github"
       }
@@ -640,6 +640,7 @@
         "wasmd-src": "wasmd-src",
         "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
         "wasmvm_1-src": "wasmvm_1-src",
+        "wasmvm_1_1_1-src": "wasmvm_1_1_1-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
@@ -875,6 +876,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v1.0.0",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_1_1-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663600745,
+        "narHash": "sha256-9K/G7Wu/TfW4Z+lseEutXbdtr+A40nbVejBphegF5z4=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "3d791055751e428f93f54f64c2d20d20da2ff2a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.1.1",
         "repo": "wasmvm",
         "type": "github"
       }
