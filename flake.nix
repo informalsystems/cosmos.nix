@@ -41,7 +41,7 @@
     gaia-main-src.url = github:cosmos/gaia;
 
     gaia8-src.flake = false;
-    gaia8-src.url = github:cosmos/gaia/v8.0.0-rc;
+    gaia8-src.url = github:cosmos/gaia/v8.0.0-rc3;
 
     gaia7-src.flake = false;
     gaia7-src.url = github:cosmos/gaia/v7.1.0;
@@ -68,7 +68,10 @@
     ibc-go-v5-src.url = github:cosmos/ibc-go/v5.1.0;
 
     ibc-go-v6-src.flake = false;
-    ibc-go-v6-src.url = github:cosmos/ibc-go/v6.0.0-rc0;
+    ibc-go-v6-src.url = github:cosmos/ibc-go/v6.1.0;
+
+    ibc-go-v7-src.flake = false;
+    ibc-go-v7-src.url = github:cosmos/ibc-go/0a427c6d93e8f9d20c61b45e36f6e1fe73e37f37;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
@@ -122,13 +125,16 @@
     stargaze-src.url = github:public-awesome/stargaze/v3.0.0;
 
     wasmd-src.flake = false;
-    wasmd-src.url = github:CosmWasm/wasmd/v0.27.0;
+    wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
 
     wasmvm_1_1_1-src.flake = false;
     wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
 
     wasmvm_1-src.flake = false;
     wasmvm_1-src.url = github:CosmWasm/wasmvm/v1.0.0;
+
+    wasmvm_1_1_1-src.flake = false;
+    wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
 
     wasmvm_1_beta7-src.flake = false;
     wasmvm_1_beta7-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
@@ -146,7 +152,7 @@
     interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
 
     stride-src.flake = false;
-    stride-src.url = github:Stride-Labs/stride/v3.0.1;
+    stride-src.url = github:Stride-Labs/stride/v5.1.1;
   };
 
   outputs = inputs:
@@ -361,9 +367,14 @@
             drv = packages.apalache;
             exePath = "/bin/apalache-mc";
           };
-          stride3 = mkApp {
+          stride = mkApp {
             name = "stride";
-            drv = packages.stride3;
+            drv = packages.stride;
+            exePath = "/bin/strided";
+          };
+          stride-no-admin = mkApp {
+            name = "stride-no-admin";
+            drv = packages.stride-no-admin;
             exePath = "/bin/strided";
           };
         };
