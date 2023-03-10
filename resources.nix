@@ -97,16 +97,17 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v12.1.0";
+        version = "v14.0.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-1dcG5yqLxH2X5oGVDhuqXUlno3i95SmEPT1aOYCrFuA=";
+        vendorSha256 = "sha256-wmhvk2cLdSch2Q5j3VhsVeELITdxDNyJXOla8cilx1U=";
         tags = ["netgo"];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
           ${utilities.wasmdPreFixupPhase "chain"}
           ${utilities.wasmdPreFixupPhase "node"}
         '';
-        buildInputs = [libwasmvm_1];
+        buildInputs = [libwasmvm_1_1_1];
+        proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
         doCheck = false;
