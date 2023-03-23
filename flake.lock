@@ -218,16 +218,33 @@
     "gaia8-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1673981273,
-        "narHash": "sha256-NAeZrxbfo/bp8nz+FNbUJGAkzoqoYF3hJhET63LKKFc=",
+        "lastModified": 1676667875,
+        "narHash": "sha256-8XPcJRQEQDtTbGFg0pWexkNdWESn1FoKvz4T2Z8UPDw=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "27234da8e9f2a9efacea2d9da06edaf190a6af30",
+        "rev": "890ab3aa2e5788537b0d2ebc9bafdc968340e0e5",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v8.0.0-rc3",
+        "ref": "v8.0.1",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
+    "gaia9-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1678387146,
+        "narHash": "sha256-xE6jZKIgmZ+/bFUWrdoyOy73fsC1VdYfhxH9u4tD7HI=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "4b14265197d9beeb6c8b0d407433c852a5af6422",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v9.0.1",
         "repo": "gaia",
         "type": "github"
       }
@@ -678,6 +695,7 @@
         "gaia6-src": "gaia6-src",
         "gaia7-src": "gaia7-src",
         "gaia8-src": "gaia8-src",
+        "gaia9-src": "gaia9-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",
         "ibc-go-v4-src": "ibc-go-v4-src",

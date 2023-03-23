@@ -40,8 +40,11 @@
     gaia-main-src.flake = false;
     gaia-main-src.url = github:cosmos/gaia;
 
+    gaia9-src.flake = false;
+    gaia9-src.url = github:cosmos/gaia/v9.0.1;
+
     gaia8-src.flake = false;
-    gaia8-src.url = github:cosmos/gaia/v8.0.0-rc3;
+    gaia8-src.url = github:cosmos/gaia/v8.0.1;
 
     gaia7-src.flake = false;
     gaia7-src.url = github:cosmos/gaia/v7.1.0;
@@ -229,6 +232,11 @@
           gaia8 = mkApp {
             name = "gaia";
             drv = packages.gaia8;
+            exePath = "/bin/gaiad";
+          };
+          gaia9 = mkApp {
+            name = "gaia";
+            drv = packages.gaia9;
             exePath = "/bin/gaiad";
           };
           gaia-main = mkApp {
