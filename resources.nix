@@ -97,9 +97,9 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v14.0.0";
+        version = "v15.0.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-wmhvk2cLdSch2Q5j3VhsVeELITdxDNyJXOla8cilx1U=";
+        vendorSha256 = "sha256-4RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
         tags = ["netgo"];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
