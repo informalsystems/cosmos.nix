@@ -149,7 +149,7 @@
     interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
 
     stride-src.flake = false;
-    stride-src.url = github:Stride-Labs/stride/v5.1.1;
+    stride-src.url = github:Stride-Labs/stride/v7.0.0;
   };
 
   outputs = inputs:
