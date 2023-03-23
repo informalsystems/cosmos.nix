@@ -838,16 +838,16 @@
     "stride-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1674783729,
-        "narHash": "sha256-hTrfuVzmuSAhBnKk24yV2u6yekpf4DzOfB9l4WHDLZg=",
+        "lastModified": 1678771112,
+        "narHash": "sha256-c971YXdUSVhpEQFDuBNsG1DooOus1ps0jw4x6haTSdU=",
         "owner": "Stride-Labs",
         "repo": "stride",
-        "rev": "bf9dc8d6badcf97e6b9c01aa8bfc09516036db1e",
+        "rev": "ef4808d4095c3da3c4f35e1b37495b5813624d14",
         "type": "github"
       },
       "original": {
         "owner": "Stride-Labs",
-        "ref": "v5.1.1",
+        "ref": "v7.0.0",
         "repo": "stride",
         "type": "github"
       }
