@@ -18,7 +18,6 @@ in
         vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
         version = "v8.0.0";
         src = gaia5-src;
-        tags = ["netgo"];
       };
 
       gaia5 = {
@@ -58,9 +57,21 @@ in
 
       gaia8 = {
         name = "gaia";
-        vendorSha256 = "sha256-41I37KNgR50MF0DQ/Ipw59Yt5td2Xv2vhF7zpLGXVik";
-        version = "v8.0.0-rc3";
+        vendorSha256 = "sha256-w3MLjxXzKytMxCN9Q9RPeeXq7ijDQXoH0d+ti5FLMtA=";
+        version = "v8.0.1";
         src = gaia8-src;
+        tags = ["netgo"];
+        proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
+
+      gaia9 = {
+        name = "gaia";
+        vendorSha256 = "sha256-qwHc7F4yYJji/nnG5hBNOSmtF7SjTv8eO7e7IvmgV98=";
+        version = "v9.0.1";
+        src = gaia9-src;
         tags = ["netgo"];
         proxyVendor = true;
 
