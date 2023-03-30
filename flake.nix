@@ -40,8 +40,11 @@
     gaia-main-src.flake = false;
     gaia-main-src.url = github:cosmos/gaia;
 
+    gaia9-src.flake = false;
+    gaia9-src.url = github:cosmos/gaia/v9.0.1;
+
     gaia8-src.flake = false;
-    gaia8-src.url = github:cosmos/gaia/v8.0.0-rc3;
+    gaia8-src.url = github:cosmos/gaia/v8.0.1;
 
     gaia7-src.flake = false;
     gaia7-src.url = github:cosmos/gaia/v7.1.0;
@@ -89,7 +92,7 @@
     juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v14.0.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
@@ -149,7 +152,7 @@
     interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
 
     stride-src.flake = false;
-    stride-src.url = github:Stride-Labs/stride/v5.1.1;
+    stride-src.url = github:Stride-Labs/stride/v7.0.0;
   };
 
   outputs = inputs:
@@ -229,6 +232,11 @@
           gaia8 = mkApp {
             name = "gaia";
             drv = packages.gaia8;
+            exePath = "/bin/gaiad";
+          };
+          gaia9 = mkApp {
+            name = "gaia";
+            drv = packages.gaia9;
             exePath = "/bin/gaiad";
           };
           gaia-main = mkApp {

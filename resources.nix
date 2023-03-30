@@ -100,9 +100,9 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v14.0.0";
+        version = "v15.0.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-wmhvk2cLdSch2Q5j3VhsVeELITdxDNyJXOla8cilx1U=";
+        vendorSha256 = "sha256-4RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
         tags = ["netgo"];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
@@ -284,18 +284,18 @@
 
       stride = utilities.mkCosmosGoApp {
         name = "stride";
-        version = "v5.1.1";
+        version = "v7.0.0";
         src = inputs.stride-src;
-        vendorSha256 = "sha256-3WdQKFxDk+bn76Q0F6JU2gGHTMBhaUaXX8sqQF+4DYg=";
+        vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
 
         doCheck = false;
       };
 
       stride-no-admin = utilities.mkCosmosGoApp {
         name = "stride-no-admin";
-        version = "v5.1.1";
+        version = "v7.0.0";
         src = inputs.stride-src;
-        vendorSha256 = "sha256-3WdQKFxDk+bn76Q0F6JU2gGHTMBhaUaXX8sqQF+4DYg=";
+        vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
 
         patches = [./patches/stride-no-admin-check.patch];
         doCheck = false;
