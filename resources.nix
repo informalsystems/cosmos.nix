@@ -94,7 +94,11 @@
         vendorSha256 = "sha256-EOKGx+3M/N2rEr1ze5w1cRMNiZBES2T2tdNJqFxsTUE=";
         tags = ["netgo"];
         buildInputs = [
-          pkgs.libusb
+          pkgs.glibc
+        ];
+        makeFlags = [
+          "--with-threads=posix"
+          "--with-threads-posix-c=$(pkgs.nixpkgs)/lib/os/threads_posix.c"
         ];
       };
 
