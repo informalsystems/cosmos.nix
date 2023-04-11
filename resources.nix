@@ -158,6 +158,7 @@
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "junod";
         dontStrip = true;
+        buildInputs = [libwasmvm_1_1_1];
       };
 
       juno2 = utilities.mkCosmosGoApp {
