@@ -165,7 +165,7 @@
         name = "juno";
         version = "v2.3.0-beta.2";
         src = inputs.juno-src;
-        vendorSha256 = "sha256-2/uu546UYHDBiTMr8QL95aEF7hI8bTkO/JCYMcLM5kw=";
+        vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
         tags = ["netgo"];
         preFixup = utilities.wasmdPreFixupPhase "junod";
         dontStrip = true;
