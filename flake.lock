@@ -490,23 +490,6 @@
         "type": "github"
       }
     },
-    "juno2-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1647987514,
-        "narHash": "sha256-Mtiin+GOH/dyrr7cO+18er+uwYjCpQDY8xhA+kkzniM=",
-        "owner": "CosmosContracts",
-        "repo": "juno",
-        "rev": "9a1c32f508e6314fb73e57db35313cb329639424",
-        "type": "github"
-      },
-      "original": {
-        "owner": "CosmosContracts",
-        "ref": "v2.3.0-beta.2",
-        "repo": "juno",
-        "type": "github"
-      }
-    },
     "nix-std": {
       "locked": {
         "lastModified": 1658944356,
@@ -726,7 +709,6 @@
         "iris-src": "iris-src",
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
-        "juno2-src": "juno2-src",
         "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",

@@ -161,17 +161,6 @@
         buildInputs = [libwasmvm_1_1_1];
       };
 
-      juno2 = utilities.mkCosmosGoApp {
-        name = "juno";
-        version = "v2.3.0-beta.2";
-        src = inputs.juno2-src;
-        vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
-        tags = ["netgo"];
-        preFixup = utilities.wasmdPreFixupPhase "junod";
-        dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
-      };
-
       terra = utilities.mkCosmosGoApp {
         name = "terra";
         version = "v0.5.17";

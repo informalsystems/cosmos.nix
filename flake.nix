@@ -91,9 +91,6 @@
     juno-src.flake = false;
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
-    juno2-src.flake = false;
-    juno2-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
-
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
 
@@ -325,11 +322,6 @@
           juno = mkApp {
             name = "juno";
             drv = packages.juno;
-            exePath = "/bin/junod";
-          };
-          juno2 = mkApp {
-            name = "juno";
-            drv = packages.juno2;
             exePath = "/bin/junod";
           };
           terra = mkApp {
