@@ -89,7 +89,7 @@
     evmos-src.url = github:tharsis/evmos/v6.0.2;
 
     juno-src.flake = false;
-    juno-src.url = github:CosmosContracts/juno/v2.3.0-beta.2;
+    juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
