@@ -156,7 +156,11 @@
         src = inputs.juno-src;
         vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
         tags = ["netgo"];
-        preFixup = utilities.wasmdPreFixupPhase "junod";
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase "junod"}
+          ${utilities.wasmdPreFixupPhase "chain"}
+          ${utilities.wasmdPreFixupPhase "node"}
+        '';
         dontStrip = true;
         buildInputs = [libwasmvm_1_1_1];
       };
