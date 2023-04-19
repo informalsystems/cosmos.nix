@@ -66,6 +66,16 @@
         '';
       };
 
+      simd7 = utilities.mkCosmosGoAppComet rec {
+        name = "simd7";
+        version = "v7.0.0";
+        src = inputs.ibc-go-v7-src;
+        vendorSha256 = "sha256-KXF3wzXrvmm3LL+3SEGISNGedTfNlt1i1mjApV2dRDk=";
+        tags = ["netgo"];
+        doCheck = false;
+        excludedPackages = ["./e2e"];
+      };
+
       ignite-cli = pkgs.buildGoModule rec {
         name = "ignite-cli";
         src = inputs.ignite-cli-src;
