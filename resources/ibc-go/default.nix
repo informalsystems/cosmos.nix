@@ -70,4 +70,14 @@ in
         doCheck = false;
         excludedPackages = ["./e2e"];
       };
+
+      ibc-go-v7-channel-upgrade = {
+        name = "simapp";
+        version = "v7.0.0-channel.upgrade";
+        src = inputs.ibc-go-v7-channel-upgrade-src;
+        vendorSha256 = "sha256-KXF3wzXrvmm3LL+3SEGISNGedTfNlt1i1mjApV2dRDk=";
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        excludedPackages = ["./e2e"];
+      };
     }

@@ -355,6 +355,23 @@
         "type": "github"
       }
     },
+    "ibc-go-v7-channel-upgrade-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681914625,
+        "narHash": "sha256-MaUx988kvPc5AAlDiEPB0o0t+h+JyB3LsEFvPOvogQE=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "81a709b49a42504737d25be0e812d830f9a0897c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "81a709b49a42504737d25be0e812d830f9a0897c",
+        "type": "github"
+      }
+    },
     "ibc-go-v7-src": {
       "flake": false,
       "locked": {
@@ -701,6 +718,7 @@
         "ibc-go-v4-src": "ibc-go-v4-src",
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
+        "ibc-go-v7-channel-upgrade-src": "ibc-go-v7-channel-upgrade-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
