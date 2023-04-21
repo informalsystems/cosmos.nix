@@ -2,7 +2,7 @@
   pkgs,
   nix-std,
 }: let
-  buildApp = engineRepo: args@{
+  buildApp = engineRepo: args @ {
     name,
     version,
     src,
@@ -60,7 +60,6 @@
         '';
       }
       // buildGoModuleArgs);
-
 in {
   mkCosmosGoApp = buildApp "tendermint/tendermint";
   mkCosmosGoTendermint = buildApp "tendermint/tendermint";
