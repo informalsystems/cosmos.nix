@@ -66,16 +66,6 @@
         '';
       };
 
-      ibc-go-v7-simapp = utilities.mkCosmosGoAppComet rec {
-        name = "simd";
-        version = "v7.0.0";
-        src = inputs.ibc-go-v7-src;
-        vendorSha256 = "sha256-KXF3wzXrvmm3LL+3SEGISNGedTfNlt1i1mjApV2dRDk=";
-        tags = ["netgo"];
-        doCheck = false;
-        excludedPackages = ["./e2e"];
-      };
-
       ignite-cli = pkgs.buildGoModule rec {
         name = "ignite-cli";
         src = inputs.ignite-cli-src;
@@ -95,6 +85,7 @@
         src = inputs.regen-src;
         vendorSha256 = "sha256-IdxIvL8chuGD71q4V7c+RWZ7PoEAVQ7++Crdlz2q/XI=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       evmos = utilities.mkCosmosGoApp {
@@ -103,6 +94,7 @@
         src = inputs.evmos-src;
         vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       osmosis = utilities.mkCosmosGoApp {
@@ -111,6 +103,7 @@
         src = inputs.osmosis-src;
         vendorSha256 = "sha256-4RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "osmosisd"}
           ${utilities.wasmdPreFixupPhase "chain"}
@@ -129,6 +122,7 @@
         src = inputs.osmosis6-src;
         vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       osmosis7 = utilities.mkCosmosGoApp {
@@ -138,6 +132,7 @@
         excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase "osmosisd";
         buildInputs = [libwasmvm_1];
 
@@ -152,6 +147,7 @@
         excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase "osmosisd";
         dontStrip = true;
         buildInputs = [libwasmvm_1beta7];
@@ -166,6 +162,7 @@
         src = inputs.juno-src;
         vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         preFixup = ''
           ${utilities.wasmdPreFixupPhase "junod"}
           ${utilities.wasmdPreFixupPhase "chain"}
@@ -181,6 +178,7 @@
         src = inputs.terra-src;
         vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase "terrad";
         dontStrip = true;
         buildInputs = [libwasmvm_0_16_3];
@@ -193,6 +191,7 @@
         src = inputs.sentinel-src;
         vendorSha256 = "sha256-ktIKTw7J4EYKWu6FBfxzvYm8ldHG00KakRY5QR8cjrI=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       akash = utilities.mkCosmosGoApp {
@@ -202,6 +201,7 @@
         src = inputs.akash-src;
         vendorSha256 = "sha256-p7GVC1DkOdekfXMaHkXeIZw/CjtTpQCSO0ivDZkmx4c=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         doCheck = false;
       };
 
@@ -212,6 +212,7 @@
         src = inputs.umee-src;
         vendorSha256 = "sha256-HONlFCC6iHgKQwqAiEV29qmSHsLdloUlAeJkxViUG7w=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       ixo = pkgs.buildGoModule {
@@ -220,6 +221,7 @@
         src = inputs.ixo-src;
         vendorSha256 = "sha256-g6dKujkFZLpFGpxgzb7v1YOo4cdeP6eEAbUjMzAIkF8=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         doCheck = false;
       };
 
@@ -229,6 +231,7 @@
         src = inputs.sifchain-src;
         vendorSha256 = "sha256-AX5jLfH9RnoGZm5MVyM69NnxVjYMR45CNaKzQn5hsXg=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         additionalLdFlags = ''
           -X github.com/cosmos/cosmos-sdk/version.ServerName=sifnoded
           -X github.com/cosmos/cosmos-sdk/version.ClientName=sifnoded
@@ -243,6 +246,7 @@
         src = inputs.crescent-src;
         vendorSha256 = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         additionalLdFlags = ''
           -X github.com/cosmos/cosmos-sdk/types.reDnmString=[a-zA-Z][a-zA-Z0-9/:]{2,127}
         '';
@@ -257,6 +261,7 @@
         vendorSha256 = "sha256-IJwyjto86gnWyeux1AS+aPZONhpyB7+MSQcCRs3LHzw=";
         preFixup = utilities.wasmdPreFixupPhase "starsd";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       interchain-security = utilities.mkCosmosGoApp {
@@ -266,6 +271,7 @@
         src = inputs.interchain-security-src;
         vendorSha256 = "sha256-BLadou3/JfumdjbXVJnVMZahARXxVDpvSWJzzK6ilxA=";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         doCheck = false; # tests are currently failing
       };
 
@@ -288,6 +294,7 @@
         src = inputs.wasmd-src;
         vendorSha256 = "sha256-8Uo/3SdXwblt87WU78gjpRPcHy+ZotmhF6xTyb3Jxe0";
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase "wasmd";
         dontStrip = true;
         buildInputs = [libwasmvm_1_1_1];
@@ -298,6 +305,7 @@
         version = "v7.0.0";
         src = inputs.stride-src;
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
+        engine = "tendermint/tendermint";
 
         doCheck = false;
       };
@@ -307,6 +315,7 @@
         version = "v7.0.0";
         src = inputs.stride-src;
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
+        engine = "tendermint/tendermint";
 
         patches = [./patches/stride-no-admin-check.patch];
         doCheck = false;
