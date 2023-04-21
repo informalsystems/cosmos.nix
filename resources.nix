@@ -66,8 +66,8 @@
         '';
       };
 
-      simd7 = utilities.mkCosmosGoAppComet rec {
-        name = "simd7";
+      ibc-go-v7-simapp = utilities.mkCosmosGoAppComet rec {
+        name = "simd";
         version = "v7.0.0";
         src = inputs.ibc-go-v7-src;
         vendorSha256 = "sha256-KXF3wzXrvmm3LL+3SEGISNGedTfNlt1i1mjApV2dRDk=";

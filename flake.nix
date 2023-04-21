@@ -257,9 +257,9 @@
             name = "simd";
             drv = packages.simd;
           };
-          simd7 = mkApp {
-            name = "simd7";
-            drv = packages.simd7;
+          ibc-go-v7-simapp = mkApp {
+            name = "simd";
+            drv = packages.ibc-go-v7-simapp;
           };
           ignite-cli = mkApp {
             name = "ignite-cli";
