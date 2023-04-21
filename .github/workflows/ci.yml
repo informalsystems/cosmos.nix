@@ -21,7 +21,7 @@ jobs:
 
       - name: Check 🔎
         run: |
-          nix flake check
+          nix flake check --print-build-logs
 
       - name: Run Shell 🐚
         run: |
