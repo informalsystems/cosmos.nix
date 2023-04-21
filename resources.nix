@@ -145,7 +145,7 @@
         version = "v8.0.0";
         src = inputs.osmosis8-src;
         excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-BL6Ko6jq1pumPgXCId+pj6juWYTbmkWauYKpefFZNug=";
+        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase "osmosisd";
