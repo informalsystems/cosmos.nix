@@ -89,9 +89,9 @@
 
       evmos = utilities.mkCosmosGoApp {
         name = "evmos";
-        version = "v12.1.0";
+        version = "v12.1.2";
         src = inputs.evmos-src;
-        vendorSha256 = "sha256-EOKGx+3M/N2rEr1ze5w1cRMNiZBES2T2tdNJqFxsTUE=";
+        vendorSha256 = "sha256-hlHScDUeTfPbN0gI+AxCXnk1B5pBJPBTrl3H5eM0lu8=";
         tags = ["netgo"];
         buildInputs = [
           pkgs.libusb
