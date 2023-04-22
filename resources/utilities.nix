@@ -2,10 +2,11 @@
   pkgs,
   nix-std,
 }: let
-  buildApp = engineRepo: args @ {
+  buildApp = args @ {
     name,
     version,
     src,
+    engine,
     vendorSha256,
     additionalLdFlags ? "",
     appName ? null,
@@ -22,7 +23,7 @@
     dependency-version = with nix-std.lib; let
       all-dep-matches =
         regex.allMatches
-        "${engineRepo}[[:space:]](=>[[:space:]]?[[:graph:]]*[[:space:]])?v?[[:graph:]]*"
+        "${engine}[[:space:]](=>[[:space:]]?[[:graph:]]*[[:space:]])?v?[[:graph:]]*"
         (builtins.readFile "${src}/go.mod");
       dep-string =
         if list.any (string.hasInfix "=>") all-dep-matches
@@ -33,7 +34,7 @@
       optional.match dep-version {
         nothing =
           pkgs.lib.trivial.warn
-          "Could not find a ${engineRepo} version with regex, check if the formatting of go.mod escapes the regex in cosmos.nix/resources/utilities"
+          "Could not find a ${engine} version with regex, check if the formatting of go.mod escapes the regex in cosmos.nix/resources/utilities"
           null;
         just = function.id;
       };
@@ -55,15 +56,13 @@
           -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
           -X github.com/cosmos/cosmos-sdk/version.Version=${version}
           -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
-          -X github.com/${engineRepo}/version.TMCoreSemVer=${dependency-version}
+          -X github.com/${engine}/version.TMCoreSemVer=${dependency-version}
           ${additionalLdFlags}
         '';
       }
       // buildGoModuleArgs);
 in {
-  mkCosmosGoApp = buildApp "tendermint/tendermint";
-  mkCosmosGoTendermint = buildApp "tendermint/tendermint";
-  mkCosmosGoAppComet = buildApp "cometbft/cometbft";
+  mkCosmosGoApp = buildApp;
 
   wasmdPreFixupPhase = binName: ''
     old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
