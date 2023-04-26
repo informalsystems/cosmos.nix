@@ -160,7 +160,7 @@
         name = "juno";
         version = "v13.0.1";
         src = inputs.juno-src;
-        vendorSha256 = "sha256-y1LLpENPVxB4FA2Mb/HO9r3t3sxLFvY5LVypKe4J5Ug=";
+        vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
