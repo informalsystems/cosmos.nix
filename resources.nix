@@ -90,9 +90,9 @@
 
       evmos = utilities.mkCosmosGoApp {
         name = "evmos";
-        version = "v6.0.2";
+        version = "v9.1.0";
         src = inputs.evmos-src;
-        vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
+        vendorSha256 = "sha256-AjWuufyAz5KTBwKiWvhPeqGm4fn3MUqg39xb4pJ0hTM=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
       };
@@ -302,7 +302,7 @@
 
       stride = utilities.mkCosmosGoApp {
         name = "stride";
-        version = "v7.0.0";
+        version = "v8.0.0";
         src = inputs.stride-src;
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
         engine = "tendermint/tendermint";
@@ -312,7 +312,7 @@
 
       stride-no-admin = utilities.mkCosmosGoApp {
         name = "stride-no-admin";
-        version = "v7.0.0";
+        version = "v8.0.0";
         src = inputs.stride-src;
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
         engine = "tendermint/tendermint";

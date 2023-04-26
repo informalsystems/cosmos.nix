@@ -75,11 +75,11 @@ in
 
       gaia9 = {
         name = "gaia";
-        vendorSha256 = "sha256-qwHc7F4yYJji/nnG5hBNOSmtF7SjTv8eO7e7IvmgV98=";
-        version = "v9.0.1";
+        vendorSha256 = "sha256-W1pKtrWfXe0pdO7ntcjFbDa0LTpD91yI2mUMXBiDo1w=";
+        version = "v9.0.3";
         src = gaia9-src;
         tags = ["netgo"];
-        engine = "tendermint/tendermint";
+        engine = "cometbft/cometbft";
         proxyVendor = true;
 
         # Tests have to be disabled because they require Docker to run
