@@ -41,7 +41,7 @@
     gaia-main-src.url = github:cosmos/gaia;
 
     gaia9-src.flake = false;
-    gaia9-src.url = github:cosmos/gaia/v9.0.1;
+    gaia9-src.url = github:cosmos/gaia/v9.0.3;
 
     gaia8-src.flake = false;
     gaia8-src.url = github:cosmos/gaia/v8.0.1;
@@ -86,10 +86,10 @@
     regen-src.url = github:regen-network/regen-ledger/v3.0.0;
 
     evmos-src.flake = false;
-    evmos-src.url = github:tharsis/evmos/v6.0.2;
+    evmos-src.url = github:tharsis/evmos/v9.1.0;
 
     juno-src.flake = false;
-    juno-src.url = github:CosmosContracts/juno/v13.0.1;
+    juno-src.url = github:CosmosContracts/juno/v14.1.0;
 
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
@@ -136,6 +136,9 @@
     wasmvm_1_1_1-src.flake = false;
     wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
 
+    wasmvm_1_2_3-src.flake = false;
+    wasmvm_1_2_3-src.url = github:CosmWasm/wasmvm/v1.2.3;
+
     wasmvm_1_beta7-src.flake = false;
     wasmvm_1_beta7-src.url = github:CosmWasm/wasmvm/v1.0.0-beta7;
 
@@ -152,7 +155,7 @@
     interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
 
     stride-src.flake = false;
-    stride-src.url = github:Stride-Labs/stride/v7.0.0;
+    stride-src.url = github:Stride-Labs/stride/v8.0.0;
   };
 
   outputs = inputs:

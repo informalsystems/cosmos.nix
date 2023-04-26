@@ -90,9 +90,9 @@
 
       evmos = utilities.mkCosmosGoApp {
         name = "evmos";
-        version = "v6.0.2";
+        version = "v9.1.0";
         src = inputs.evmos-src;
-        vendorSha256 = "sha256-sJxlg1dGU04P5nxuuh+1ljKX/IntgTcfjirV/6NDxjw=";
+        vendorSha256 = "sha256-AjWuufyAz5KTBwKiWvhPeqGm4fn3MUqg39xb4pJ0hTM=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
       };
@@ -158,9 +158,9 @@
 
       juno = utilities.mkCosmosGoApp {
         name = "juno";
-        version = "v13.0.1";
+        version = "v14.1.0";
         src = inputs.juno-src;
-        vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
+        vendorSha256 = "sha256-y1LLpENPVxB4FA2Mb/HO9r3t3sxLFvY5LVypKe4J5Ug=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
@@ -169,7 +169,7 @@
           ${utilities.wasmdPreFixupPhase "node"}
         '';
         dontStrip = true;
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [libwasmvm_1_2_3];
       };
 
       terra = utilities.mkCosmosGoApp {
@@ -302,7 +302,7 @@
 
       stride = utilities.mkCosmosGoApp {
         name = "stride";
-        version = "v7.0.0";
+        version = "v8.0.0";
         src = inputs.stride-src;
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
         engine = "tendermint/tendermint";
@@ -312,7 +312,7 @@
 
       stride-no-admin = utilities.mkCosmosGoApp {
         name = "stride-no-admin";
-        version = "v7.0.0";
+        version = "v8.0.0";
         src = inputs.stride-src;
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
         engine = "tendermint/tendermint";
@@ -328,6 +328,19 @@
         src = inputs.ibc-rs-src;
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         cargoSha256 = "sha256-0GZN3xq/5FC/jYXGVDIOrha+sB+Gv/6nzlFvpCAYO3M=";
+        doCheck = false;
+      };
+
+      libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
+        version = "v1.2.3";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
         doCheck = false;
       };
 
