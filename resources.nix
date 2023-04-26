@@ -158,9 +158,8 @@
 
       juno = utilities.mkCosmosGoApp {
         name = "juno";
-        version = "v14.1.0";
+        version = "v13.0.1";
         src = inputs.juno-src;
-        excludedPackages = "./tests/interchaintest";
         vendorSha256 = "sha256-y1LLpENPVxB4FA2Mb/HO9r3t3sxLFvY5LVypKe4J5Ug=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
@@ -170,7 +169,7 @@
           ${utilities.wasmdPreFixupPhase "node"}
         '';
         dontStrip = true;
-        buildInputs = [libwasmvm_1_2_3];
+        buildInputs = [libwasmvm_1_1_1];
       };
 
       terra = utilities.mkCosmosGoApp {
@@ -329,19 +328,6 @@
         src = inputs.ibc-rs-src;
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         cargoSha256 = "sha256-0GZN3xq/5FC/jYXGVDIOrha+sB+Gv/6nzlFvpCAYO3M=";
-        doCheck = false;
-      };
-
-      libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
-        version = "v1.2.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
         doCheck = false;
       };
 
