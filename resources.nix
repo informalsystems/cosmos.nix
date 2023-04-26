@@ -160,6 +160,7 @@
         name = "juno";
         version = "v14.1.0";
         src = inputs.juno-src;
+        excludedPackages = "./tests/interchaintest";
         vendorSha256 = "sha256-y1LLpENPVxB4FA2Mb/HO9r3t3sxLFvY5LVypKe4J5Ug=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
