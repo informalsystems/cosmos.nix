@@ -64,9 +64,17 @@
 in {
   mkCosmosGoApp = buildApp;
 
-  wasmdPreFixupPhase = binName: ''
-    old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
-    new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
-    ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
-  '';
+  wasmdPreFixupPhase = libwasmvm: binName:
+    if pkgs.stdenv.hostPlatform.isLinux then
+      ''
+        old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
+        new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
+        ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
+      ''
+    else if pkgs.stdenv.hostPlatform.isDarwin then
+      ''
+        install_name_tool -add_rpath "${libwasmvm}/lib" $out/bin/${binName}
+      ''
+    else
+      null;
 }

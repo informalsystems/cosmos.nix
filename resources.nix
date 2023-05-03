@@ -105,9 +105,9 @@
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase "osmosisd"}
-          ${utilities.wasmdPreFixupPhase "chain"}
-          ${utilities.wasmdPreFixupPhase "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "osmosisd"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
         '';
         buildInputs = [libwasmvm_1_1_1];
         proxyVendor = true;
@@ -133,7 +133,7 @@
         vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1 "osmosisd";
         buildInputs = [libwasmvm_1];
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -148,7 +148,7 @@
         vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase "osmosisd";
+        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1beta7 "osmosisd";
         dontStrip = true;
         buildInputs = [libwasmvm_1beta7];
 
@@ -164,9 +164,9 @@
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase "junod"}
-          ${utilities.wasmdPreFixupPhase "chain"}
-          ${utilities.wasmdPreFixupPhase "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "junod"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
         '';
         dontStrip = true;
         buildInputs = [libwasmvm_1_1_1];
@@ -179,7 +179,7 @@
         vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase "terrad";
+        preFixup = utilities.wasmdPreFixupPhase libwasmvm_0_16_3 "terrad";
         dontStrip = true;
         buildInputs = [libwasmvm_0_16_3];
       };
@@ -259,7 +259,7 @@
         src = inputs.stargaze-src;
         buildInputs = [libwasmvm_1beta7];
         vendorSha256 = "sha256-IJwyjto86gnWyeux1AS+aPZONhpyB7+MSQcCRs3LHzw=";
-        preFixup = utilities.wasmdPreFixupPhase "starsd";
+        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1beta7 "starsd";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
       };
@@ -295,7 +295,7 @@
         vendorSha256 = "sha256-8Uo/3SdXwblt87WU78gjpRPcHy+ZotmhF6xTyb3Jxe0";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase "wasmd";
+        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "wasmd";
         dontStrip = true;
         buildInputs = [libwasmvm_1_1_1];
       };
