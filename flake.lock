@@ -476,16 +476,16 @@
     "juno-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1681847717,
-        "narHash": "sha256-dztSBe7dPYKmB5FeoZJuz7oel7a7Wx4muTGyABFn05M=",
+        "lastModified": 1679292088,
+        "narHash": "sha256-9xWOnlqjJWY7dyICYjl1Fmqi27352TF9ihcbZBI/Dps=",
         "owner": "CosmosContracts",
         "repo": "juno",
-        "rev": "e57bc002ac3d27457e304985a4cd8445a2580172",
+        "rev": "1f392744afd9829f3f7837fe6f13800a19bad961",
         "type": "github"
       },
       "original": {
         "owner": "CosmosContracts",
-        "ref": "v14.1.0",
+        "ref": "v13.0.1",
         "repo": "juno",
         "type": "github"
       }
@@ -730,6 +730,7 @@
         "ts-relayer-src": "ts-relayer-src",
         "umee-src": "umee-src",
         "wasmd-src": "wasmd-src",
+        "wasmd_next-src": "wasmd_next-src",
         "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
         "wasmvm_1-src": "wasmvm_1-src",
         "wasmvm_1_1_1-src": "wasmvm_1_1_1-src",
@@ -935,6 +936,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v0.30.0",
+        "repo": "wasmd",
+        "type": "github"
+      }
+    },
+    "wasmd_next-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1682094944,
+        "narHash": "sha256-b+6XhBdKyQlrzsYxVRrDf4vHpv8GAJkGwHVfJ9sdf3U=",
+        "owner": "CosmWasm",
+        "repo": "wasmd",
+        "rev": "c2bb27d289f7f72f1471a4b33cb08fdfc8d66f63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v0.40.0-rc.1",
         "repo": "wasmd",
         "type": "github"
       }
