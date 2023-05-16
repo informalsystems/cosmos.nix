@@ -159,6 +159,9 @@
 
     stride-src.flake = false;
     stride-src.url = github:Stride-Labs/stride/v8.0.0;
+
+    migaloo-src.flake = false;
+    migaloo-src.url = github:White-Whale-Defi-Platform/migaloo-chain/v2.0.2;
   };
 
   outputs = inputs:
