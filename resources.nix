@@ -340,9 +340,9 @@
         vendorSha256 = "sha256-Z85OpuiB73BHSSuPADvE3tJ5ZstHYik8yghfCHXy3W0=";
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "migalood"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "migalood"}
         '';
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [libwasmvm_1_2_3];
       };
 
       # Rust resources
