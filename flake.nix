@@ -395,6 +395,11 @@
             drv = packages.stride-no-admin;
             exePath = "/bin/strided";
           };
+          migaloo = mkApp {
+            name = "migaloo";
+            drv = packages.migaloo;
+            exePath = "/bin/migalood";
+          };
         };
       });
 }
