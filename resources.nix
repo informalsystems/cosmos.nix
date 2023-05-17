@@ -341,8 +341,6 @@
         engine = "tendermint/tendermint";
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "migalood"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
         '';
         buildInputs = [libwasmvm_1_1_1];
       };
