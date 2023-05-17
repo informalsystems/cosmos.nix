@@ -71,16 +71,16 @@
     "evmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1666728289,
-        "narHash": "sha256-hMry1q+31jqSe0krg880LIMcz0xgftB3mwfywWoLX3w=",
+        "lastModified": 1681486356,
+        "narHash": "sha256-G11+jHrY+sFqVEiRq8vkHG0i7WrjpGjdaLI8Bqwu+4U=",
         "owner": "tharsis",
         "repo": "evmos",
-        "rev": "80c38f659a65a983b221e2a568c6172b8ac3bffc",
+        "rev": "1c5326171ab84379b060223fb0fed37129750d5b",
         "type": "github"
       },
       "original": {
         "owner": "tharsis",
-        "ref": "v9.1.0",
+        "ref": "v12.1.2",
         "repo": "evmos",
         "type": "github"
       }

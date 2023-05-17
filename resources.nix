@@ -92,7 +92,7 @@
         name = "evmos";
         version = "v12.1.2";
         src = inputs.evmos-src;
-        vendorSha256 = "sha256-AjWuufyAz5KTBwKiWvhPeqGm4fn3MUqg39xb4pJ0hTM=";
+        vendorSha256 = "sha256-hlHScDUeTfPbN0gI+AxCXnk1B5pBJPBTrl3H5eM0lu8=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
       };

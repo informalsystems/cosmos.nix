@@ -86,7 +86,7 @@
     regen-src.url = github:regen-network/regen-ledger/v3.0.0;
 
     evmos-src.flake = false;
-    evmos-src.url = github:tharsis/evmos/v9.1.0;
+    evmos-src.url = github:tharsis/evmos/v12.1.2;
 
     juno-src.flake = false;
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
