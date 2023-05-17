@@ -18,6 +18,7 @@ in
         vendorSha256 = "sha256-V0DMuwKeCYpVlzF9g3cQD6YViJZQZeoszxbUqrUyQn4=";
         version = "v8.0.0";
         src = gaia5-src;
+        engine = "tendermint/tendermint";
       };
 
       gaia5 = {
@@ -26,6 +27,7 @@ in
         version = "v5.0.6";
         src = gaia5-src;
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       gaia6 = {
@@ -34,6 +36,7 @@ in
         version = "v6.0.4";
         src = gaia6-src;
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       gaia6-ordered = {
@@ -42,6 +45,7 @@ in
         version = "v6.0.4-ordered";
         src = gaia6-ordered-src;
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
       };
 
       gaia7 = {
@@ -50,6 +54,7 @@ in
         version = "v7.1.0";
         src = gaia7-src;
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
 
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
@@ -61,6 +66,7 @@ in
         version = "v8.0.1";
         src = gaia8-src;
         tags = ["netgo"];
+        engine = "tendermint/tendermint";
         proxyVendor = true;
 
         # Tests have to be disabled because they require Docker to run
@@ -69,10 +75,11 @@ in
 
       gaia9 = {
         name = "gaia";
-        vendorSha256 = "sha256-qwHc7F4yYJji/nnG5hBNOSmtF7SjTv8eO7e7IvmgV98=";
-        version = "v9.0.1";
+        vendorSha256 = "sha256-W1pKtrWfXe0pdO7ntcjFbDa0LTpD91yI2mUMXBiDo1w=";
+        version = "v9.0.3";
         src = gaia9-src;
         tags = ["netgo"];
+        engine = "cometbft/cometbft";
         proxyVendor = true;
 
         # Tests have to be disabled because they require Docker to run

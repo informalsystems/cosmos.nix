@@ -1,40 +1,40 @@
 {
   pkgs,
   nix-std,
-}: {
-  mkCosmosGoApp = {
+}: let
+  buildApp = args @ {
     name,
     version,
     src,
+    engine,
     vendorSha256,
     additionalLdFlags ? "",
     appName ? null,
     preCheck ? null,
     ...
-  } @ args: let
+  }: let
     buildGoModuleArgs =
       pkgs.lib.filterAttrs
       (n: _:
         builtins.all (a: a != n)
         ["src" "name" "version" "vendorSha256" "appName"])
       args;
-    # gomod-json = (import ./gomod-json.nix) {inherit pkgs nix-std;};
-    # tendermint-version = gomod-json.find-tendermint-version (gomod-json.make-gomod-json { inherit name version src; } );
-    tendermint-version = with nix-std.lib; let
-      all-tm-matches =
+
+    dependency-version = with nix-std.lib; let
+      all-dep-matches =
         regex.allMatches
-        "tendermint/tendermint[[:space:]](=>[[:space:]]?[[:graph:]]*[[:space:]])?v?[[:graph:]]*"
+        "${engine}[[:space:]](=>[[:space:]]?[[:graph:]]*[[:space:]])?v?[[:graph:]]*"
         (builtins.readFile "${src}/go.mod");
-      tm-string =
-        if list.any (string.hasInfix "=>") all-tm-matches
-        then list.head (list.filter (string.hasInfix "=>") all-tm-matches)
-        else list.head all-tm-matches;
-      tm-version = optional.functor.map string.strip (optional.monad.bind tm-string (regex.lastMatch "[[:space:]](v?[[:graph:]]*)"));
+      dep-string =
+        if list.any (string.hasInfix "=>") all-dep-matches
+        then list.head (list.filter (string.hasInfix "=>") all-dep-matches)
+        else list.head all-dep-matches;
+      dep-version = optional.functor.map string.strip (optional.monad.bind dep-string (regex.lastMatch "[[:space:]](v?[[:graph:]]*)"));
     in
-      optional.match tm-version {
+      optional.match dep-version {
         nothing =
           pkgs.lib.trivial.warn
-          "Could not find a tendermint version with regex, check if the formatting of go.mod escapes the regex in cosmos.nix/resources/utilities"
+          "Could not find a ${engine} version with regex, check if the formatting of go.mod escapes the regex in cosmos.nix/resources/utilities"
           null;
         just = function.id;
       };
@@ -56,15 +56,24 @@
           -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
           -X github.com/cosmos/cosmos-sdk/version.Version=${version}
           -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
-          -X github.com/tendermint/tendermint/version.TMCoreSemVer=${tendermint-version}
+          -X github.com/${engine}/version.TMCoreSemVer=${dependency-version}
           ${additionalLdFlags}
         '';
       }
       // buildGoModuleArgs);
+in {
+  mkCosmosGoApp = buildApp;
 
-  wasmdPreFixupPhase = binName: ''
-    old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
-    new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
-    ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
-  '';
+  wasmdPreFixupPhase = libwasmvm: binName:
+    if pkgs.stdenv.hostPlatform.isLinux
+    then ''
+      old_rpath=$(${pkgs.patchelf}/bin/patchelf --print-rpath $out/bin/${binName})
+      new_rpath=$(echo "$old_rpath" | cut -d ":" -f 1 --complement)
+      ${pkgs.patchelf}/bin/patchelf --set-rpath "$new_rpath" $out/bin/${binName}
+    ''
+    else if pkgs.stdenv.hostPlatform.isDarwin
+    then ''
+      install_name_tool -add_rpath "${libwasmvm}/lib" $out/bin/${binName}
+    ''
+    else null;
 }

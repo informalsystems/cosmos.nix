@@ -41,7 +41,7 @@
     gaia-main-src.url = github:cosmos/gaia;
 
     gaia9-src.flake = false;
-    gaia9-src.url = github:cosmos/gaia/v9.0.1;
+    gaia9-src.url = github:cosmos/gaia/v9.0.3;
 
     gaia8-src.flake = false;
     gaia8-src.url = github:cosmos/gaia/v8.0.1;
@@ -74,7 +74,7 @@
     ibc-go-v6-src.url = github:cosmos/ibc-go/v6.1.0;
 
     ibc-go-v7-src.flake = false;
-    ibc-go-v7-src.url = github:cosmos/ibc-go/0a427c6d93e8f9d20c61b45e36f6e1fe73e37f37;
+    ibc-go-v7-src.url = github:cosmos/ibc-go/v7.0.0;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
@@ -86,7 +86,7 @@
     regen-src.url = github:regen-network/regen-ledger/v3.0.0;
 
     evmos-src.flake = false;
-    evmos-src.url = github:evmos/evmos/v12.1.2;
+    evmos-src.url = github:tharsis/evmos/v9.1.0;
 
     juno-src.flake = false;
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
@@ -130,8 +130,14 @@
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
 
+    wasmd_next-src.flake = false;
+    wasmd_next-src.url = github:CosmWasm/wasmd/v0.40.0-rc.1;
+
     wasmvm_1-src.flake = false;
     wasmvm_1-src.url = github:CosmWasm/wasmvm/v1.0.0;
+
+    wasmvm_1_2_3-src.flake = false;
+    wasmvm_1_2_3-src.url = github:CosmWasm/wasmvm/v1.2.3;
 
     wasmvm_1_1_1-src.flake = false;
     wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
@@ -152,7 +158,10 @@
     interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
 
     stride-src.flake = false;
-    stride-src.url = github:Stride-Labs/stride/v7.0.0;
+    stride-src.url = github:Stride-Labs/stride/v8.0.0;
+
+    migaloo-src.flake = false;
+    migaloo-src.url = github:White-Whale-Defi-Platform/migaloo-chain/v2.0.2;
   };
 
   outputs = inputs:
@@ -256,6 +265,10 @@
           simd = mkApp {
             name = "simd";
             drv = packages.simd;
+          };
+          ibc-go-v7-simapp = mkApp {
+            name = "simd";
+            drv = packages.ibc-go-v7-simapp;
           };
           ignite-cli = mkApp {
             name = "ignite-cli";
@@ -381,6 +394,11 @@
             name = "stride-no-admin";
             drv = packages.stride-no-admin;
             exePath = "/bin/strided";
+          };
+          migaloo = mkApp {
+            name = "migaloo";
+            drv = packages.migaloo;
+            exePath = "/bin/migalood";
           };
         };
       });
