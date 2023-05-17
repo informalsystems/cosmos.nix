@@ -333,6 +333,18 @@
         doCheck = false;
       };
 
+      migaloo = utilities.mkCosmosGoApp {
+        name = "migaloo";
+        version = "v2.0.2";
+        src = inputs.migaloo-src;
+        vendorSha256 = "sha256-Z85OpuiB73BHSSuPADvE3tJ5ZstHYik8yghfCHXy3W0=";
+        engine = "tendermint/tendermint";
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "migalood"}
+        '';
+        buildInputs = [libwasmvm_1_1_1];
+      };
+
       # Rust resources
       hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";
