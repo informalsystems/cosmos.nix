@@ -162,6 +162,9 @@
 
     migaloo-src.flake = false;
     migaloo-src.url = github:White-Whale-Defi-Platform/migaloo-chain/v2.0.2;
+
+    neutron-src.flake = false;
+    neutron-src.url = github:neutron-org/neutron/v1.0.2;
   };
 
   outputs = inputs:

@@ -345,6 +345,18 @@
         buildInputs = [libwasmvm_1_2_3];
       };
 
+      neutron = utilities.mkCosmosGoApp {
+        name = "neutron";
+        version = "v1.0.2";
+        src = inputs.neutron-src;
+        vendorSha256 = "sha256-Q3QEk7qS1ue/HrvwdkGh6iX8BTg+0ssznyWsYtzZ+/4=";
+        engine = "tendermint/tendermint";
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "neutrond"}
+        '';
+        buildInputs = [libwasmvm_1_2_3];
+      };
+
       # Rust resources
       hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";

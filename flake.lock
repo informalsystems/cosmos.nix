@@ -507,6 +507,23 @@
         "type": "github"
       }
     },
+    "neutron-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1685114240,
+        "narHash": "sha256-xHi4W4fOT3kTmkPEKdGp6JbzKQELdWy9PIn0qsZhprY=",
+        "owner": "neutron-org",
+        "repo": "neutron",
+        "rev": "3c8dde1ff524551e24295d393a3913c25199d265",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neutron-org",
+        "ref": "v1.0.2",
+        "repo": "neutron",
+        "type": "github"
+      }
+    },
     "nix-std": {
       "locked": {
         "lastModified": 1658944356,
@@ -727,6 +744,7 @@
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
         "migaloo-src": "migaloo-src",
+        "neutron-src": "neutron-src",
         "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
