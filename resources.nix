@@ -278,7 +278,7 @@
       relayer = pkgs.buildGoModule {
         name = "relayer";
         src = inputs.relayer-src;
-        vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
+        vendorSha256 = "sha256-oJSxRUKXhjpDWk0bk7Q8r0AAc7UOhEOLj+SgsZsnzsk=";
         doCheck = false;
       };
 
