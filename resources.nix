@@ -101,7 +101,7 @@
         name = "osmosis";
         version = "v15.2.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-2RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
+        vendorSha256 = "sha256-Flo+JRo0cTW2zLAolBEmm2N8kIMDpRCX2MENWAlCoYI=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
@@ -398,7 +398,7 @@
           cp ./bindings.h $out/lib/
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
         '';
-        cargoSha256 = "sha256-+BaILTe+2qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
+        cargoSha256 = "sha256-n9L7FV9eIhbAbtADHb/flmwQD6oVvx+Bey6TG7shyRk=";
         doCheck = false;
       };
 
