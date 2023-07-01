@@ -26,6 +26,9 @@
     ibc-rs-src.url = github:informalsystems/ibc-rs/v1.0.0;
     ibc-rs-src.flake = false;
 
+    hermes-src.url = github:informalsystems/hermes/v1.5.1;
+    hermes-src.flake = false;
+
     ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
     ts-relayer-src.flake = false;
 
@@ -92,7 +95,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v15.2.0;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
@@ -138,6 +141,9 @@
 
     wasmvm_1_2_3-src.flake = false;
     wasmvm_1_2_3-src.url = github:CosmWasm/wasmvm/v1.2.3;
+
+    wasmvm_1_2_1-src.flake = false;
+    wasmvm_1_2_1-src.url = github:CosmWasm/wasmvm/v1.2.1;
 
     wasmvm_1_1_1-src.flake = false;
     wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;

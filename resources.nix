@@ -99,17 +99,17 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v15.0.0";
+        version = "v15.2.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-4RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
+        vendorSha256 = "sha256-2RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "osmosisd"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_1 "osmosisd"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_1 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_1 "node"}
         '';
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [libwasmvm_1_2_1];
         proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -367,6 +367,15 @@
         doCheck = false;
       };
 
+      hermes_1_5_1 = pkgs.rustPlatform.buildRustPackage {
+        pname = "hermes";
+        version = "v1.5.1";
+        src = inputs.hermes-src;
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        cargoSha256 = "sha256-ulmVO8u8fbaK0uWkd7P/yRWT0G1tv6IzbTcmKudBzJU=";
+        doCheck = false;
+      };
+      
       libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
@@ -377,6 +386,19 @@
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
         '';
         cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
+        doCheck = false;
+      };
+
+      libwasmvm_1_2_1 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_2_1-src}/libwasmvm";
+        version = "v1.2.1";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-+BaILTe+2qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
         doCheck = false;
       };
 
