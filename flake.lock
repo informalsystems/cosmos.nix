@@ -791,7 +791,7 @@
         "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
         "wasmvm_1-src": "wasmvm_1-src",
         "wasmvm_1_1_1-src": "wasmvm_1_1_1-src",
-        "wasmvm_1_2_1-src": "wasmvm_1_2_1-src",
+        "wasmvm_1_1_2-src": "wasmvm_1_1_2-src",
         "wasmvm_1_2_3-src": "wasmvm_1_2_3-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
@@ -1082,19 +1082,19 @@
         "type": "github"
       }
     },
-    "wasmvm_1_2_1-src": {
+    "wasmvm_1_1_2-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1678289780,
-        "narHash": "sha256-zR47q8Z2znPigecPDmw5L4ef20/TXv8cPxaXTdJGxg0=",
+        "lastModified": 1681833975,
+        "narHash": "sha256-EbzMNkZUO94jEdX0WgAdy5qfhlCG3lpHpVHyT2FcSDw=",
         "owner": "CosmWasm",
         "repo": "wasmvm",
-        "rev": "a9e26c0e4e5a076d82556c4f44abeee2a64ff37e",
+        "rev": "4f84395b1c623483a3c7936c990c2f7e5dad70d8",
         "type": "github"
       },
       "original": {
         "owner": "CosmWasm",
-        "ref": "v1.2.1",
+        "ref": "v1.1.2",
         "repo": "wasmvm",
         "type": "github"
       }

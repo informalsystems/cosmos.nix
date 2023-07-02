@@ -105,11 +105,11 @@
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_1 "osmosisd"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_1 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_1 "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "osmosisd"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "node"}
         '';
-        buildInputs = [libwasmvm_1_2_1];
+        buildInputs = [libwasmvm_1_1_2];
         proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -389,16 +389,16 @@
         doCheck = false;
       };
 
-      libwasmvm_1_2_1 = pkgs.rustPlatform.buildRustPackage {
+      libwasmvm_1_1_2 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_2_1-src}/libwasmvm";
-        version = "v1.2.1";
+        src = "${inputs.wasmvm_1_1_2-src}/libwasmvm";
+        version = "v1.1.2";
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
         postInstall = ''
           cp ./bindings.h $out/lib/
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
         '';
-        cargoSha256 = "sha256-n9L7FV9eIhbAbtADHb/flmwQD6oVvx+Bey6TG7shyRk=";
+        cargoSha256 = "sha256-bCnr4TrI+jzvE91n2hhZMuBUPlrO1jXRbU/GFbRzs44=";
         doCheck = false;
       };
 

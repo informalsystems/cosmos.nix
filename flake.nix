@@ -142,8 +142,8 @@
     wasmvm_1_2_3-src.flake = false;
     wasmvm_1_2_3-src.url = github:CosmWasm/wasmvm/v1.2.3;
 
-    wasmvm_1_2_1-src.flake = false;
-    wasmvm_1_2_1-src.url = github:CosmWasm/wasmvm/v1.2.1;
+    wasmvm_1_1_2-src.flake = false;
+    wasmvm_1_1_2-src.url = github:CosmWasm/wasmvm/v1.1.2;
 
     wasmvm_1_1_1-src.flake = false;
     wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
