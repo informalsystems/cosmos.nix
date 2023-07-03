@@ -358,17 +358,17 @@
     "ibc-go-v7-channel-upgrade-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1681914625,
-        "narHash": "sha256-MaUx988kvPc5AAlDiEPB0o0t+h+JyB3LsEFvPOvogQE=",
+        "lastModified": 1688114595,
+        "narHash": "sha256-jsEHc27nlK8wIBz1d7pgcSMDuDPt6zsXeYwrludF8dY=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "81a709b49a42504737d25be0e812d830f9a0897c",
+        "rev": "a7793bc10425d6f01e0b00a63520166837990221",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "81a709b49a42504737d25be0e812d830f9a0897c",
+        "rev": "a7793bc10425d6f01e0b00a63520166837990221",
         "type": "github"
       }
     },
