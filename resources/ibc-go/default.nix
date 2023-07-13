@@ -62,9 +62,9 @@ in
 
       ibc-go-v7-simapp = {
         name = "simd";
-        version = "v7.0.0";
+        version = "v7.1.0";
         src = inputs.ibc-go-v7-src;
-        vendorSha256 = "sha256-KXF3wzXrvmm3LL+3SEGISNGedTfNlt1i1mjApV2dRDk=";
+        vendorSha256 = "sha256-Z0/ac2gsGeyp37teM5bF5KqW4/Y88LMjo2eiS1y1WTs=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         doCheck = false;
