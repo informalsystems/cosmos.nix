@@ -92,7 +92,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v16.1.0;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;

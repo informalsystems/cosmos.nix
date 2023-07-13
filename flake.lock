@@ -590,16 +590,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1678471069,
-        "narHash": "sha256-+BzlHD2W+tmj0tybGtqFXVeAzlaBZ47yCC/fTPDYq4E=",
+        "lastModified": 1689204543,
+        "narHash": "sha256-Xad+fBCabJwL6U88cklIy/8JEG3s6IKrfow10+bddcE=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "ff18d8244fcda7313ec951fb1b3bee8369b8316b",
+        "rev": "326dfb08a9af17d53ed5d5a71ac4a591e72ae4b0",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v15.0.0",
+        "ref": "v16.1.0",
         "repo": "osmosis",
         "type": "github"
       }
