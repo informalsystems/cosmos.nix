@@ -357,6 +357,22 @@
         buildInputs = [libwasmvm_1_2_3];
       };
 
+      centauri = utilities.mkCosmosGoApp {
+        name = "centauri";
+        version = "v3.2.3";
+        src = inputs.centauri-src;
+        vendorSha256 = "sha256-jLBy6y4Vnhprj1B3JBLdOVy5MxZggcogi3k+Nd7LwqE=";
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        excludedPackages = [ "interchaintest" "simd" ];
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_4 "centaurid"}
+        '';
+        buildInputs = [libwasmvm_1_2_4];
+        proxyVendor = true;
+        doCheck = false;
+      };
+
       # Rust resources
       hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";
@@ -375,7 +391,20 @@
         cargoSha256 = "sha256-ulmVO8u8fbaK0uWkd7P/yRWT0G1tv6IzbTcmKudBzJU=";
         doCheck = false;
       };
-      
+
+      libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
+        version = "v1.2.4";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l4=";
+        doCheck = false;
+      };
+
       libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";

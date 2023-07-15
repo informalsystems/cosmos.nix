@@ -34,6 +34,23 @@
         "type": "github"
       }
     },
+    "centauri-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689290261,
+        "narHash": "sha256-S3zu7pSUF+7jnu06Fj4Co/eUe1wYEB+3CyZoN1sYUdA=",
+        "owner": "dzmitry-lahoda-forks",
+        "repo": "composable-centauri",
+        "rev": "6b8d9fa640d7e5e0986b637bfec4a74c87ced280",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dzmitry-lahoda-forks",
+        "repo": "composable-centauri",
+        "rev": "6b8d9fa640d7e5e0986b637bfec4a74c87ced280",
+        "type": "github"
+      }
+    },
     "cosmos-sdk-src": {
       "flake": false,
       "locked": {
@@ -739,6 +756,7 @@
       "inputs": {
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
+        "centauri-src": "centauri-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
@@ -793,6 +811,7 @@
         "wasmvm_1_1_1-src": "wasmvm_1_1_1-src",
         "wasmvm_1_1_2-src": "wasmvm_1_1_2-src",
         "wasmvm_1_2_3-src": "wasmvm_1_2_3-src",
+        "wasmvm_1_2_4-src": "wasmvm_1_2_4-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
@@ -1112,6 +1131,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v1.2.3",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_2_4-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1685977963,
+        "narHash": "sha256-/GOvkKLQwsPms7h7yEZYLwbZn9Lzk5qQnBXXoZ/R6JM=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "ba491fe9a663e0b45728dd5f0c43f6a93c97f5fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.2.4",
         "repo": "wasmvm",
         "type": "github"
       }
