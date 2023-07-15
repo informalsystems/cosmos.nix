@@ -269,6 +269,23 @@
         "type": "github"
       }
     },
+    "gex-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660333522,
+        "narHash": "sha256-7jtCpOTHamXAInfKYkMIDFKF4lViuPkusThj4ggGUbg=",
+        "owner": "cosmos",
+        "repo": "gex",
+        "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "repo": "gex",
+        "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
+        "type": "github"
+      }
+    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -768,6 +785,7 @@
         "gaia7-src": "gaia7-src",
         "gaia8-src": "gaia8-src",
         "gaia9-src": "gaia9-src",
+        "gex-src": "gex-src",
         "hermes-src": "hermes-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",

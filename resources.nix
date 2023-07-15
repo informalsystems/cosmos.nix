@@ -512,6 +512,13 @@
         name = "tx_index_schema.sql";
         text = builtins.readFile ./fixtures/tx_index_schema.sql;
       };
+
+      gex = pkgs.buildGoModule {
+        name = "gex";
+        doCheck = false;
+        src = inputs.gex-src;     
+        vendorSha256 = "sha256-3vD0ge0zWSnGoeh5FAFEw60a7q5/YWgDsGjjgibBBNI=";
+      };
     }
     // gaia-packages
     // ibc-packages;
