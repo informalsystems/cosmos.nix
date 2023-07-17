@@ -267,12 +267,13 @@
       interchain-security = utilities.mkCosmosGoApp {
         name = "interchain-security";
         appName = "interchain-security";
-        version = "v1.0.4";
+        version = "v1.0.0";
         src = inputs.interchain-security-src;
-        vendorSha256 = "sha256-BLadou3/JfumdjbXVJnVMZahARXxVDpvSWJzzK6ilxA=";
+        vendorSha256 = "sha256-ig29MEl0tVAebew23sF0Tbw4SN7uFU5NKiSsnRI7hFc=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         doCheck = false; # tests are currently failing
+        proxyVendor = true;
       };
 
       relayer = pkgs.buildGoModule {

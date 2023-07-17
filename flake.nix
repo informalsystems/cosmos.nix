@@ -155,7 +155,7 @@
     ignite-cli-src.url = github:ignite/cli/v0.24.0;
 
     interchain-security-src.flake = false;
-    interchain-security-src.url = github:cosmos/interchain-security/v0.1.4;
+    interchain-security-src.url = github:cosmos/interchain-security/2243127b7bbea5d7f7ccbd388cfb03a9249fd588;
 
     stride-src.flake = false;
     stride-src.url = github:Stride-Labs/stride/v8.0.0;
