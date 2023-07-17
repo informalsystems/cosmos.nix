@@ -76,4 +76,10 @@ in {
       install_name_tool -add_rpath "${libwasmvm}/lib" $out/bin/${binName}
     ''
     else null;
+  
+  darwin-deps = pkgs.lib.optional pkgs.stdenv.isDarwin (with pkgs;
+    with darwin.apple_sdk.frameworks; [
+      Security
+      SystemConfiguration
+    ]);    
 }
