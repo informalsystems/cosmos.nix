@@ -374,14 +374,7 @@
       };
 
       # Rust resources
-      hermes = pkgs.rustPlatform.buildRustPackage {
-        pname = "hermes";
-        version = "v1.0.0";
-        src = inputs.ibc-rs-src;
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        cargoSha256 = "sha256-0GZN3xq/5FC/jYXGVDIOrha+sB+Gv/6nzlFvpCAYO3M=";
-        doCheck = false;
-      };
+      hermes = hermes_1_5_1;
 
       hermes_1_5_1 = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";
