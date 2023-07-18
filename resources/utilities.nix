@@ -80,6 +80,5 @@ in {
   darwin-deps = pkgs.lib.optional pkgs.stdenv.isDarwin (with pkgs;
     with darwin.apple_sdk.frameworks; [
       Security
-      SystemConfiguration
     ]);    
 }
