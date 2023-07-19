@@ -373,19 +373,18 @@
         doCheck = false;
       };
 
-      # Rust resources
-      hermes = hermes_1_5_1;
-
-      hermes_1_5_1 = pkgs.rustPlatform.buildRustPackage {
+      # Hermes IBC relayer
+      hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";
-        version = "v1.5.1";
+        version = "v1.6.0";
         src = inputs.hermes-src;
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default] ++ utilities.darwin-deps;
-        cargoSha256 = "sha256-ulmVO8u8fbaK0uWkd7P/yRWT0G1tv6IzbTcmKudBzJU=";
+        cargoSha256 = "sha256-xCSH8L8do6mS3NKPBZoXKrbJizEDiCJrZnUeG0aisRE=";
         doCheck = false;
         cargoCheckCommand = "true";
       };
 
+      # Rust resources
       cosmwasm-check = pkgs.rustPlatform.buildRustPackage rec {
         pname = "cosmwasm-check";
         version = "1.2.6";

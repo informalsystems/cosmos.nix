@@ -26,7 +26,7 @@
     ibc-rs-src.url = github:informalsystems/ibc-rs/v1.0.0;
     ibc-rs-src.flake = false;
 
-    hermes-src.url = github:informalsystems/hermes/v1.5.1;
+    hermes-src.url = github:informalsystems/hermes/v1.6.0;
     hermes-src.flake = false;
 
     ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
