@@ -364,7 +364,7 @@
         vendorSha256 = "sha256-jLBy6y4Vnhprj1B3JBLdOVy5MxZggcogi3k+Nd7LwqE=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
-        excludedPackages = [ "interchaintest" "simd" ];
+        excludedPackages = ["interchaintest" "simd"];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_2_4 "centaurid"}
         '';
@@ -393,7 +393,7 @@
         cargoSha256 = "sha256-0+CiQv8Up+9Zz9j3qI4R4dpamnsKJL3BJ9C9ZxFXMtI=";
         doCheck = false;
         cargoCheckCommand = "true";
-      };      
+      };
 
       libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
@@ -519,7 +519,7 @@
       gex = pkgs.buildGoModule {
         name = "gex";
         doCheck = false;
-        src = inputs.gex-src;     
+        src = inputs.gex-src;
         vendorSha256 = "sha256-3vD0ge0zWSnGoeh5FAFEw60a7q5/YWgDsGjjgibBBNI=";
       };
     }
