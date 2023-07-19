@@ -99,17 +99,17 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v15.0.0";
+        version = "v15.2.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-4RNRAtQmWdi9ZYUH7Rn5VRef/ZhGB7WDwyelUf+U/rc=";
+        vendorSha256 = "sha256-Flo+JRo0cTW2zLAolBEmm2N8kIMDpRCX2MENWAlCoYI=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "osmosisd"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "osmosisd"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "node"}
         '';
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [libwasmvm_1_1_2];
         proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -278,7 +278,7 @@
       relayer = pkgs.buildGoModule {
         name = "relayer";
         src = inputs.relayer-src;
-        vendorSha256 = "sha256-AelUjtgI9Oua++5TL/MEAAOgxZVxhOW2vEEhNdH3aBk=";
+        vendorSha256 = "sha256-oJSxRUKXhjpDWk0bk7Q8r0AAc7UOhEOLj+SgsZsnzsk=";
         doCheck = false;
       };
 
@@ -357,13 +357,54 @@
         buildInputs = [libwasmvm_1_2_3];
       };
 
-      # Rust resources
+      centauri = utilities.mkCosmosGoApp {
+        name = "centauri";
+        version = "v3.2.3";
+        src = inputs.centauri-src;
+        vendorSha256 = "sha256-jLBy6y4Vnhprj1B3JBLdOVy5MxZggcogi3k+Nd7LwqE=";
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        excludedPackages = ["interchaintest" "simd"];
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_4 "centaurid"}
+        '';
+        buildInputs = [libwasmvm_1_2_4];
+        proxyVendor = true;
+        doCheck = false;
+      };
+
+      # Hermes IBC relayer
       hermes = pkgs.rustPlatform.buildRustPackage {
         pname = "hermes";
-        version = "v1.0.0";
-        src = inputs.ibc-rs-src;
+        version = "v1.6.0";
+        src = inputs.hermes-src;
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default] ++ utilities.darwin-deps;
+        cargoSha256 = "sha256-xCSH8L8do6mS3NKPBZoXKrbJizEDiCJrZnUeG0aisRE=";
+        doCheck = false;
+        cargoCheckCommand = "true";
+      };
+
+      # Rust resources
+      cosmwasm-check = pkgs.rustPlatform.buildRustPackage rec {
+        pname = "cosmwasm-check";
+        version = "1.2.6";
+        src = inputs.cosmwasm-src;
+        cargoBuildCommand = "cargo build --release --package ${pname}";
+        cargoSha256 = "sha256-0+CiQv8Up+9Zz9j3qI4R4dpamnsKJL3BJ9C9ZxFXMtI=";
+        doCheck = false;
+        cargoCheckCommand = "true";
+      };
+
+      libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
+        version = "v1.2.4";
         nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        cargoSha256 = "sha256-0GZN3xq/5FC/jYXGVDIOrha+sB+Gv/6nzlFvpCAYO3M=";
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l4=";
         doCheck = false;
       };
 
@@ -377,6 +418,19 @@
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
         '';
         cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
+        doCheck = false;
+      };
+
+      libwasmvm_1_1_2 = pkgs.rustPlatform.buildRustPackage {
+        pname = "libwasmvm";
+        src = "${inputs.wasmvm_1_1_2-src}/libwasmvm";
+        version = "v1.1.2";
+        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        postInstall = ''
+          cp ./bindings.h $out/lib/
+          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+        '';
+        cargoSha256 = "sha256-bCnr4TrI+jzvE91n2hhZMuBUPlrO1jXRbU/GFbRzs44=";
         doCheck = false;
       };
 
@@ -460,6 +514,13 @@
       tx-database-migration = pkgs.writeTextFile {
         name = "tx_index_schema.sql";
         text = builtins.readFile ./fixtures/tx_index_schema.sql;
+      };
+
+      gex = pkgs.buildGoModule {
+        name = "gex";
+        doCheck = false;
+        src = inputs.gex-src;
+        vendorSha256 = "sha256-3vD0ge0zWSnGoeh5FAFEw60a7q5/YWgDsGjjgibBBNI=";
       };
     }
     // gaia-packages
