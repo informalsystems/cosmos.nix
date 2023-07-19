@@ -5,7 +5,7 @@
     # Nix Inputs
     nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
     flake-utils.url = github:numtide/flake-utils;
-    rust-overlay.url = github:oxalica/rust-overlay;
+    rust-overlay.url = github:oxalica/rust-overlay/b8f3db465405014039985f1c5cea92cc29e1b3b5;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
     sbt-derivation.url = github:zaninime/sbt-derivation;
     nix-std.url = github:chessai/nix-std;
@@ -25,6 +25,9 @@
     # Relayer Sources
     ibc-rs-src.url = github:informalsystems/ibc-rs/v1.0.0;
     ibc-rs-src.flake = false;
+
+    hermes-src.url = github:informalsystems/hermes/v1.6.0;
+    hermes-src.flake = false;
 
     ts-relayer-src.url = github:confio/ts-relayer/v0.4.0;
     ts-relayer-src.flake = false;
@@ -92,7 +95,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v15.0.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v15.2.0;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
@@ -127,6 +130,12 @@
     stargaze-src.flake = false;
     stargaze-src.url = github:public-awesome/stargaze/v3.0.0;
 
+    centauri-src.flake = false;
+    # main branch hardcodes some gov addresses owned by private keys
+    # this is one commit patch which allows local governance to work
+    # https://github.com/notional-labs/composable-centauri/pull/199
+    centauri-src.url = github:dzmitry-lahoda-forks/composable-centauri/6b8d9fa640d7e5e0986b637bfec4a74c87ced280;
+
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
 
@@ -136,8 +145,14 @@
     wasmvm_1-src.flake = false;
     wasmvm_1-src.url = github:CosmWasm/wasmvm/v1.0.0;
 
+    wasmvm_1_2_4-src.flake = false;
+    wasmvm_1_2_4-src.url = github:CosmWasm/wasmvm/v1.2.4;
+
     wasmvm_1_2_3-src.flake = false;
     wasmvm_1_2_3-src.url = github:CosmWasm/wasmvm/v1.2.3;
+
+    wasmvm_1_1_2-src.flake = false;
+    wasmvm_1_1_2-src.url = github:CosmWasm/wasmvm/v1.1.2;
 
     wasmvm_1_1_1-src.flake = false;
     wasmvm_1_1_1-src.url = github:CosmWasm/wasmvm/v1.1.1;
@@ -147,6 +162,9 @@
 
     wasmvm_0_16_3-src.flake = false;
     wasmvm_0_16_3-src.url = github:CosmWasm/wasmvm/v0.16.3;
+
+    cosmwasm-src.flake = false;
+    cosmwasm-src.url = github:CosmWasm/cosmwasm/v1.2.6;
 
     apalache-src.flake = false;
     apalache-src.url = github:informalsystems/apalache/v0.24.0;
@@ -165,6 +183,9 @@
 
     neutron-src.flake = false;
     neutron-src.url = github:neutron-org/neutron/v1.0.2;
+
+    gex-src.flake = false;
+    gex-src.url = github:cosmos/gex/bc168741b2019745d343606d31b5c274f216fc3f;
   };
 
   outputs = inputs:
