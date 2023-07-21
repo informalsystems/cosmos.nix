@@ -178,6 +178,9 @@
     stride-src.flake = false;
     stride-src.url = github:Stride-Labs/stride/v8.0.0;
 
+    stride-consumer-src.flake = false;
+    stride-consumer-src.url = github:Stride-Labs/stride/v12.1.0;
+
     migaloo-src.flake = false;
     migaloo-src.url = github:White-Whale-Defi-Platform/migaloo-chain/v2.0.2;
 
@@ -412,6 +415,11 @@
           stride = mkApp {
             name = "stride";
             drv = packages.stride;
+            exePath = "/bin/strided";
+          };
+          stride-consumer = mkApp {
+            name = "stride-consumer";
+            drv = packages.stride-consumer;
             exePath = "/bin/strided";
           };
           stride-no-admin = mkApp {
