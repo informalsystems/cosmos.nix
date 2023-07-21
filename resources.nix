@@ -322,6 +322,16 @@
         doCheck = false;
       };
 
+      stride-consumer = utilities.mkCosmosGoApp {
+        name = "stride-consumer";
+        version = "v12.1.0";
+        src = inputs.stride-consumer-src;
+        vendorSha256 = "sha256-tH56oB9Lw0/+ypWRj9n8o/QHPcLQuuNkzD4zFy6bW04=";
+        engine = "cometbft/cometbft";
+
+        doCheck = false;
+      };
+
       stride-no-admin = utilities.mkCosmosGoApp {
         name = "stride-no-admin";
         version = "v8.0.0";
