@@ -371,7 +371,7 @@
         name = "centauri";
         version = "v3.2.3";
         src = inputs.centauri-src;
-        vendorSha256 = "sha256-jLBy6y4Vnhprj1B3JBLdOVy5MxZggcogi3k+Nd7LwqE=";
+        vendorSha256 = "sha256-MI08quQrP/M9qsMiaGnsCgVRt+kfLMVTyoRvUshtWoY=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["interchaintest" "simd"];
