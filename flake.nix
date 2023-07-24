@@ -422,6 +422,11 @@
             drv = packages.stride-consumer;
             exePath = "/bin/strided";
           };
+          stride-consumer-no-admin = mkApp {
+            name = "stride-consumer-no-admin";
+            drv = packages.stride-consumer-no-admin;
+            exePath = "/bin/strided";
+          };
           stride-no-admin = mkApp {
             name = "stride-no-admin";
             drv = packages.stride-no-admin;
