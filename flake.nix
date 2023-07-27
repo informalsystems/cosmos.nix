@@ -134,7 +134,7 @@
     # main branch hardcodes some gov addresses owned by private keys
     # this is one commit patch which allows local governance to work
     # https://github.com/notional-labs/composable-centauri/pull/199
-    centauri-src.url = github:dzmitry-lahoda-forks/composable-centauri/6b8d9fa640d7e5e0986b637bfec4a74c87ced280;
+    centauri-src.url = github:dzmitry-lahoda-forks/composable-centauri/e5dbaa5bbcd7b758b0c71bfaabbc67acfcb20f72;
 
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
