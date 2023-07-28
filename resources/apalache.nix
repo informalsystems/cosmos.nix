@@ -1,7 +1,8 @@
-{
-  apalache-src,
-  pkgs,
-}: let
+{ apalache-src
+, pkgs
+,
+}:
+let
   version = "v0.23.1";
 
   # Patch the build.sbt file so that it does not call the `git describe` command.
@@ -28,36 +29,36 @@
                    if (isSnapshot.value) (k -> build) else (k -> v)
   '';
 in
-  pkgs.sbt.mkDerivation {
-    pname = "apalache";
-    inherit version;
+pkgs.sbt.mkDerivation {
+  pname = "apalache";
+  inherit version;
 
-    depsSha256 = "sha256-9wGlIFmvKW4N8NQqhOlxjhl48JptHCSI8F8EFF9mYrw=";
+  depsSha256 = "sha256-9wGlIFmvKW4N8NQqhOlxjhl48JptHCSI8F8EFF9mYrw=";
 
-    src = apalache-src;
+  src = apalache-src;
 
-    patches = [
-      (builtins.toFile "diff.patch" patch)
-    ];
+  patches = [
+    (builtins.toFile "diff.patch" patch)
+  ];
 
-    buildPhase = ''
-      make dist
-    '';
+  buildPhase = ''
+    make dist
+  '';
 
-    installPhase = ''
-      mkdir -p $out/lib
-      mkdir -p $out/bin
-      mkdir -p target/out
+  installPhase = ''
+    mkdir -p $out/lib
+    mkdir -p $out/bin
+    mkdir -p target/out
 
-      tar xf target/universal/apalache.tgz -C target/out
+    tar xf target/universal/apalache.tgz -C target/out
 
-      cp -r target/out/apalache/lib/apalache.jar $out/lib/apalache.jar
+    cp -r target/out/apalache/lib/apalache.jar $out/lib/apalache.jar
 
-      cat > $out/bin/apalache-mc <<- EOM
-      #!${pkgs.bash}/bin/bash
-      exec ${pkgs.jre}/bin/java -Xmx4096m -jar "$out/lib/apalache.jar" "\$@"
-      EOM
+    cat > $out/bin/apalache-mc <<- EOM
+    #!${pkgs.bash}/bin/bash
+    exec ${pkgs.jre}/bin/java -Xmx4096m -jar "$out/lib/apalache.jar" "\$@"
+    EOM
 
-      chmod +x $out/bin/apalache-mc
-    '';
-  }
+    chmod +x $out/bin/apalache-mc
+  '';
+}

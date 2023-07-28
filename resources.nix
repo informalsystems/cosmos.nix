@@ -1,9 +1,10 @@
-{
-  system,
-  inputs,
-  pkgs,
-  eval-pkgs,
-}: let
+{ system
+, inputs
+, pkgs
+, eval-pkgs
+,
+}:
+let
   gaia-packages = import ./resources/gaia {
     inherit pkgs inputs;
   };
@@ -17,9 +18,21 @@
     inherit (inputs) nix-std;
   };
 
-  scripts = import ./scripts {inherit pkgs;};
+  scripts = import ./scripts { inherit pkgs; };
 
   cosmos-sdk-version = "v0.46.0";
+
+
+  libwasmvm = {
+    pname = "libwasmvm";
+    nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
+    postInstall = ''
+      cp ./bindings.h $out/lib/
+      ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+    '';
+    doCheck = false;
+  };
+
 
   packages =
     rec {
@@ -81,10 +94,10 @@
       regen = utilities.mkCosmosGoApp {
         name = "regen-ledger";
         version = "v3.0.0";
-        subPackages = ["app/regen"];
+        subPackages = [ "app/regen" ];
         src = inputs.regen-src;
         vendorSha256 = "sha256-IdxIvL8chuGD71q4V7c+RWZ7PoEAVQ7++Crdlz2q/XI=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
       };
 
@@ -93,7 +106,7 @@
         version = "v9.1.0";
         src = inputs.evmos-src;
         vendorSha256 = "sha256-AjWuufyAz5KTBwKiWvhPeqGm4fn3MUqg39xb4pJ0hTM=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
       };
 
@@ -102,14 +115,15 @@
         version = "v16.1.1";
         src = inputs.osmosis-src;
         vendorSha256 = "sha256-OKXDHnvl+i2SiTBxM9NTd8hXxRj/8TDgD+z/HhHV0Ps=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
+        excludedPackages = [ "cl-genesis-positions" ];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "osmosisd"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "osmosisd"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "node"}
         '';
-        buildInputs = [libwasmvm_1_1_2];
+        buildInputs = [ libwasmvm_1_2_3 ];
         proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -121,7 +135,7 @@
         version = "v6.4.1";
         src = inputs.osmosis6-src;
         vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
       };
 
@@ -131,10 +145,10 @@
         src = inputs.osmosis7-src;
         excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase libwasmvm_1 "osmosisd";
-        buildInputs = [libwasmvm_1];
+        buildInputs = [ libwasmvm_1 ];
 
         # Test has to be skipped as end-to-end testing requires network access
         doCheck = false;
@@ -146,11 +160,11 @@
         src = inputs.osmosis8-src;
         excludedPackages = "./tests/e2e";
         vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase libwasmvm_1beta7 "osmosisd";
         dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
+        buildInputs = [ libwasmvm_1beta7 ];
 
         # Test has to be skipped as end-to-end testing requires network access
         doCheck = false;
@@ -161,7 +175,7 @@
         version = "v13.0.1";
         src = inputs.juno-src;
         vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "junod"}
@@ -169,7 +183,7 @@
           ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
         '';
         dontStrip = true;
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [ libwasmvm_1_1_1 ];
       };
 
       terra = utilities.mkCosmosGoApp {
@@ -177,11 +191,11 @@
         version = "v0.5.17";
         src = inputs.terra-src;
         vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase libwasmvm_0_16_3 "terrad";
         dontStrip = true;
-        buildInputs = [libwasmvm_0_16_3];
+        buildInputs = [ libwasmvm_0_16_3 ];
       };
 
       sentinel = utilities.mkCosmosGoApp {
@@ -190,7 +204,7 @@
         appName = "sentinelhub";
         src = inputs.sentinel-src;
         vendorSha256 = "sha256-ktIKTw7J4EYKWu6FBfxzvYm8ldHG00KakRY5QR8cjrI=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
       };
 
@@ -200,7 +214,7 @@
         appName = "akash";
         src = inputs.akash-src;
         vendorSha256 = "sha256-p7GVC1DkOdekfXMaHkXeIZw/CjtTpQCSO0ivDZkmx4c=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         doCheck = false;
       };
@@ -208,10 +222,10 @@
       umee = utilities.mkCosmosGoApp {
         name = "umee";
         version = "v2.0.0";
-        subPackages = ["cmd/umeed"];
+        subPackages = [ "cmd/umeed" ];
         src = inputs.umee-src;
         vendorSha256 = "sha256-HONlFCC6iHgKQwqAiEV29qmSHsLdloUlAeJkxViUG7w=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
       };
 
@@ -220,7 +234,7 @@
         version = "v0.18.0-rc1";
         src = inputs.ixo-src;
         vendorSha256 = "sha256-g6dKujkFZLpFGpxgzb7v1YOo4cdeP6eEAbUjMzAIkF8=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         doCheck = false;
       };
@@ -230,7 +244,7 @@
         version = "v0.12.1";
         src = inputs.sifchain-src;
         vendorSha256 = "sha256-AX5jLfH9RnoGZm5MVyM69NnxVjYMR45CNaKzQn5hsXg=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         additionalLdFlags = ''
           -X github.com/cosmos/cosmos-sdk/version.ServerName=sifnoded
@@ -245,7 +259,7 @@
         version = "v1.0.0-rc3";
         src = inputs.crescent-src;
         vendorSha256 = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         additionalLdFlags = ''
           -X github.com/cosmos/cosmos-sdk/types.reDnmString=[a-zA-Z][a-zA-Z0-9/:]{2,127}
@@ -257,10 +271,10 @@
         appName = "starsd";
         version = "v3.0.0";
         src = inputs.stargaze-src;
-        buildInputs = [libwasmvm_1beta7];
+        buildInputs = [ libwasmvm_1beta7 ];
         vendorSha256 = "sha256-IJwyjto86gnWyeux1AS+aPZONhpyB7+MSQcCRs3LHzw=";
         preFixup = utilities.wasmdPreFixupPhase libwasmvm_1beta7 "starsd";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
       };
 
@@ -270,7 +284,7 @@
         version = "v1.0.4";
         src = inputs.interchain-security-src;
         vendorSha256 = "sha256-BLadou3/JfumdjbXVJnVMZahARXxVDpvSWJzzK6ilxA=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         doCheck = false; # tests are currently failing
       };
@@ -293,11 +307,11 @@
         version = "v0.30.0";
         src = inputs.wasmd-src;
         vendorSha256 = "sha256-8Uo/3SdXwblt87WU78gjpRPcHy+ZotmhF6xTyb3Jxe0";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "tendermint/tendermint";
         preFixup = utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "wasmd";
         dontStrip = true;
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [ libwasmvm_1_1_1 ];
       };
 
       wasmd_next = utilities.mkCosmosGoApp {
@@ -305,11 +319,11 @@
         version = "v0.40.0-rc.1";
         src = inputs.wasmd_next-src;
         vendorSha256 = "sha256-FWpclJuuIkbcoXxRTeZwDR0wZP2eHkPKsu7xme5vLPg=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "cometbft/cometbft";
         preFixup = utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "wasmd";
         dontStrip = true;
-        buildInputs = [libwasmvm_1_2_3];
+        buildInputs = [ libwasmvm_1_2_3 ];
       };
 
       stride = utilities.mkCosmosGoApp {
@@ -339,7 +353,7 @@
         vendorSha256 = "sha256-tH56oB9Lw0/+ypWRj9n8o/QHPcLQuuNkzD4zFy6bW04=";
         engine = "cometbft/cometbft";
 
-        patches = [./patches/stride-no-admin-check.patch];
+        patches = [ ./patches/stride-no-admin-check.patch ];
         doCheck = false;
       };
 
@@ -350,7 +364,7 @@
         vendorSha256 = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
         engine = "tendermint/tendermint";
 
-        patches = [./patches/stride-no-admin-check.patch];
+        patches = [ ./patches/stride-no-admin-check.patch ];
         doCheck = false;
       };
 
@@ -363,7 +377,7 @@
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "migalood"}
         '';
-        buildInputs = [libwasmvm_1_2_3];
+        buildInputs = [ libwasmvm_1_2_3 ];
       };
 
       neutron = utilities.mkCosmosGoApp {
@@ -375,7 +389,7 @@
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "neutrond"}
         '';
-        buildInputs = [libwasmvm_1_2_3];
+        buildInputs = [ libwasmvm_1_2_3 ];
       };
 
       centauri = utilities.mkCosmosGoApp {
@@ -383,13 +397,13 @@
         version = "v4.0.2";
         src = inputs.centauri-src;
         vendorSha256 = "sha256-RiIRMo6fkiU4XU+OKXrtXUGoFD//hZbbU5qUEc71g6k=";
-        tags = ["netgo"];
+        tags = [ "netgo" ];
         engine = "cometbft/cometbft";
-        excludedPackages = ["interchaintest" "simd"];
+        excludedPackages = [ "interchaintest" "simd" ];
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_2_4 "centaurid"}
         '';
-        buildInputs = [libwasmvm_1_2_4];
+        buildInputs = [ libwasmvm_1_2_4 ];
         proxyVendor = true;
         doCheck = false;
       };
@@ -399,7 +413,7 @@
         pname = "hermes";
         version = "v1.6.0";
         src = inputs.hermes-src;
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default] ++ utilities.darwin-deps;
+        nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ] ++ utilities.darwin-deps;
         cargoSha256 = "sha256-xCSH8L8do6mS3NKPBZoXKrbJizEDiCJrZnUeG0aisRE=";
         doCheck = false;
         cargoCheckCommand = "true";
@@ -416,37 +430,23 @@
         cargoCheckCommand = "true";
       };
 
-      libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
+      libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage (libwasmvm // {
         src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
         version = "v1.2.4";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
         cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l4=";
-        doCheck = false;
-      };
+      });
 
-      libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
+      libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage (libwasmvm // {
         src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
         version = "v1.2.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
         cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
-        doCheck = false;
-      };
+      });
 
       libwasmvm_1_1_2 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1_1_2-src}/libwasmvm";
         version = "v1.1.2";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
         postInstall = ''
           cp ./bindings.h $out/lib/
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
@@ -459,7 +459,7 @@
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1_1_1-src}/libwasmvm";
         version = "v1.1.1";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
         postInstall = ''
           cp ./bindings.h $out/lib/
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
@@ -472,7 +472,7 @@
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1-src}/libwasmvm";
         version = "v1.0.0";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
         postInstall = ''
           cp ./bindings.h $out/lib/
           ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
@@ -485,7 +485,7 @@
         pname = "libwasmvm";
         src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
         version = "v1.0.0-beta7";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
         postInstall = ''
           cp ./bindings.h $out/lib/
         '';
@@ -497,7 +497,7 @@
         pname = "libwasmvm";
         src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
         version = "v0.16.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+        nativeBuildInputs = with pkgs; [ rust-bin.stable.latest.default ];
         postInstall = ''
           cp ./bindings.h $out/lib/
         '';
@@ -518,14 +518,12 @@
         ((import ./resources/ts-relayer) {
           inherit pkgs eval-pkgs;
           inherit (inputs) ts-relayer-src;
-        })
-        .ts-relayer;
+        }).ts-relayer;
       ts-relayer-setup =
         ((import ./resources/ts-relayer) {
           inherit pkgs eval-pkgs;
           inherit (inputs) ts-relayer-src;
-        })
-        .ts-relayer-setup;
+        }).ts-relayer-setup;
 
       apalache = import ./resources/apalache.nix {
         inherit pkgs;
@@ -595,4 +593,5 @@
       '';
     };
   };
-in {inherit packages devShells;}
+in
+{ inherit packages devShells; }

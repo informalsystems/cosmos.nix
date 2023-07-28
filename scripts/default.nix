@@ -1,10 +1,12 @@
-{pkgs}: let
+{ pkgs }:
+let
   sa = pkgs.writeShellApplication;
   format = sa {
     name = "format";
     text = "alejandra .";
-    runtimeInputs = with pkgs; [alejandra];
+    runtimeInputs = with pkgs; [ alejandra ];
   };
-in [
+in
+[
   format
 ]
