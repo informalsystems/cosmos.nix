@@ -99,9 +99,9 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v15.2.0";
+        version = "v16.1.1";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-Flo+JRo0cTW2zLAolBEmm2N8kIMDpRCX2MENWAlCoYI=";
+        vendorSha256 = "sha256-OKXDHnvl+i2SiTBxM9NTd8hXxRj/8TDgD+z/HhHV0Ps=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
@@ -380,9 +380,9 @@
 
       centauri = utilities.mkCosmosGoApp {
         name = "centauri";
-        version = "v3.2.3";
+        version = "v4.0.2";
         src = inputs.centauri-src;
-        vendorSha256 = "sha256-MI08quQrP/M9qsMiaGnsCgVRt+kfLMVTyoRvUshtWoY=";
+        vendorSha256 = "sha256-RiIRMo6fkiU4XU+OKXrtXUGoFD//hZbbU5qUEc71g6k=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["interchaintest" "simd"];

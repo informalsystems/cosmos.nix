@@ -95,7 +95,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v15.2.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v16.1.1;
 
     osmosis7-src.flake = false;
     osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
@@ -134,7 +134,7 @@
     # main branch hardcodes some gov addresses owned by private keys
     # this is one commit patch which allows local governance to work
     # https://github.com/notional-labs/composable-centauri/pull/199
-    centauri-src.url = github:dzmitry-lahoda-forks/composable-centauri/e5dbaa5bbcd7b758b0c71bfaabbc67acfcb20f72;
+    centauri-src.url = github:dzmitry-lahoda-forks/composable-centauri/09ae53e32847fbd9234f24afd140b6a3f2122b54;
 
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
