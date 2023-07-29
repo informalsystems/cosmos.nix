@@ -1,11 +1,10 @@
-{ pkgs
-, # Note: we need to use eval-pkgs for mkYarnPackage because it uses IFD, which doesn't play nicely with flakes.
+{
+  pkgs,
+  # Note: we need to use eval-pkgs for mkYarnPackage because it uses IFD, which doesn't play nicely with flakes.
   # For reference checkout this issue on the nixpkgs repo: https://github.com/NixOS/nix/issues/4265
-  eval-pkgs
-, ts-relayer-src
-,
-}:
-let
+  eval-pkgs,
+  ts-relayer-src,
+}: let
   ibc-relayer = eval-pkgs.mkYarnPackage {
     name = "ts-relayer";
     src = ts-relayer-src;
@@ -15,8 +14,7 @@ let
     '';
     yarnLock = "${ts-relayer-src}/yarn.lock";
   };
-in
-{
+in {
   ts-relayer = pkgs.writeShellScriptBin "ts-relayer" ''
     ${pkgs.nodejs}/bin/node ${ibc-relayer}/bin/ibc-relayer
   '';

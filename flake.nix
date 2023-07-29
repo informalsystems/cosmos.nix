@@ -5,8 +5,7 @@
     # Nix Inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    rust-overlay.url =
-      "github:oxalica/rust-overlay/b8f3db465405014039985f1c5cea92cc29e1b3b5";
+    rust-overlay.url = "github:oxalica/rust-overlay/b8f3db465405014039985f1c5cea92cc29e1b3b5";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
@@ -135,8 +134,7 @@
     # main branch hardcodes some gov addresses owned by private keys
     # this is one commit patch which allows local governance to work
     # https://github.com/notional-labs/composable-centauri/pull/199
-    centauri-src.url =
-      "github:dzmitry-lahoda-forks/composable-centauri/09ae53e32847fbd9234f24afd140b6a3f2122b54";
+    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/09ae53e32847fbd9234f24afd140b6a3f2122b54";
 
     wasmd-src.flake = false;
     wasmd-src.url = "github:CosmWasm/wasmd/v0.30.0";
@@ -195,13 +193,12 @@
 
   outputs = inputs:
     with inputs.flake-utils.lib;
-    eachSystem [
-      "aarch64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-      "x86_64-linux"
-    ] (system:
-      let
+      eachSystem [
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ] (system: let
         pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
@@ -209,9 +206,9 @@
             inputs.sbt-derivation.overlay
           ];
         };
-        eval-pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+        eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
         resources =
-          (import ./resources.nix) { inherit inputs pkgs eval-pkgs system; };
+          (import ./resources.nix) {inherit inputs pkgs eval-pkgs system;};
         tests = (import ./tests.nix) {
           inherit (resources) packages;
           inherit pkgs system;

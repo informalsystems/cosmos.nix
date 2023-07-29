@@ -1,10 +1,10 @@
-{ packages
-, pkgs
-, system
-,
+{
+  packages,
+  pkgs,
+  system,
 }:
 if pkgs.lib.strings.hasSuffix "darwin" system
-then { }
+then {}
 else {
   hermes-module-test = (import ./modules/tests/hermes-test.nix) {
     inherit (packages) hermes;

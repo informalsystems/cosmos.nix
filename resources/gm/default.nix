@@ -1,17 +1,17 @@
-{ shellcheck
-, makeWrapper
-, mkDerivation
-, lib
-, ibc-rs-src
-, stoml
-, sconfig
-, gnused
-,
+{
+  shellcheck,
+  makeWrapper,
+  mkDerivation,
+  lib,
+  ibc-rs-src,
+  stoml,
+  sconfig,
+  gnused,
 }:
 mkDerivation {
   pname = "gm";
   version = "0.0.8";
-  buildInputs = [ makeWrapper ];
+  buildInputs = [makeWrapper];
   src = ibc-rs-src;
   configurePhase = "true";
   buildPhase = ''
