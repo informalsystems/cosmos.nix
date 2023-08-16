@@ -184,6 +184,40 @@
         "type": "github"
       }
     },
+    "gaia10-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688401730,
+        "narHash": "sha256-F72AxDI1OdleE8If5s4HJbORqMsDVsdEO5q7nrK07E8=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "a2b14cdd568273e12b80579b4e22681df95b4cb9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v10.0.2",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
+    "gaia11-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690464504,
+        "narHash": "sha256-bIegGSPDdDRbznfgsrojsGCwCPSesNknpffTFskc7fE=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "541a8d86af28231c767d6db52eb88ba9496ad0c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v11.0.0",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
     "gaia5-src": {
       "flake": false,
       "locked": {
@@ -797,6 +831,8 @@
         "evmos-src": "evmos-src",
         "flake-utils": "flake-utils",
         "gaia-main-src": "gaia-main-src",
+        "gaia10-src": "gaia10-src",
+        "gaia11-src": "gaia11-src",
         "gaia5-src": "gaia5-src",
         "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6-src": "gaia6-src",
