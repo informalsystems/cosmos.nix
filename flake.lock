@@ -34,6 +34,23 @@
         "type": "github"
       }
     },
+    "beaker-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686823358,
+        "narHash": "sha256-bQiN5Q7RV4Uupc7rk1rGurRvCTy+5EiiB4p3bHct7M0=",
+        "owner": "osmosis-labs",
+        "repo": "beaker",
+        "rev": "f3c7a9fc6886aa2b4e0d259f70058d6c23c225e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v0.1.6",
+        "repo": "beaker",
+        "type": "github"
+      }
+    },
     "centauri-src": {
       "flake": false,
       "locked": {
@@ -790,6 +807,7 @@
       "inputs": {
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
+        "beaker-src": "beaker-src",
         "centauri-src": "centauri-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "cosmwasm-src": "cosmwasm-src",

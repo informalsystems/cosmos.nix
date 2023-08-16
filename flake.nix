@@ -189,6 +189,9 @@
 
     gex-src.flake = false;
     gex-src.url = github:cosmos/gex/bc168741b2019745d343606d31b5c274f216fc3f;
+
+    beaker-src.flake = false;
+    beaker-src.url = github:osmosis-labs/beaker/v0.1.6;
   };
 
   outputs = inputs:
