@@ -34,20 +34,37 @@
         "type": "github"
       }
     },
+    "beaker-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686823358,
+        "narHash": "sha256-bQiN5Q7RV4Uupc7rk1rGurRvCTy+5EiiB4p3bHct7M0=",
+        "owner": "osmosis-labs",
+        "repo": "beaker",
+        "rev": "f3c7a9fc6886aa2b4e0d259f70058d6c23c225e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "osmosis-labs",
+        "ref": "v0.1.6",
+        "repo": "beaker",
+        "type": "github"
+      }
+    },
     "centauri-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1689966429,
-        "narHash": "sha256-261WaCEsgB/4o6pyXFqtkoCA6L8SOJ+avUxyAArgGQc=",
+        "lastModified": 1692209286,
+        "narHash": "sha256-fabsZyaSCnWnhvG9nO8y39t85u+MZNyEKzU+0fSueLM=",
         "owner": "dzmitry-lahoda-forks",
         "repo": "composable-centauri",
-        "rev": "e5dbaa5bbcd7b758b0c71bfaabbc67acfcb20f72",
+        "rev": "9fa53d8b47d17219d1270146a146e4e386bc2a29",
         "type": "github"
       },
       "original": {
         "owner": "dzmitry-lahoda-forks",
         "repo": "composable-centauri",
-        "rev": "e5dbaa5bbcd7b758b0c71bfaabbc67acfcb20f72",
+        "rev": "9fa53d8b47d17219d1270146a146e4e386bc2a29",
         "type": "github"
       }
     },
@@ -661,16 +678,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1687920590,
-        "narHash": "sha256-nzNUf55ZgWUuaEJ25hvGi34zzqTuWOGm3j72BtldGxs=",
+        "lastModified": 1689430935,
+        "narHash": "sha256-HTXFitKRuxSM6U2Sq7kgLxZhduPA+MofdWaISe//2kg=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "4a4a94585872e3196b9c83286979cda11d4889e3",
+        "rev": "0dcae3392f23e44b8de436ff372c1373dc831b04",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v15.2.0",
+        "ref": "v16.1.1",
         "repo": "osmosis",
         "type": "github"
       }
@@ -790,6 +807,7 @@
       "inputs": {
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
+        "beaker-src": "beaker-src",
         "centauri-src": "centauri-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "cosmwasm-src": "cosmwasm-src",

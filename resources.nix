@@ -21,6 +21,16 @@
 
   cosmos-sdk-version = "v0.46.0";
 
+  libwasmvm = {
+    pname = "libwasmvm";
+    nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+    postInstall = ''
+      cp ./bindings.h $out/lib/
+      ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+    '';
+    doCheck = false;
+  };
+
   packages =
     rec {
       # Go packages
@@ -99,17 +109,18 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v15.2.0";
+        version = "v16.1.1";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-Flo+JRo0cTW2zLAolBEmm2N8kIMDpRCX2MENWAlCoYI=";
+        vendorSha256 = "sha256-OKXDHnvl+i2SiTBxM9NTd8hXxRj/8TDgD+z/HhHV0Ps=";
         tags = ["netgo"];
+        excludedPackages = ["cl-genesis-positions"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "osmosisd"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_2 "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "osmosisd"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "chain"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "node"}
         '';
-        buildInputs = [libwasmvm_1_1_2];
+        buildInputs = [libwasmvm_1_2_3];
         proxyVendor = true;
 
         # Test has to be skipped as end-to-end testing requires network access
@@ -380,9 +391,9 @@
 
       centauri = utilities.mkCosmosGoApp {
         name = "centauri";
-        version = "v3.2.3";
+        version = "v4.5.0";
         src = inputs.centauri-src;
-        vendorSha256 = "sha256-MI08quQrP/M9qsMiaGnsCgVRt+kfLMVTyoRvUshtWoY=";
+        vendorSha256 = "sha256-RiIRMo6fkiU4XU+OKXrtXUGoFD//hZbbU5qUEc71g6k=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["interchaintest" "simd"];
@@ -416,31 +427,33 @@
         cargoCheckCommand = "true";
       };
 
-      libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
-        version = "v1.2.4";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l4=";
-        doCheck = false;
-      };
+      beaker = with pkgs;
+        pkgs.rustPlatform.buildRustPackage rec {
+          pname = "beaker";
+          version = "0.1.6";
+          nativeBuildInputs = lib.optionals stdenv.isLinux [pkg-config] ++ utilities.darwin-deps;
+          OPENSSL_NO_VENDOR = 3;
+          buildInputs = lib.optionals stdenv.isLinux [openssl openssl.dev];
+          src = inputs.beaker-src;
+          cargoBuildCommand = "cargo build --release --package ${pname}";
+          cargoSha256 = "sha256-1FfhDjYDYVYXxVRwzXbGAqsey+29Gxr9CFZ0R9D7+DQ=";
+          doCheck = false;
+          cargoCheckCommand = "true";
+        };
 
-      libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
-        version = "v1.2.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
-        doCheck = false;
-      };
+      libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // {
+          src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
+          version = "v1.2.4";
+          cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l4=";
+        });
+
+      libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // {
+          src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
+          version = "v1.2.3";
+          cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
+        });
 
       libwasmvm_1_1_2 = pkgs.rustPlatform.buildRustPackage {
         pname = "libwasmvm";
