@@ -1,5 +1,10 @@
 name: Build and Check
-on: [push]
+
+on:
+  push:
+    branches: master
+  pull_request:
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
