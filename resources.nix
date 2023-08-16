@@ -431,8 +431,8 @@
         pname = "beaker";
         version = "0.1.6";
         nativeBuildInputs = lib.optionals stdenv.isLinux [ pkg-config ] ++ utilities.darwin-deps;
-        OPENSSL_NO_VENDOR = 1;
-        buildInputs = lib.optionals stdenv.isLinux [ openssl_1_1 openssl_1_1.dev ];
+        OPENSSL_NO_VENDOR = 3;
+        buildInputs = lib.optionals stdenv.isLinux [ openssl openssl.dev ];
         src = inputs.beaker-src;
         cargoBuildCommand = "cargo build --release --package ${pname}";
         cargoSha256 = "sha256-1FfhDjYDYVYXxVRwzXbGAqsey+29Gxr9CFZ0R9D7+DQ=";
