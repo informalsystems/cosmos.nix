@@ -232,6 +232,8 @@
         # nix develop
         devShells = resources.devShells;
 
+        formatter = pkgs.alejandra;
+
         # nix run .#<app>
         apps = {
           hermes = mkApp {
