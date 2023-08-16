@@ -391,7 +391,7 @@
 
       centauri = utilities.mkCosmosGoApp {
         name = "centauri";
-        version = "v4.0.2";
+        version = "v4.5.0";
         src = inputs.centauri-src;
         vendorSha256 = "sha256-RiIRMo6fkiU4XU+OKXrtXUGoFD//hZbbU5qUEc71g6k=";
         tags = ["netgo"];

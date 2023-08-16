@@ -37,17 +37,17 @@
     "centauri-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1690568395,
-        "narHash": "sha256-GfJ+re4On+IZ1gKyS5dGbVDPmbdXfhMCzuNL8v1D0U4=",
+        "lastModified": 1692209286,
+        "narHash": "sha256-fabsZyaSCnWnhvG9nO8y39t85u+MZNyEKzU+0fSueLM=",
         "owner": "dzmitry-lahoda-forks",
         "repo": "composable-centauri",
-        "rev": "09ae53e32847fbd9234f24afd140b6a3f2122b54",
+        "rev": "9fa53d8b47d17219d1270146a146e4e386bc2a29",
         "type": "github"
       },
       "original": {
         "owner": "dzmitry-lahoda-forks",
         "repo": "composable-centauri",
-        "rev": "09ae53e32847fbd9234f24afd140b6a3f2122b54",
+        "rev": "9fa53d8b47d17219d1270146a146e4e386bc2a29",
         "type": "github"
       }
     },
