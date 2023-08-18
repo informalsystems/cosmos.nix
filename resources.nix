@@ -127,46 +127,6 @@
         doCheck = false;
       };
 
-      osmosis6 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v6.4.1";
-        src = inputs.osmosis6-src;
-        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-      };
-
-      osmosis7 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v7.3.0";
-        src = inputs.osmosis7-src;
-        excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1 "osmosisd";
-        buildInputs = [libwasmvm_1];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
-      };
-
-      osmosis8 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v8.0.0";
-        src = inputs.osmosis8-src;
-        excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1beta7 "osmosisd";
-        dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
-      };
-
       juno = utilities.mkCosmosGoApp {
         name = "juno";
         version = "v13.0.1";
@@ -181,18 +141,6 @@
         '';
         dontStrip = true;
         buildInputs = [libwasmvm_1_1_1];
-      };
-
-      terra = utilities.mkCosmosGoApp {
-        name = "terra";
-        version = "v0.5.17";
-        src = inputs.terra-src;
-        vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase libwasmvm_0_16_3 "terrad";
-        dontStrip = true;
-        buildInputs = [libwasmvm_0_16_3];
       };
 
       sentinel = utilities.mkCosmosGoApp {
@@ -595,7 +543,7 @@
         curl
         lz4
         python39
-        packages.osmosis8
+        packages.osmosis
         packages.cosmovisor
       ];
       shellHook = ''
