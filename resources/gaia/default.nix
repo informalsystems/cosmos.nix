@@ -85,4 +85,30 @@ in
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
       };
+
+      gaia10 = {
+        name = "gaia";
+        vendorSha256 = "sha256-W0+XQyXDvwKq7iS9GhW/UK0/4D32zK26u0abGNPsdZc=";
+        version = "v10.0.2";
+        src = gaia10-src;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
+
+      gaia11 = {
+        name = "gaia";
+        vendorSha256 = "sha256-05S5mmex/IReEBfo0BgB/99NWY7tGM2wWCi0qTa50oM=";
+        version = "v11.0.0";
+        src = gaia11-src;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
     }
