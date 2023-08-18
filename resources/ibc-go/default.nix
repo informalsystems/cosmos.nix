@@ -70,4 +70,16 @@ in
         doCheck = false;
         excludedPackages = ["./e2e"];
       };
+
+      ibc-go-sdk-50-simapp = {
+        name = "simd";
+        version = "v8.0.0-pre.sdk-50";
+        src = inputs.ibc-go-sdk-50-src;
+        vendorSha256 = "sha256-jm/stpw2DqXzlPoNUhem8lwdIHJRf5eP282PtExfWzs=";
+        goVersion = "1.20";
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        doCheck = false;
+        excludedPackages = ["./e2e"];
+      };
     }

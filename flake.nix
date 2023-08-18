@@ -79,6 +79,9 @@
     ibc-go-v7-src.flake = false;
     ibc-go-v7-src.url = github:cosmos/ibc-go/v7.2.0;
 
+    ibc-go-sdk-50-src.flake = false;
+    ibc-go-sdk-50-src.url = github:cosmos/ibc-go/upgrade-sdk-v0.50-alpha1;
+
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
 
@@ -296,6 +299,10 @@
           ibc-go-v7-simapp = mkApp {
             name = "simd";
             drv = packages.ibc-go-v7-simapp;
+          };
+          ibc-go-sdk-50-simapp = mkApp {
+            name = "simd";
+            drv = packages.ibc-go-sdk-50-simapp;
           };
           ignite-cli = mkApp {
             name = "ignite-cli";

@@ -11,6 +11,7 @@
     additionalLdFlags ? "",
     appName ? null,
     preCheck ? null,
+    goVersion ? "1.19",
     ...
   }: let
     buildGoModuleArgs =
@@ -43,8 +44,16 @@
       if appName == null
       then "${name}d"
       else appName;
+
+    buildGoModuleVersion = {
+      "1.19" = pkgs.buildGo119Module;
+      "1.20" = pkgs.buildGo120Module;
+      "1.21" = pkgs.buildGo121Module;
+    };
+
+    buildGoModule = buildGoModuleVersion.${goVersion};
   in
-    pkgs.buildGo119Module ({
+    buildGoModule ({
         inherit version src vendorSha256;
         pname = name;
         preCheck =

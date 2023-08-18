@@ -341,6 +341,23 @@
         "type": "github"
       }
     },
+    "ibc-go-sdk-50-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690303739,
+        "narHash": "sha256-BVcWs8meTXGx192pVorCFQ0SeeX3zagfReKFyifewwM=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "72bf69064fbec71147216a53378bd310c74b0fef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "upgrade-sdk-v0.50-alpha1",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-go-v2-src": {
       "flake": false,
       "locked": {
@@ -805,6 +822,7 @@
         "gaia9-src": "gaia9-src",
         "gex-src": "gex-src",
         "hermes-src": "hermes-src",
+        "ibc-go-sdk-50-src": "ibc-go-sdk-50-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",
         "ibc-go-v4-src": "ibc-go-v4-src",
