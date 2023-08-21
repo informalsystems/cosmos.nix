@@ -43,6 +43,12 @@
     gaia-main-src.flake = false;
     gaia-main-src.url = github:cosmos/gaia;
 
+    gaia11-src.flake = false;
+    gaia11-src.url = github:cosmos/gaia/v11.0.0;
+
+    gaia10-src.flake = false;
+    gaia10-src.url = github:cosmos/gaia/v10.0.2;
+
     gaia9-src.flake = false;
     gaia9-src.url = github:cosmos/gaia/v9.0.3;
 
@@ -98,7 +104,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v15.2.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v16.1.1;
 
     sentinel-src.flake = false;
     sentinel-src.url = github:sentinel-official/hub/v0.9.0-rc0;
@@ -125,7 +131,7 @@
     # main branch hardcodes some gov addresses owned by private keys
     # this is one commit patch which allows local governance to work
     # https://github.com/notional-labs/composable-centauri/pull/199
-    centauri-src.url = github:dzmitry-lahoda-forks/composable-centauri/e5dbaa5bbcd7b758b0c71bfaabbc67acfcb20f72;
+    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/9fa53d8b47d17219d1270146a146e4e386bc2a29";
 
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
@@ -180,6 +186,9 @@
 
     gex-src.flake = false;
     gex-src.url = github:cosmos/gex/bc168741b2019745d343606d31b5c274f216fc3f;
+
+    beaker-src.flake = false;
+    beaker-src.url = github:osmosis-labs/beaker/v0.1.6;
   };
 
   outputs = inputs:
@@ -219,6 +228,8 @@
 
         # nix develop
         devShells = resources.devShells;
+
+        formatter = pkgs.alejandra;
 
         # nix run .#<app>
         apps = {
@@ -264,6 +275,16 @@
           gaia9 = mkApp {
             name = "gaia";
             drv = packages.gaia9;
+            exePath = "/bin/gaiad";
+          };
+          gaia10 = mkApp {
+            name = "gaia";
+            drv = packages.gaia10;
+            exePath = "/bin/gaiad";
+          };
+          gaia11 = mkApp {
+            name = "gaia";
+            drv = packages.gaia11;
             exePath = "/bin/gaiad";
           };
           gaia-main = mkApp {

@@ -161,6 +161,7 @@ nix develop -c format
 - [iris](https://github.com/irisnet/irishub): `nix run .#iris`
 - [regen](https://github.com/regen-network/regen-ledger): `nix run .#regen`
 - [evmos](https://github.com/tharsis/evmos): `nix run .#evmos`
+- [centauri](https://github.com/notional-labs/composable-centauri): `nix run .#centauri`
 
 #### Development Tools
 - [gaia](https://hub.cosmos.network/main/gaia-tutorials/what-is-gaia.html): `nix run .#gaia`
@@ -168,3 +169,6 @@ nix develop -c format
 - [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html): `nix run .#cosmovisor`
 - [simd](https://docs.cosmos.network/master/run-node/interact-node.html): `nix run .#simd`
 - [gm](https://github.com/informalsystems/ibc-rs/tree/master/scripts/gm): `nix run .#gm`
+- [gex](https://github.com/cosmos/gex): `nix run .#gm`
+- [beaker](https://github.com/osmosis-labs/beaker): `nix run .#beaker`
+- [cosmwasm-check](https://github.com/CosmWasm/cosmwasm/tree/main/packages/check): `nix run .#cosmwasm-check`
