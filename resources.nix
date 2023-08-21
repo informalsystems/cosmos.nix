@@ -37,13 +37,13 @@
       stoml = pkgs.buildGoModule {
         name = "stoml";
         src = inputs.stoml-src;
-        vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
+        vendorSha256 = "sha256-i5m2I0IApTwD9XIjsDwU4dpNtwGI0EGeSkY6VbXDOAM=";
       };
 
       sconfig = pkgs.buildGoModule {
         name = "sconfig";
         src = inputs.sconfig-src;
-        vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
+        vendorSha256 = "sha256-J3L8gPtCShn//3mliMzvRTxRgb86f1pJ+yjZkF5ixEk=";
       };
 
       cosmovisor = pkgs.buildGoModule {
@@ -169,7 +169,7 @@
         version = "v2.0.0";
         subPackages = ["cmd/umeed"];
         src = inputs.umee-src;
-        vendorSha256 = "sha256-HONlFCC6iHgKQwqAiEV29qmSHsLdloUlAeJkxViUG7w=";
+        vendorSha256 = "sha256-VXBB2ZBh4QFbGQm3bXsl63MeASZMI1++wnhm2IrDrwk=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
       };
