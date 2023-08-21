@@ -28,7 +28,7 @@
                    if (isSnapshot.value) (k -> build) else (k -> v)
   '';
 in
-  pkgs.sbt.mkDerivation {
+  pkgs.mkSbtDerivation {
     pname = "apalache";
     inherit version;
 

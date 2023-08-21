@@ -371,8 +371,8 @@
       },
       "original": {
         "owner": "cosmos",
+        "ref": "upgrade-sdk-v0.50-alpha1",
         "repo": "ibc-go",
-        "rev": "72bf69064fbec71147216a53378bd310c74b0fef",
         "type": "github"
       }
     },
