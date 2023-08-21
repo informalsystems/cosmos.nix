@@ -32,7 +32,7 @@ in
     pname = "apalache";
     inherit version;
 
-    depsSha256 = "sha256-9wGlIFmvKW4N8NQqhOlxjhl48JptHCSI8F8EFF9mYrw=";
+    depsSha256 = "sha256-Fyf98HRE5zzSD3aMDsNb6bJh2Ml6DC4+BqH+a7ljFHo=";
 
     src = apalache-src;
 
