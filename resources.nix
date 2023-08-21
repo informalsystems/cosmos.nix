@@ -454,18 +454,6 @@
         doCheck = false;
       };
 
-      libwasmvm_0_16_3 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
-        version = "v0.16.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-        '';
-        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
-        doCheck = false;
-      };
-
       # Misc
       gm = with pkgs;
         (import ./resources/gm) {
