@@ -233,7 +233,7 @@
       ica = pkgs.buildGoModule {
         name = "ica";
         src = inputs.ica-src;
-        vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
+        vendorSha256 = "sha256-ZIP6dmHugLLtdA/8N8byg3D3JinjNxpvxyK/qiIs7bI=";
       };
 
       wasmd = utilities.mkCosmosGoApp {
