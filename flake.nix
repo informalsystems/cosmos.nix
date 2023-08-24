@@ -80,7 +80,7 @@
     ibc-go-v7-src.url = github:cosmos/ibc-go/v7.1.0;
 
     ibc-go-v7-channel-upgrade-src.flake = false;
-    ibc-go-v7-channel-upgrade-src.url = github:cosmos/ibc-go/82ea9531e24855ef52e2dae629d579583a0e830f;
+    ibc-go-v7-channel-upgrade-src.url = github:cosmos/ibc-go/f1e8ae805a3633d47928cfc02315a1a19ca80a0e;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
