@@ -32,8 +32,7 @@ in
     pname = "apalache";
     inherit version;
 
-    depsSha256 = "sha256-9wGlIFmvKW4N8NQqhOlxjhl48JptHCSI8F8EFF9mYrw=";
-
+    depsSha256 = "sha256-0Yu1TgzaAI3bCHNF+IGunWUjjX9RIL8BXQ09fv+mL3o=";
     src = apalache-src;
 
     patches = [
