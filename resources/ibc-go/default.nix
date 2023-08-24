@@ -75,7 +75,7 @@ in
         name = "simapp";
         version = "v7.0.0-channel.upgrade";
         src = inputs.ibc-go-v7-channel-upgrade-src;
-        vendorSha256 = "sha256-KXF3wzXrvmm3LL+3SEGISNGedTfNlt1i1mjApV2dRDk=";
+        vendorSha256 = "sha256-ugCYnE7LfuHyN4o7etY7kajsYXo7tNc4/y3Mzoahy6s=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["./e2e"];
