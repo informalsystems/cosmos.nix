@@ -8,6 +8,9 @@ on:
 jobs:
   deploy-main:
     runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - uses: DeterminateSystems/nix-installer-action@main
