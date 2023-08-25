@@ -109,9 +109,9 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v16.1.1";
+        version = "v18.0.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-OKXDHnvl+i2SiTBxM9NTd8hXxRj/8TDgD+z/HhHV0Ps=";
+        vendorSha256 = "sha256-jeV0ofAMbQihs/OrVZjWSVdXJ8bmrANZ5gZ9JWlWrp4=";
         tags = ["netgo"];
         excludedPackages = ["cl-genesis-positions"];
         engine = "tendermint/tendermint";

@@ -101,7 +101,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v16.1.1;
+    osmosis-src.url = github:osmosis-labs/osmosis/v18.0.0;
 
     sentinel-src.flake = false;
     sentinel-src.url = github:sentinel-official/hub/v0.9.0-rc0;
@@ -331,6 +331,11 @@
             name = "osmosis";
             drv = packages.osmosis;
             exePath = "/bin/osmosisd";
+          };
+          centauri = mkApp {
+            name = "centauri";
+            drv = packages.centauri;
+            exePath = "/bin/centaurid";
           };
           iris = mkApp {
             name = "iris";

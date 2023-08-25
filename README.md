@@ -169,6 +169,6 @@ nix develop -c format
 - [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html): `nix run .#cosmovisor`
 - [simd](https://docs.cosmos.network/master/run-node/interact-node.html): `nix run .#simd`
 - [gm](https://github.com/informalsystems/ibc-rs/tree/master/scripts/gm): `nix run .#gm`
-- [gex](https://github.com/cosmos/gex): `nix run .#gm`
+- [gex](https://github.com/cosmos/gex): `nix run .#gex`
 - [beaker](https://github.com/osmosis-labs/beaker): `nix run .#beaker`
 - [cosmwasm-check](https://github.com/CosmWasm/cosmwasm/tree/main/packages/check): `nix run .#cosmwasm-check`
