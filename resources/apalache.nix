@@ -33,7 +33,6 @@ in
     inherit version;
 
     depsSha256 = "sha256-Fyf98HRE5zzSD3aMDsNb6bJh2Ml6DC4+BqH+a7ljFHo=";
-
     src = apalache-src;
 
     patches = [
