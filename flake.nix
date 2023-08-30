@@ -8,6 +8,8 @@
     rust-overlay.url = github:oxalica/rust-overlay/b8f3db465405014039985f1c5cea92cc29e1b3b5;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
     sbt-derivation.url = github:zaninime/sbt-derivation;
+    sbt-derivation.inputs.nixpkgs.follows = "nixpkgs";
+    sbt-derivation.inputs.flake-utils.follows = "flake-utils";
     nix-std.url = github:chessai/nix-std;
 
     # Has to follow flake-utils in order to get aarch64-darwin
@@ -173,7 +175,7 @@
     cosmwasm-src.url = github:CosmWasm/cosmwasm/v1.2.6;
 
     apalache-src.flake = false;
-    apalache-src.url = github:informalsystems/apalache/v0.24.0;
+    apalache-src.url = github:informalsystems/apalache/v0.42.0;
 
     ignite-cli-src.flake = false;
     ignite-cli-src.url = github:ignite/cli/v0.24.0;
@@ -214,7 +216,7 @@
           inherit system;
           overlays = [
             inputs.rust-overlay.overlays.default
-            inputs.sbt-derivation.overlay
+            inputs.sbt-derivation.overlays.default
           ];
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
