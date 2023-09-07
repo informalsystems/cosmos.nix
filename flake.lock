@@ -512,6 +512,23 @@
         "type": "github"
       }
     },
+    "ibc-go-v8-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694013889,
+        "narHash": "sha256-XpBi7LZidwN+kvDt5HMmCbmrAwuuVKpwOqJKBHM03+4=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "5ca37ef6e56a98683cf2b3b1570619dc9b322977",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v8.0.0-alpha.1",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -848,6 +865,7 @@
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
+        "ibc-go-v8-src": "ibc-go-v8-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "ignite-cli-src": "ignite-cli-src",
