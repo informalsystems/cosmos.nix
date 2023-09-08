@@ -11,6 +11,7 @@
     additionalLdFlags ? "",
     appName ? null,
     preCheck ? null,
+    doCheck ? false,
     goVersion ? "1.19",
     ...
   }: let
@@ -54,7 +55,7 @@
     buildGoModule = buildGoModuleVersion.${goVersion};
   in
     buildGoModule ({
-        inherit version src vendorSha256;
+        inherit version src vendorSha256 doCheck;
         pname = name;
         preCheck =
           if preCheck == null
