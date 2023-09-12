@@ -633,16 +633,16 @@
     "interchain-security-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1662985265,
-        "narHash": "sha256-MhH5R1eEKel8nX1UIw4PAsSTPraP7ivrPU/+StqaD6U=",
+        "lastModified": 1694449275,
+        "narHash": "sha256-yLB2utj3hSB4jw/fc/TJhDcybzZJ+soc8tZlL4jxtk8=",
         "owner": "cosmos",
         "repo": "interchain-security",
-        "rev": "1162655c89221588d4b440717b2ca1c65170aec2",
+        "rev": "c881a1aad37f2f8041c913468602edaf69fef9bf",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v0.1.4",
+        "ref": "feat/ics-misbehaviour-handling",
         "repo": "interchain-security",
         "type": "github"
       }
