@@ -312,9 +312,9 @@
             name = "simd";
             drv = packages.ibc-go-v7-simapp;
           };
-          ibc-go-sdk-50-simapp = mkApp {
+          ibc-go-v8-simapp = mkApp {
             name = "simd";
-            drv = packages.ibc-go-sdk-50-simapp;
+            drv = packages.ibc-go-v8-simapp;
           };
           ignite-cli = mkApp {
             name = "ignite-cli";
