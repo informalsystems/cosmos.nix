@@ -70,7 +70,6 @@ in
         goVersion = "1.20";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
-        doCheck = false;
         excludedPackages = ["./e2e" "./modules/apps/callbacks"];
       };
 
@@ -85,7 +84,6 @@ in
         goVersion = "1.21";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
-        doCheck = false;
         excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
       };
 
