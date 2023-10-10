@@ -60,6 +60,8 @@ in
         excludedPackages = ["./e2e"];
       };
 
+      # If the modules/apps/callbacks is needed, it must be defined in a separate nix
+      # package that loads only the given subdirectory as source
       ibc-go-v7-simapp = {
         name = "simd";
         version = "v7.3.0";
@@ -72,6 +74,9 @@ in
         excludedPackages = ["./e2e" "./modules/apps/callbacks"];
       };
 
+      # If the modules/apps/callbacks and/or modules/capability are needed,
+      # they must each be defined in a separate nix package that loads only
+      # the given subdirectory as source
       ibc-go-v8-simapp = {
         name = "simd";
         version = "v8.0.0-beta.1";
@@ -84,6 +89,9 @@ in
         excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
       };
 
+      # If the modules/apps/callbacks and/or modules/capability are needed,
+      # they must each be defined in a separate nix package that loads only
+      # the given subdirectory as source
       ibc-go-v8-channel-upgrade-simapp = {
         name = "simd";
         version = "channel-upgrade-alpha.0";
