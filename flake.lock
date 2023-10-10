@@ -498,16 +498,50 @@
     "ibc-go-v7-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1687464721,
-        "narHash": "sha256-UsCzjLKyedW2h3PQDNUNNL7KZiD23MM6kPQSnKS8FNs=",
+        "lastModified": 1693509694,
+        "narHash": "sha256-umh/ckDALt0ugXwN8glcaCkGfAQvXY7S3Jd95Do2XeA=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "d02ab9db8fc80eb5e55041d3d6416370c33441f7",
+        "rev": "c75650a1a037a9fecba5a9005df380f707520ff7",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v7.2.0",
+        "ref": "v7.3.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
+    "ibc-go-v8-channel-upgrade-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695726576,
+        "narHash": "sha256-mM6h1KAi8lQUrJakxI6f8WI+vpmBhCnAysk3hTZBI7M=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "63c30108f0ecf954108cf51f50f3d36ec58c7e51",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "04-channel-upgrades-alpha.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
+    "ibc-go-v8-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695930850,
+        "narHash": "sha256-BHmsnnqB+SoS8UdfGbEk07EXGZJG9ELo4+2gAbP8LdM=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "9c7212198d0ef82b8219ea66cee9c96b40e7981d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v8.0.0-beta.1",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -848,6 +882,8 @@
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
+        "ibc-go-v8-channel-upgrade-src": "ibc-go-v8-channel-upgrade-src",
+        "ibc-go-v8-src": "ibc-go-v8-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "ignite-cli-src": "ignite-cli-src",

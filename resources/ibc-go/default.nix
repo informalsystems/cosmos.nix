@@ -60,14 +60,44 @@ in
         excludedPackages = ["./e2e"];
       };
 
+      # If the modules/apps/callbacks is needed, it must be defined in a separate nix
+      # package that loads only the given subdirectory as source
       ibc-go-v7-simapp = {
         name = "simd";
-        version = "v7.2.0";
+        version = "v7.3.0";
         src = inputs.ibc-go-v7-src;
-        vendorSha256 = "sha256-Hmzoc8TEuaB8v4svuKLwpVy9+xXKaYnCi2ZJWgFIV+A=";
+        vendorSha256 = "sha256-Wn7krfvF7E93g4KnGZ8iXaSjc+kmGgQ8Jb5egWNMQg8=";
+        goVersion = "1.20";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
-        doCheck = false;
-        excludedPackages = ["./e2e"];
+        excludedPackages = ["./e2e" "./modules/apps/callbacks"];
+      };
+
+      # If the modules/apps/callbacks and/or modules/capability are needed,
+      # they must each be defined in a separate nix package that loads only
+      # the given subdirectory as source
+      ibc-go-v8-simapp = {
+        name = "simd";
+        version = "v8.0.0-beta.1";
+        src = inputs.ibc-go-v8-src;
+        vendorSha256 = "sha256-vUj5rwsA7RQfip/LktWG+MdazYfux6zpFN7L/AGdHo0=";
+        goVersion = "1.21";
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
+      };
+
+      # If the modules/apps/callbacks and/or modules/capability are needed,
+      # they must each be defined in a separate nix package that loads only
+      # the given subdirectory as source
+      ibc-go-v8-channel-upgrade-simapp = {
+        name = "simd";
+        version = "channel-upgrade-alpha.0";
+        src = inputs.ibc-go-v8-channel-upgrade-src;
+        vendorSha256 = "sha256-FOCQcn9r7mmpjY9h4gvwcRqL4qhu3wkXsx1KM1n17Cg=";
+        goVersion = "1.21";
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
       };
     }
