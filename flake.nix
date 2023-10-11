@@ -208,7 +208,7 @@
           inherit system;
           overlays = [
             inputs.rust-overlay.overlays.default
-            inputs.sbt-derivation.overlay.default
+            inputs.sbt-derivation.overlays.default
           ];
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
