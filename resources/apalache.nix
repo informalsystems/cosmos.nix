@@ -28,11 +28,11 @@
                    if (isSnapshot.value) (k -> build) else (k -> v)
   '';
 in
-  pkgs.sbt.mkDerivation {
+  pkgs.mkSbtDerivation {
     pname = "apalache";
     inherit version;
 
-    depsSha256 = "sha256-0Yu1TgzaAI3bCHNF+IGunWUjjX9RIL8BXQ09fv+mL3o=";
+    depsSha256 = "sha256-Fyf98HRE5zzSD3aMDsNb6bJh2Ml6DC4+BqH+a7ljFHo=";
     src = apalache-src;
 
     patches = [

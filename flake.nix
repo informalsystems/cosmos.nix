@@ -83,7 +83,13 @@
     ibc-go-v6-src.url = github:cosmos/ibc-go/v6.1.0;
 
     ibc-go-v7-src.flake = false;
-    ibc-go-v7-src.url = github:cosmos/ibc-go/v7.2.0;
+    ibc-go-v7-src.url = github:cosmos/ibc-go/v7.3.0;
+
+    ibc-go-v8-src.flake = false;
+    ibc-go-v8-src.url = github:cosmos/ibc-go/v8.0.0-beta.1;
+
+    ibc-go-v8-channel-upgrade-src.flake = false;
+    ibc-go-v8-channel-upgrade-src.url = github:cosmos/ibc-go/04-channel-upgrades-alpha.0;
 
     cosmos-sdk-src.flake = false;
     cosmos-sdk-src.url = github:cosmos/cosmos-sdk/v0.46.0;
@@ -102,18 +108,6 @@
 
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v18.0.0;
-
-    osmosis7-src.flake = false;
-    osmosis7-src.url = github:osmosis-labs/osmosis/v7.3.0;
-
-    osmosis6-src.flake = false;
-    osmosis6-src.url = github:osmosis-labs/osmosis/v6.4.1;
-
-    osmosis8-src.flake = false;
-    osmosis8-src.url = github:osmosis-labs/osmosis/v8.0.0;
-
-    terra-src.flake = false;
-    terra-src.url = github:terra-money/core/v0.5.17;
 
     sentinel-src.flake = false;
     sentinel-src.url = github:sentinel-official/hub/v0.9.0-rc0;
@@ -214,7 +208,7 @@
           inherit system;
           overlays = [
             inputs.rust-overlay.overlays.default
-            inputs.sbt-derivation.overlay
+            inputs.sbt-derivation.overlays.default
           ];
         };
         eval-pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
@@ -318,6 +312,10 @@
             name = "simd";
             drv = packages.ibc-go-v7-simapp;
           };
+          ibc-go-v8-simapp = mkApp {
+            name = "simd";
+            drv = packages.ibc-go-v8-simapp;
+          };
           ignite-cli = mkApp {
             name = "ignite-cli";
             exePath = "/bin/ignite";
@@ -349,21 +347,6 @@
             drv = packages.centauri;
             exePath = "/bin/centaurid";
           };
-          osmosis7 = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis7;
-            exePath = "/bin/osmosisd";
-          };
-          osmosis6 = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis6;
-            exePath = "/bin/osmosisd";
-          };
-          osmosis8 = mkApp {
-            name = "osmosis";
-            drv = packages.osmosis8;
-            exePath = "/bin/osmosisd";
-          };
           iris = mkApp {
             name = "iris";
             drv = packages.iris;
@@ -389,11 +372,6 @@
             name = "juno";
             drv = packages.juno;
             exePath = "/bin/junod";
-          };
-          terra = mkApp {
-            name = "terra";
-            drv = packages.terra;
-            exePath = "/bin/terrad";
           };
           sentinel = mkApp {
             name = "sentinel";

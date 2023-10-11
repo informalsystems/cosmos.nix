@@ -37,13 +37,13 @@
       stoml = pkgs.buildGoModule {
         name = "stoml";
         src = inputs.stoml-src;
-        vendorSha256 = "sha256-37PcS7qVQ+IVZddcm+KbUjRjql7KIzynVGKpIHAk5GY=";
+        vendorSha256 = "sha256-i5m2I0IApTwD9XIjsDwU4dpNtwGI0EGeSkY6VbXDOAM=";
       };
 
       sconfig = pkgs.buildGoModule {
         name = "sconfig";
         src = inputs.sconfig-src;
-        vendorSha256 = "sha256-ytpye6zEZC4oLrif8xe6Vr99lblule9HiAyZsSisIPg=";
+        vendorSha256 = "sha256-J3L8gPtCShn//3mliMzvRTxRgb86f1pJ+yjZkF5ixEk=";
       };
 
       cosmovisor = pkgs.buildGoModule {
@@ -127,46 +127,6 @@
         doCheck = false;
       };
 
-      osmosis6 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v6.4.1";
-        src = inputs.osmosis6-src;
-        vendorSha256 = "sha256-UI5QGQsTLPnsDWWPUG+REsvF4GIeFeNHOiG0unNXmdY=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-      };
-
-      osmosis7 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v7.3.0";
-        src = inputs.osmosis7-src;
-        excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1 "osmosisd";
-        buildInputs = [libwasmvm_1];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
-      };
-
-      osmosis8 = utilities.mkCosmosGoApp {
-        name = "osmosis";
-        version = "v8.0.0";
-        src = inputs.osmosis8-src;
-        excludedPackages = "./tests/e2e";
-        vendorSha256 = "sha256-sdj59aZJBF4kpolHnYOHHO4zs7vKFu0i1xGKZFEiOyQ=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase libwasmvm_1beta7 "osmosisd";
-        dontStrip = true;
-        buildInputs = [libwasmvm_1beta7];
-
-        # Test has to be skipped as end-to-end testing requires network access
-        doCheck = false;
-      };
-
       juno = utilities.mkCosmosGoApp {
         name = "juno";
         version = "v13.0.1";
@@ -181,18 +141,6 @@
         '';
         dontStrip = true;
         buildInputs = [libwasmvm_1_1_1];
-      };
-
-      terra = utilities.mkCosmosGoApp {
-        name = "terra";
-        version = "v0.5.17";
-        src = inputs.terra-src;
-        vendorSha256 = "sha256-2KmSRuSMzg9qFVncrxk+S5hqx8MMpRdo12/HZEaK5Aw=";
-        tags = ["netgo"];
-        engine = "tendermint/tendermint";
-        preFixup = utilities.wasmdPreFixupPhase libwasmvm_0_16_3 "terrad";
-        dontStrip = true;
-        buildInputs = [libwasmvm_0_16_3];
       };
 
       sentinel = utilities.mkCosmosGoApp {
@@ -221,7 +169,7 @@
         version = "v2.0.0";
         subPackages = ["cmd/umeed"];
         src = inputs.umee-src;
-        vendorSha256 = "sha256-HONlFCC6iHgKQwqAiEV29qmSHsLdloUlAeJkxViUG7w=";
+        vendorSha256 = "sha256-VXBB2ZBh4QFbGQm3bXsl63MeASZMI1++wnhm2IrDrwk=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
       };
@@ -296,7 +244,7 @@
       ica = pkgs.buildGoModule {
         name = "ica";
         src = inputs.ica-src;
-        vendorSha256 = "sha256-ykGo5TQ+MiFoeQoglflQL3x3VN2CQuyZCIiweP/c9lM=";
+        vendorSha256 = "sha256-ZIP6dmHugLLtdA/8N8byg3D3JinjNxpvxyK/qiIs7bI=";
       };
 
       wasmd = utilities.mkCosmosGoApp {
@@ -442,81 +390,82 @@
         };
 
       libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage (libwasmvm
-        // {
+        // rec {
           src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
           version = "v1.2.4";
           cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l4=";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.2.6" = "sha256-6uhJijuDPXvEZG8mKBGyswsj/JR75Ui713BVx4XD7WI=";
+            };
+          };
         });
 
       libwasmvm_1_2_3 = pkgs.rustPlatform.buildRustPackage (libwasmvm
-        // {
+        // rec {
           src = "${inputs.wasmvm_1_2_3-src}/libwasmvm";
           version = "v1.2.3";
           cargoSha256 = "sha256-+BaILTe+3qlI+/nz7Nub2hPKiDZlLdL58ckmiBxJtsk=";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.2.4" = "sha256-8BHwgXRNHNB3V1tL+en3IfRHnyeygx5jYz7Sx6duWQg=";
+            };
+          };
         });
 
-      libwasmvm_1_1_2 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_1_2-src}/libwasmvm";
-        version = "v1.1.2";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-bCnr4TrI+jzvE91n2hhZMuBUPlrO1jXRbU/GFbRzs44=";
-        doCheck = false;
-      };
+      libwasmvm_1_1_2 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // rec {
+          src = "${inputs.wasmvm_1_1_2-src}/libwasmvm";
+          version = "v1.1.2";
+          cargoSha256 = "sha256-bCnr4TrI+jzvE91n2hhZMuBUPlrO1jXRbU/GFbRzs44=";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.1.10" = "sha256-i8tXVYVLguKd8oAwt8lc1aDzkxTtCaydrkl2X82Lw/Y=";
+            };
+          };
+        });
 
-      libwasmvm_1_1_1 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_1_1-src}/libwasmvm";
-        version = "v1.1.1";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-97BhqI1FZyDbVrT5hdyEK7VPtpE9lQgWduc/siH6NqE";
-        doCheck = false;
-      };
+      libwasmvm_1_1_1 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // rec {
+          src = "${inputs.wasmvm_1_1_1-src}/libwasmvm";
+          version = "v1.1.1";
+          cargoSha256 = "sha256-97BhqI1FZyDbVrT5hdyEK7VPtpE9lQgWduc/siH6NqE";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.1.2" = "sha256-Phg/StSMZA74gGPyQpzjsy3qRO++AWWVnbcu1Ar0WCE=";
+            };
+          };
+        });
 
-      libwasmvm_1 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1-src}/libwasmvm";
-        version = "v1.0.0";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-          ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
-        '';
-        cargoSha256 = "sha256-Q8j9wESn2RBb05LcS7FiKGTPLgIPxWA0GZqHlTjkqpU=";
-        doCheck = false;
-      };
+      libwasmvm_1 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // rec {
+          src = "${inputs.wasmvm_1-src}/libwasmvm";
+          version = "v1.0.0";
+          cargoSha256 = "sha256-Q8j9wESn2RBb05LcS7FiKGTPLgIPxWA0GZqHlTjkqpU=";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.0.0" = "sha256-GuepzBF0BxbPatKZTiRwqPxJewbie+5gwBtOTLWOnng=";
+            };
+          };
+        });
 
-      libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
-        version = "v1.0.0-beta7";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-        '';
-        cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
-        doCheck = false;
-      };
-
-      libwasmvm_0_16_3 = pkgs.rustPlatform.buildRustPackage {
-        pname = "libwasmvm";
-        src = "${inputs.wasmvm_0_16_3-src}/libwasmvm";
-        version = "v0.16.3";
-        nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
-        postInstall = ''
-          cp ./bindings.h $out/lib/
-        '';
-        cargoSha256 = "sha256-MUTXxBCIYwCBCDNkFh+JrGMhKg20vC3wCGxqpZVa9Os=";
-        doCheck = false;
-      };
+      libwasmvm_1beta7 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // rec {
+          src = "${inputs.wasmvm_1_beta7-src}/libwasmvm";
+          version = "v1.0.0-beta7";
+          cargoSha256 = "sha256-G9wHl2JPgCDoMcykUAM0GrPUbMvSY5PbUzZ6G98rIO8=";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.0.0-beta6" = "sha256-HnskwQ3fOrLG6ImgDYH+/nBYBqdWJDjPtcsTsUz8n2s=";
+            };
+          };
+        });
 
       # Misc
       gm = with pkgs;
@@ -595,7 +544,7 @@
         curl
         lz4
         python39
-        packages.osmosis8
+        packages.osmosis
         packages.cosmovisor
       ];
       shellHook = ''
