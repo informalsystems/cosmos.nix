@@ -54,17 +54,17 @@
     "centauri-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1692209286,
-        "narHash": "sha256-fabsZyaSCnWnhvG9nO8y39t85u+MZNyEKzU+0fSueLM=",
+        "lastModified": 1697027127,
+        "narHash": "sha256-zdEJr4VfwKq20rGx7JZYV7cnz5APwnPSMJrjX9S/bT8=",
         "owner": "dzmitry-lahoda-forks",
         "repo": "composable-centauri",
-        "rev": "9fa53d8b47d17219d1270146a146e4e386bc2a29",
+        "rev": "9a296e3dcca3ff390dd5622ab3cfbdfa0b68d2e9",
         "type": "github"
       },
       "original": {
         "owner": "dzmitry-lahoda-forks",
         "repo": "composable-centauri",
-        "rev": "9fa53d8b47d17219d1270146a146e4e386bc2a29",
+        "rev": "9a296e3dcca3ff390dd5622ab3cfbdfa0b68d2e9",
         "type": "github"
       }
     },
@@ -780,16 +780,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1692886846,
-        "narHash": "sha256-VdM6hGqcDyCNx7AR8s7SxE3pEMxHiIhCJ7592sDp3uc=",
+        "lastModified": 1695859760,
+        "narHash": "sha256-Ad2Z4rzD0HQtnj2aQ4GD6ic5sxOHVPsaW4iNKZEDTiw=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "1c5f25d04f19d6302e0bdd585ba1d7a2cc96e397",
+        "rev": "38d1d2b748d161fd23f966d88b23b66a63c9a284",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v18.0.0",
+        "ref": "v19.2.0",
         "repo": "osmosis",
         "type": "github"
       }
