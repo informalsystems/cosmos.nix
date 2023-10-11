@@ -1,5 +1,5 @@
 {
-  description = "A reproducible package set for Cosmos";
+  description = "A reproducible package set for Cosmos, IBC and CosmWasm";
 
   inputs = {
     # Nix Inputs

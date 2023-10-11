@@ -111,7 +111,7 @@
         name = "osmosis";
         version = "v19.2.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-jeV0ofAMbQihs/OrVZjWSVdXJ1bmrANZ5gZ9JWlWrp4=";
+        vendorSha256 = "sha256-z1lGckpsrCui8VQow3ciy6yl5LL5NxHMIU+SGL9wvKs=";
         tags = ["netgo"];
         excludedPackages = ["cl-genesis-positions"];
         engine = "tendermint/tendermint";
@@ -341,7 +341,7 @@
         name = "centauri";
         version = "v6.0.3";
         src = inputs.centauri-src;
-        vendorSha256 = "sha256-RiIRMo1fkiU4XU+OKXrtXUGoFD//hZbbU5qUEc71g6k=";
+        vendorSha256 = "sha256-mNp5FLIw66xvqcv9tqC0cDGLyhRAwP9dTKeRjBx01kE=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["interchaintest" "simd"];
