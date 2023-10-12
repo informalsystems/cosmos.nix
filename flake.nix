@@ -1,5 +1,5 @@
 {
-  description = "A reproducible package set for Cosmos";
+  description = "A reproducible package set for Cosmos, IBC and CosmWasm";
 
   inputs = {
     # Nix Inputs
@@ -110,7 +110,7 @@
     juno-src.url = github:CosmosContracts/juno/v13.0.1;
 
     osmosis-src.flake = false;
-    osmosis-src.url = github:osmosis-labs/osmosis/v18.0.0;
+    osmosis-src.url = github:osmosis-labs/osmosis/v19.2.0;
 
     sentinel-src.flake = false;
     sentinel-src.url = github:sentinel-official/hub/v0.9.0-rc0;
@@ -137,7 +137,7 @@
     # main branch hardcodes some gov addresses owned by private keys
     # this is one commit patch which allows local governance to work
     # https://github.com/notional-labs/composable-centauri/pull/199
-    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/9fa53d8b47d17219d1270146a146e4e386bc2a29";
+    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/9a296e3dcca3ff390dd5622ab3cfbdfa0b68d2e9";
 
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
