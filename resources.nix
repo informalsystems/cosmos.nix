@@ -46,6 +46,13 @@
         vendorSha256 = "sha256-J3L8gPtCShn//3mliMzvRTxRgb86f1pJ+yjZkF5ixEk=";
       };
 
+      cometbft = pkgs.buildGoModule {
+        name = "cometbft";
+        src = inputs.cometbft-src;
+        vendorSha256 = "sha256-rZeC0B5U0bdtZAw/hnMJ7XG73jN0nsociAN8GGdmlUY=";
+        doCheck = false;
+      };
+
       cosmovisor = pkgs.buildGoModule {
         name = "cosmovisor";
         src = "${inputs.cosmos-sdk-src}/cosmovisor";

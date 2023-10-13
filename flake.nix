@@ -22,6 +22,10 @@
     sconfig-src.url = github:freshautomations/sconfig;
     sconfig-src.flake = false;
 
+    # CometBFT
+    cometbft-src.url = github:cometbft/cometbft/v0.38.0;
+    cometbft-src.flake = false;
+
     # Relayer Sources
     ibc-rs-src.url = github:informalsystems/ibc-rs/v1.0.0;
     ibc-rs-src.flake = false;
@@ -239,6 +243,10 @@
 
         # nix run .#<app>
         apps = {
+          cometbft = mkApp {
+            name = "cometbft";
+            drv = packages.cometbft;
+          };
           hermes = mkApp {
             name = "hermes";
             drv = packages.hermes;
