@@ -51,6 +51,23 @@
         "type": "github"
       }
     },
+    "celestia-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697229641,
+        "narHash": "sha256-1HvYCZEcB7BCY5q9ykEZuCMzqcbA3JoDMwoHVJ0+SaY=",
+        "owner": "celestiaorg",
+        "repo": "celestia-app",
+        "rev": "2b8cc9e23826ccb658b7dd5aa6cd51a0921a0c29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "celestiaorg",
+        "ref": "v1.1.0",
+        "repo": "celestia-app",
+        "type": "github"
+      }
+    },
     "centauri-src": {
       "flake": false,
       "locked": {
@@ -174,11 +191,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1692792214,
-        "narHash": "sha256-voZDQOvqHsaReipVd3zTKSBwN7LZcUwi3/ThMxRZToU=",
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "1721b3e7c882f75f2301b00d48a2884af8c448ae",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
         "type": "github"
       },
       "original": {
@@ -223,11 +240,11 @@
     "gaia-main-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1692777545,
-        "narHash": "sha256-Gg6pqITR+aqq4FBE0h/HvXpG+whtli2gJXw+dsyoKEE=",
+        "lastModified": 1697456548,
+        "narHash": "sha256-iXcwU0/kDAGzQKYrHKTMX6/ayB6Ns0KBYMOpi5uNYJk=",
         "owner": "cosmos",
         "repo": "gaia",
-        "rev": "97d0a1359716c5c534053a6a15a007b740d34780",
+        "rev": "e6da2cc3d1602a6c64fc50c90ea60651177d911b",
         "type": "github"
       },
       "original": {
@@ -600,11 +617,11 @@
     "ica-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1679480012,
-        "narHash": "sha256-LFyInZT7z/8/d3RYepYf95ryxA7Pbg3TMQhHrHUvlCA=",
+        "lastModified": 1695202199,
+        "narHash": "sha256-8RwZSnqqZzVjQsSMTckNhmTy3VYyubVmgE/hU6ntq9M=",
         "owner": "cosmos",
         "repo": "interchain-accounts-demo",
-        "rev": "fe07f304731161055cecec120e0d2de01e84bad4",
+        "rev": "9d9ec3f4f7e37e9d2a1c7f4a199e7d18c17e14db",
         "type": "github"
       },
       "original": {
@@ -749,11 +766,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1692684269,
-        "narHash": "sha256-zJk2pyF4Cuhtor0khtPlf+hfJIh22rzAUC+KU3Ob31Q=",
+        "lastModified": 1697379843,
+        "narHash": "sha256-RcnGuJgC2K/UpTy+d32piEoBXq2M+nVFzM3ah/ZdJzg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9d757ec498666cc1dcc6f2be26db4fd3e1e9ab37",
+        "rev": "12bdeb01ff9e2d3917e6a44037ed7df6e6c3df9d",
         "type": "github"
       },
       "original": {
@@ -841,11 +858,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1692274144,
-        "narHash": "sha256-BxTQuRUANQ81u8DJznQyPmRsg63t4Yc+0kcyq6OLz8s=",
+        "lastModified": 1696846637,
+        "narHash": "sha256-0hv4kbXxci2+pxhuXlVgftj/Jq79VSmtAyvfabCCtYk=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "7e3517c03d46159fdbf8c0e5c97f82d5d4b0c8fa",
+        "rev": "42e1b6095ef80a51f79595d9951eb38e91c4e6ca",
         "type": "github"
       },
       "original": {
@@ -893,6 +910,7 @@
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
         "beaker-src": "beaker-src",
+        "celestia-src": "celestia-src",
         "centauri-src": "centauri-src",
         "cometbft-src": "cometbft-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
