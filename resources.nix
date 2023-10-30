@@ -235,7 +235,7 @@
         appName = "interchain-security";
         version = "v3.0.0-pre";
         src = inputs.interchain-security-src;
-        vendorSha256 = "sha256-F0rU/xAymxrp/9taTakySU5o1mnnppFvFxTuVc5suJY=";
+        vendorSha256 = "sha256-TnU7lJnoD/ZzPS2XfvFGkb/ycLbH3iHvKRim+31+Yro=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         doCheck = false; # tests are currently failing
