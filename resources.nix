@@ -233,11 +233,11 @@
       interchain-security = utilities.mkCosmosGoApp {
         name = "interchain-security";
         appName = "interchain-security";
-        version = "v1.0.4";
+        version = "v3.0.0-pre";
         src = inputs.interchain-security-src;
-        vendorSha256 = "sha256-BLadou3/JfumdjbXVJnVMZahARXxVDpvSWJzzK6ilxA=";
+        vendorSha256 = "sha256-TnU7lJnoD/ZzPS2XfvFGkb/ycLbH3iHvKRim+31+Yro=";
         tags = ["netgo"];
-        engine = "tendermint/tendermint";
+        engine = "cometbft/cometbft";
         doCheck = false; # tests are currently failing
       };
 
