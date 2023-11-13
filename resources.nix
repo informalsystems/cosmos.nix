@@ -357,9 +357,9 @@
 
       centauri = utilities.mkCosmosGoApp {
         name = "centauri";
-        version = "v6.0.3";
+        version = "v6.3.1";
         src = inputs.centauri-src;
-        vendorSha256 = "sha256-mNp5FLIw66xvqcv9tqC0cDGLyhRAwP9dTKeRjBx01kE=";
+        vendorSha256 = "sha256-MRADQxw+T8lVJujJn2yEaZOEs6AYGgaiBbYJUI3cugA=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["interchaintest" "simd"];
