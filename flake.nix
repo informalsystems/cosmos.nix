@@ -138,10 +138,8 @@
     stargaze-src.url = github:public-awesome/stargaze/v3.0.0;
 
     centauri-src.flake = false;
-    # main branch hardcodes some gov addresses owned by private keys
-    # this is one commit patch which allows local governance to work
-    # https://github.com/notional-labs/composable-centauri/pull/199
-    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/9a296e3dcca3ff390dd5622ab3cfbdfa0b68d2e9";
+    # https://github.com/notional-labs/composable-centauri/pull/271
+    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/c6736b946c3bc6c7c23788d499b2dff94ffd39f5";
 
     wasmd-src.flake = false;
     wasmd-src.url = github:CosmWasm/wasmd/v0.30.0;
