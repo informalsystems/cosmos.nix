@@ -8,10 +8,6 @@
     rust-overlay.url = github:oxalica/rust-overlay/b8f3db465405014039985f1c5cea92cc29e1b3b5;
     pre-commit-hooks.url = github:cachix/pre-commit-hooks.nix;
     sbt-derivation.url = github:zaninime/sbt-derivation;
-    # fixes wird behaviour when flake depends on this flake
-    # it either fails to find overlay in sbt or fails to put nixpks into input
-    sbt-derivation.inputs.nixpkgs.follows = "nixpkgs";
-    sbt-derivation.inputs.flake-utils.follows = "flake-utils";
 
     nix-std.url = github:chessai/nix-std;
 
