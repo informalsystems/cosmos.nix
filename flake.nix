@@ -48,6 +48,9 @@
     gaia-main-src.flake = false;
     gaia-main-src.url = github:cosmos/gaia;
 
+    gaia13-src.flake = false;
+    gaia13-src.url = github:cosmos/gaia/v13.0.2;
+
     gaia12-src.flake = false;
     gaia12-src.url = github:cosmos/gaia/v12.0.0;
 
@@ -306,6 +309,11 @@
           gaia12 = mkApp {
             name = "gaia";
             drv = packages.gaia12;
+            exePath = "/bin/gaiad";
+          };
+          gaia13 = mkApp {
+            name = "gaia";
+            drv = packages.gaia13;
             exePath = "/bin/gaiad";
           };
           gaia-main = mkApp {

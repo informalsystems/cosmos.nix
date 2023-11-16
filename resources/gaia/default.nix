@@ -124,4 +124,18 @@ in
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
       };
+
+      gaia13 = {
+        name = "gaia";
+        vendorSha256 = "sha256-SQF6YNVVOfpL55Uc4LIzo2jv/cdKp8hHUeqcpc/dBEc=";
+        version = "v13.0.2";
+        goVersion = "1.20";
+        src = gaia13-src;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
     }
