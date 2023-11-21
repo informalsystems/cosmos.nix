@@ -908,6 +908,23 @@
         "type": "github"
       }
     },
+    "provenance-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699901286,
+        "narHash": "sha256-dTX3kg2QUsC9SwsaommP4IFgIdQgWZrGQNtp/B+fzys=",
+        "owner": "provenance-io",
+        "repo": "provenance",
+        "rev": "91b0813de2f93d03cefe8efb226dc32f02690840",
+        "type": "github"
+      },
+      "original": {
+        "owner": "provenance-io",
+        "ref": "v1.17.0",
+        "repo": "provenance",
+        "type": "github"
+      }
+    },
     "regen-src": {
       "flake": false,
       "locked": {
@@ -990,6 +1007,7 @@
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
         "pre-commit-hooks": "pre-commit-hooks",
+        "provenance-src": "provenance-src",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
         "rust-overlay": "rust-overlay",

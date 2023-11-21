@@ -407,6 +407,20 @@
           cargoCheckCommand = "true";
         };
 
+      provenance = utilities.mkCosmosGoApp {
+        name = "provenance";
+        version = "v1.17.0";
+        goVersion = "1.20";
+        src = inputs.provenance-src;
+        vendorSha256 = "sha256-XFU/+lMwg4hLlyYGUvDp0SqGqijrUQZddoH4VkIvqHg=";
+        tags = ["netgo"];
+        engine = "tendermint/tendermint";
+        preFixup = ''
+          ${utilities.wasmdPreFixupPhase libwasmvm_1 "provenanced"}
+        '';
+        buildInputs = [libwasmvm_1];
+      };
+
       libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage (libwasmvm
         // rec {
           src = "${inputs.wasmvm_1_2_4-src}/libwasmvm";
