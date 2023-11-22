@@ -419,7 +419,7 @@
           ${utilities.wasmdPreFixupPhase libwasmvm_1 "provenanced"}
         '';
         # dbmigrate is problematic as it depends implicitly on the build/ directory being present at runtime,
-        # which is not guaranteed to be there. 
+        # which is not guaranteed to be there.
         #
         # When nix is stripping build dependencies from the binary's rpath and detects
         # a runtime dependency whose path don't exist in the nix store it is kind enough to warn us that this will
