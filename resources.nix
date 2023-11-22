@@ -416,7 +416,7 @@
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1 "provenanced"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_2_4 "provenanced"}
         '';
         # dbmigrate is problematic as it depends implicitly on the build/ directory being present at runtime,
         # which is not guaranteed to be there.
@@ -435,7 +435,7 @@
         excludedPackages = [
           "./cmd/dbmigrate"
         ];
-        buildInputs = [libwasmvm_1];
+        buildInputs = [libwasmvm_1_2_4];
       };
 
       libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage (libwasmvm
