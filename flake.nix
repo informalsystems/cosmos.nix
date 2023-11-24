@@ -118,7 +118,7 @@
     evmos-src.url = github:tharsis/evmos/v9.1.0;
 
     juno-src.flake = false;
-    juno-src.url = github:CosmosContracts/juno/v13.0.1;
+    juno-src.url = github:CosmosContracts/juno/v17.1.1;
 
     osmosis-src.flake = false;
     osmosis-src.url = github:osmosis-labs/osmosis/v19.2.0;
@@ -156,6 +156,9 @@
 
     wasmvm_1-src.flake = false;
     wasmvm_1-src.url = github:CosmWasm/wasmvm/v1.0.0;
+
+    wasmvm_1_3_0-src.flake = false;
+    wasmvm_1_3_0-src.url = github:CosmWasm/wasmvm/v1.3.0;
 
     wasmvm_1_2_4-src.flake = false;
     wasmvm_1_2_4-src.url = github:CosmWasm/wasmvm/v1.2.4;

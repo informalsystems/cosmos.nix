@@ -136,18 +136,17 @@
 
       juno = utilities.mkCosmosGoApp {
         name = "juno";
-        version = "v13.0.1";
+        version = "v17.1.1";
         src = inputs.juno-src;
-        vendorSha256 = "sha256-0EsEzkEY4N4paQ+OPV7MVUTwOr8F2uCCLi6NQ3JSlgM=";
+        vendorSha256 = "sha256-ftmNMjCFWq4XGM9+ad64dzzcgQJ1ApH4YmthldfrB54=";
         tags = ["netgo"];
-        engine = "tendermint/tendermint";
+        engine = "cometbft/cometbft";
         preFixup = ''
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "junod"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "chain"}
-          ${utilities.wasmdPreFixupPhase libwasmvm_1_1_1 "node"}
+          ${utilities.wasmdPreFixupPhase libwasmvm_1_3_0 "junod"}
         '';
+        excludedPackages = ["interchaintest"];
         dontStrip = true;
-        buildInputs = [libwasmvm_1_1_1];
+        buildInputs = [libwasmvm_1_3_0];
       };
 
       sentinel = utilities.mkCosmosGoApp {
@@ -406,6 +405,19 @@
           doCheck = false;
           cargoCheckCommand = "true";
         };
+
+      libwasmvm_1_3_0 = pkgs.rustPlatform.buildRustPackage (libwasmvm
+        // rec {
+          src = "${inputs.wasmvm_1_3_0-src}/libwasmvm";
+          version = "v1.3.0";
+          #cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7QkhAA2mhquJ5l4=";
+          cargoLock = {
+            lockFile = "${src}/Cargo.lock";
+            outputHashes = {
+              "cosmwasm-crypto-1.3.0" = "sha256-VU6bPS9z55W4O0rh82O2Zm4oO50cFA4dklNC4Cqmgw0=";
+            };
+          };
+        });
 
       libwasmvm_1_2_4 = pkgs.rustPlatform.buildRustPackage (libwasmvm
         // rec {
