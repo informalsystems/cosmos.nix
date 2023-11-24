@@ -116,9 +116,9 @@
 
       osmosis = utilities.mkCosmosGoApp {
         name = "osmosis";
-        version = "v19.2.0";
+        version = "v20.4.0";
         src = inputs.osmosis-src;
-        vendorSha256 = "sha256-z1lGckpsrCui8VQow3ciy6yl5LL5NxHMIU+SGL9wvKs=";
+        vendorSha256 = "sha256-WN6H+lRS+wX4CiVEVMxp4fW2vtZxTi+O6SncJdrUFLo=";
         tags = ["netgo"];
         excludedPackages = ["cl-genesis-positions"];
         engine = "tendermint/tendermint";
@@ -322,9 +322,9 @@
 
       migaloo = utilities.mkCosmosGoApp {
         name = "migaloo";
-        version = "v2.0.2";
+        version = "v3.0.2";
         src = inputs.migaloo-src;
-        vendorSha256 = "sha256-Z85OpuiB73BHSSuPADvE3tJ5ZstHYik8yghfCHXy3W0=";
+        vendorSha256 = "sha256-GQDfI4hSkkrsBfIczdGoOhghR7/FqEvXavyP4E6iHM4=";
         engine = "tendermint/tendermint";
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "migalood"}
@@ -334,10 +334,10 @@
 
       celestia = utilities.mkCosmosGoApp {
         name = "celestia";
-        version = "v1.1.0";
+        version = "v1.4.0";
         src = inputs.celestia-src;
         goVersion = "1.21";
-        vendorSha256 = "sha256-XA43E8EWTSdBKB1J2tf/11MfByDXHSdNBXcM6q06kj8=";
+        vendorSha256 = "sha256-KvkVqJZ5kvkKWXTYgG7+Ksz8aLhGZPBG5zkM44fVNT4=";
         engine = "tendermint/tendermint";
 
         doCheck = false;
@@ -345,9 +345,9 @@
 
       neutron = utilities.mkCosmosGoApp {
         name = "neutron";
-        version = "v1.0.2";
+        version = "v1.0.4";
         src = inputs.neutron-src;
-        vendorSha256 = "sha256-Q3QEk7qS1ue/HrvwdkGh6iX8BTg+0ssznyWsYtzZ+/4=";
+        vendorSha256 = "sha256-jlzFYx09U7BkBg9LDZqfwT4aASQSbuVBl0a/WCrly8A=";
         engine = "tendermint/tendermint";
         preFixup = ''
           ${utilities.wasmdPreFixupPhase libwasmvm_1_2_3 "neutrond"}
