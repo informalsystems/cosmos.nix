@@ -1,5 +1,5 @@
 {mkCosmosGoApp, evmos-src}:
-      mkCosmosGoApp.mkCosmosGoApp {
+      mkCosmosGoApp {
         name = "evmos";
         version = "v9.1.0";
         src = evmos-src;

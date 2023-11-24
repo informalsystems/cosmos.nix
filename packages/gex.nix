@@ -1,8 +1,8 @@
 {
-  pkgs,
+  buildGoModule,
   gex-src,
 }:
-pkgs.buildGoModule {
+buildGoModule {
   name = "gex";
   doCheck = false;
   src = gex-src;

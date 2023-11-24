@@ -5,7 +5,7 @@
 with inputs;
   builtins.mapAttrs (_: mkCosmosGoApp)
   {
-    stride = mkCosmosGoApp {
+    stride = {
       name = "stride";
       version = "v8.0.0";
       src = stride-src;
@@ -15,7 +15,7 @@ with inputs;
       doCheck = false;
     };
 
-    stride-consumer = mkCosmosGoApp {
+    stride-consumer = {
       name = "stride-consumer";
       version = "v12.1.0";
       src = stride-consumer-src;
@@ -25,7 +25,7 @@ with inputs;
       doCheck = false;
     };
 
-    stride-consumer-no-admin = mkCosmosGoApp {
+    stride-consumer-no-admin = {
       name = "stride-consumer-no-admin";
       version = "v12.1.0";
       src = stride-consumer-src;
@@ -36,7 +36,7 @@ with inputs;
       doCheck = false;
     };
 
-    stride-no-admin = mkCosmosGoApp {
+    stride-no-admin = {
       name = "stride-no-admin";
       version = "v8.0.0";
       src = stride-src;
