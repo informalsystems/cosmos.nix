@@ -200,7 +200,7 @@
     celestia-src.url = github:celestiaorg/celestia-app/v1.1.0;
 
     neutron-src.flake = false;
-    neutron-src.url = github:neutron-org/neutron/v1.0.2;
+    neutron-src.url = github:neutron-org/neutron/v1.0.4;
 
     gex-src.flake = false;
     gex-src.url = github:cosmos/gex/bc168741b2019745d343606d31b5c274f216fc3f;

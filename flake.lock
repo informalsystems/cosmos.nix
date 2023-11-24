@@ -772,16 +772,16 @@
     "neutron-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1685114240,
-        "narHash": "sha256-xHi4W4fOT3kTmkPEKdGp6JbzKQELdWy9PIn0qsZhprY=",
+        "lastModified": 1689686537,
+        "narHash": "sha256-JnGovejgL+dEiZupzS+tPaUl2br4eGntiEfMKGUPEps=",
         "owner": "neutron-org",
         "repo": "neutron",
-        "rev": "3c8dde1ff524551e24295d393a3913c25199d265",
+        "rev": "780486095bf657f7b94b4474cb39fd137cf93c98",
         "type": "github"
       },
       "original": {
         "owner": "neutron-org",
-        "ref": "v1.0.2",
+        "ref": "v1.0.4",
         "repo": "neutron",
         "type": "github"
       }
