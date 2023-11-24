@@ -194,7 +194,7 @@
     stride-consumer-src.url = github:Stride-Labs/stride/v12.1.0;
 
     migaloo-src.flake = false;
-    migaloo-src.url = github:White-Whale-Defi-Platform/migaloo-chain/v2.0.2;
+    migaloo-src.url = github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2;
 
     celestia-src.flake = false;
     celestia-src.url = github:celestiaorg/celestia-app/v1.1.0;
