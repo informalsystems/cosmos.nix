@@ -54,16 +54,16 @@
     "celestia-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1697229641,
-        "narHash": "sha256-1HvYCZEcB7BCY5q9ykEZuCMzqcbA3JoDMwoHVJ0+SaY=",
+        "lastModified": 1700494564,
+        "narHash": "sha256-O6KrCStrZLmWy3xybQUNsWEb3O7vIRCFDE9MsEtsFro=",
         "owner": "celestiaorg",
         "repo": "celestia-app",
-        "rev": "2b8cc9e23826ccb658b7dd5aa6cd51a0921a0c29",
+        "rev": "2dbfabf1849e166974c1287c35b43e5e07727643",
         "type": "github"
       },
       "original": {
         "owner": "celestiaorg",
-        "ref": "v1.1.0",
+        "ref": "v1.4.0",
         "repo": "celestia-app",
         "type": "github"
       }
