@@ -54,16 +54,16 @@
     "celestia-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1697229641,
-        "narHash": "sha256-1HvYCZEcB7BCY5q9ykEZuCMzqcbA3JoDMwoHVJ0+SaY=",
+        "lastModified": 1700494564,
+        "narHash": "sha256-O6KrCStrZLmWy3xybQUNsWEb3O7vIRCFDE9MsEtsFro=",
         "owner": "celestiaorg",
         "repo": "celestia-app",
-        "rev": "2b8cc9e23826ccb658b7dd5aa6cd51a0921a0c29",
+        "rev": "2dbfabf1849e166974c1287c35b43e5e07727643",
         "type": "github"
       },
       "original": {
         "owner": "celestiaorg",
-        "ref": "v1.1.0",
+        "ref": "v1.4.0",
         "repo": "celestia-app",
         "type": "github"
       }
@@ -736,16 +736,16 @@
     "migaloo-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1681833529,
-        "narHash": "sha256-7sOAcUcc1HpZgLjjdiNuXeXCq9vB9EXCMY4YIT1MAgU=",
+        "lastModified": 1699273936,
+        "narHash": "sha256-O+vGWFnV3+bvXinxl1QjVyDnQskp5H1VnlL+TaMfiSs=",
         "owner": "White-Whale-Defi-Platform",
         "repo": "migaloo-chain",
-        "rev": "129e6fecd377614123f2af33417f9e31accf195f",
+        "rev": "de98de2dd96917ae1ab79161d573fc0b4ee1facf",
         "type": "github"
       },
       "original": {
         "owner": "White-Whale-Defi-Platform",
-        "ref": "v2.0.2",
+        "ref": "v3.0.2",
         "repo": "migaloo-chain",
         "type": "github"
       }
@@ -753,16 +753,16 @@
     "neutron-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1685114240,
-        "narHash": "sha256-xHi4W4fOT3kTmkPEKdGp6JbzKQELdWy9PIn0qsZhprY=",
+        "lastModified": 1689686537,
+        "narHash": "sha256-JnGovejgL+dEiZupzS+tPaUl2br4eGntiEfMKGUPEps=",
         "owner": "neutron-org",
         "repo": "neutron",
-        "rev": "3c8dde1ff524551e24295d393a3913c25199d265",
+        "rev": "780486095bf657f7b94b4474cb39fd137cf93c98",
         "type": "github"
       },
       "original": {
         "owner": "neutron-org",
-        "ref": "v1.0.2",
+        "ref": "v1.0.4",
         "repo": "neutron",
         "type": "github"
       }
@@ -851,16 +851,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1695859760,
-        "narHash": "sha256-Ad2Z4rzD0HQtnj2aQ4GD6ic5sxOHVPsaW4iNKZEDTiw=",
+        "lastModified": 1700576443,
+        "narHash": "sha256-UE3XEgdSp8mlgIKQRrBfb4wiPEeagB/wNWfDvDq4up4=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "38d1d2b748d161fd23f966d88b23b66a63c9a284",
+        "rev": "d9965b09d3e8690c77050bb095bc5b69772ebdfb",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v19.2.0",
+        "ref": "v20.4.0",
         "repo": "osmosis",
         "type": "github"
       }

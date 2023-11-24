@@ -136,7 +136,7 @@
     juno-src.url = "github:CosmosContracts/juno/v13.0.1";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v19.2.0";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v20.4.0";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
@@ -209,13 +209,13 @@
     stride-consumer-src.url = "github:Stride-Labs/stride/v12.1.0";
     stride-consumer-src.flake = false;
 
-    migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v2.0.2";
+    migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2";
     migaloo-src.flake = false;
 
-    celestia-src.url = "github:celestiaorg/celestia-app/v1.1.0";
+    celestia-src.url = "github:celestiaorg/celestia-app/v1.4.0";
     celestia-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v1.0.2";
+    neutron-src.url = "github:neutron-org/neutron/v1.0.4";
     neutron-src.flake = false;
 
     gex-src.url = "github:cosmos/gex/bc168741b2019745d343606d31b5c274f216fc3f";

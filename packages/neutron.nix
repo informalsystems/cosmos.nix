@@ -5,9 +5,9 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "neutron";
-  version = "v1.0.2";
+  version = "v1.0.4";
   src = neutron-src;
-  vendorSha256 = "sha256-Q3QEk7qS1ue/HrvwdkGh6iX8BTg+0ssznyWsYtzZ+/4=";
+  vendorSha256 = "sha256-jlzFYx09U7BkBg9LDZqfwT4aASQSbuVBl0a/WCrly8A=";
   engine = "tendermint/tendermint";
   preFixup = ''
     ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_3 "neutrond"}

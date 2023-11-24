@@ -1,9 +1,9 @@
 { cosmosLib, osmosis-src, libwasmvm_1_2_3 }:
       cosmosLib.mkCosmosGoApp {
         name = "osmosis";
-        version = "v19.2.0";
+        version = "v20.4.0";
         src = osmosis-src;
-        vendorSha256 = "sha256-z1lGckpsrCui8VQow3ciy6yl5LL5NxHMIU+SGL9wvKs=";
+        vendorSha256 = "sha256-WN6H+lRS+wX4CiVEVMxp4fW2vtZxTi+O6SncJdrUFLo=";
         tags = ["netgo"];
         excludedPackages = ["cl-genesis-positions"];
         engine = "tendermint/tendermint";
