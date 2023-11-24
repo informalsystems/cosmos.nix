@@ -210,6 +210,9 @@
 
     beaker-src.flake = false;
     beaker-src.url = github:osmosis-labs/beaker/v0.1.6;
+
+    provenance-src.flake = false;
+    provenance-src.url = github:/provenance-io/provenance/v1.17.0;
   };
 
   outputs = inputs:
@@ -482,6 +485,11 @@
             name = "celestia";
             drv = packages.celestia;
             exePath = "/bin/celestia-appd";
+          };
+          provenance = mkApp {
+            name = "provenance";
+            drv = packages.provenance;
+            exePath = "/bin/provenanced";
           };
         };
       });
