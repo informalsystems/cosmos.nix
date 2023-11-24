@@ -100,6 +100,11 @@
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
         };
+        provenance = import ../packages/provenance.nix {
+          inherit (inputs) provenance-src;
+          inherit (self'.packages) libwasmvm_1_2_4;
+          inherit cosmosLib;
+        };
         regen = import ../packages/regen.nix {
           inherit (inputs) regen-src;
           inherit (cosmosLib) mkCosmosGoApp;

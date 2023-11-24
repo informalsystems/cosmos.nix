@@ -223,6 +223,9 @@
 
     beaker-src.url = "github:osmosis-labs/beaker/v0.1.6";
     beaker-src.flake = false;
+
+    provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
+    provenance-src.flake = false;
   };
 }
 
