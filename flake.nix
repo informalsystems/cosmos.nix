@@ -25,7 +25,7 @@
         # Sets the apps flake output
         ./modules/apps.nix
         # Sets the overlays.default flake output
-        ./modules/overlays.nix
+        ./modules/overlay.nix
       ];
     };
 
