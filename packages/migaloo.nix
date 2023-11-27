@@ -5,7 +5,7 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "migaloo";
-  version = "v2.0.4";
+  version = "v3.0.2";
   src = migaloo-src;
   vendorSha256 = "sha256-GQDfI4hSkkrsBfIczdGoOhghR7/FqEvXavyP4E6iHM4=";
   engine = "tendermint/tendermint";
