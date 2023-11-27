@@ -170,19 +170,21 @@
         "type": "github"
       }
     },
-    "flake-compat": {
-      "flake": false,
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib"
+      },
       "locked": {
-        "lastModified": 1673956053,
-        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "lastModified": 1698882062,
+        "narHash": "sha256-HkhafUayIqxXyHH1X8d9RDl1M2CkFgZLjKD3MzabiEo=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "8c9fa2545007b49a5db5f650ae91f227672c3877",
         "type": "github"
       },
       "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
         "type": "github"
       }
     },
@@ -457,27 +459,6 @@
         "owner": "cosmos",
         "repo": "gex",
         "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
-        "type": "github"
-      }
-    },
-    "gitignore": {
-      "inputs": {
-        "nixpkgs": [
-          "pre-commit-hooks",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1660459072,
-        "narHash": "sha256-8DFJjXG8zqoONA1vXtgeKXy68KdJL5UaXR8NtVMUbx8=",
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "rev": "a20de23b925fd8264fd7fad6454652e142fd7f73",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
         "type": "github"
       }
     },
@@ -817,18 +798,20 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
+    "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1685801374,
-        "narHash": "sha256-otaSUoFEMM+LjBI1XL/xGB5ao6IwnZOXc47qhIgJe8U=",
+        "dir": "lib",
+        "lastModified": 1698611440,
+        "narHash": "sha256-jPjHjrerhYDy3q9+s5EAsuhyhuknNfowY6yt6pjn9pc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c37ca420157f4abc31e26f436c1145f8951ff373",
+        "rev": "0cbe9f69c234a7700596e943bfae7ef27a31b735",
         "type": "github"
       },
       "original": {
+        "dir": "lib",
         "owner": "NixOS",
-        "ref": "nixos-23.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -879,32 +862,6 @@
         "owner": "osmosis-labs",
         "ref": "v20.4.0",
         "repo": "osmosis",
-        "type": "github"
-      }
-    },
-    "pre-commit-hooks": {
-      "inputs": {
-        "flake-compat": "flake-compat",
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "gitignore": "gitignore",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-stable": "nixpkgs-stable"
-      },
-      "locked": {
-        "lastModified": 1698227354,
-        "narHash": "sha256-Fi5H9jbaQLmLw9qBi/mkR33CoFjNbobo5xWdX4tKz1Q=",
-        "owner": "cachix",
-        "repo": "pre-commit-hooks.nix",
-        "rev": "bd38df3d508dfcdff52cd243d297f218ed2257bf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "pre-commit-hooks.nix",
         "type": "github"
       }
     },
@@ -971,6 +928,7 @@
         "cosmwasm-src": "cosmwasm-src",
         "crescent-src": "crescent-src",
         "evmos-src": "evmos-src",
+        "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
         "gaia-main-src": "gaia-main-src",
         "gaia10-src": "gaia10-src",
@@ -1006,7 +964,6 @@
         "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
         "osmosis-src": "osmosis-src",
-        "pre-commit-hooks": "pre-commit-hooks",
         "provenance-src": "provenance-src",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
@@ -1019,7 +976,6 @@
         "stoml-src": "stoml-src",
         "stride-consumer-src": "stride-consumer-src",
         "stride-src": "stride-src",
-        "ts-relayer-src": "ts-relayer-src",
         "umee-src": "umee-src",
         "wasmd-src": "wasmd-src",
         "wasmd_next-src": "wasmd_next-src",
@@ -1230,23 +1186,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "ts-relayer-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1640291594,
-        "narHash": "sha256-mSI+qgB+e9YcFrcUAgHQnbXOQ8wxO2GmD0wNe+3ya0g=",
-        "owner": "confio",
-        "repo": "ts-relayer",
-        "rev": "23930794ddb64afcc80ac73ffe31ca69072c6549",
-        "type": "github"
-      },
-      "original": {
-        "owner": "confio",
-        "ref": "v0.4.0",
-        "repo": "ts-relayer",
         "type": "github"
       }
     },
