@@ -4,7 +4,7 @@
         version = "v1.17.0";
         goVersion = "1.20";
         src = provenance-src;
-        vendorSha256 = "sha256-XFU/+lMwg4hLlyYGUvDp0SqGqijrUQZddoH4VkIvqHg=";
+        vendorHash = "sha256-XFU/+lMwg4hLlyYGUvDp0SqGqijrUQZddoH4VkIvqHg=";
         tags = ["netgo"];
         engine = "tendermint/tendermint";
         preFixup = ''

@@ -10,13 +10,13 @@ let
   stoml = pkgs.buildGoModule {
     name = "stoml";
     src = inputs.stoml-src;
-    vendorSha256 = "sha256-i5m2I0IApTwD9XIjsDwU4dpNtwGI0EGeSkY6VbXDOAM=";
+    vendorHash = "sha256-i5m2I0IApTwD9XIjsDwU4dpNtwGI0EGeSkY6VbXDOAM=";
   };
 
   sconfig = pkgs.buildGoModule {
     name = "sconfig";
     src = inputs.sconfig-src;
-    vendorSha256 = "sha256-J3L8gPtCShn//3mliMzvRTxRgb86f1pJ+yjZkF5ixEk=";
+    vendorHash = "sha256-J3L8gPtCShn//3mliMzvRTxRgb86f1pJ+yjZkF5ixEk=";
   };
 in stdenv.mkDerivation {
     pname = "gm";
