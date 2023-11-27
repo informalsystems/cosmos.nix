@@ -82,7 +82,7 @@
         };
         juno = import ../packages/juno.nix {
           inherit (inputs) juno-src;
-          inherit (self'.packages) libwasmvm_1_1_1;
+          inherit (self'.packages) libwasmvm_1_3_0;
           inherit cosmosLib;
         };
         migaloo = import ../packages/migaloo.nix {
