@@ -53,56 +53,6 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
 4. [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html):
 
-##### Cache Setup with Cachix
-
-With nix installed you can run `nix-env -iA cachix -f https://cachix.org/api/v1/install`. If you don't want to install cachix globally and just want a one time use, you can run `nix-shell -p cachix` to enter a temporary shell with `cachix` available. You can check that this worked by running `cachix --version`.
-
-You can now run these commands to add all of our cachix caches:
-
-```bash
-$ cachix use cosmos
-$ cachix use pre-commit-hooks
-$ cachix use nix-community
-```
-
-##### Manual Cache Setup
-
-Add these lines to your Nix config (either ~/.config/nix/nix.conf [for MacOS] or
-/etc/nix/nix.conf [for flavors of Linux, depending on your distro]):
-
-```
-extra-substituters = https://cache.nixos.org https://nix-community.cachix.org https://pre-commit-hooks.cachix.org https://cosmos.cachix.org
-trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc= cosmos.cachix.org-1:T5U9yg6u2kM48qAOXHO/ayhO8IWFnv0LOhNcq0yKuR8=
-cores = 4 # NB: You may want to increase this on machines with more cores
-```
-
-### NixOS
-
-In your `configuration.nix` file you can add code below. It does 2 things, the
-first is that it enables nix experimental features (which enables flakes) and
-second it adds cache information so you don't have to build everything yourself.
-Note, you can add the suggested binary caches in addition to your existing ones.
-
-```nix
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    binaryCaches = [
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-      "https://pre-commit-hooks.cachix.org"
-      "https://cosmos.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-      "cosmos.cachix.org-1:T5U9yg6u2kM48qAOXHO/ayhO8IWFnv0LOhNcq0yKuR8="
-    ];
-   };
-```
-
 ## Shell
 
 If you are just here for a remote nix shell (a development environment where
@@ -120,55 +70,35 @@ latest development environment you should run:
 nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 ```
 
+## Library
+
+There are a few nix utilities provided as a nix library. You can use these in your own flake like so:
+
+```nix
+{
+
+  inputs = {
+    cosmos-nix.url = "github:informalsystems/cosmos.nix";
+    nixpkgs.url = "github:nixos/nixpkgs";
+  };
+  outputs = {cosmos-nix, nixpkgs}: {
+    let system = ...
+        pkgs = nixpkgs.legacyPackages.${system};
+        cosmosLib = cosmos-nix.lib { inherit pkgs; };
+    in ...
+  };
+}
+```
+
+> NOTE: you need to pass `cosmosLib` a pkgs argument because it uses `buildGoModule` internally. This is 
+> slightly unfortunate since it isn't pure nix (without derivations), and therefore needs to be `system` aware.
+
 ## Development
 
 #### Formatting
 
-Formatting will be run via pre-commit hook if you are in the nix shell, otherise you can manually format using the `format` command like so:
+Formatting will be run via the default nix command. You can find the formatter configuration in `modules/formatter.nix`
 
 ```bash
-nix develop -c format
+nix fmt
 ```
-
-## Applications
-
-> Note: every command has a local and a remote variant. The local variant requires
-> that the command is run from within the cloned repo. The remote variant can be run
-> from wherever.
->
-> Local: nix run .#my-app-name
->
-> Remote: nix run github:informalsystems/cosmos.nix#my-app-name
->
-> For brevity and consistency all the commands are listed in the local variant
-
-### Executables provided
-
-#### Relayers
-- [hermes](https://hermes.informal.systems/): `nix run .#hermes`
-- [ts-relayer](https://github.com/confio/ts-relayer):
-  - `nix run .#ts-relayer`
-  - `nix run .#ts-relayer-setup`
-- [relayer](https://github.com/cosmos/relayer): `nix run .#relayer`
-
-#### Validators
-- [thor](https://github.com/thorchain/thornode):
-  - bifrost: `nix run .#bifrost`
-  - thorcli: `nix run .#thorcli`
-  - thord: `nix run .#thord`
-- [osmosis](https://github.com/osmosis-labs/osmosis): `nix run .#osmosis`
-- [gravity dex](https://github.com/b-harvest/gravity-dex-backend): `nix run .#gdex`
-- [iris](https://github.com/irisnet/irishub): `nix run .#iris`
-- [regen](https://github.com/regen-network/regen-ledger): `nix run .#regen`
-- [evmos](https://github.com/tharsis/evmos): `nix run .#evmos`
-- [centauri](https://github.com/notional-labs/composable-centauri): `nix run .#centauri`
-
-#### Development Tools
-- [gaia](https://hub.cosmos.network/main/gaia-tutorials/what-is-gaia.html): `nix run .#gaia`
-- [ica](https://github.com/cosmos/interchain-accounts-demo): `nix run .#ica`
-- [cosmovisor](https://docs.cosmos.network/master/run-node/cosmovisor.html): `nix run .#cosmovisor`
-- [simd](https://docs.cosmos.network/master/run-node/interact-node.html): `nix run .#simd`
-- [gm](https://github.com/informalsystems/ibc-rs/tree/master/scripts/gm): `nix run .#gm`
-- [gex](https://github.com/cosmos/gex): `nix run .#gex`
-- [beaker](https://github.com/osmosis-labs/beaker): `nix run .#beaker`
-- [cosmwasm-check](https://github.com/CosmWasm/cosmwasm/tree/main/packages/check): `nix run .#cosmwasm-check`
