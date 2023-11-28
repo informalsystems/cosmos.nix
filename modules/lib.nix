@@ -8,7 +8,7 @@
   # cargoBuild
   # install
   # binaryName
-  # rust version
+  # rust version (default exactly same as in optimizer docker)
   # nativeBuildInputs because can need protobuf etc
   #
   # profile
