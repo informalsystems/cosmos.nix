@@ -196,7 +196,7 @@
     wasmvm_0_16_3-src.url = "github:CosmWasm/wasmvm/v0.16.3";
     wasmvm_0_16_3-src.flake = false;
 
-    cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.2.6";
+    cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
     cosmwasm-src.flake = false;
 
     apalache-src.url = "github:informalsystems/apalache/v0.24.0";
@@ -223,7 +223,7 @@
     neutron-src.url = "github:neutron-org/neutron/v1.0.4";
     neutron-src.flake = false;
 
-    gex-src.url = "github:cosmos/gex/bc168741b2019745d343606d31b5c274f216fc3f";
+    gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
     gex-src.flake = false;
 
     beaker-src.url = "github:osmosis-labs/beaker/v0.1.6";

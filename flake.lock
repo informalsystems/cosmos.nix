@@ -122,16 +122,16 @@
     "cosmwasm-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1685975182,
-        "narHash": "sha256-6uhJijuDPXvEZG8mKBGyswsj/JR75Ui713BVx4XD7WI=",
+        "lastModified": 1698745412,
+        "narHash": "sha256-41s5jLFzw9Jo+dirAVOad1dtUqCBY6rIz/6TRc0frMw=",
         "owner": "CosmWasm",
         "repo": "cosmwasm",
-        "rev": "b8e9c03e744e8b84174477e20eb934529cad41e7",
+        "rev": "89891f0bb2de2c83d00600208695d0d5e1b617ac",
         "type": "github"
       },
       "original": {
         "owner": "CosmWasm",
-        "ref": "v1.2.6",
+        "ref": "v1.5.0",
         "repo": "cosmwasm",
         "type": "github"
       }
@@ -448,17 +448,17 @@
     "gex-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1660333522,
-        "narHash": "sha256-7jtCpOTHamXAInfKYkMIDFKF4lViuPkusThj4ggGUbg=",
+        "lastModified": 1697704475,
+        "narHash": "sha256-lgJVxn7Q2I8TBdvbzyn7bl1MN5StEw3NvRzCvBFFuB8=",
         "owner": "cosmos",
         "repo": "gex",
-        "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
+        "rev": "233d335dc9e8c89fb318d1081fae74435f6cac11",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
         "repo": "gex",
-        "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
+        "rev": "233d335dc9e8c89fb318d1081fae74435f6cac11",
         "type": "github"
       }
     },
