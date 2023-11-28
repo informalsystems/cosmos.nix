@@ -2,8 +2,7 @@
   pkgs,
   inputs,
 }:
-with pkgs;
-let 
+with pkgs; let
   # We could potentially expose stoml and sconfig in packages
   # but they are only used here, and are note technically cosmos
   # packages, so it is kind of confusing to provide them.
@@ -18,7 +17,8 @@ let
     src = inputs.sconfig-src;
     vendorSha256 = "sha256-J3L8gPtCShn//3mliMzvRTxRgb86f1pJ+yjZkF5ixEk=";
   };
-in stdenv.mkDerivation {
+in
+  stdenv.mkDerivation {
     pname = "gm";
     version = "0.0.8";
     buildInputs = [makeWrapper];
