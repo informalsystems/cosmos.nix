@@ -18,6 +18,12 @@ nix-std: pkgs: packages : let
       pname,
       # allows to override rust used as wasm can be very tuned to specific version
       rustPlatform ? pkgs.rustPlatform,
+
+  #       rustPlatform = makeRustPlatform {
+  #   cargo = rust-bin.stable.latest.minimal;
+  #   rustc = rust-bin.stable.latest.minimal;
+  # };
+
       src,
       profile ? "release",
       ...
@@ -32,7 +38,7 @@ nix-std: pkgs: packages : let
             pkgs.binaryen
             packages.cosmwasm-check
           ];
-          cargoBuildCommand = "cargo build --target wasm32-unknown-unknown --profile ${profile} --package ${pname}";
+          buildPhase = "cargo build --target wasm32-unknown-unknown --profile ${profile} --package ${pname}";
           RUSTFLAGS = "-C link-arg=-s";
           installPhase = ''
             mkdir --parents $out/lib
