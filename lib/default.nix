@@ -25,12 +25,11 @@ nix-std: pkgs: packages: let
       ...
     }: let
       binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
-      wasmNativeBuildInputs =
-        nativeBuildInputs
+      wasmNativeBuildInputs = pkgs.lib.lists.unique (nativeBuildInputs
         ++ [
           pkgs.binaryen
           packages.cosmwasm-check
-        ];
+        ]);
       cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile" "nativeBuildInputs"];
     in
       rustPlatform.buildRustPackage (
