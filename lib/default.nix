@@ -1,4 +1,52 @@
-nix-std: pkgs: let
+nix-std: pkgs: packages : let
+  
+      # overidable with with defaults
+    # features
+    # cargoBuild
+    # install
+    # binaryName
+    # rust version (default exactly same as in optimizer docker)
+    # nativeBuildInputs because can need protobuf etc
+    #
+    # profile
+    # non default must set
+    # src
+    # name
+    # wasm-opt is hardcoded with check
+    # build CW20 for example
+    buildCosmwasmContract = args @ {
+      pname,
+      # allows to override rust used as wasm can be very tuned to specific version
+      rustPlatform ? pkgs.rustPlatform,
+      src,
+      profile ? "release",
+      ...
+    }
+    : let
+      binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
+      cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile"];
+    in
+      rustPlatform.buildRustPackage (
+        {
+          nativeBuildInputs = [
+            pkgs.binaryen
+            packages.cosmwasm-check
+          ];
+          cargoBuildCommand = "cargo build --target wasm32-unknown-unknown --profile ${profile} --package ${pname}";
+          RUSTFLAGS = "-C link-arg=-s";
+          installPhase = ''
+            mkdir --parents $out/lib
+            # from CosmWasm/rust-optimizer
+            # --signext-lowering is needed to support blockchains runnning CosmWasm < 1.3. It can be removed eventually
+            ls
+            ls target
+            ls target/wasm32-unknown-unknown
+            ls target/wasm32-unknown-unknown/release
+            wasm-opt target/wasm32-unknown-unknown/release/${binaryName} -o $out/lib/${binaryName} -Os --signext-lowering
+            cosmwasm-check $out/lib/${binaryName}
+          '';
+        } // cleanedArgs);
+        
   buildApp = args @ {
     name,
     version,
@@ -68,6 +116,7 @@ nix-std: pkgs: let
       }
       // buildGoModuleArgs);
 in {
+  inherit buildCosmwasmContract;
   mkCosmosGoApp = buildApp;
 
   wasmdPreFixupPhase = libwasmvm: binName:

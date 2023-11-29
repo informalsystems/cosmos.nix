@@ -231,5 +231,9 @@
 
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
     provenance-src.flake = false;
+
+    cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
+    cw-plus-src.flake = false;
+    
   };
 }

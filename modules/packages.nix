@@ -144,6 +144,11 @@
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
         };
+        cw20-base = import ../packages/cw20-base.nix {
+          inherit (inputs) cw-plus-src;
+          inherit (pkgs) rustPlatform;
+          inherit (cosmosLib) buildCosmwasmContract;
+        };        
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset

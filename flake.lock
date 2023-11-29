@@ -153,6 +153,23 @@
         "type": "github"
       }
     },
+    "cw-plus-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700757493,
+        "narHash": "sha256-E5vkY+B4BDoTDtvuB+7Tm3k/5dCYPSjUujMWcgYsWf0=",
+        "owner": "CosmWasm",
+        "repo": "cw-plus",
+        "rev": "d33824679d5b91ca0b4615a8dede7e0028947486",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.1.2",
+        "repo": "cw-plus",
+        "type": "github"
+      }
+    },
     "evmos-src": {
       "flake": false,
       "locked": {
@@ -927,6 +944,7 @@
         "cosmos-sdk-src": "cosmos-sdk-src",
         "cosmwasm-src": "cosmwasm-src",
         "crescent-src": "crescent-src",
+        "cw-plus-src": "cw-plus-src",
         "evmos-src": "evmos-src",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
