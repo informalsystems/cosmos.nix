@@ -234,6 +234,5 @@
 
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
-    
   };
 }

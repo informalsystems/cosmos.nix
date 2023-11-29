@@ -148,7 +148,7 @@
           inherit (inputs) cw-plus-src;
           inherit (pkgs) rustPlatform;
           inherit (cosmosLib) buildCosmwasmContract;
-        };        
+        };
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset

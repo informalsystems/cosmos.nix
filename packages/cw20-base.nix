@@ -1,6 +1,7 @@
-{ buildCosmwasmContract
-, cw-plus-src,
-rustPlatform,
+{
+  buildCosmwasmContract,
+  cw-plus-src,
+  rustPlatform,
 }:
 buildCosmwasmContract {
   src = cw-plus-src;
@@ -12,4 +13,3 @@ buildCosmwasmContract {
     lockFile = "${cw-plus-src}/Cargo.lock";
   };
 }
-  

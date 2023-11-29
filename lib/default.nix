@@ -1,58 +1,54 @@
-nix-std: pkgs: packages : let
-  
-      # overidable with with defaults
-    # features
-    # cargoBuild
-    # install
-    # binaryName
-    # rust version (default exactly same as in optimizer docker)
-    # nativeBuildInputs because can need protobuf etc
-    #
-    # profile
-    # non default must set
-    # src
-    # name
-    # wasm-opt is hardcoded with check
-    # build CW20 for example
-    buildCosmwasmContract = args @ {
+nix-std: pkgs: packages: let
+  buildCosmwasmContract = let
+    target = "wasm32-unknown-unknown";
+    # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
+    rust = pkgs.rust-bin.stable."1.70.0".default.override {
+      extensions = [];
+      targets = [
+        target
+      ];
+    };
+
+    defaultRustPlatform = pkgs.makeRustPlatform {
+      cargo = rust;
+      rustc = rust;
+    };
+  in
+    args @ {
       pname,
-      # allows to override rust used as wasm can be very tuned to specific version
-      rustPlatform ? pkgs.rustPlatform,
-
-  #       rustPlatform = makeRustPlatform {
-  #   cargo = rust-bin.stable.latest.minimal;
-  #   rustc = rust-bin.stable.latest.minimal;
-  # };
-
+      # must contain wasm32-unknown-unknown
+      rustPlatform ? defaultRustPlatform,
       src,
+      # people use different profiles a lot
       profile ? "release",
+      nativeBuildInputs ? [],
       ...
-    }
-    : let
+    }: let
       binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
-      cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile"];
+      wasmNativeBuildInputs =
+        nativeBuildInputs
+        ++ [
+          pkgs.binaryen
+          packages.cosmwasm-check
+        ];
+      cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile" "nativeBuildInputs"];
     in
       rustPlatform.buildRustPackage (
         {
-          nativeBuildInputs = [
-            pkgs.binaryen
-            packages.cosmwasm-check
-          ];
-          buildPhase = "cargo build --target wasm32-unknown-unknown --profile ${profile} --package ${pname}";
+          buildPhase = "cargo build --lib --target ${target} --profile ${profile} --package ${pname}";
           RUSTFLAGS = "-C link-arg=-s";
+          nativeBuildInputs = wasmNativeBuildInputs;
           installPhase = ''
             mkdir --parents $out/lib
-            # from CosmWasm/rust-optimizer
+            # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
             # --signext-lowering is needed to support blockchains runnning CosmWasm < 1.3. It can be removed eventually
-            ls
-            ls target
-            ls target/wasm32-unknown-unknown
-            ls target/wasm32-unknown-unknown/release
-            wasm-opt target/wasm32-unknown-unknown/release/${binaryName} -o $out/lib/${binaryName} -Os --signext-lowering
+            wasm-opt target/${target}/release/${binaryName} -o $out/lib/${binaryName} -Os --signext-lowering
             cosmwasm-check $out/lib/${binaryName}
           '';
-        } // cleanedArgs);
-        
+        }
+        // cleanedArgs
+      );
+
   buildApp = args @ {
     name,
     version,
