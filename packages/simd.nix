@@ -2,7 +2,7 @@
       buildGoModule {
         name = "simd";
         src = cosmos-sdk-src;
-        vendorSha256 = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
+        vendorHash = "sha256-ZlfvpnaF/SBHeXW2tzO3DVEyh1Uh4qNNXBd+AoWd/go=";
         doCheck = false;
         excludedPackages = [
           "./client/v2"

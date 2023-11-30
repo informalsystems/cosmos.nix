@@ -3,7 +3,7 @@
         name = "osmosis";
         version = "v20.4.0";
         src = osmosis-src;
-        vendorSha256 = "sha256-WN6H+lRS+wX4CiVEVMxp4fW2vtZxTi+O6SncJdrUFLo=";
+        vendorHash = "sha256-WN6H+lRS+wX4CiVEVMxp4fW2vtZxTi+O6SncJdrUFLo=";
         tags = ["netgo"];
         excludedPackages = ["cl-genesis-positions"];
         engine = "tendermint/tendermint";

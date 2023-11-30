@@ -5,7 +5,9 @@
 }: let
   libwasmvmCommon = {
     pname = "libwasmvm";
-    nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
+    nativeBuildInputs = with pkgs; [
+      rust-bin.stable.latest.default
+    ];
     postInstall = ''
       cp ./bindings.h $out/lib/
       ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so

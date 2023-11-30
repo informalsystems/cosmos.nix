@@ -3,7 +3,7 @@
         name = "juno";
         version = "v17.1.1";
         src = juno-src;
-        vendorSha256 = "sha256-ftmNMjCFWq4XGM9+ad64dzzcgQJ1ApH4YmthldfrB54=";
+        vendorHash = "sha256-ftmNMjCFWq4XGM9+ad64dzzcgQJ1ApH4YmthldfrB54=";
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         excludedPackages = ["interchaintest"];

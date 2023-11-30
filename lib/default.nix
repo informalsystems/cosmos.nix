@@ -4,7 +4,7 @@ nix-std: pkgs: let
     version,
     src,
     engine,
-    vendorSha256,
+    vendorHash,
     additionalLdFlags ? "",
     appName ? null,
     preCheck ? null,
@@ -15,7 +15,7 @@ nix-std: pkgs: let
       pkgs.lib.filterAttrs
       (n: _:
         builtins.all (a: a != n)
-        ["src" "name" "version" "vendorSha256" "appName"])
+        ["src" "name" "version" "vendorHash" "appName"])
       args;
 
     dependency-version = with nix-std.lib; let
@@ -51,7 +51,7 @@ nix-std: pkgs: let
     buildGoModule = buildGoModuleVersion.${goVersion};
   in
     buildGoModule ({
-        inherit version src vendorSha256;
+        inherit version src vendorHash;
         pname = name;
         preCheck =
           if preCheck == null
