@@ -6,8 +6,7 @@
   libwasmvmCommon = {
     pname = "libwasmvm";
     nativeBuildInputs = with pkgs; [
-      (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
-      # rust-bin.stable.latest.default
+      rust-bin.stable.latest.default
     ];
     postInstall = ''
       cp ./bindings.h $out/lib/
