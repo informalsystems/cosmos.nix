@@ -19,6 +19,7 @@
           installPhase = ''
             mkdir "$out"
           '';
+          doCheck = true;
         };
       }
       // self'.packages;
