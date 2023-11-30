@@ -31,21 +31,23 @@ nix-std: pkgs: packages: let
           packages.cosmwasm-check
         ]);
       cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile" "nativeBuildInputs"];
-      cosmwasmify = input: output: ''
-        # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
-        # --signext-lowering is needed to support blockchains runnning CosmWasm < 1.3. It can be removed eventually
-        wasm-opt ${input} -o ${output} -Os --signext-lowering
-        cosmwasm-check ${output}
-      '';
     in
       rustPlatform.buildRustPackage (
         {
-          buildPhase = "cargo build --lib --target ${target} --profile ${profile} --package ${pname}";
           RUSTFLAGS = "-C link-arg=-s";
           nativeBuildInputs = wasmNativeBuildInputs;
           installPhase = ''
             mkdir --parents $out/lib
-            ${cosmwasmify "target/${target}/release/${binaryName}" "$out/lib/${binaryName}"}
+          '';
+          buildPhase = ''
+            cargo build --lib --target ${target} --profile ${profile} --package ${pname}
+            mkdir -p ./output/lib
+            wasm-opt "target/${target}/release/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
+            cp -r ./output $out
+          '';
+          checkPhase = ''
+            cargo test
+            cosmwasm-check "$out/lib/${binaryName}"
           '';
         }
         // cleanedArgs

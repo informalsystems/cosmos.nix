@@ -54,7 +54,6 @@
         cw20-base = import ../packages/cw20-base.nix {
           inherit (cosmosLib) buildCosmwasmContract;
           inherit (inputs) cw-plus-src;
-          inherit (pkgs) rustPlatform;
         };
         evmos = import ../packages/evmos.nix {
           inherit (inputs) evmos-src;
