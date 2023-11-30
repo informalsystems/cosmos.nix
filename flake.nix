@@ -32,7 +32,7 @@
   inputs = {
     # Nix Inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay/b8f3db465405014039985f1c5cea92cc29e1b3b5";
+    rust-overlay.url = "github:oxalica/rust-overlay";
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
