@@ -749,16 +749,16 @@
     "neutron-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1689686537,
-        "narHash": "sha256-JnGovejgL+dEiZupzS+tPaUl2br4eGntiEfMKGUPEps=",
+        "lastModified": 1701174344,
+        "narHash": "sha256-NuoOlrciBeL2f/A7wlQBqYlYJhSYucXRhLgxdasfyhI=",
         "owner": "neutron-org",
         "repo": "neutron",
-        "rev": "780486095bf657f7b94b4474cb39fd137cf93c98",
+        "rev": "e605ed3db4381994ee8185ba4a0ff0877d34e67f",
         "type": "github"
       },
       "original": {
         "owner": "neutron-org",
-        "ref": "v1.0.4",
+        "ref": "v2.0.0",
         "repo": "neutron",
         "type": "github"
       }
@@ -975,13 +975,13 @@
         "umee-src": "umee-src",
         "wasmd-src": "wasmd-src",
         "wasmd_next-src": "wasmd_next-src",
-        "wasmvm_0_16_3-src": "wasmvm_0_16_3-src",
         "wasmvm_1-src": "wasmvm_1-src",
         "wasmvm_1_1_1-src": "wasmvm_1_1_1-src",
         "wasmvm_1_1_2-src": "wasmvm_1_1_2-src",
         "wasmvm_1_2_3-src": "wasmvm_1_2_3-src",
         "wasmvm_1_2_4-src": "wasmvm_1_2_4-src",
         "wasmvm_1_3_0-src": "wasmvm_1_3_0-src",
+        "wasmvm_1_5_0-src": "wasmvm_1_5_0-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
@@ -1206,23 +1206,6 @@
         "type": "github"
       }
     },
-    "wasmvm_0_16_3-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1640251271,
-        "narHash": "sha256-XvgAMDvAgzWaH7Q+mNZUBoaVhqAVlZ4ucIL0QFyNvWw=",
-        "owner": "CosmWasm",
-        "repo": "wasmvm",
-        "rev": "458e983721624548e66c0dcdd35140383966515e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "CosmWasm",
-        "ref": "v0.16.3",
-        "repo": "wasmvm",
-        "type": "github"
-      }
-    },
     "wasmvm_1-src": {
       "flake": false,
       "locked": {
@@ -1321,6 +1304,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v1.3.0",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_5_0-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698746477,
+        "narHash": "sha256-l0cNF0YjviEl/JLJ4VdvDtIGuAYyFfncVo83ROfQFD8=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "2041b184c146f278157d195361bc6cc6b56cc9d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.5.0",
         "repo": "wasmvm",
         "type": "github"
       }

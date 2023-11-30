@@ -174,6 +174,9 @@
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
 
+    wasmvm_1_5_0-src.url = "github:CosmWasm/wasmvm/v1.5.0";
+    wasmvm_1_5_0-src.flake = false;
+
     wasmvm_1_3_0-src.url = "github:CosmWasm/wasmvm/v1.3.0";
     wasmvm_1_3_0-src.flake = false;
 
@@ -191,9 +194,6 @@
 
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
-
-    wasmvm_0_16_3-src.url = "github:CosmWasm/wasmvm/v0.16.3";
-    wasmvm_0_16_3-src.flake = false;
 
     cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
     cosmwasm-src.flake = false;
@@ -219,7 +219,7 @@
     celestia-src.url = "github:celestiaorg/celestia-app/v1.4.0";
     celestia-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v1.0.4";
+    neutron-src.url = "github:neutron-org/neutron/v2.0.0";
     neutron-src.flake = false;
 
     gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
