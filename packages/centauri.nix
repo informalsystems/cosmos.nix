@@ -7,7 +7,7 @@ cosmosLib.mkCosmosGoApp {
   name = "centauri";
   version = "v6.3.1";
   src = centauri-src;
-  vendorSha256 = "sha256-MRADQxw+T8lVJujJn2yEaZOEs6AYGgaiBbYJUI3cugA=";
+  vendorHash = "sha256-MRADQxw+T8lVJujJn2yEaZOEs6AYGgaiBbYJUI3cugA=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   excludedPackages = ["interchaintest" "simd"];

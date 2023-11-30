@@ -5,7 +5,7 @@
 buildGoModule rec {
   name = "ignite-cli";
   src = ignite-cli-src;
-  vendorSha256 = "sha256-P1NYgvdobi6qy1sSKFwkBwPRpLuvCJE5rCD2s/vvm14=";
+  vendorHash = "sha256-P1NYgvdobi6qy1sSKFwkBwPRpLuvCJE5rCD2s/vvm14=";
   doCheck = false;
   ldflags = ''
     -X github.com/ignite/cli/ignite/version.Head=${src.rev}

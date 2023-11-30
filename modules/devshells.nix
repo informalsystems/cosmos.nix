@@ -21,7 +21,7 @@
         buildInputs = with pkgs;
           [
             go
-            rust-bin.stable.latest.default
+            (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
             openssl
             shellcheck
           ]

@@ -7,7 +7,7 @@ cosmosLib.mkCosmosGoApp {
   name = "wasm";
   version = "v0.40.0-rc.1";
   src = wasmd_next-src;
-  vendorSha256 = "sha256-FWpclJuuIkbcoXxRTeZwDR0wZP2eHkPKsu7xme5vLPg=";
+  vendorHash = "sha256-FWpclJuuIkbcoXxRTeZwDR0wZP2eHkPKsu7xme5vLPg=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   preFixup = cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_3 "wasmd";

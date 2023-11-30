@@ -6,7 +6,7 @@ mkCosmosGoApp {
   name = "crescent";
   version = "v1.0.0-rc3";
   src = crescent-src;
-  vendorSha256 = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
+  vendorHash = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
   tags = ["netgo"];
   engine = "tendermint/tendermint";
   additionalLdFlags = ''
