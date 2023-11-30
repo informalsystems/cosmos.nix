@@ -51,6 +51,11 @@
           inherit (inputs) crescent-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
+        cw20-base = import ../packages/cw20-base.nix {
+          inherit (cosmosLib) buildCosmwasmContract;
+          inherit (inputs) cw-plus-src;
+          inherit (pkgs) rustPlatform;
+        };
         evmos = import ../packages/evmos.nix {
           inherit (inputs) evmos-src;
           inherit (cosmosLib) mkCosmosGoApp;
@@ -143,11 +148,6 @@
           inherit (inputs) wasmd_next-src;
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
-        };
-        cw20-base = import ../packages/cw20-base.nix {
-          inherit (inputs) cw-plus-src;
-          inherit (pkgs) rustPlatform;
-          inherit (cosmosLib) buildCosmwasmContract;
         };
       }
       # This list contains attr sets that are recursively merged into the
