@@ -12,7 +12,7 @@
         fmt-check = pkgs.stdenv.mkDerivation {
           name = "fmt-check";
           src = ../.;
-          nativeBuildInputs = with pkgs; [alejandra shellcheck shfmt];
+          nativeBuildInputs = with pkgs; [alejandra];
           checkPhase = ''
             alejandra -c .
           '';

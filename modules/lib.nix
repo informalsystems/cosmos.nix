@@ -10,7 +10,10 @@ in {
     self',
     ...
   }: {
-    _module.args.cosmosLib = lib std pkgs (self'.packages);
+    _module.args.cosmosLib = lib std {
+      inherit pkgs;
+      inherit (self'.packages) cosmwasm-check;
+    };
   };
   flake.lib = lib std;
 }

@@ -1,4 +1,7 @@
-nix-std: pkgs: packages: let
+nix-std: {
+  pkgs,
+  cosmwasm-check,
+}: let
   buildCosmwasmContract = let
     target = "wasm32-unknown-unknown";
     # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
@@ -28,7 +31,7 @@ nix-std: pkgs: packages: let
       wasmNativeBuildInputs = pkgs.lib.lists.unique (nativeBuildInputs
         ++ [
           pkgs.binaryen
-          packages.cosmwasm-check
+          cosmwasm-check
         ]);
       cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile" "nativeBuildInputs"];
     in
