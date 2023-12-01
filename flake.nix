@@ -161,8 +161,7 @@
     stargaze-src.url = "github:public-awesome/stargaze/v3.0.0";
     stargaze-src.flake = false;
 
-    # https://github.com/notional-labs/composable-centauri/pull/271
-    centauri-src.url = "github:dzmitry-lahoda-forks/composable-centauri/c6736b946c3bc6c7c23788d499b2dff94ffd39f5";
+    centauri-src.url = "github:ComposableFi/composable-cosmos/387c96b434db9d96b0506aa7f14536d9bdec968c";
     centauri-src.flake = false;
 
     wasmd-src.url = "github:CosmWasm/wasmd/v0.30.0";
