@@ -96,7 +96,7 @@
         };
         neutron = import ../packages/neutron.nix {
           inherit (inputs) neutron-src;
-          inherit (self'.packages) libwasmvm_1_2_3;
+          inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
         osmosis = import ../packages/osmosis.nix {
