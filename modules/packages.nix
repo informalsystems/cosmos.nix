@@ -9,7 +9,7 @@
   }: {
     packages = with inputs.nixpkgs.lib;
       lists.foldl recursiveUpdate
-      # This is the base attrset where we put individual packages, sometimes it 
+      # This is the base attrset where we put individual packages, sometimes it
       # makes sense to group like packages together (i.e. all the different gaia versions)
       # in a single file. We recursively merge those attrsets that live in separate files
       # in the list that is the last argument to the `foldl` above.
@@ -51,6 +51,10 @@
           inherit (inputs) crescent-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
+        cw20-base = import ../packages/cw20-base.nix {
+          inherit (cosmosLib) buildCosmwasmContract;
+          inherit (inputs) cw-plus-src;
+        };
         evmos = import ../packages/evmos.nix {
           inherit (inputs) evmos-src;
           inherit (cosmosLib) mkCosmosGoApp;
@@ -59,7 +63,7 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) gex-src;
         };
-        gm = import ../packages/gm.nix { inherit pkgs inputs; };
+        gm = import ../packages/gm.nix {inherit pkgs inputs;};
         hermes = import ../packages/hermes.nix {
           inherit pkgs;
           inherit (inputs) hermes-src;
@@ -144,8 +148,8 @@
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
         };
-      } 
-      # This list contains attr sets that are recursively merged into the 
+      }
+      # This list contains attr sets that are recursively merged into the
       # base attrset
       [
         # Gaia
@@ -160,7 +164,7 @@
         })
         # Libwasm VM
         (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
-        
+
         # Stride
         (import ../packages/stride.nix {
           inherit inputs;

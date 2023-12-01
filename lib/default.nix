@@ -1,4 +1,61 @@
-nix-std: pkgs: let
+nix-std: {
+  pkgs,
+  cosmwasm-check,
+}: let
+  buildCosmwasmContract = let
+    target = "wasm32-unknown-unknown";
+    # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
+    rust = pkgs.rust-bin.stable."1.70.0".default.override {
+      extensions = [];
+      targets = [
+        target
+      ];
+    };
+
+    defaultRustPlatform = pkgs.makeRustPlatform {
+      cargo = rust;
+      rustc = rust;
+    };
+  in
+    args @ {
+      pname,
+      # must contain wasm32-unknown-unknown
+      rustPlatform ? defaultRustPlatform,
+      src,
+      # people use different profiles a lot
+      profile ? "release",
+      nativeBuildInputs ? [],
+      ...
+    }: let
+      binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
+      wasmNativeBuildInputs = pkgs.lib.lists.unique (nativeBuildInputs
+        ++ [
+          pkgs.binaryen
+          cosmwasm-check
+        ]);
+      cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile" "nativeBuildInputs"];
+    in
+      rustPlatform.buildRustPackage (
+        {
+          RUSTFLAGS = "-C link-arg=-s";
+          nativeBuildInputs = wasmNativeBuildInputs;
+          installPhase = ''
+            mkdir --parents $out/lib
+          '';
+          buildPhase = ''
+            cargo build --lib --target ${target} --profile ${profile} --package ${pname}
+            mkdir -p ./output/lib
+            wasm-opt "target/${target}/release/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
+            cp -r ./output $out
+          '';
+          checkPhase = ''
+            cargo test
+            cosmwasm-check "$out/lib/${binaryName}"
+          '';
+        }
+        // cleanedArgs
+      );
+
   buildApp = args @ {
     name,
     version,
@@ -68,6 +125,7 @@ nix-std: pkgs: let
       }
       // buildGoModuleArgs);
 in {
+  inherit buildCosmwasmContract;
   mkCosmosGoApp = buildApp;
 
   wasmdPreFixupPhase = libwasmvm: binName:

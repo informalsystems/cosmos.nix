@@ -4,10 +4,10 @@
 }:
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "cosmwasm-check";
-  version = "1.2.6";
+  version = "1.5.0";
   src = cosmwasm-src;
-  cargoBuildCommand = "cargo build --release --package ${pname}";
-  cargoSha256 = "sha256-0+CiQv8Up+9Zz9j3qI4R4dpamnsKJL3BJ9C9ZxFXMtI=";
+  cargoLock = {
+    lockFile = "${cosmwasm-src}/Cargo.lock";
+  };
   doCheck = false;
-  cargoCheckCommand = "true";
 }

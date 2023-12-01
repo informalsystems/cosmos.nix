@@ -1,5 +1,5 @@
 #` This output allows you to run any of the packages by invoking the following command.
-# 
+#
 # from outside this git repo:
 # nix run github:informalsystems/cosmos.nix#<app-name>
 #
@@ -8,183 +8,183 @@
 {
   perSystem = {self', ...}: {
     apps = with self'; {
-      cometbft =  {
+      cometbft = {
         type = "app";
         program = "${packages.cometbft}/bin/cometbft";
       };
-      hermes =  {
+      hermes = {
         type = "app";
         program = "${packages.hermes}/bin/hermes";
       };
-      gaia =  {
+      gaia = {
         type = "app";
         program = "${packages.gaia6_0_3}/bin/gaiad";
       };
-      gaia4 =  {
+      gaia4 = {
         type = "app";
         program = "${packages.gaia4}/bin/gaiad";
       };
-      gaia5 =  {
+      gaia5 = {
         type = "app";
         program = "${packages.gaia5}/bin/gaiad";
       };
-      gaia6 =  {
+      gaia6 = {
         type = "app";
         program = "${packages.gaia6}/bin/gaiad";
       };
-      gaia6-ordered =  {
+      gaia6-ordered = {
         type = "app";
         program = "${packages.gaia6-ordered}/bin/gaiad";
       };
-      gaia7 =  {
+      gaia7 = {
         type = "app";
         program = "${packages.gaia7}/bin/gaiad";
       };
-      gaia8 =  {
+      gaia8 = {
         type = "app";
         program = "${packages.gaia8}/bin/gaiad";
       };
-      gaia9 =  {
+      gaia9 = {
         type = "app";
         program = "${packages.gaia9}/bin/gaiad";
       };
-      gaia10 =  {
+      gaia10 = {
         type = "app";
         program = "${packages.gaia10}/bin/gaiad";
       };
-      gaia11 =  {
+      gaia11 = {
         type = "app";
         program = "${packages.gaia11}/bin/gaiad";
       };
-      gaia12 =  {
+      gaia12 = {
         type = "app";
         program = "${packages.gaia12}/bin/gaiad";
       };
-      gaia13 =  {
+      gaia13 = {
         type = "app";
         program = "${packages.gaia13}/bin/gaiad";
       };
-      gaia14 =  {
+      gaia14 = {
         type = "app";
         program = "${packages.gaia14}/bin/gaiad";
       };
-      gaia-main =  {
+      gaia-main = {
         type = "app";
         program = "${packages.gaia-main}/bin/gaiad";
       };
-      ica =  {
+      ica = {
         type = "app";
         program = "${packages.ica}/bin/icad";
       };
-      cosmovisor =  {
+      cosmovisor = {
         type = "app";
         program = "${packages.cosmovisor}/bin/cosmovisor";
       };
-      simd =  {
+      simd = {
         type = "app";
         program = "${packages.simd}/bin/simd";
       };
-      ibc-go-v7-simapp =  {
+      ibc-go-v7-simapp = {
         type = "app";
         program = "${packages.ibc-go-v7-simapp}/bin/simd";
       };
-      ibc-go-v8-simapp =  {
+      ibc-go-v8-simapp = {
         type = "app";
         program = "${packages.ibc-go-v8-simapp}/bin/simd";
       };
-      ignite-cli =  {
+      ignite-cli = {
         type = "app";
         program = "${packages.ignite-cli}/bin/ignite";
       };
-      interchain-security =  {
+      interchain-security = {
         type = "app";
         program = "${packages.interchain-security}/bin/interchain-security";
       };
-      gm =  {
+      gm = {
         type = "app";
         program = "${packages.gm}/bin/gm";
       };
-      osmosis =  {
+      osmosis = {
         type = "app";
         program = "${packages.osmosis}/bin/osmosisd";
       };
-      centauri =  {
+      centauri = {
         type = "app";
         program = "${packages.centauri}/bin/centaurid";
       };
-      regen =  {
+      regen = {
         type = "app";
         program = "${packages.regen}/bin/regen";
       };
-      evmos =  {
+      evmos = {
         type = "app";
         program = "${packages.evmos}/bin/evmosd";
       };
-      juno =  {
+      juno = {
         type = "app";
         program = "${packages.juno}/bin/junod";
       };
-      sentinel =  {
+      sentinel = {
         type = "app";
         program = "${packages.sentinel}/bin/sentinelhub";
       };
-      akash =  {
+      akash = {
         type = "app";
         program = "${packages.akash}/bin/akash";
       };
-      umee =  {
+      umee = {
         type = "app";
         program = "${packages.umee}/bin/umeed";
       };
-      ixo =  {
+      ixo = {
         type = "app";
         program = "${packages.ixo}/bin/ixod";
       };
-      sifchain =  {
+      sifchain = {
         type = "app";
         program = "${packages.sifchain}/bin/sifnoded";
       };
-      crescent =  {
+      crescent = {
         type = "app";
         program = "${packages.crescent}/bin/crescentd";
       };
-      stargaze =  {
+      stargaze = {
         type = "app";
         program = "${packages.stargaze}/bin/starsd";
       };
-      wasmd =  {
+      wasmd = {
         type = "app";
         program = "${packages.wasmd}/bin/wasmd";
       };
-      apalache =  {
+      apalache = {
         type = "app";
         program = "${packages.apalache}/bin/apalache-mc";
       };
-      stride =  {
+      stride = {
         type = "app";
         program = "${packages.stride}/bin/strided";
       };
-      stride-consumer =  {
+      stride-consumer = {
         type = "app";
         program = "${packages.stride-consumer}/bin/strided";
       };
-      stride-consumer-no-admin =  {
+      stride-consumer-no-admin = {
         type = "app";
         program = "${packages.stride-consumer-no-admin}/bin/strided";
       };
-      stride-no-admin =  {
+      stride-no-admin = {
         type = "app";
         program = "${packages.stride-no-admin}/bin/strided";
       };
-      migaloo =  {
+      migaloo = {
         type = "app";
         program = "${packages.migaloo}/bin/migalood";
       };
-      celestia =  {
+      celestia = {
         type = "app";
         program = "${packages.celestia}/bin/celestia-appd";
       };
-      provenance =  {
+      provenance = {
         type = "app";
         program = "${packages.provenance}/bin/provenanced";
       };

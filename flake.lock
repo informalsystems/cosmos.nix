@@ -122,16 +122,16 @@
     "cosmwasm-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1685975182,
-        "narHash": "sha256-6uhJijuDPXvEZG8mKBGyswsj/JR75Ui713BVx4XD7WI=",
+        "lastModified": 1698745412,
+        "narHash": "sha256-41s5jLFzw9Jo+dirAVOad1dtUqCBY6rIz/6TRc0frMw=",
         "owner": "CosmWasm",
         "repo": "cosmwasm",
-        "rev": "b8e9c03e744e8b84174477e20eb934529cad41e7",
+        "rev": "89891f0bb2de2c83d00600208695d0d5e1b617ac",
         "type": "github"
       },
       "original": {
         "owner": "CosmWasm",
-        "ref": "v1.2.6",
+        "ref": "v1.5.0",
         "repo": "cosmwasm",
         "type": "github"
       }
@@ -150,6 +150,23 @@
         "owner": "crescent-network",
         "ref": "v1.0.0-rc3",
         "repo": "crescent",
+        "type": "github"
+      }
+    },
+    "cw-plus-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700757493,
+        "narHash": "sha256-E5vkY+B4BDoTDtvuB+7Tm3k/5dCYPSjUujMWcgYsWf0=",
+        "owner": "CosmWasm",
+        "repo": "cw-plus",
+        "rev": "d33824679d5b91ca0b4615a8dede7e0028947486",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.1.2",
+        "repo": "cw-plus",
         "type": "github"
       }
     },
@@ -427,17 +444,17 @@
     "gex-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1660333522,
-        "narHash": "sha256-7jtCpOTHamXAInfKYkMIDFKF4lViuPkusThj4ggGUbg=",
+        "lastModified": 1697704475,
+        "narHash": "sha256-lgJVxn7Q2I8TBdvbzyn7bl1MN5StEw3NvRzCvBFFuB8=",
         "owner": "cosmos",
         "repo": "gex",
-        "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
+        "rev": "233d335dc9e8c89fb318d1081fae74435f6cac11",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
         "repo": "gex",
-        "rev": "bc168741b2019745d343606d31b5c274f216fc3f",
+        "rev": "233d335dc9e8c89fb318d1081fae74435f6cac11",
         "type": "github"
       }
     },
@@ -906,6 +923,7 @@
         "cosmos-sdk-src": "cosmos-sdk-src",
         "cosmwasm-src": "cosmwasm-src",
         "crescent-src": "crescent-src",
+        "cw-plus-src": "cw-plus-src",
         "evmos-src": "evmos-src",
         "flake-parts": "flake-parts",
         "gaia-main-src": "gaia-main-src",

@@ -2,20 +2,26 @@
 # For more info on 'nix flake check' see:
 # https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-check
 {
-  perSystem = {pkgs, self', ...}: {
-    checks = {
-      fmt-check = pkgs.stdenv.mkDerivation {
-        name = "fmt-check";
-        src = ../.;
-        nativeBuildInputs = with pkgs; [alejandra shellcheck shfmt];
-        checkPhase = ''
-          alejandra -c .
-        '';
-        installPhase = ''
-          mkdir "$out"
-        '';
-      };
-    } 
-    // self'.packages;
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: {
+    checks =
+      {
+        fmt-check = pkgs.stdenv.mkDerivation {
+          name = "fmt-check";
+          src = ../.;
+          nativeBuildInputs = with pkgs; [alejandra];
+          checkPhase = ''
+            alejandra -c .
+          '';
+          installPhase = ''
+            mkdir "$out"
+          '';
+          doCheck = true;
+        };
+      }
+      // self'.packages;
   };
 }

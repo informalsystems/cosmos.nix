@@ -7,9 +7,13 @@ in {
   perSystem = {
     pkgs,
     inputs',
+    self',
     ...
   }: {
-    _module.args.cosmosLib = lib std pkgs;
+    _module.args.cosmosLib = lib std {
+      inherit pkgs;
+      inherit (self'.packages) cosmwasm-check;
+    };
   };
   flake.lib = lib std;
 }
