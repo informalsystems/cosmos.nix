@@ -31,6 +31,7 @@
         ./modules/apps.nix
         # Sets the overlays.default flake output
         ./modules/overlay.nix
+        ./examples/hermes-config.nix
       ];
     };
 

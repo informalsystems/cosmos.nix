@@ -5,7 +5,7 @@ nix-std: {
   buildCosmwasmContract = let
     target = "wasm32-unknown-unknown";
     # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
-    rust = pkgs.rust-bin.stable."1.70.0".default.override {
+    rust = pkgs.rust-bin.stable."1.73.0".default.override {
       extensions = [];
       targets = [
         target
@@ -164,5 +164,30 @@ in {
         cp -r ${srcDir}/* ./
         gomod2nix --outdir "$CURDIR"
       '';
+  evalHermesModule = {modules}:
+    pkgs.lib.evalModules {
+      modules =
+        [
+          (
+            {
+              lib,
+              config,
+              ...
+            }: let
+              prev = config.hermes;
+              cfg = prev // {chains = builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;};
+              hermes-toml = nix-std.lib.serde.toTOML (builtins.removeAttrs cfg ["toml"]);
+            in
+              with lib; {
+                options.hermes =
+                  (import ../nixosModules/relayer/options.nix {inherit lib;})
+                  // {
+                    toml = mkOption {type = types.unique {message = "only one toml output";} types.str;};
+                  };
+                config.hermes.toml = hermes-toml;
+              }
+          )
+        ]
+        ++ modules;
     };
 }
