@@ -47,7 +47,7 @@ nix-std: {
           buildPhase = ''
             cargo build --lib --target ${target} --profile ${profile} --package ${pname}
             mkdir -p ./output/lib
-            wasm-opt "target/${target}/release/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
+            wasm-opt "target/${target}/${profile}/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
             cp -r ./output $out
           '';
           checkPhase = ''
