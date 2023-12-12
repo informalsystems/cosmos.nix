@@ -30,7 +30,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-2
-          max-retries: 3
+          retry-max-attempts: 3
           role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
           role-session-name: InformalSystemsGithubAction
 
