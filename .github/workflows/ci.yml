@@ -38,5 +38,6 @@ jobs:
         env: 
           SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
         run: |
-          nix store sign -k "$SIGNING_KEY" --all
+          echo "$SIGNING_KEY" key
+          nix store sign -k key --all
           nix copy --to "s3://cosmosnix-store?region=us-east-2" --all
