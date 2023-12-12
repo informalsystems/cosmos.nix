@@ -10,7 +10,7 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
         with: 
           extra-conf: |
@@ -29,8 +29,10 @@ jobs:
       - name: Authenticate 🔒
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
           aws-region: us-east-2
+          max-retries: 3
+          role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
+          role-session-name: InformalSystemsGithubAction
 
       - name: Push Cache 🫸📦💨
         env: 
