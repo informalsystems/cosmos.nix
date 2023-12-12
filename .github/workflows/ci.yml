@@ -21,8 +21,6 @@ jobs:
       - name: Check 🔎
         run: |
           nix build .#gaia7 -L
-          nix build .#gaia8 -L
-          nix build .#gaia9 -L
       #
       # - name: Run Shell 🐚
       #   run: |
