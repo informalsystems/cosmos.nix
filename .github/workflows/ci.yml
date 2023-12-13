@@ -32,7 +32,7 @@ jobs:
       # populate the cache
       - name: Authenticate 🔒
         uses: aws-actions/configure-aws-credentials@v4
-        if: ${{ github.event.pull_request.head.repo.full_name == 'informalsystems/cosmos.nix' }}
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         with:
           aws-region: us-east-2
           retry-max-attempts: 3
@@ -40,7 +40,7 @@ jobs:
           role-session-name: InformalSystemsGithubAction
 
       - name: Push Cache 🫸📦💨
-        if: ${{ github.event.pull_request.head.repo.full_name == 'informalsystems/cosmos.nix' }}
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         env: 
           SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
         run: |
