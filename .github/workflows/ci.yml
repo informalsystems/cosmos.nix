@@ -6,20 +6,37 @@ on:
 jobs:
   check-pr:
     runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - uses: actions/checkout@v2.3.1
+      - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
-
-      - name: Link Cachix 🔌
-        uses: cachix/cachix-action@v12
-        with:
-          name: cosmos
-          authToken: '${{ secrets.COSMOS_CACHE_KEY }}'
+        with: 
+          extra-conf: |
+            substituters = https://cache.nixos.org https://cosmosnix-store.s3.us-east-2.amazonaws.com
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
 
       - name: Check 🔎
         run: |
-          nix flake check --print-build-logs
+          nix flake check
 
       - name: Run Shell 🐚
         run: |
           nix develop
+
+      - name: Authenticate 🔒
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-2
+          retry-max-attempts: 3
+          role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
+          role-session-name: InformalSystemsGithubAction
+
+      - name: Push Cache 🫸📦💨
+        env: 
+          SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
+        run: |
+          echo "$SIGNING_KEY" >> key
+          nix store sign -k key --all
+          nix copy --to "s3://cosmosnix-store?region=us-east-2" --all
