@@ -1,4 +1,9 @@
 {
+  nixConfig = { 
+    substituters = "https://cosmosnix-store.s3.us-east-2.amazonaws.com";
+    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=";
+  };
+
   description = "A reproducible package set for Cosmos, IBC and CosmWasm";
 
   outputs = inputs @ {flake-parts, ...}:
