@@ -20,7 +20,7 @@
       --replace '$DIR/../lib/apalache.jar' "$out/lib/apalache.jar"
   '';
 in
-  pkgs.sbt.mkDerivation {
+  pkgs.mkSbtDerivation {
     inherit version postPatch;
     pname = "apalache";
 
