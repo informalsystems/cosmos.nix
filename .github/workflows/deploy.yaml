@@ -1,10 +1,12 @@
-name: Check PR
+name: Deploy Main
 
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
-  check-pr:
+  deploy-main:
     runs-on: ubuntu-22.04
     permissions:
       id-token: write
@@ -25,14 +27,8 @@ jobs:
         run: |
           nix develop
 
-      # NOTE: the if conditions below mean that we only run these steps for Pull Requests from non-forks
-      # This is partially due to this issue https://github.com/aws-actions/configure-aws-credentials/issues/373.
-      # And partially because a malicious actor could fork the repo and fill our cache with junk.
-      # Note that the cache will be pushed when merged to main, so PR's from forks that make it in will still
-      # populate the cache
       - name: Authenticate 🔒
         uses: aws-actions/configure-aws-credentials@v4
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         with:
           aws-region: us-east-2
           retry-max-attempts: 3
@@ -40,10 +36,15 @@ jobs:
           role-session-name: InformalSystemsGithubAction
 
       - name: Push Cache 🫸📦💨
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         env: 
           SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
         run: |
           echo "$SIGNING_KEY" >> key
           nix store sign -k key --all
           nix copy --to "s3://cosmosnix-store?region=us-east-2" --all
+
+      - name: Push to FlakeHub ❄️
+        uses: determinatesystems/flakehub-push@main
+        with:
+          rolling: true
+          visibility: "public"
