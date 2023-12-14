@@ -4,15 +4,14 @@
 }:
 pkgs.rustPlatform.buildRustPackage {
   pname = "namada";
-  version = "v0.27.0";
+  version = "v0.28.1";
   src = namada-src;
   nativeBuildInputs = with pkgs;
     if stdenv.isLinux
-    then [pkg-config protobuf llvmPackages.libclang llvmPackages.libcxxClang clang]
-    else [darwin.apple_sdk.frameworks.Security];
+    then [protobuf pkg-config llvmPackages.libclang llvmPackages.libcxxClang clang]
+    else [protobuf darwin.apple_sdk.frameworks.Security];
   LIBCLANG_PATH = "${pkgs.llvmPackages_11.libclang.lib}/lib";
   buildInputs = with pkgs; lib.optionals stdenv.isLinux [systemd openssl openssl.dev];
-  cargoSha256 = "sha256-xCSH8L8do6mS3NKPBZoXKrbJizEDiCJrZnUeG0aisRE=";
   cargoLock = {
     lockFile = "${namada-src}/Cargo.lock";
     outputHashes = {
@@ -30,5 +29,4 @@ pkgs.rustPlatform.buildRustPackage {
     };
   };
   doCheck = false;
-  cargoCheckCommand = "true";
 }
