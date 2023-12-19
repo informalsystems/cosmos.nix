@@ -5,7 +5,7 @@ nix-std: {
   buildCosmwasmContract = let
     target = "wasm32-unknown-unknown";
     # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
-    rust = pkgs.rust-bin.stable."1.70.0".default.override {
+    rust = pkgs.rust-bin.stable."1.73.0".default.override {
       extensions = [];
       targets = [
         target
@@ -131,6 +131,14 @@ nix-std: {
 in {
   inherit buildCosmwasmContract;
   mkCosmosGoApp = buildApp;
+  cosmpy-package = let
+    inherit (inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryPackages;
+  in
+    (mkPoetryPackages {
+      projectDir = inputs.cosmpy-src;
+      checkGroups = [];
+    })
+    .poetryPackages;
 
   wasmdPreFixupPhase = libwasmvm: binName:
     if pkgs.stdenv.hostPlatform.isLinux

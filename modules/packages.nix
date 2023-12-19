@@ -43,6 +43,13 @@
           inherit pkgs;
           inherit (inputs) cosmwasm-src;
         };
+        datamodel-code-generator = let
+          inherit (inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
+        in
+          import ../packages/datamodel-code-generator.nix {
+            inherit mkPoetryApplication;
+            inherit (inputs) datamodel-code-generator-src;
+          };
         cosmovisor = import ../packages/cosmovisor.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;

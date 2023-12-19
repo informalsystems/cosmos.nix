@@ -42,6 +42,7 @@
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
     gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
+    poetry2nix.url = "github:nix-community/poetry2nix";
 
     # Freshautomations inputs
     stoml-src.url = "github:freshautomations/stoml";
@@ -227,16 +228,29 @@
     neutron-src.url = "github:neutron-org/neutron/v2.0.0";
     neutron-src.flake = false;
 
-    gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
-    gex-src.flake = false;
-
     beaker-src.url = "github:osmosis-labs/beaker/v0.1.6";
     beaker-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
     provenance-src.flake = false;
 
+    # Contracts
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
+
+    # Tools
+    gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
+    gex-src.flake = false;
+
+    # Python supports (usually for MEV/Trading/AI/Indexing)
+    datamodel-code-generator-src = {
+      url = "github:koxudaxi/datamodel-code-generator";
+      flake = false;
+    };
+
+    cosmpy-src = {
+      url = "github:fetchai/cosmpy";
+      flake = false;
+    };
   };
 }
