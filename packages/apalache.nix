@@ -2,61 +2,42 @@
   apalache-src,
   pkgs,
 }: let
-  version = "v0.23.1";
+  version = "v0.42.0";
 
-  # Patch the build.sbt file so that it does not call the `git describe` command.
-  # This is called by sbt-derivation to resolve the Scala dependencies, however
-  # inside the Nix build environment for sbt-derivation, the git command is
-  # not available, hence the dependency resolution would fail. As a workaround,
-  # we use the version string provided in Nix as the build version.
-  #
-  # Note that the diff has a single space indentation, so auto re-indentation
-  # inside the editor may break the diff.
-  patch = ''
-    diff --git a/build.sbt b/build.sbt
-    index c052ebc8..fa4568d7 100644
-    --- a/build.sbt
-    +++ b/build.sbt
-    @@ -184,7 +184,7 @@
-           // See https://github.com/sbt/sbt-buildinfo
-           buildInfoPackage := "apalache",
-           buildInfoKeys := {
-    -        val build = scala.sys.process.Process("git describe --tags --always").!!.trim
-    +        val build = "${version}"
-             Seq[BuildInfoKey](
-                 BuildInfoKey.map(version) { case (k, v) =>
-                   if (isSnapshot.value) (k -> build) else (k -> v)
+  postPatch = ''
+    # Patch the build.sbt file so that it does not call the `git describe` command.
+    # This is called by sbt-derivation to resolve the Scala dependencies, however
+    # inside the Nix build environment for sbt-derivation, the git command is
+    # not available, hence the dependency resolution would fail. As a workaround,
+    # we use the version string provided in Nix as the build version.
+    substituteInPlace ./build.sbt \
+      --replace 'Process("git describe --tags --always").!!.trim' '"${version}"'
+
+    # Patch the wrapper script to use a JRE from the Nix store,
+    # and to load the JAR from the Nix store by default.
+    substituteInPlace ./src/universal/bin/apalache-mc \
+      --replace 'exec java' 'exec ${pkgs.jre}/bin/java' \
+      --replace '$DIR/../lib/apalache.jar' "$out/lib/apalache.jar"
   '';
 in
   pkgs.mkSbtDerivation {
+    inherit version postPatch;
     pname = "apalache";
-    inherit version;
 
-    depsSha256 = "sha256-Fyf98HRE5zzSD3aMDsNb6bJh2Ml6DC4+BqH+a7ljFHo=";
+    depsSha256 = "sha256-1/cI5JK1/uYVK7ihoyZwR4cHJqzsNW9eVaF7OKu92IE=";
     src = apalache-src;
-
-    patches = [
-      (builtins.toFile "diff.patch" patch)
-    ];
-
-    buildPhase = ''
-      make dist
-    '';
-
+    buildPhase = "make dist";
     installPhase = ''
-      mkdir -p $out/lib
-      mkdir -p $out/bin
-      mkdir -p target/out
-
-      tar xf target/universal/apalache.tgz -C target/out
-
-      cp -r target/out/apalache/lib/apalache.jar $out/lib/apalache.jar
-
-      cat > $out/bin/apalache-mc <<- EOM
-      #!${pkgs.bash}/bin/bash
-      exec ${pkgs.jre}/bin/java -Xmx4096m -jar "$out/lib/apalache.jar" "\$@"
-      EOM
-
-      chmod +x $out/bin/apalache-mc
+      mkdir $out
+      tar \
+        --file=target/universal/apalache.tgz \
+        --extract \
+        --gzip \
+        --strip-components=1 \
+        --directory=$out
     '';
+
+    overrideDepsAttrs = _: _: {
+      inherit postPatch;
+    };
   }

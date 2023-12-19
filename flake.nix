@@ -202,7 +202,7 @@
     cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
     cosmwasm-src.flake = false;
 
-    apalache-src.url = "github:informalsystems/apalache/v0.24.0";
+    apalache-src.url = "github:informalsystems/apalache/v0.42.0";
     apalache-src.flake = false;
 
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
