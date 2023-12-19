@@ -144,4 +144,17 @@ in {
       install_name_tool -add_rpath "${libwasmvm}/lib" $out/bin/${binName}
     ''
     else null;
+
+  mkGenerator = name: srcDir: pkgs.writeShellApplication {
+    inherit name;
+    runtimeInputs = with pkgs; [ gomod2nix ];
+    text = ''
+      CURDIR=$(pwd)
+      BUILDDIR=$(mktemp -d)
+      cd "$BUILDDIR"
+      cp -r ${srcDir}/* ./
+      gomod2nix --outdir "$CURDIR"
+    '';
+  };
+
 }

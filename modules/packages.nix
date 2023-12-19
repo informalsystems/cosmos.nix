@@ -55,11 +55,6 @@
           inherit (cosmosLib) buildCosmwasmContract;
           inherit (inputs) cw-plus-src;
         };
-        evmos = import ../packages/evmos.nix {
-          inherit pkgs;
-          inherit (inputs) evmos-src;
-          inherit (cosmosLib) mkCosmosGoApp;
-        };
         gex = import ../packages/gex.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) gex-src;
@@ -170,6 +165,12 @@
         (import ../packages/stride.nix {
           inherit inputs;
           inherit (cosmosLib) mkCosmosGoApp;
+        })
+        # Evmos
+        (import ../packages/evmos {
+          inherit pkgs;
+          inherit (inputs) evmos-src;
+          inherit (cosmosLib) mkGenerator;
         })
       ];
   };

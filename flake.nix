@@ -36,6 +36,7 @@
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
 
     # Freshautomations inputs
     stoml-src.url = "github:freshautomations/stoml";
