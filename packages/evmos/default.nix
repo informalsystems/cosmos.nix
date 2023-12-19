@@ -2,8 +2,7 @@
   mkGenerator,
   evmos-src,
   pkgs,
-}:
-{
+}: {
   # NOTE: this uses `buildGoApplication` from `gomod2nix`. Which requires that you pre-generate
   # the go.mod dependency hashes. Therefore you need to run `nix run .#gen-evmos` which is below
   evmos = pkgs.buildGoApplication {

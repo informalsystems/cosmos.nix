@@ -90,10 +90,10 @@ nix-std: {
         nothing =
           pkgs.lib.trivial.warn
           ''
-          Could not find a ${engine} version with regex check that: 
-            - The correct bft engine is ${engine} 
-            - the formatting of go.mod may not conform to the regex in cosmos.nix/lib/default.nix.
-          ''  
+            Could not find a ${engine} version with regex check that:
+              - The correct bft engine is ${engine}
+              - the formatting of go.mod may not conform to the regex in cosmos.nix/lib/default.nix.
+          ''
           null;
         just = function.id;
       };
@@ -145,16 +145,16 @@ in {
     ''
     else null;
 
-  mkGenerator = name: srcDir: pkgs.writeShellApplication {
-    inherit name;
-    runtimeInputs = with pkgs; [ gomod2nix ];
-    text = ''
-      CURDIR=$(pwd)
-      BUILDDIR=$(mktemp -d)
-      cd "$BUILDDIR"
-      cp -r ${srcDir}/* ./
-      gomod2nix --outdir "$CURDIR"
-    '';
-  };
-
+  mkGenerator = name: srcDir:
+    pkgs.writeShellApplication {
+      inherit name;
+      runtimeInputs = with pkgs; [gomod2nix];
+      text = ''
+        CURDIR=$(pwd)
+        BUILDDIR=$(mktemp -d)
+        cd "$BUILDDIR"
+        cp -r ${srcDir}/* ./
+        gomod2nix --outdir "$CURDIR"
+      '';
+    };
 }
