@@ -1,7 +1,7 @@
 {
   nixConfig = {
-    substituters = "https://cosmosnix-store.s3.us-east-2.amazonaws.com";
-    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=";
+    substituters = "https://cosmosnix-store.s3.us-east-2.amazonaws.com https://cache.nixos.org https://nix-community.cachix.org";
+    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
   };
 
   description = "A reproducible package set for Cosmos, IBC and CosmWasm";
@@ -42,7 +42,6 @@
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
     gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
-    poetry2nix.url = "github:nix-community/poetry2nix";
 
     # Freshautomations inputs
     stoml-src.url = "github:freshautomations/stoml";
@@ -59,7 +58,7 @@
     ibc-rs-src.url = "github:informalsystems/ibc-rs/v1.0.0";
     ibc-rs-src.flake = false;
 
-    hermes-src.url = "github:informalsystems/hermes/v1.6.0";
+    hermes-src.url = "github:informalsystems/hermes/v1.7.4";
     hermes-src.flake = false;
 
     relayer-src.url = "github:cosmos/relayer/v1.0.0";
@@ -144,7 +143,7 @@
     juno-src.url = "github:CosmosContracts/juno/v17.1.1";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v20.4.0";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v21.0.0";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
@@ -201,9 +200,6 @@
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
 
-    cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
-    cosmwasm-src.flake = false;
-
     apalache-src.url = "github:informalsystems/apalache/v0.42.0";
     apalache-src.flake = false;
 
@@ -225,11 +221,11 @@
     celestia-src.url = "github:celestiaorg/celestia-app/v1.4.0";
     celestia-src.flake = false;
 
+    namada-src.url = "github:anoma/namada/v0.28.1";
+    namada-src.flake = false;
+
     neutron-src.url = "github:neutron-org/neutron/v2.0.0";
     neutron-src.flake = false;
-
-    beaker-src.url = "github:osmosis-labs/beaker/v0.1.6";
-    beaker-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
     provenance-src.flake = false;
@@ -238,19 +234,15 @@
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
 
+
     # Tools
+    cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
+    cosmwasm-src.flake = false;
+
+    beaker-src.url = "github:osmosis-labs/beaker/v0.1.6";
+    beaker-src.flake = false;
+
     gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
     gex-src.flake = false;
-
-    # Python supports (usually for MEV/Trading/AI/Indexing)
-    datamodel-code-generator-src = {
-      url = "github:koxudaxi/datamodel-code-generator";
-      flake = false;
-    };
-
-    cosmpy-src = {
-      url = "github:fetchai/cosmpy";
-      flake = false;
-    };
   };
 }

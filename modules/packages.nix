@@ -43,13 +43,6 @@
           inherit pkgs;
           inherit (inputs) cosmwasm-src;
         };
-        datamodel-code-generator = let
-          inherit (inputs.poetry2nix.lib.mkPoetry2Nix {inherit pkgs;}) mkPoetryApplication;
-        in
-          import ../packages/datamodel-code-generator.nix {
-            inherit mkPoetryApplication;
-            inherit (inputs) datamodel-code-generator-src;
-          };
         cosmovisor = import ../packages/cosmovisor.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
@@ -104,7 +97,7 @@
         };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
-          inherit (self'.packages) libwasmvm_1_2_3;
+          inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
         provenance = import ../packages/provenance.nix {
@@ -150,6 +143,10 @@
           inherit (inputs) wasmd_next-src;
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
+        };
+        namada = import ../packages/namada.nix {
+          inherit pkgs;
+          inherit (inputs) namada-src;
         };
       }
       # This list contains attr sets that are recursively merged into the

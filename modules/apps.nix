@@ -188,6 +188,10 @@
         type = "app";
         program = "${packages.provenance}/bin/provenanced";
       };
+      namada = {
+        type = "app";
+        program = "${packages.namada}/bin/namada";
+      };
     };
   };
 }
