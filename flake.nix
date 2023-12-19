@@ -41,6 +41,7 @@
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
 
     # Freshautomations inputs
     stoml-src.url = "github:freshautomations/stoml";
@@ -136,7 +137,7 @@
     regen-src.url = "github:regen-network/regen-ledger/v3.0.0";
     regen-src.flake = false;
 
-    evmos-src.url = "github:tharsis/evmos/v9.1.0";
+    evmos-src.url = "github:evmos/evmos/v16.0.0-rc4";
     evmos-src.flake = false;
 
     juno-src.url = "github:CosmosContracts/juno/v17.1.1";
