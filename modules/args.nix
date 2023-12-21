@@ -11,6 +11,9 @@
       overlays = [
         inputs.rust-overlay.overlays.default
         inputs.sbt-derivation.overlays.default
+        (prev: final: {
+          inherit (inputs.gomod2nix.legacyPackages.${system}) buildGoApplication gomod2nix;
+        })
       ];
       config = {};
     };

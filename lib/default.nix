@@ -89,7 +89,11 @@ nix-std: {
       optional.match dep-version {
         nothing =
           pkgs.lib.trivial.warn
-          "Could not find a ${engine} version with regex, check if the formatting of go.mod escapes the regex in cosmos.nix/resources/utilities"
+          ''
+            Could not find a ${engine} version with regex check that:
+              - The correct bft engine is ${engine}
+              - the formatting of go.mod may not conform to the regex in cosmos.nix/lib/default.nix.
+          ''
           null;
         just = function.id;
       };
@@ -140,4 +144,17 @@ in {
       install_name_tool -add_rpath "${libwasmvm}/lib" $out/bin/${binName}
     ''
     else null;
+
+  mkGenerator = name: srcDir:
+    pkgs.writeShellApplication {
+      inherit name;
+      runtimeInputs = with pkgs; [gomod2nix];
+      text = ''
+        CURDIR=$(pwd)
+        BUILDDIR=$(mktemp -d)
+        cd "$BUILDDIR"
+        cp -r ${srcDir}/* ./
+        gomod2nix --outdir "$CURDIR"
+      '';
+    };
 }

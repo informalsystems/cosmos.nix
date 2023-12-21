@@ -1,4 +1,9 @@
 {
+  nixConfig = {
+    substituters = "https://cosmosnix-store.s3.us-east-2.amazonaws.com";
+    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=";
+  };
+
   description = "A reproducible package set for Cosmos, IBC and CosmWasm";
 
   outputs = inputs @ {flake-parts, ...}:
@@ -36,6 +41,7 @@
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
 
     # Freshautomations inputs
     stoml-src.url = "github:freshautomations/stoml";
@@ -131,7 +137,7 @@
     regen-src.url = "github:regen-network/regen-ledger/v3.0.0";
     regen-src.flake = false;
 
-    evmos-src.url = "github:tharsis/evmos/v9.1.0";
+    evmos-src.url = "github:evmos/evmos/v16.0.0-rc4";
     evmos-src.flake = false;
 
     juno-src.url = "github:CosmosContracts/juno/v17.1.1";
@@ -197,7 +203,7 @@
     cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
     cosmwasm-src.flake = false;
 
-    apalache-src.url = "github:informalsystems/apalache/v0.24.0";
+    apalache-src.url = "github:informalsystems/apalache/v0.42.0";
     apalache-src.flake = false;
 
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
