@@ -9,7 +9,7 @@ pkgs.rustPlatform.buildRustPackage {
   nativeBuildInputs = with pkgs;
     (
       if stdenv.isLinux
-      then [ pkg-config ]
+      then [pkg-config]
       else [darwin.apple_sdk.frameworks.Security]
     )
     ++ [
