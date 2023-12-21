@@ -25,6 +25,8 @@ nix-std: {
       # people use different profiles a lot
       profile ? "release",
       nativeBuildInputs ? [],
+      # as per https://github.com/CosmWasm/wasmd/blob/main/README.md
+      maxWasmSizeBytes ? 819200,
       ...
     }: let
       binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
@@ -45,12 +47,18 @@ nix-std: {
           buildPhase = ''
             cargo build --lib --target ${target} --profile ${profile} --package ${pname}
             mkdir -p ./output/lib
-            wasm-opt "target/${target}/release/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
+            wasm-opt "target/${target}/${profile}/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
             cp -r ./output $out
           '';
           checkPhase = ''
             cargo test
             cosmwasm-check "$out/lib/${binaryName}"
+            SIZE=$(stat --format=%s "$out/lib/${binaryName}")
+            if [[ "$SIZE" -gt ${builtins.toString maxWasmSizeBytes} ]]; then
+              echo "Wasm file size is $SIZE, which is larger than the maximum allowed size of ${builtins.toString maxWasmSizeBytes} bytes."
+              echo "Either reduce size or increase maxWasmSizeBytes if you know what you are doing."
+              exit 1
+            fi
           '';
         }
         // cleanedArgs
