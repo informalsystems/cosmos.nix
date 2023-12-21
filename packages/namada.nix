@@ -7,11 +7,21 @@ pkgs.rustPlatform.buildRustPackage {
   version = "v0.28.1";
   src = namada-src;
   nativeBuildInputs = with pkgs;
-    if stdenv.isLinux
-    then [protobuf pkg-config llvmPackages.libclang llvmPackages.libcxxClang clang]
-    else [protobuf darwin.apple_sdk.frameworks.Security];
-  LIBCLANG_PATH = "${pkgs.llvmPackages_11.libclang.lib}/lib";
-  buildInputs = with pkgs; lib.optionals stdenv.isLinux [systemd openssl openssl.dev];
+    (
+      if stdenv.isLinux
+      then [ pkg-config ]
+      else [darwin.apple_sdk.frameworks.Security]
+    )
+    ++ [
+      protobuf
+      rustPlatform.bindgenHook # required for bindgen in custom build script for librocksdb-sys
+    ];
+  buildInputs = with pkgs;
+    lib.optionals stdenv.isLinux [
+      systemd # required for libudev in custom build script for hidapi
+      openssl
+      openssl.dev
+    ];
   cargoLock = {
     lockFile = "${namada-src}/Cargo.lock";
     outputHashes = {
