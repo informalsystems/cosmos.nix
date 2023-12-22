@@ -5,12 +5,12 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "osmosis";
-  version = "v20.4.0";
+  version = "v21.0.0";
   src = osmosis-src;
-  vendorHash = "sha256-WN6H+lRS+wX4CiVEVMxp4fW2vtZxTi+O6SncJdrUFLo=";
+  vendorHash = "sha256-9BBAILwkOhru/35/sc91kf0h3Byz9RJ/P56s2hSmf18=";
   tags = ["netgo"];
   excludedPackages = ["cl-genesis-positions"];
-  engine = "tendermint/tendermint";
+  engine = "cometbft/cometbft";
   preFixup = ''
     ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_3 "osmosisd"}
     ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_3 "chain"}
