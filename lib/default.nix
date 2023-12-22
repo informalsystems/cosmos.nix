@@ -164,6 +164,7 @@ in {
         cp -r ${srcDir}/* ./
         gomod2nix --outdir "$CURDIR"
       '';
+    };
   evalHermesModule = {modules}:
     pkgs.lib.evalModules {
       modules =
