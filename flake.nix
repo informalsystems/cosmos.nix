@@ -31,6 +31,8 @@
         ./modules/apps.nix
         # Sets the overlays.default flake output
         ./modules/overlay.nix
+        # Provides virtualization functionality for testing
+        ./modules/virtualization.nix
       ];
     };
 
@@ -42,6 +44,10 @@
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
     gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Freshautomations inputs
     stoml-src.url = "github:freshautomations/stoml";

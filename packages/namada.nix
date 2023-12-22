@@ -6,6 +6,7 @@ pkgs.rustPlatform.buildRustPackage {
   pname = "namada";
   version = "v0.28.1";
   src = namada-src;
+  auditable = false;
   nativeBuildInputs = with pkgs;
     (
       if stdenv.isLinux
