@@ -97,7 +97,7 @@
         };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
-          inherit (self'.packages) libwasmvm_1_2_3;
+          inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
         provenance = import ../packages/provenance.nix {
