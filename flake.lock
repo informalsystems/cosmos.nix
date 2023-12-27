@@ -499,16 +499,16 @@
     "hermes-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1689751768,
-        "narHash": "sha256-yq+jdHSwUejMA1hURSHWHJ8QSyhDdnhpKE+tejgWSSE=",
+        "lastModified": 1702629809,
+        "narHash": "sha256-JTZMp4By/pGsMdKzfi4H1LQS1RKYQHBq5NEju5ADX/s=",
         "owner": "informalsystems",
         "repo": "hermes",
-        "rev": "1c1cf02988db67507de7d484e1a7f317fe494d6c",
+        "rev": "ab732666fe35de129ada98731280d03411f6375f",
         "type": "github"
       },
       "original": {
         "owner": "informalsystems",
-        "ref": "v1.6.0",
+        "ref": "v1.7.4",
         "repo": "hermes",
         "type": "github"
       }

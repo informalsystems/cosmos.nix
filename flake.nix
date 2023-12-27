@@ -58,7 +58,7 @@
     ibc-rs-src.url = "github:informalsystems/ibc-rs/v1.0.0";
     ibc-rs-src.flake = false;
 
-    hermes-src.url = "github:informalsystems/hermes/v1.6.0";
+    hermes-src.url = "github:informalsystems/hermes/v1.7.4";
     hermes-src.flake = false;
 
     relayer-src.url = "github:cosmos/relayer/v1.0.0";
