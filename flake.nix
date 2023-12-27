@@ -1,7 +1,7 @@
 {
   nixConfig = {
-    substituters = "https://cosmosnix-store.s3.us-east-2.amazonaws.com";
-    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=";
+    substituters = "https://cosmosnix-store.s3.us-east-2.amazonaws.com https://cache.nixos.org https://nix-community.cachix.org";
+    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
   };
 
   description = "A reproducible package set for Cosmos, IBC and CosmWasm";
@@ -143,7 +143,7 @@
     juno-src.url = "github:CosmosContracts/juno/v17.1.1";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v20.4.0";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v21.0.0";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
