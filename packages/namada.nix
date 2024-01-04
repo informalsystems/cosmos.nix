@@ -10,7 +10,7 @@ pkgs.rustPlatform.buildRustPackage {
     (
       if stdenv.isLinux
       then [pkg-config]
-      else [darwin.apple_sdk.frameworks.Security]
+      else [clang]
     )
     ++ [
       protobuf
@@ -19,6 +19,12 @@ pkgs.rustPlatform.buildRustPackage {
   buildInputs = with pkgs;
     lib.optionals stdenv.isLinux [
       systemd # required for libudev in custom build script for hidapi
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+      hidapi
+    ]
+    ++ [
       openssl
       openssl.dev
     ];
