@@ -8,9 +8,8 @@ pkgs.rustPlatform.buildRustPackage {
   src = namada-src;
   nativeBuildInputs = with pkgs;
     (
-      if stdenv.isLinux
-      then [pkg-config]
-      else [clang]
+      lib.optionals stdenv.isLinux
+      [pkg-config]
     )
     ++ [
       protobuf
@@ -28,6 +27,7 @@ pkgs.rustPlatform.buildRustPackage {
       openssl
       openssl.dev
     ];
+
   cargoLock = {
     lockFile = "${namada-src}/Cargo.lock";
     outputHashes = {

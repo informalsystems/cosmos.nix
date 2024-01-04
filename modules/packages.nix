@@ -148,7 +148,10 @@
           inherit pkgs;
           inherit (inputs) namada-src;
         };
-        namada-src = inputs.namada-src.outPath;
+        namada-src = pkgs.symlinkJoin {
+          name = "namada-src";
+          paths = [inputs.namada-src.outPath];
+        };
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
