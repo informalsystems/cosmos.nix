@@ -74,8 +74,12 @@ nix-std: {
     appName ? null,
     preCheck ? null,
     goVersion ? "1.19",
+    moduleSubDir ? null,
     ...
   }: let
+    modSrc = if moduleSubDir == null
+      then src
+      else "${src}/${moduleSubDir}";
     buildGoModuleArgs =
       pkgs.lib.filterAttrs
       (n: _:
@@ -87,7 +91,7 @@ nix-std: {
       all-dep-matches =
         regex.allMatches
         "${engine}[[:space:]](=>[[:space:]]?[[:graph:]]*[[:space:]])?v?[[:graph:]]*"
-        (builtins.readFile "${src}/go.mod");
+        (builtins.readFile "${modSrc}/go.mod");
       dep-string =
         if list.any (string.hasInfix "=>") all-dep-matches
         then list.head (list.filter (string.hasInfix "=>") all-dep-matches)
@@ -120,7 +124,8 @@ nix-std: {
     buildGoModule = buildGoModuleVersion.${goVersion};
   in
     buildGoModule ({
-        inherit version src vendorHash;
+        inherit version vendorHash;
+        src = modSrc;
         pname = name;
         preCheck =
           if preCheck == null

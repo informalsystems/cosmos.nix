@@ -55,6 +55,10 @@
           inherit (cosmosLib) buildCosmwasmContract;
           inherit (inputs) cw-plus-src;
         };
+        dydx = import ../packages/dydx.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) dydx-src;
+        };
         gex = import ../packages/gex.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) gex-src;
