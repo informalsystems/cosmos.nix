@@ -86,19 +86,16 @@ There are a few nix utilities provided as a nix library. You can use these in yo
 
   inputs = {
     cosmos-nix.url = "github:informalsystems/cosmos.nix";
-    nixpkgs.url = "github:nixos/nixpkgs";
   };
-  outputs = {cosmos-nix, nixpkgs}: {
-    let system = ...
-        pkgs = nixpkgs.legacyPackages.${system};
-        cosmosLib = cosmos-nix.lib { inherit pkgs; };
+  outputs = { cosmos-nix }: {
+        cosmosLib = cosmos-nix.lib "x86_64-linux";
     in ...
   };
 }
 ```
 
-> NOTE: you need to pass `cosmosLib` a pkgs argument because it uses `buildGoModule` internally. This is 
-> slightly unfortunate since it isn't pure nix (without derivations), and therefore needs to be `system` aware.
+> NOTE: you need to pass `cosmosLib` a "system" argument because it uses system specific pkgs internally. It is 
+> slightly unfortunate that it isn't pure nix (without derivations), and needs to be `system` aware.
 
 ## Development
 
