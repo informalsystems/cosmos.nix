@@ -77,7 +77,8 @@ nix-std: {
     moduleSubDir ? null,
     ...
   }: let
-    modSrc = if moduleSubDir == null
+    modSrc =
+      if moduleSubDir == null
       then src
       else "${src}/${moduleSubDir}";
     buildGoModuleArgs =

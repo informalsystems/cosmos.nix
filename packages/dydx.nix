@@ -1,6 +1,6 @@
 {
   mkCosmosGoApp,
-  dydx-src
+  dydx-src,
 }:
 mkCosmosGoApp {
   name = "dydx";
