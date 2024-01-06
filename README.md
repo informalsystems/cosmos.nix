@@ -131,6 +131,7 @@ mkCosmosGoApp {
   name = "my-chain";
   version = "v0.1.0";
   src = my-chain-src;
+  rev = my-chain-src.rev;
   vendorHash = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
