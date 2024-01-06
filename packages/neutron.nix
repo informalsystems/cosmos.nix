@@ -8,6 +8,7 @@ cosmosLib.mkCosmosGoApp {
   name = "neutron";
   version = "v2.0.0";
   src = neutron-src;
+  rev = neutron-src.rev;
   vendorHash = "sha256-uLInKbuL886cfXCyQvIDZJHUC8AK9fR39yNBHDO+Qzc=";
   engine = "cometbft/cometbft";
   preFixup = ''

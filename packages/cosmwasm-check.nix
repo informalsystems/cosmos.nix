@@ -2,7 +2,7 @@
   pkgs,
   cosmwasm-src,
 }:
-pkgs.rustPlatform.buildRustPackage rec {
+pkgs.rustPlatform.buildRustPackage {
   pname = "cosmwasm-check";
   version = "1.5.0";
   src = cosmwasm-src;

@@ -7,6 +7,7 @@ cosmosLib.mkCosmosGoApp {
   name = "juno";
   version = "v17.1.1";
   src = juno-src;
+  rev = juno-src.rev;
   vendorHash = "sha256-ftmNMjCFWq4XGM9+ad64dzzcgQJ1ApH4YmthldfrB54=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
