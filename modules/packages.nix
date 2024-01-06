@@ -180,7 +180,6 @@
           inherit (inputs) evmos-src;
           inherit (cosmosLib) mkGenerator;
         })
-        (import ../scripts {inherit pkgs;})
       ];
   };
 }

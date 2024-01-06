@@ -6,8 +6,14 @@
 # within this git repo:
 # nix run .#<app-name>
 {
-  perSystem = {self', ...}: {
-    apps = with self'; {
+  perSystem = {
+    self',
+    pkgs,
+    ...
+  }: {
+    apps = with self'; let
+      scripts = import ../scripts {inherit pkgs;};
+    in {
       dydx = {
         type = "app";
         program = "${packages.dydx}/bin/dydxprotocold";
@@ -195,6 +201,10 @@
       namada = {
         type = "app";
         program = "${packages.namada}/bin/namada";
+      };
+      push-store = {
+        type = "app";
+        program = "${scripts.push-store}/bin/push-store";
       };
     };
   };
