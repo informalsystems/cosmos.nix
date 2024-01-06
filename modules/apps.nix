@@ -8,6 +8,10 @@
 {
   perSystem = {self', ...}: {
     apps = with self'; {
+      dydx = {
+        type = "app";
+        program = "${packages.dydx}/bin/dydxprotocold";
+      };
       cometbft = {
         type = "app";
         program = "${packages.cometbft}/bin/cometbft";

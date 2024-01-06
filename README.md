@@ -86,19 +86,16 @@ There are a few nix utilities provided as a nix library. You can use these in yo
 
   inputs = {
     cosmos-nix.url = "github:informalsystems/cosmos.nix";
-    nixpkgs.url = "github:nixos/nixpkgs";
   };
-  outputs = {cosmos-nix, nixpkgs}: {
-    let system = ...
-        pkgs = nixpkgs.legacyPackages.${system};
-        cosmosLib = cosmos-nix.lib { inherit pkgs; };
+  outputs = { cosmos-nix }: {
+        cosmosLib = cosmos-nix.lib "x86_64-linux";
     in ...
   };
 }
 ```
 
-> NOTE: you need to pass `cosmosLib` a pkgs argument because it uses `buildGoModule` internally. This is 
-> slightly unfortunate since it isn't pure nix (without derivations), and therefore needs to be `system` aware.
+> NOTE: you need to pass `cosmosLib` a "system" argument because it uses system specific pkgs internally. It is 
+> slightly unfortunate that it isn't pure nix (without derivations), and needs to be `system` aware.
 
 ## Development
 
@@ -108,4 +105,58 @@ Formatting will be run via the default nix command. You can find the formatter c
 
 ```bash
 nix fmt
+```
+
+#### Contribution Guide
+
+1. Add the chains source code as a flake input
+
+```nix
+    inputs = {
+        my-chain-src.url = "github:my-chains-organization/my-chains-repo";
+        my-chain-src.flake = false;
+    };
+```
+
+2. Add a new file in `packages/` named after the chain that you are packaging
+
+> Usually you will use this structure for cosmos-sdk chains, there are other examples of non-sdk chains in the repo
+```nix
+# packages/my-chain.nix
+{
+  mkCosmosGoApp,
+  my-chain-src,
+}:
+mkCosmosGoApp {
+  name = "my-chain";
+  version = "v0.1.0";
+  src = my-chain-src;
+  rev = my-chain-src.rev;
+  vendorHash = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
+  tags = ["netgo"];
+  engine = "cometbft/cometbft";
+}
+```
+
+3. Import your new derivation into the `modules/packages.nix` file
+
+```nix
+    my-chain = import ../packages/my-chain.nix {
+      inherit (cosmosLib) mkCosmosGoApp;
+      inherit (inputs) my-chain-src;
+    };
+```
+
+4. Test that it works by running:
+```
+> git add .
+> nix build .#my-chain
+```
+
+5. Add the package to apps.nix, after you have built the package in step 4 you can check what the binary path is by running `ls result/`
+```nix
+  my-chain = {
+    type = "app";
+    program = "${packages.my-chain}/bin/mychaind";
+  };
 ```

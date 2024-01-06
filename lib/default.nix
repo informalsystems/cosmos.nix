@@ -67,6 +67,7 @@ nix-std: {
   buildApp = args @ {
     name,
     version,
+    rev,
     src,
     engine,
     vendorHash,
@@ -120,7 +121,7 @@ nix-std: {
     buildGoModule = buildGoModuleVersion.${goVersion};
   in
     buildGoModule ({
-        inherit version src vendorHash;
+        inherit version vendorHash src;
         pname = name;
         preCheck =
           if preCheck == null
@@ -130,7 +131,7 @@ nix-std: {
           -X github.com/cosmos/cosmos-sdk/version.Name=${name}
           -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
           -X github.com/cosmos/cosmos-sdk/version.Version=${version}
-          -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
+          -X github.com/cosmos/cosmos-sdk/version.Commit=${rev}
           -X github.com/${engine}/version.TMCoreSemVer=${dependency-version}
           ${additionalLdFlags}
         '';

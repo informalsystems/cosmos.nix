@@ -7,6 +7,7 @@ cosmosLib.mkCosmosGoApp {
   name = "wasm";
   version = "v0.40.0-rc.1";
   src = wasmd_next-src;
+  rev = wasmd_next-src.rev;
   vendorHash = "sha256-FWpclJuuIkbcoXxRTeZwDR0wZP2eHkPKsu7xme5vLPg=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";

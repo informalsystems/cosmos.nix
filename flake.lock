@@ -170,6 +170,23 @@
         "type": "github"
       }
     },
+    "dydx-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702405483,
+        "narHash": "sha256-NiC+Nol8Cye0z/U5cgQ+zhvlbDJX6DouaMo8oYsRGDQ=",
+        "owner": "dydxprotocol",
+        "repo": "v4-chain",
+        "rev": "35b87db422b0ef4138101ba73b0f00d16780ba89",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dydxprotocol",
+        "ref": "protocol/v3.0.0-dev0",
+        "repo": "v4-chain",
+        "type": "github"
+      }
+    },
     "evmos-src": {
       "flake": false,
       "locked": {
@@ -995,6 +1012,7 @@
         "cosmwasm-src": "cosmwasm-src",
         "crescent-src": "crescent-src",
         "cw-plus-src": "cw-plus-src",
+        "dydx-src": "dydx-src",
         "evmos-src": "evmos-src",
         "flake-parts": "flake-parts",
         "gaia-main-src": "gaia-main-src",

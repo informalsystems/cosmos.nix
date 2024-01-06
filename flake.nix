@@ -241,5 +241,8 @@
 
     namada-src.url = "github:anoma/namada/v0.28.1";
     namada-src.flake = false;
+
+    dydx-src.url = "github:dydxprotocol/v4-chain/protocol/v3.0.0-dev0";
+    dydx-src.flake = false;
   };
 }
