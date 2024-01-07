@@ -103,28 +103,6 @@ them into your nixpkgs package set.
 }
 ```
 
-#### Cosmos.nix Packages
-
-
-```nix
-{
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-    cosmos-nix.url = "github:informalsystems/cosmos.nix";
-  };
-  outputs = { cosmos-nix, nixpkgs }: {
-    let pkgs = import nixpkgs { 
-            system = "x86_64-linux"; # Or whatever system you are on
-            overlays = [
-                cosmos-nix.overlays.cosmosNixLib
-            ];
-        }
-    in ...
-  };
-}
-```
-
 ## Development
 
 #### Formatting
