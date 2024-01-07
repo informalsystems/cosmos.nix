@@ -1,7 +1,6 @@
 # This module provides the lib argument to all other modules as 'cosmosLib'.
 # This provides utility functions for packaging cosmos sdk and cosmwasm packages
 {
-  withSystem,
   inputs,
   ...
 }: let
@@ -19,14 +18,4 @@ in {
       inherit (self'.packages) cosmwasm-check;
     };
   };
-  flake.lib = system:
-    withSystem system ({
-      pkgs,
-      self',
-      ...
-    }:
-      lib std {
-        inherit pkgs;
-        inherit (self'.packages) cosmwasm-check;
-      });
 }
