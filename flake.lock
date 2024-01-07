@@ -51,6 +51,22 @@
         "type": "github"
       }
     },
+    "berachain-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704585486,
+        "narHash": "sha256-x2GR541NUPi7pUE9eD3YeLfIQrwVnPAl4vxC5UHA0UI=",
+        "owner": "berachain",
+        "repo": "polaris",
+        "rev": "0ec98f5fd6c45279ecf6025ea89f010271a51b54",
+        "type": "github"
+      },
+      "original": {
+        "owner": "berachain",
+        "repo": "polaris",
+        "type": "github"
+      }
+    },
     "celestia-src": {
       "flake": false,
       "locked": {
@@ -1005,6 +1021,7 @@
         "akash-src": "akash-src",
         "apalache-src": "apalache-src",
         "beaker-src": "beaker-src",
+        "berachain-src": "berachain-src",
         "celestia-src": "celestia-src",
         "centauri-src": "centauri-src",
         "cometbft-src": "cometbft-src",
