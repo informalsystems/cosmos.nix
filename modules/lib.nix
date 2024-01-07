@@ -1,9 +1,6 @@
 # This module provides the lib argument to all other modules as 'cosmosLib'.
 # This provides utility functions for packaging cosmos sdk and cosmwasm packages
-{
-  inputs,
-  ...
-}: let
+{inputs, ...}: let
   lib = import ../lib;
   std = inputs.nix-std;
 in {
