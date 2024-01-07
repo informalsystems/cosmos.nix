@@ -168,7 +168,7 @@
     stargaze-src.url = "github:public-awesome/stargaze/v3.0.0";
     stargaze-src.flake = false;
 
-    centauri-src.url = "github:ComposableFi/composable-cosmos/387c96b434db9d96b0506aa7f14536d9bdec968c";
+    centauri-src.url = "github:ComposableFi/composable-cosmos/release/v7.0.x";
     centauri-src.flake = false;
 
     wasmd-src.url = "github:CosmWasm/wasmd/v0.30.0";

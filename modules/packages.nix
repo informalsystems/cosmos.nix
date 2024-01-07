@@ -32,7 +32,7 @@
         };
         centauri = import ../packages/centauri.nix {
           inherit (inputs) centauri-src;
-          inherit (self'.packages) libwasmvm_1_2_4;
+          inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
         cometbft = import ../packages/cometbft.nix {
