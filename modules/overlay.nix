@@ -13,7 +13,7 @@
     cosmosNixLib;
 
   # Overlay with all the cosmos.nix cosmos packages
-  flake.overlays.cosmosNix = final: prev:
+  flake.overlays.cosmosNixPackages = final: prev:
     withSystem prev.stdenv.hostPlatform.system ({self', ...}: self'.packages);
 
   # Overlay with the cosmos.nix nix lib (comes with a bunch of utility functions for packaging cosmos packages)

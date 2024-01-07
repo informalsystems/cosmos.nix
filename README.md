@@ -77,25 +77,53 @@ latest development environment you should run:
 nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 ```
 
-## Library
+## Overlays
 
-There are a few nix utilities provided as a nix library. You can use these in your own flake like so:
+There are a few nix utilities provided as a nix library. There is also an
+overlay for all the cosmos packages exported by this flake, so you can fold
+them into your nixpkgs package set.
 
 ```nix
 {
-
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs";
     cosmos-nix.url = "github:informalsystems/cosmos.nix";
   };
-  outputs = { cosmos-nix }: {
-        cosmosLib = cosmos-nix.lib "x86_64-linux";
+  outputs = { cosmos-nix, nixpkgs }: {
+    let pkgs = import nixpkgs { 
+            system = "x86_64-linux"; # Or whatever system you are on
+            overlays = [
+                cosmos-nix.overlays.cosmosNixLib # Provides just the nix utility lib
+                cosmos-nix.overlays.cosmosNix    # Provides all the cosmos packages provided by cosmos.nix
+                cosmos-nix.overlay               # The default overlay gives you everything in the previous two combined
+            ];
+        }
     in ...
   };
 }
 ```
 
-> NOTE: you need to pass `cosmosLib` a "system" argument because it uses system specific pkgs internally. It is 
-> slightly unfortunate that it isn't pure nix (without derivations), and needs to be `system` aware.
+#### Cosmos.nix Packages
+
+
+```nix
+{
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs";
+    cosmos-nix.url = "github:informalsystems/cosmos.nix";
+  };
+  outputs = { cosmos-nix, nixpkgs }: {
+    let pkgs = import nixpkgs { 
+            system = "x86_64-linux"; # Or whatever system you are on
+            overlays = [
+                cosmos-nix.overlays.cosmosNixLib
+            ];
+        }
+    in ...
+  };
+}
+```
 
 ## Development
 
