@@ -21,12 +21,12 @@ with lib; {
         refresh = true;
         misbehaviour = true;
       };
-      # packets = {
-      #   enabled = true;
-      #   clear_interval = 100;
-      #   clear_on_start = false;
-      #   tx_confirmation = true;
-      # };
+      packets = {
+        enabled = true;
+        clear_interval = 100;
+        clear_on_start = false;
+        tx_confirmation = true;
+      };
       connections.enabled = false;
       channels.enabled = false;
     };

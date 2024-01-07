@@ -112,6 +112,31 @@ with lib; {
     };
   };
 
+  packet_filter = mkOption {
+    default = {
+      policy = "allow";
+      list = [["*" "*"]];
+    };
+    type = types.submodule {
+      options = {
+        policy = mkOption {
+          type = types.enum ["allow" "deny"];
+          default = "allow";
+          description = ''
+            Specify the policy of the packet filter.
+          '';
+        };
+        list = mkOption {
+          type = types.listOf (types.listOf types.str);
+          default = [["*" "*"]];
+          description = ''
+            Specify the list of packet filters.
+          '';
+        };
+      };
+    };
+  };
+
   # Optional
   rpc_timeout = mkOption {
     type = types.str;
