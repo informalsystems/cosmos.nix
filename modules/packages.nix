@@ -144,14 +144,6 @@
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
         };
-        namada = import ../packages/namada.nix {
-          inherit pkgs;
-          inherit (inputs) namada-src;
-        };
-        namada-src = pkgs.symlinkJoin {
-          name = "namada-src";
-          paths = [inputs.namada-src.outPath];
-        };
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
@@ -179,6 +171,11 @@
           inherit pkgs;
           inherit (inputs) evmos-src;
           inherit (cosmosLib) mkGenerator;
+        })
+        # Namada
+        (import ../packages/namada.nix {
+          inherit pkgs;
+          inherit (inputs) namada-src;
         })
       ];
   };
