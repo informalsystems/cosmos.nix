@@ -173,7 +173,7 @@
           inherit (cosmosLib) mkGenerator;
         })
         # Namada
-        (import ../packages/namada.nix {
+        (import ../packages/namada {
           inherit pkgs;
           inherit (inputs) namada-src;
         })
