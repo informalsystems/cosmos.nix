@@ -175,7 +175,8 @@
         # Namada
         (import ../packages/namada {
           inherit pkgs;
-          inherit (inputs) namada-src crane;
+          inherit (inputs) namada-src;
+          craneLib = inputs.crane.lib.${system};
         })
       ];
   };
