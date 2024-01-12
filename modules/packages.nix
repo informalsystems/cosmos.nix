@@ -175,7 +175,7 @@
         # Namada
         (import ../packages/namada {
           inherit pkgs;
-          inherit (inputs) namada-src;
+          inherit (inputs) namada-src crane;
         })
       ];
   };

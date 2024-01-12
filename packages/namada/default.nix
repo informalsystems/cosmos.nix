@@ -1,6 +1,7 @@
 {
   pkgs,
   namada-src,
+  crane,
 }:
   {
     namada = pkgs.rustPlatform.buildRustPackage {
