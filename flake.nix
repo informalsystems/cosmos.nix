@@ -125,7 +125,7 @@
     ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.0.0";
     ibc-go-v8-src.flake = false;
 
-    ibc-go-v8-channel-upgrade-src.url = "github:cosmos/ibc-go/04-channel-upgrades-alpha.0";
+    ibc-go-v8-channel-upgrade-src.url = "github:cosmos/ibc-go/04-channel-upgrades-rc.0";
     ibc-go-v8-channel-upgrade-src.flake = false;
 
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
