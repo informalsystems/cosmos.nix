@@ -635,16 +635,16 @@
     "ibc-go-v8-channel-upgrade-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1695726576,
-        "narHash": "sha256-mM6h1KAi8lQUrJakxI6f8WI+vpmBhCnAysk3hTZBI7M=",
+        "lastModified": 1703189903,
+        "narHash": "sha256-vxzv+b40TKqCIN4FAkeIu+jmlPP5XRLR+P0uEIjr7AE=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "63c30108f0ecf954108cf51f50f3d36ec58c7e51",
+        "rev": "7a89e5d5b5ebb7643ce3992c34008c35373ecf34",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "04-channel-upgrades-alpha.0",
+        "ref": "04-channel-upgrades-rc.0",
         "repo": "ibc-go",
         "type": "github"
       }

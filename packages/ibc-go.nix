@@ -91,10 +91,10 @@ with inputs;
     # the given subdirectory as source
     ibc-go-v8-channel-upgrade-simapp = {
       name = "simd";
-      version = "channel-upgrade-alpha.0";
+      version = "channel-upgrade-rc.0";
       src = ibc-go-v8-channel-upgrade-src;
       rev = ibc-go-v8-channel-upgrade-src.rev;
-      vendorHash = "sha256-FOCQcn9r7mmpjY9h4gvwcRqL4qhu3wkXsx1KM1n17Cg=";
+      vendorHash = "sha256-XlbW/4KIzWhdwXR6/oZ/wLbm76BcszbHibGNuxvgCAE=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
