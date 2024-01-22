@@ -91,13 +91,13 @@ with inputs;
     # the given subdirectory as source
     ibc-go-v8-channel-upgrade-simapp = {
       name = "simd";
-      version = "channel-upgrade-rc.0";
+      version = "channel-upgrades-hermes-integration.1";
       src = ibc-go-v8-channel-upgrade-src;
       rev = ibc-go-v8-channel-upgrade-src.rev;
-      vendorHash = "sha256-XlbW/4KIzWhdwXR6/oZ/wLbm76BcszbHibGNuxvgCAE=";
+      vendorHash = "sha256-BLwp9TrvFRH1XHh9XeaeqhB+HkHW9RMxg8bHmG6dxg4=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
-      excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
+      excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability" "./modules/light-clients/08-wasm"];
     };
   }
