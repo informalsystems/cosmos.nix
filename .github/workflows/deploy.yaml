@@ -7,7 +7,10 @@ on:
 
 jobs:
   deploy-main:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-14]
+    runs-on: ${{ matrix.os }}
     permissions:
       id-token: write
       contents: read
