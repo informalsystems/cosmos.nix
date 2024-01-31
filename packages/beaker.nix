@@ -6,9 +6,9 @@ pkgs.rustPlatform.buildRustPackage rec {
   pname = "beaker";
   version = "0.1.6";
   nativeBuildInputs = with pkgs;
-    if stdenv.isLinux
-    then [pkg-config]
-    else [darwin.apple_sdk.frameworks.Security];
+    [ pkg-config ]
+    ++ lib.optionals stdenv.isDarwin 
+    [ darwin.apple_sdk.frameworks.Security darwin.libiconv ];
   OPENSSL_NO_VENDOR = 3;
   buildInputs = with pkgs; [openssl openssl.dev pkg-config];
   src = beaker-src;
