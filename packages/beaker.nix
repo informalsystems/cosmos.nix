@@ -10,7 +10,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     then [pkg-config]
     else [darwin.apple_sdk.frameworks.Security];
   OPENSSL_NO_VENDOR = 3;
-  buildInputs = with pkgs; lib.optionals stdenv.isLinux [openssl openssl.dev];
+  buildInputs = with pkgs; [openssl openssl.dev pkg-config];
   src = beaker-src;
   cargoBuildCommand = "cargo build --release --package ${pname}";
   cargoSha256 = "sha256-1FfhDjYDYVYXxVRwzXbGAqsey+29Gxr9CFZ0R9D7+DQ=";
