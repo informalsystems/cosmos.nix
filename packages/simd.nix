@@ -18,9 +18,9 @@ buildGoModule {
     "./orm"
     "./store/tools"
   ];
-  ldflags = ''
-    -X github.com/cosmos/cosmos-sdk/version.AppName=simd
-    -X github.com/cosmos/cosmos-sdk/version.Version=v0.46.0
-    -X github.com/cosmos/cosmos-sdk/version.Commit=${cosmos-sdk-src.rev}
-  '';
+  ldflags = [
+    "-X github.com/cosmos/cosmos-sdk/version.AppName=simd"
+    "-X github.com/cosmos/cosmos-sdk/version.Version=v0.46.0"
+    "-X github.com/cosmos/cosmos-sdk/version.Commit=${cosmos-sdk-src.rev}"
+  ];
 }
