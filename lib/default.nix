@@ -71,7 +71,7 @@ nix-std: {
     src,
     engine,
     vendorHash,
-    additionalLdFlags ? "",
+    additionalLdFlags ? [],
     appName ? null,
     preCheck ? null,
     goVersion ? "1.19",
@@ -127,14 +127,15 @@ nix-std: {
           if preCheck == null
           then ''export HOME="$(mktemp -d)"''
           else preCheck;
-        ldflags = ''
-          -X github.com/cosmos/cosmos-sdk/version.Name=${name}
-          -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
-          -X github.com/cosmos/cosmos-sdk/version.Version=${version}
-          -X github.com/cosmos/cosmos-sdk/version.Commit=${rev}
-          -X github.com/${engine}/version.TMCoreSemVer=${dependency-version}
-          ${additionalLdFlags}
-        '';
+        ldflags =
+          [
+            "-X github.com/cosmos/cosmos-sdk/version.Name=${name}"
+            "-X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}"
+            "-X github.com/cosmos/cosmos-sdk/version.Version=${version}"
+            "-X github.com/cosmos/cosmos-sdk/version.Commit=${rev}"
+            "-X github.com/${engine}/version.TMCoreSemVer=${dependency-version}"
+          ]
+          ++ additionalLdFlags;
       }
       // buildGoModuleArgs);
 in {
