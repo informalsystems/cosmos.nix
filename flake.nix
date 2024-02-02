@@ -244,5 +244,8 @@
 
     dydx-src.url = "github:dydxprotocol/v4-chain/protocol/v3.0.0-dev0";
     dydx-src.flake = false;
+
+    berachain-src.url = "github:berachain/polaris";
+    berachain-src.flake = false;
   };
 }

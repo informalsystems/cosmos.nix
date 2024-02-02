@@ -196,6 +196,10 @@
         type = "app";
         program = "${packages.namada}/bin/namada";
       };
+      berachain = {
+        type = "app";
+        program = "${packages.berachain}/bin/mychaind";
+      };
     };
   };
 }

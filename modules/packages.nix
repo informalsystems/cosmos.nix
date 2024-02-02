@@ -26,6 +26,10 @@
           inherit pkgs;
           inherit (inputs) beaker-src;
         };
+        berachain = import ../packages/berachain.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) berachain-src;
+        };
         celestia = import ../packages/celestia.nix {
           inherit (inputs) celestia-src;
           inherit (cosmosLib) mkCosmosGoApp;
