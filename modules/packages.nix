@@ -125,11 +125,6 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
         };
-        stargaze = import ../packages/stargaze.nix {
-          inherit (inputs) stargaze-src;
-          inherit (self'.packages) libwasmvm_1beta7;
-          inherit cosmosLib;
-        };
         umee = import ../packages/umee.nix {
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) umee-src;
@@ -180,11 +175,17 @@
         ## Linux only packages
         ++ (lists.optionals pkgs.stdenv.isLinux
           [
-            ## TODO: should probably just figure out how to get apalache building on mac
             {
               apalache = import ../packages/apalache.nix {
                 inherit pkgs;
                 inherit (inputs) apalache-src;
+              };
+            }
+            {
+              stargaze = import ../packages/stargaze.nix {
+                inherit (inputs) stargaze-src;
+                inherit (self'.packages) libwasmvm_1beta7;
+                inherit cosmosLib;
               };
             }
           ])
