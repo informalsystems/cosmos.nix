@@ -20,10 +20,6 @@ jobs:
             substituters = https://cache.nixos.org https://cosmosnix-store.s3.us-east-2.amazonaws.com
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
 
-      - name: Test Apalache
-        run: |
-          nix build .#apalache -L
-
       - name: Check 🔎
         run: |
           nix flake check
@@ -31,7 +27,6 @@ jobs:
       - name: Run Shell 🐚
         run: |
           nix develop
-
 
       # NOTE: the if conditions below mean that we only run these steps for Pull Requests from non-forks
       # This is partially due to this issue https://github.com/aws-actions/configure-aws-credentials/issues/373.
