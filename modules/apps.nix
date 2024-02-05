@@ -7,8 +7,13 @@
 # within this git repo:
 # nix run .#<app-name>
 {
-  perSystem = {self', ...}: {
-    apps = with inputs.nixpkgs.lib self';
+  perSystem = {
+    self',
+    pkgs,
+    ...
+  }: {
+    apps = with inputs.nixpkgs.lib;
+    with self';
       lists.foldl recursiveUpdate
       {
         dydx = {
@@ -196,19 +201,19 @@
           program = "${packages.namada}/bin/namada";
         };
       }
-      []
-      ## Linux only apps
-      ++ lists.optionals pkgs.stdenv.isLinux
-      [
-        {
-          apalache = {
-            type = "app";
-            program = "${packages.apalache}/bin/apalache-mc";
-          };
-        }
-      ]
-      ## Darwin only apps
-      ++ lists.optionals pkgs.stdenv.isDarwin
-      [];
+      ([]
+        ## Linux only apps
+        ++ (lists.optionals pkgs.stdenv.isLinux
+          [
+            {
+              apalache = {
+                type = "app";
+                program = "${packages.apalache}/bin/apalache-mc";
+              };
+            }
+          ])
+        ## Darwin only apps
+        ++ (lists.optionals pkgs.stdenv.isDarwin
+          []));
   };
 }

@@ -151,45 +151,45 @@
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
-      [
-        # Gaia
-        (import ../packages/gaia.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # IBC Go
-        (import ../packages/ibc-go.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # Libwasm VM
-        (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
+      ([
+          # Gaia
+          (import ../packages/gaia.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # IBC Go
+          (import ../packages/ibc-go.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # Libwasm VM
+          (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
 
-        # Stride
-        (import ../packages/stride.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # Evmos
-        (import ../packages/evmos {
-          inherit pkgs;
-          inherit (inputs) evmos-src;
-          inherit (cosmosLib) mkGenerator;
-        })
-      ]
-      ## Linux only packages
-      ++ lists.optionals pkgs.stdenv.isLinux
-      [
-        ## TODO: should probably just figure out how to get apalache building on mac
-        {
-          apalache = import ../packages/apalache.nix {
+          # Stride
+          (import ../packages/stride.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # Evmos
+          (import ../packages/evmos {
             inherit pkgs;
-            inherit (inputs) apalache-src;
-          };
-        }
-      ]
-      ## Darwin only packages
-      ++ lists.optionals pkgs.stdenv.isDarwin
-      [];
+            inherit (inputs) evmos-src;
+            inherit (cosmosLib) mkGenerator;
+          })
+        ]
+        ## Linux only packages
+        ++ (lists.optionals pkgs.stdenv.isLinux
+          [
+            ## TODO: should probably just figure out how to get apalache building on mac
+            {
+              apalache = import ../packages/apalache.nix {
+                inherit pkgs;
+                inherit (inputs) apalache-src;
+              };
+            }
+          ])
+        ## Darwin only packages
+        ++ (lists.optionals pkgs.stdenv.isDarwin
+          []));
   };
 }
