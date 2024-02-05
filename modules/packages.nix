@@ -18,10 +18,6 @@
           inherit (inputs) akash-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
-        apalache = import ../packages/apalache.nix {
-          inherit pkgs;
-          inherit (inputs) apalache-src;
-        };
         beaker = import ../packages/beaker.nix {
           inherit pkgs;
           inherit (inputs) beaker-src;
@@ -180,6 +176,20 @@
           inherit (inputs) evmos-src;
           inherit (cosmosLib) mkGenerator;
         })
-      ];
+      ]
+      ## Linux only packages
+      ++ lists.optionals pkgs.stdenv.isLinux
+      [
+        ## TODO: should probably just figure out how to get apalache building on mac
+        {
+          apalache = import ../packages/apalache.nix {
+            inherit pkgs;
+            inherit (inputs) apalache-src;
+          };
+        }
+      ]
+      ## Darwin only packages
+      ++ lists.optionals pkgs.stdenv.isDarwin
+      [];
   };
 }
