@@ -129,6 +129,10 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
         };
+        slinky = import ../packages/slinky.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) slinky-src;
+        };
         stargaze = import ../packages/stargaze.nix {
           inherit (inputs) stargaze-src;
           inherit (self'.packages) libwasmvm_1beta7;
@@ -147,10 +151,6 @@
           inherit (inputs) wasmd_next-src;
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
-        };
-        namada = import ../packages/namada.nix {
-          inherit pkgs;
-          inherit (inputs) namada-src;
         };
       }
       # This list contains attr sets that are recursively merged into the

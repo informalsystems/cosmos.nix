@@ -164,6 +164,10 @@
         type = "app";
         program = "${packages.apalache}/bin/apalache-mc";
       };
+      slinky = {
+        type = "app";
+        program = "${packages.slinky}/bin/strided";
+      };
       stride = {
         type = "app";
         program = "${packages.stride}/bin/strided";

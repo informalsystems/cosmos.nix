@@ -241,5 +241,8 @@
 
     dydx-src.url = "github:dydxprotocol/v4-chain/protocol/v3.0.0-dev0";
     dydx-src.flake = false;
+  
+    slinky-src.url = "github:skip-mev/slinky/v0.2.0";
+    slinky-src.flake = false;
   };
 }
