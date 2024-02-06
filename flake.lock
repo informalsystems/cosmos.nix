@@ -1041,6 +1041,7 @@
         "sconfig-src": "sconfig-src",
         "sentinel-src": "sentinel-src",
         "sifchain-src": "sifchain-src",
+        "slinky-src": "slinky-src",
         "stargaze-src": "stargaze-src",
         "stoml-src": "stoml-src",
         "stride-consumer-src": "stride-consumer-src",
@@ -1143,6 +1144,23 @@
         "owner": "Sifchain",
         "ref": "v0.12.1",
         "repo": "sifnode",
+        "type": "github"
+      }
+    },
+    "slinky-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706741000,
+        "narHash": "sha256-gto9l+zeM1WLIv/VtVlrhTpUTMLN+niQTo5zlrbkx30=",
+        "owner": "skip-mev",
+        "repo": "slinky",
+        "rev": "642846e3517f4aa4ffe1cd29180fef4d459bfbfe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "skip-mev",
+        "ref": "v0.2.0",
+        "repo": "slinky",
         "type": "github"
       }
     },

@@ -125,6 +125,10 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
         };
+        slinky = import ../packages/slinky.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) slinky-src;
+        };
         umee = import ../packages/umee.nix {
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) umee-src;

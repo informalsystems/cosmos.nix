@@ -96,6 +96,10 @@
           type = "app";
           program = "${packages.simd}/bin/simd";
         };
+        slinky = {
+          type = "app";
+          program = "${packages.slinky}/bin/slinkyd";
+        };
         ibc-go-v7-simapp = {
           type = "app";
           program = "${packages.ibc-go-v7-simapp}/bin/simd";
