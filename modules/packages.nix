@@ -139,10 +139,6 @@
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
         };
-        namada = import ../packages/namada.nix {
-          inherit pkgs;
-          inherit (inputs) namada-src;
-        };
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
@@ -186,6 +182,12 @@
                 inherit (inputs) stargaze-src;
                 inherit (self'.packages) libwasmvm_1beta7;
                 inherit cosmosLib;
+              };
+            }
+            {
+              namada = import ../packages/namada.nix {
+                inherit pkgs;
+                inherit (inputs) namada-src;
               };
             }
           ])

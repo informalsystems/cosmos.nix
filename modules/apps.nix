@@ -160,10 +160,6 @@
           type = "app";
           program = "${packages.crescent}/bin/crescentd";
         };
-        stargaze = {
-          type = "app";
-          program = "${packages.stargaze}/bin/starsd";
-        };
         wasmd = {
           type = "app";
           program = "${packages.wasmd}/bin/wasmd";
@@ -196,10 +192,6 @@
           type = "app";
           program = "${packages.provenance}/bin/provenanced";
         };
-        namada = {
-          type = "app";
-          program = "${packages.namada}/bin/namada";
-        };
       }
       ([]
         ## Linux only apps
@@ -209,6 +201,14 @@
               apalache = {
                 type = "app";
                 program = "${packages.apalache}/bin/apalache-mc";
+              };
+              stargaze = {
+                type = "app";
+                program = "${packages.stargaze}/bin/starsd";
+              };
+              namada = {
+                type = "app";
+                program = "${packages.namada}/bin/namada";
               };
             }
           ])

@@ -20,12 +20,15 @@ pkgs.rustPlatform.buildRustPackage {
     [
       openssl
       openssl.dev
-      libusb
-      hidapi
     ]
     ++ lib.optionals stdenv.isLinux [
       systemd # required for libudev in custom build script for hidapi
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libusb
+      hidapi
     ];
+
   cargoLock = {
     lockFile = "${namada-src}/Cargo.lock";
     outputHashes = {
