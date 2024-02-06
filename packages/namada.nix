@@ -20,6 +20,8 @@ pkgs.rustPlatform.buildRustPackage {
     [
       openssl
       openssl.dev
+      libusb
+      hidapi
     ]
     ++ lib.optionals stdenv.isLinux [
       systemd # required for libudev in custom build script for hidapi
