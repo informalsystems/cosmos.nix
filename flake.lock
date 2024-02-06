@@ -632,36 +632,19 @@
         "type": "github"
       }
     },
-    "ibc-go-v8-channel-upgrade-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1705917317,
-        "narHash": "sha256-o+dg+AjhzRPKcv+gbIV01qqFfuwsTRDXc2oBG7KuENQ=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "4e3d164e4f9a5986bbe6595138feb49160e27215",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "ref": "04-channel-upgrades-hermes-integration.1",
-        "repo": "ibc-go",
-        "type": "github"
-      }
-    },
     "ibc-go-v8-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1699602904,
-        "narHash": "sha256-BcP3y874QviVsV+04p9CioolyvmWH82ORbb5EB2GyRI=",
+        "lastModified": 1706691043,
+        "narHash": "sha256-eS+X4bT7vp1+LyIPd0mOnAJahAONr+Syton3v3rSkGI=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "2551dea41cd3c512845007ca895c8402afa9b79f",
+        "rev": "7e01c9149149b9d4b1d871e58eb88a22f15bdb3c",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v8.0.0",
+        "ref": "v8.1.0",
         "repo": "ibc-go",
         "type": "github"
       }
@@ -1036,7 +1019,6 @@
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
-        "ibc-go-v8-channel-upgrade-src": "ibc-go-v8-channel-upgrade-src",
         "ibc-go-v8-src": "ibc-go-v8-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
