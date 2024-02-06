@@ -166,7 +166,7 @@
       };
       slinky = {
         type = "app";
-        program = "${packages.slinky}/bin/strided";
+        program = "${packages.slinky}/bin/slinkyd";
       };
       stride = {
         type = "app";
