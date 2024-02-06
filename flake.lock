@@ -632,23 +632,6 @@
         "type": "github"
       }
     },
-    "ibc-go-v8-channel-upgrade-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1705917317,
-        "narHash": "sha256-o+dg+AjhzRPKcv+gbIV01qqFfuwsTRDXc2oBG7KuENQ=",
-        "owner": "cosmos",
-        "repo": "ibc-go",
-        "rev": "4e3d164e4f9a5986bbe6595138feb49160e27215",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cosmos",
-        "ref": "04-channel-upgrades-hermes-integration.1",
-        "repo": "ibc-go",
-        "type": "github"
-      }
-    },
     "ibc-go-v8-src": {
       "flake": false,
       "locked": {
@@ -1036,7 +1019,6 @@
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
-        "ibc-go-v8-channel-upgrade-src": "ibc-go-v8-channel-upgrade-src",
         "ibc-go-v8-src": "ibc-go-v8-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
