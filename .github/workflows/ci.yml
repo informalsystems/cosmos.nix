@@ -22,7 +22,7 @@ jobs:
 
       - name: Check namada
         run: |
-          nix build .#namada
+          nix build .#namada -L
 
       - name: Check 🔎
         run: |
