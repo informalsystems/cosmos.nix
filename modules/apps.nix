@@ -202,10 +202,14 @@
                 type = "app";
                 program = "${packages.apalache}/bin/apalache-mc";
               };
+            }
+            {
               stargaze = {
                 type = "app";
                 program = "${packages.stargaze}/bin/starsd";
               };
+            }
+            {
               namada = {
                 type = "app";
                 program = "${packages.namada}/bin/namada";
