@@ -18,10 +18,6 @@
           inherit (inputs) akash-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
-        apalache = import ../packages/apalache.nix {
-          inherit pkgs;
-          inherit (inputs) apalache-src;
-        };
         beaker = import ../packages/beaker.nix {
           inherit pkgs;
           inherit (inputs) beaker-src;
@@ -133,11 +129,6 @@
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) slinky-src;
         };
-        stargaze = import ../packages/stargaze.nix {
-          inherit (inputs) stargaze-src;
-          inherit (self'.packages) libwasmvm_1beta7;
-          inherit cosmosLib;
-        };
         umee = import ../packages/umee.nix {
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) umee-src;
@@ -155,31 +146,57 @@
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
-      [
-        # Gaia
-        (import ../packages/gaia.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # IBC Go
-        (import ../packages/ibc-go.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # Libwasm VM
-        (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
+      ([
+          # Gaia
+          (import ../packages/gaia.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # IBC Go
+          (import ../packages/ibc-go.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # Libwasm VM
+          (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
 
-        # Stride
-        (import ../packages/stride.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # Evmos
-        (import ../packages/evmos {
-          inherit pkgs;
-          inherit (inputs) evmos-src;
-          inherit (cosmosLib) mkGenerator;
-        })
-      ];
+          # Stride
+          (import ../packages/stride.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # Evmos
+          (import ../packages/evmos {
+            inherit pkgs;
+            inherit (inputs) evmos-src;
+            inherit (cosmosLib) mkGenerator;
+          })
+        ]
+        ## Linux only packages
+        ++ (lists.optionals pkgs.stdenv.isLinux
+          [
+            {
+              apalache = import ../packages/apalache.nix {
+                inherit pkgs;
+                inherit (inputs) apalache-src;
+              };
+            }
+            {
+              stargaze = import ../packages/stargaze.nix {
+                inherit (inputs) stargaze-src;
+                inherit (self'.packages) libwasmvm_1beta7;
+                inherit cosmosLib;
+              };
+            }
+            {
+              namada = import ../packages/namada.nix {
+                inherit pkgs;
+                inherit (inputs) namada-src;
+              };
+            }
+          ])
+        ## Darwin only packages
+        ++ (lists.optionals pkgs.stdenv.isDarwin
+          []));
   };
 }

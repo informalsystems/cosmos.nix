@@ -17,11 +17,18 @@ pkgs.rustPlatform.buildRustPackage {
       rustPlatform.bindgenHook # required for bindgen in custom build script for librocksdb-sys
     ];
   buildInputs = with pkgs;
-    lib.optionals stdenv.isLinux [
-      systemd # required for libudev in custom build script for hidapi
+    [
       openssl
       openssl.dev
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      systemd # required for libudev in custom build script for hidapi
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libusb
+      hidapi
     ];
+
   cargoLock = {
     lockFile = "${namada-src}/Cargo.lock";
     outputHashes = {

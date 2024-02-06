@@ -5,7 +5,10 @@ on:
 
 jobs:
   check-pr:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, macos-14]
+    runs-on: ${{ matrix.os }}
     permissions:
       id-token: write
       contents: read
@@ -39,7 +42,7 @@ jobs:
           role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
           role-session-name: InformalSystemsGithubAction
 
-      - name: Push Cache 🫸📦💨
+      - name: Push Cache 🫸💨📦
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         env: 
           SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
