@@ -60,6 +60,7 @@
           inherit (inputs) gex-src;
         };
         gm = import ../packages/gm.nix {inherit pkgs inputs;};
+        haqq = inputs.haqq-src.packages.${system}.haqq;
         hermes = import ../packages/hermes.nix {
           inherit pkgs;
           inherit (inputs) hermes-src;

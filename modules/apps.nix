@@ -24,6 +24,10 @@
           type = "app";
           program = "${packages.cometbft}/bin/cometbft";
         };
+        haqq = {
+          type = "app";
+          program = "${packages.haqq}/bin/haqqd";
+        };
         hermes = {
           type = "app";
           program = "${packages.hermes}/bin/hermes";
