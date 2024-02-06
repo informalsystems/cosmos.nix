@@ -48,7 +48,7 @@ jobs:
 
       - name: Push to FlakeHub ❄️
         uses: determinatesystems/flakehub-push@main
-        if: ${{ matrix.os == ubuntu-22.04 }}
+        if: matrix.os == 'ubuntu-22.04' 
         with:
           rolling: true
           visibility: "public"
