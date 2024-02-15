@@ -800,16 +800,16 @@
     "ibc-go-v8-wasm-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1702459610,
-        "narHash": "sha256-U7ozSVlDa/ozUipxPcA1uMXddZHWPMDnU6hHAjeP+JQ=",
+        "lastModified": 1705405603,
+        "narHash": "sha256-hez3AswlwXIMUyCayojv9IWZquP3lrwvTb75LcZClQU=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "57fcdb9a9a9db9b206f7df2f955866dc4e10fef4",
+        "rev": "3536fc9222fbf714c8be2017e5c681a41d6bb155",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "wasm-v8.0.0",
+        "ref": "08-wasm/release/v0.1.x+ibc-go-v7.3.x-wasmvm-v1.5.x",
         "repo": "ibc-go",
         "type": "github"
       }
