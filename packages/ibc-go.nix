@@ -104,6 +104,5 @@ with inputs;
         ${wasmdPreFixupPhase libwasmvm_1_5_0 "simd"}
       '';
       buildInputs = [libwasmvm_1_5_0];
-      # excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
     };
   }
