@@ -1,6 +1,8 @@
 {
   inputs,
+  libwasmvm_1_5_0,
   mkCosmosGoApp,
+  wasmdPreFixupPhase,
 }:
 with inputs;
   builtins.mapAttrs (_: mkCosmosGoApp)
@@ -84,5 +86,24 @@ with inputs;
       tags = ["netgo"];
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
+    };
+
+    # If the modules/apps/callbacks and/or modules/capability are needed,
+    # they must each be defined in a separate nix package that loads only
+    # the given subdirectory as source
+    ibc-go-v8-wasm-simapp = {
+      name = "simd";
+      version = "v8.0.0-wasm";
+      src = "${ibc-go-v8-wasm-src}/modules/light-clients/08-wasm";
+      rev = ibc-go-v8-wasm-src.rev;
+      vendorHash = "sha256-Q8SJ6MsgPwRuuuDZCs1CY60lXcg8kSIEzVy8QxnbsuE=";
+      goVersion = "1.21";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      preFixup = ''
+        ${wasmdPreFixupPhase libwasmvm_1_5_0 "simd"}
+      '';
+      buildInputs = [libwasmvm_1_5_0];
+      # excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
     };
   }

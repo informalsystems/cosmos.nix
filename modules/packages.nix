@@ -156,7 +156,8 @@
           # IBC Go
           (import ../packages/ibc-go.nix {
             inherit inputs;
-            inherit (cosmosLib) mkCosmosGoApp;
+            inherit (self'.packages) libwasmvm_1_5_0;
+            inherit (cosmosLib) mkCosmosGoApp wasmdPreFixupPhase;
           })
           # Libwasm VM
           (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
