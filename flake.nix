@@ -125,7 +125,7 @@
     ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.1.0";
     ibc-go-v8-src.flake = false;
 
-    ibc-go-v8-wasm-src = {
+    ibc-go-wasm-src = {
       type = "github";
       owner = "cosmos";
       repo = "ibc-go";

@@ -91,12 +91,12 @@ with inputs;
     # If the modules/apps/callbacks and/or modules/capability are needed,
     # they must each be defined in a separate nix package that loads only
     # the given subdirectory as source
-    ibc-go-v8-wasm-simapp = {
+    ibc-go-v7-wasm-simapp = {
       name = "simd";
-      version = "v8.0.0-wasm";
-      src = "${ibc-go-v8-wasm-src}/modules/light-clients/08-wasm";
-      rev = ibc-go-v8-wasm-src.rev;
-      vendorHash = "sha256-Q8SJ6MsgPwRuuuDZCs1CY60lXcg8kSIEzVy8QxnbsuE=";
+      version = "v7.3.0-wasm";
+      src = "${ibc-go-wasm-src}/modules/light-clients/08-wasm";
+      rev = ibc-go-wasm-src.rev;
+      vendorHash = "sha256-oQ7KSQzl/BlknSYmQxf0PVidK9q36IA0wJk9DZN3xwk=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";

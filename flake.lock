@@ -797,7 +797,7 @@
         "type": "github"
       }
     },
-    "ibc-go-v8-wasm-src": {
+    "ibc-go-wasm-src": {
       "flake": false,
       "locked": {
         "lastModified": 1705405603,
@@ -1319,7 +1319,7 @@
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
         "ibc-go-v8-src": "ibc-go-v8-src",
-        "ibc-go-v8-wasm-src": "ibc-go-v8-wasm-src",
+        "ibc-go-wasm-src": "ibc-go-wasm-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "ignite-cli-src": "ignite-cli-src",
