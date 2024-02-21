@@ -132,8 +132,6 @@
       ref = "08-wasm/release/v0.1.x+ibc-go-v7.3.x-wasmvm-v1.5.x";
       flake = false;
     };
-    #ibc-go-v8-wasm-src.url = "github:cosmos/ibc-go/08-wasm/release/v0.1.x%2Bibc-go-v7.3.x-wasmvm-v1.5.x";
-    #ibc-go-v8-wasm-src.flake = false;
 
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
     cosmos-sdk-src.flake = false;
