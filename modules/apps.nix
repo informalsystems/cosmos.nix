@@ -192,7 +192,7 @@
           type = "app";
           program = "${packages.migaloo}/bin/migalood";
         };
-        celestia = {
+        celestia-app = {
           type = "app";
           program = "${packages.celestia}/bin/celestia-appd";
         };
