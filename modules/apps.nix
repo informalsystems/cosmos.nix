@@ -196,6 +196,10 @@
           type = "app";
           program = "${packages.celestia}/bin/celestia-appd";
         };
+        celestia-node = {
+          type = "app";
+          program = "${packages.celestia-node}/bin/celestia";
+        };
         provenance = {
           type = "app";
           program = "${packages.provenance}/bin/provenanced";

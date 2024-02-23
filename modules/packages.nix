@@ -26,6 +26,10 @@
           inherit (inputs) celestia-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
+        celestia-node = import ../packages/celestia-node.nix {
+          inherit (inputs) celestia-node-src;
+          inherit (cosmosLib) mkCosmosGoApp;
+        };
         centauri = import ../packages/centauri.nix {
           inherit (inputs) centauri-src;
           inherit (self'.packages) libwasmvm_1_2_4;
