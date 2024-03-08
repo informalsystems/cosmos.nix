@@ -128,6 +128,12 @@
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
     cosmos-sdk-src.flake = false;
 
+    andromeda-src.url = "github:andromedaprotocol/andromedad/andromeda-1";
+    andromeda-src.flake = false;
+
+    injective-src.url = "github:OpenDeFiFoundation/injective-core/v1.12.1";
+    injective-src.flake = false;
+
     iris-src.url = "github:irisnet/irishub/v1.1.1";
     iris-src.flake = false;
 

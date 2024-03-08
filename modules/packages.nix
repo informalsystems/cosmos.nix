@@ -96,6 +96,16 @@
           inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
+        andromeda = import ../packages/andromeda.nix {
+          inherit (inputs) andromeda-src;
+          inherit (self'.packages) libwasmvm_1_3_0;
+          inherit cosmosLib;
+        };
+        injective = import ../packages/injective.nix {
+          inherit (inputs) injective-src;
+          inherit (self'.packages) libwasmvm_1_5_0;
+          inherit cosmosLib;
+        };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
           inherit (self'.packages) libwasmvm_1_5_0;

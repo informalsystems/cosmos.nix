@@ -17,6 +17,23 @@
         "type": "github"
       }
     },
+    "andromeda-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1699913909,
+        "narHash": "sha256-8nKekKLBZR7nDNXZ1UL0J7YOMRv6HbzT7pj0W+fV+4U=",
+        "owner": "andromedaprotocol",
+        "repo": "andromedad",
+        "rev": "a72f010f8e3f9db183da0ddaf4ef65069b690981",
+        "type": "github"
+      },
+      "original": {
+        "owner": "andromedaprotocol",
+        "ref": "andromeda-1",
+        "repo": "andromedad",
+        "type": "github"
+      }
+    },
     "apalache-src": {
       "flake": false,
       "locked": {
@@ -847,6 +864,23 @@
         "type": "github"
       }
     },
+    "injective-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706041278,
+        "narHash": "sha256-Vr/l8/wtZ47wi1OTWhsfLetKZH8c1fUFeoQaxF+QS3c=",
+        "owner": "OpenDeFiFoundation",
+        "repo": "injective-core",
+        "rev": "e1ab66c240524b05b872f63890fefcd4fced5f7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "OpenDeFiFoundation",
+        "ref": "v1.12.1",
+        "repo": "injective-core",
+        "type": "github"
+      }
+    },
     "interchain-security-src": {
       "flake": false,
       "locked": {
@@ -1267,6 +1301,7 @@
     "root": {
       "inputs": {
         "akash-src": "akash-src",
+        "andromeda-src": "andromeda-src",
         "apalache-src": "apalache-src",
         "beaker-src": "beaker-src",
         "celestia-src": "celestia-src",
@@ -1305,6 +1340,7 @@
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "ignite-cli-src": "ignite-cli-src",
+        "injective-src": "injective-src",
         "interchain-security-src": "interchain-security-src",
         "iris-src": "iris-src",
         "ixo-src": "ixo-src",
