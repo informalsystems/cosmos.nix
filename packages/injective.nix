@@ -13,6 +13,7 @@ cosmosLib.mkCosmosGoApp {
   engine = "cometbft/cometbft";
   preFixup = ''
     ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_0 "injectived"}
+    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_0 "client"}
   '';
   buildInputs = [libwasmvm_1_5_0];
 }
