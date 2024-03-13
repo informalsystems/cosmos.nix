@@ -1,6 +1,6 @@
-{ mkCosmosGoApp
-, dymension-src
-,
+{
+  mkCosmosGoApp,
+  dymension-src,
 }:
 mkCosmosGoApp {
   name = "dymension";
@@ -8,7 +8,7 @@ mkCosmosGoApp {
   src = "${dymension-src}";
   rev = dymension-src.rev;
   vendorHash = "sha256-2mDEDtFN0T6430owWxPl+zLl/BaJaNDMA//RUBtncbs=";
-  tags = [ "netgo" ];
+  tags = ["netgo"];
   goVersion = "1.21";
   engine = "cometbft/cometbft";
   doCheck = false;
