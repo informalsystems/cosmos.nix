@@ -55,6 +55,10 @@
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) dydx-src;
         };
+        dymension = import ../packages/dymension.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) dymension-src;
+        };
         gex = import ../packages/gex.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) gex-src;
