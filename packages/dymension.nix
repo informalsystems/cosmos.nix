@@ -11,5 +11,4 @@ mkCosmosGoApp {
   tags = ["netgo"];
   goVersion = "1.21";
   engine = "cometbft/cometbft";
-  doCheck = false;
 }
