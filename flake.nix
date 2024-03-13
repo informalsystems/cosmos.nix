@@ -224,8 +224,11 @@
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2";
     migaloo-src.flake = false;
 
-    celestia-src.url = "github:celestiaorg/celestia-app/v1.4.0";
-    celestia-src.flake = false;
+    celestia-app-src.url = "github:celestiaorg/celestia-app/v1.4.0";
+    celestia-app-src.flake = false;
+
+    celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
+    celestia-node-src.flake = false;
 
     neutron-src.url = "github:neutron-org/neutron/v2.0.0";
     neutron-src.flake = false;

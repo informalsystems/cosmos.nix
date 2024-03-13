@@ -68,7 +68,7 @@
         "type": "github"
       }
     },
-    "celestia-src": {
+    "celestia-app-src": {
       "flake": false,
       "locked": {
         "lastModified": 1700494564,
@@ -82,6 +82,23 @@
         "owner": "celestiaorg",
         "ref": "v1.4.0",
         "repo": "celestia-app",
+        "type": "github"
+      }
+    },
+    "celestia-node-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1707218580,
+        "narHash": "sha256-O5a8Dy7WOSaLzYHTZAZFHFeJwqOLyajcHmGEcphOpKg=",
+        "owner": "celestiaorg",
+        "repo": "celestia-node",
+        "rev": "e55e1c88708b46839867bcbbed9bcdd8a3ffa830",
+        "type": "github"
+      },
+      "original": {
+        "owner": "celestiaorg",
+        "ref": "v0.13.0",
+        "repo": "celestia-node",
         "type": "github"
       }
     },
@@ -1304,7 +1321,8 @@
         "andromeda-src": "andromeda-src",
         "apalache-src": "apalache-src",
         "beaker-src": "beaker-src",
-        "celestia-src": "celestia-src",
+        "celestia-app-src": "celestia-app-src",
+        "celestia-node-src": "celestia-node-src",
         "centauri-src": "centauri-src",
         "cometbft-src": "cometbft-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
