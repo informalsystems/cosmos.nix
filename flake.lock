@@ -245,6 +245,23 @@
         "type": "github"
       }
     },
+    "dymension-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706696951,
+        "narHash": "sha256-K1F0kL4/HVxOJvXNvLJsZUFXS3MyuqrUotyyd5u6QTQ=",
+        "owner": "dymensionxyz",
+        "repo": "dymension",
+        "rev": "c3294dc8d2dce1aa8efbc967b1dfd3b0e965b095",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dymensionxyz",
+        "ref": "v3.0.0",
+        "repo": "dymension",
+        "type": "github"
+      }
+    },
     "evmos-src": {
       "flake": false,
       "locked": {
@@ -1330,6 +1347,7 @@
         "crescent-src": "crescent-src",
         "cw-plus-src": "cw-plus-src",
         "dydx-src": "dydx-src",
+        "dymension-src": "dymension-src",
         "evmos-src": "evmos-src",
         "flake-parts": "flake-parts",
         "gaia-main-src": "gaia-main-src",

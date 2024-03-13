@@ -204,6 +204,10 @@
           type = "app";
           program = "${packages.provenance}/bin/provenanced";
         };
+        dymension = {
+          type = "app";
+          program = "${packages.dymension}/bin/dymd";
+        };
       }
       ([]
         ## Linux only apps
