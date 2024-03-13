@@ -251,6 +251,9 @@
     slinky-src.url = "github:skip-mev/slinky/v0.2.0";
     slinky-src.flake = false;
 
+    rollapp-evm-src.url = "github:dymensionxyz/rollapp-evm/21b29f6e77f5c11a2036252d60819810abbbd7b8";
+    rollapp-evm-src.flake = false;
+
     haqq-src.url = "github:haqq-network/haqq/18370cfb2f9aab35d311c4c75ab5586f50213830";
   };
 }

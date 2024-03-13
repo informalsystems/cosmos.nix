@@ -1298,6 +1298,23 @@
         "type": "github"
       }
     },
+    "rollapp-evm-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710268992,
+        "narHash": "sha256-bOH7QsNYjZVVHW7x5ysrO0IJmRNEUeE+bJRVPwdb5U8=",
+        "owner": "dymensionxyz",
+        "repo": "rollapp-evm",
+        "rev": "21b29f6e77f5c11a2036252d60819810abbbd7b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dymensionxyz",
+        "repo": "rollapp-evm",
+        "rev": "21b29f6e77f5c11a2036252d60819810abbbd7b8",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "akash-src": "akash-src",
@@ -1354,6 +1371,7 @@
         "provenance-src": "provenance-src",
         "regen-src": "regen-src",
         "relayer-src": "relayer-src",
+        "rollapp-evm-src": "rollapp-evm-src",
         "rust-overlay": "rust-overlay",
         "sbt-derivation": "sbt-derivation",
         "sconfig-src": "sconfig-src",
