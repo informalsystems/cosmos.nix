@@ -22,9 +22,17 @@
           inherit pkgs;
           inherit (inputs) beaker-src;
         };
-        celestia = import ../packages/celestia.nix {
-          inherit (inputs) celestia-src;
+        celestia-app = import ../packages/celestia-app.nix {
+          inherit (inputs) celestia-app-src;
           inherit (cosmosLib) mkCosmosGoApp;
+        };
+        celestia-node = import ../packages/celestia-node.nix {
+          inherit (inputs) celestia-node-src;
+          inherit (cosmosLib) mkCosmosGoApp;
+        };
+        celestia = pkgs.symlinkJoin {
+          name = "celestia";
+          paths = [self'.packages.celestia-app self'.packages.celestia-node];
         };
         centauri = import ../packages/centauri.nix {
           inherit (inputs) centauri-src;
