@@ -166,6 +166,10 @@
           inherit (self'.packages) libwasmvm_1_2_3;
           inherit cosmosLib;
         };
+        rollapp-evm = import ../packages/rollapp-evm.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) rollapp-evm-src;
+        };
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
