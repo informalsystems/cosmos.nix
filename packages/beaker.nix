@@ -4,7 +4,7 @@
 }:
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "beaker";
-  version = "0.1.6";
+  version = "0.1.8";
   nativeBuildInputs = with pkgs; [pkg-config];
   OPENSSL_INCLUDE_DIR =
     (
@@ -19,7 +19,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     [darwin.apple_sdk.frameworks.Security];
   src = beaker-src;
   cargoBuildCommand = "cargo build --release --package ${pname}";
-  cargoSha256 = "sha256-1FfhDjYDYVYXxVRwzXbGAqsey+29Gxr9CFZ0R9D7+DQ=";
+  cargoSha256 = "sha256-jyAsBObsQD0ARa6jbQ14x4xbjtzvAv3SbMXQh4s/bMA=";
   doCheck = false;
   cargoCheckCommand = "true";
 }
