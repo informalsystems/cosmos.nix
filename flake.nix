@@ -263,6 +263,5 @@
 
     gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
     gex-src.flake = false;
-
   };
 }
