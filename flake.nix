@@ -122,14 +122,17 @@
     ibc-go-v7-src.url = "github:cosmos/ibc-go/v7.3.0";
     ibc-go-v7-src.flake = false;
 
-    ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.0.0";
+    ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.1.0";
     ibc-go-v8-src.flake = false;
-
-    ibc-go-v8-channel-upgrade-src.url = "github:cosmos/ibc-go/04-channel-upgrades-alpha.0";
-    ibc-go-v8-channel-upgrade-src.flake = false;
 
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
     cosmos-sdk-src.flake = false;
+
+    andromeda-src.url = "github:andromedaprotocol/andromedad/andromeda-1";
+    andromeda-src.flake = false;
+
+    injective-src.url = "github:OpenDeFiFoundation/injective-core/v1.12.1";
+    injective-src.flake = false;
 
     iris-src.url = "github:irisnet/irishub/v1.1.1";
     iris-src.flake = false;
@@ -221,8 +224,11 @@
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2";
     migaloo-src.flake = false;
 
-    celestia-src.url = "github:celestiaorg/celestia-app/v1.4.0";
-    celestia-src.flake = false;
+    celestia-app-src.url = "github:celestiaorg/celestia-app/v1.4.0";
+    celestia-app-src.flake = false;
+
+    celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
+    celestia-node-src.flake = false;
 
     neutron-src.url = "github:neutron-org/neutron/v2.0.0";
     neutron-src.flake = false;
@@ -244,5 +250,16 @@
 
     dydx-src.url = "github:dydxprotocol/v4-chain/protocol/v3.0.0-dev0";
     dydx-src.flake = false;
+
+    dymension-src.url = "github:dymensionxyz/dymension/v3.0.0";
+    dymension-src.flake = false;
+
+    slinky-src.url = "github:skip-mev/slinky/v0.2.0";
+    slinky-src.flake = false;
+
+    rollapp-evm-src.url = "github:dymensionxyz/rollapp-evm/21b29f6e77f5c11a2036252d60819810abbbd7b8";
+    rollapp-evm-src.flake = false;
+
+    haqq-src.url = "github:haqq-network/haqq/18370cfb2f9aab35d311c4c75ab5586f50213830";
   };
 }

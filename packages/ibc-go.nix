@@ -76,25 +76,10 @@ with inputs;
     # the given subdirectory as source
     ibc-go-v8-simapp = {
       name = "simd";
-      version = "v8.0.0";
+      version = "v8.1.0";
       src = ibc-go-v8-src;
       rev = ibc-go-v8-src.rev;
-      vendorHash = "sha256-XlbW/4KIzWhdwXR6/oZ/wLbm76BcszbHibGNuxvgCAE=";
-      goVersion = "1.21";
-      tags = ["netgo"];
-      engine = "cometbft/cometbft";
-      excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
-    };
-
-    # If the modules/apps/callbacks and/or modules/capability are needed,
-    # they must each be defined in a separate nix package that loads only
-    # the given subdirectory as source
-    ibc-go-v8-channel-upgrade-simapp = {
-      name = "simd";
-      version = "channel-upgrade-alpha.0";
-      src = ibc-go-v8-channel-upgrade-src;
-      rev = ibc-go-v8-channel-upgrade-src.rev;
-      vendorHash = "sha256-FOCQcn9r7mmpjY9h4gvwcRqL4qhu3wkXsx1KM1n17Cg=";
+      vendorHash = "sha256-KmuidyqJXwZOg+cnas/5O6awcKeEgzsByDg9rClADUQ=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
