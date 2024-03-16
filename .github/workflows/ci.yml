@@ -14,6 +14,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - uses: jlumbroso/free-disk-space@main
+      - run: rm -r manifests
       - uses: DeterminateSystems/nix-installer-action@main
         with: 
           extra-conf: |
