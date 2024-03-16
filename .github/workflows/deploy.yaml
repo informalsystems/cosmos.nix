@@ -16,6 +16,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - uses: jlumbroso/free-disk-space@main
+        if: matrix.os == 'ubuntu-22.04' 
       - uses: DeterminateSystems/nix-installer-action@main
         with: 
           extra-conf: |
