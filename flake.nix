@@ -203,9 +203,6 @@
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
 
-    cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.0";
-    cosmwasm-src.flake = false;
-
     apalache-src.url = "github:informalsystems/apalache/v0.42.0";
     apalache-src.flake = false;
 
@@ -233,17 +230,8 @@
     neutron-src.url = "github:neutron-org/neutron/v2.0.0";
     neutron-src.flake = false;
 
-    gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
-    gex-src.flake = false;
-
-    beaker-src.url = "github:osmosis-labs/beaker/v0.1.6";
-    beaker-src.flake = false;
-
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
     provenance-src.flake = false;
-
-    cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
-    cw-plus-src.flake = false;
 
     namada-src.url = "github:anoma/namada/v0.28.1";
     namada-src.flake = false;
@@ -261,5 +249,19 @@
     rollapp-evm-src.flake = false;
 
     haqq-src.url = "github:haqq-network/haqq/18370cfb2f9aab35d311c4c75ab5586f50213830";
+
+    # contracts
+    cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
+    cw-plus-src.flake = false;
+
+    # tools
+    beaker-src.url = "github:osmosis-labs/beaker/v0.1.8";
+    beaker-src.flake = false;
+
+    cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.3";
+    cosmwasm-src.flake = false;
+
+    gex-src.url = "github:cosmos/gex/233d335dc9e8c89fb318d1081fae74435f6cac11";
+    gex-src.flake = false;
   };
 }

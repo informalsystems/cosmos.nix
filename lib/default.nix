@@ -5,7 +5,7 @@ nix-std: {
   buildCosmwasmContract = let
     target = "wasm32-unknown-unknown";
     # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
-    rust = pkgs.rust-bin.stable."1.70.0".default.override {
+    rust = pkgs.rust-bin.stable."1.75.0".default.override {
       extensions = [];
       targets = [
         target
@@ -27,6 +27,7 @@ nix-std: {
       nativeBuildInputs ? [],
       # as per https://github.com/CosmWasm/wasmd/blob/main/README.md
       maxWasmSizeBytes ? 819200,
+      cargoExtraArgs ? "--locked",
       ...
     }: let
       binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
@@ -45,7 +46,7 @@ nix-std: {
             mkdir --parents $out/lib
           '';
           buildPhase = ''
-            cargo build --lib --target ${target} --profile ${profile} --package ${pname}
+            cargo build --lib --target ${target} --profile ${profile} --package ${pname} ${cargoExtraArgs}
             mkdir -p ./output/lib
             wasm-opt "target/${target}/${profile}/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
             cp -r ./output $out
