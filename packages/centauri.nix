@@ -1,21 +1,21 @@
 {
-  centauri-src,
+  composable-cosmos-src,
   cosmosLib,
-  libwasmvm_1_2_4,
+  libwasmvm_1_2_6,
 }:
 cosmosLib.mkCosmosGoApp {
   name = "centauri";
-  version = "v6.3.1";
-  src = centauri-src;
-  rev = centauri-src.rev;
-  vendorHash = "sha256-MRADQxw+T8lVJujJn2yEaZOEs6AYGgaiBbYJUI3cugA=";
+  version = "v6.4.4";
+  src = composable-cosmos-src;
+  rev = composable-cosmos-src.rev;
+  vendorHash = "sha256-uoolB6FFcz1OiOhtIcngHBovmq/Cc0nrcRYrzi+F6Kc=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   excludedPackages = ["interchaintest" "simd"];
   preFixup = ''
-    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_4 "centaurid"}
+    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_6 "centaurid"}
   '';
-  buildInputs = [libwasmvm_1_2_4];
+  buildInputs = [libwasmvm_1_2_6];
   proxyVendor = true;
   doCheck = false;
 }

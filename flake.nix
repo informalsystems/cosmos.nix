@@ -170,8 +170,8 @@
     stargaze-src.url = "github:public-awesome/stargaze/v3.0.0";
     stargaze-src.flake = false;
 
-    centauri-src.url = "github:ComposableFi/composable-cosmos/387c96b434db9d96b0506aa7f14536d9bdec968c";
-    centauri-src.flake = false;
+    composable-cosmos-src.url = "github:ComposableFi/composable-cosmos/v6.4.4-to-7-tag";
+    composable-cosmos-src.flake = false;
 
     wasmd-src.url = "github:CosmWasm/wasmd/v0.30.0";
     wasmd-src.flake = false;
@@ -187,6 +187,9 @@
 
     wasmvm_1_3_0-src.url = "github:CosmWasm/wasmvm/v1.3.0";
     wasmvm_1_3_0-src.flake = false;
+
+    wasmvm_1_2_6-src.url = "github:CosmWasm/wasmvm/v1.2.6";
+    wasmvm_1_2_6-src.flake = false;
 
     wasmvm_1_2_4-src.url = "github:CosmWasm/wasmvm/v1.2.4";
     wasmvm_1_2_4-src.flake = false;
