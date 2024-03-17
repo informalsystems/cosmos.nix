@@ -1,5 +1,6 @@
 {
   pkgs,
+  nix-std,
   hermes,
   gaia,
 }: let
@@ -16,7 +17,10 @@ in
     name = "hermes-module-test";
     nodes = {
       validator1 = {
-        imports = [sharedModule ../../nixosModules/chains/gaia.nix];
+        imports = [
+          sharedModule
+          ../../nixosModules/chains/gaia.nix
+        ];
         networking = {
           interfaces = {
             eth1 = {
@@ -45,7 +49,10 @@ in
       };
 
       validator2 = {
-        imports = [sharedModule ../chains/gaia.nix];
+        imports = [
+          sharedModule
+          ../../nixosModules/chains/gaia.nix
+        ];
         networking = {
           interfaces = {
             eth1 = {
@@ -93,7 +100,10 @@ in
       };
 
       relayer = {
-        imports = [sharedModule ../../nixosModules/relayer/hermes.nix];
+        imports = [
+          sharedModule
+          (import ../../nixosModules/hermes/default.nix {inherit nix-std hermes;})
+        ];
 
         networking = {
           interfaces.eth1 = {
@@ -116,7 +126,8 @@ in
 
         services.hermes = {
           enable = true;
-          package = hermes;
+          global.log_level = "trace";
+          # package = hermes;
           rest = {
             port = defaultRestPort;
             host = "0.0.0.0";
@@ -128,23 +139,35 @@ in
           chains = [
             {
               id = "nixos";
-              rpc-address = "http://validator1:26657";
-              grpc-address = "http://validator1:9090";
-              websocket-address = "ws://validator1:26657/websocket";
-              account-prefix = "cosmos";
-              key-name = "testkey";
-              gas-price = 0.001;
-              gas-denomination = "stake";
+              rpc_addr = "http://validator1:26657";
+              grpc_addr = "http://validator1:9090";
+              account_prefix = "cosmos";
+              address_type = {derivation = "cosmos";};
+              key_name = "testkey";
+              gas_price = {
+                price = 0.001;
+                denom = "stake";
+              };
+              event_source = {
+                mode = "pull";
+                interval = "1s";
+              };
             }
             {
               id = "nixos2";
-              rpc-address = "http://validator2:26657";
-              grpc-address = "http://validator2:9090";
-              websocket-address = "ws://validator2:26657/websocket";
-              account-prefix = "cosmos";
-              key-name = "testkey";
-              gas-price = 0.001;
-              gas-denomination = "stake";
+              rpc_addr = "http://validator2:26657";
+              grpc_addr = "http://validator2:9090";
+              account_prefix = "cosmos";
+              address_type = {derivation = "cosmos";};
+              key_name = "testkey";
+              gas_price = {
+                price = 0.001;
+                denom = "stake";
+              };
+              event_source = {
+                mode = "pull";
+                interval = "1s";
+              };
             }
           ];
         };

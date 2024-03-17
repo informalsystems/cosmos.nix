@@ -168,4 +168,30 @@ in {
         gomod2nix --outdir "$CURDIR"
       '';
     };
+  hermesModuleConfigToml = {modules}:
+    pkgs.lib.evalModules {
+      modules =
+        [
+          (
+            {
+              lib,
+              config,
+              ...
+            }: let
+              prev = config.hermes;
+              cfg = prev // {chains = builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;};
+              hermes-toml = nix-std.lib.serde.toTOML (builtins.removeAttrs cfg ["toml"]);
+            in
+              with lib; {
+                options.hermes =
+                  (import ../nixosModules/relayer/options.nix {inherit lib;})
+                  // {
+                    toml = mkOption {type = types.unique {message = "only one toml output";} types.str;};
+                  };
+                config.hermes.toml = hermes-toml;
+              }
+          )
+        ]
+        ++ modules;
+    };
 }
