@@ -184,7 +184,7 @@ in {
             in
               with lib; {
                 options.hermes =
-                  (import ../nixosModules/relayer/options.nix {inherit lib;})
+                  (import ../nixosModules/hermes/options.nix {inherit lib;})
                   // {
                     toml = mkOption {type = types.unique {message = "only one toml output";} types.str;};
                   };
