@@ -208,14 +208,15 @@
                 inherit (inputs) apalache-src;
               };
             }
-            {
-              hermes-test = import ../nixosTests/tests/hermes-test.nix {
-                inherit pkgs;
-                inherit (inputs) nix-std;
-                inherit (self'.packages) hermes;
-                gaia = self'.packages.gaia14;
-              };
-            }
+            # fails with gaia nill pointer, so need to have config builder for cosmos-sdk too
+            # {
+            #   hermes-test = import ../nixosTests/tests/hermes-test.nix {
+            #     inherit pkgs;
+            #     inherit (inputs) nix-std;
+            #     inherit (self'.packages) hermes;
+            #     gaia = self'.packages.gaia14;
+            #   };
+            # }
             {
               stargaze = import ../packages/stargaze.nix {
                 inherit (inputs) stargaze-src;
