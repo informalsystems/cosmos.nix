@@ -77,12 +77,12 @@
           inherit pkgs;
           inherit (inputs) hermes-src;
         };
-        hermes-test = import ../nixosTests/tests/hermes-test.nix {
+        hermes-test = pkgs.lib.optionalAttrs pkgs.stdenv.isLinux (import ../nixosTests/tests/hermes-test.nix {
           inherit pkgs;
           inherit (inputs) nix-std;
           inherit (self'.packages) hermes;
           gaia = self'.packages.gaia14;
-        };
+        });
         ica = import ../packages/ica.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) ica-src;
