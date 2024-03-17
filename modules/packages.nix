@@ -35,8 +35,8 @@
           paths = [self'.packages.celestia-app self'.packages.celestia-node];
         };
         centauri = import ../packages/centauri.nix {
-          inherit (inputs) centauri-src;
-          inherit (self'.packages) libwasmvm_1_2_4;
+          inherit (inputs) composable-cosmos-src;
+          inherit (self'.packages) libwasmvm_1_2_6;
           inherit cosmosLib;
         };
         cometbft = import ../packages/cometbft.nix {
