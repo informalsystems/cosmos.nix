@@ -180,19 +180,14 @@ in {
               config,
               ...
             }: let
-              prev = config.hermes;
-              # remove `null` from toml render
-              cfg = prev // {chains = builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;};
-              hermes-toml = nix-std.lib.serde.toTOML (builtins.removeAttrs cfg ["toml"]);
-            in
-              with lib; {
-                options.hermes =
-                  (import ../nixosModules/hermes/options.nix {inherit lib;})
-                  // {
-                    toml = mkOption {type = types.unique {message = "only one toml output";} types.str;};
-                  };
-                config.hermes.toml = hermes-toml;
-              }
+              # pleae not that it is not `nixos service`(systemd/launchd),
+              # but just abstract module to be serviced on top by anything (container/vm/process manager/futher generator)
+              cfg = config.hermes;
+              base = import ../nixosModules/hermes/base.nix {inherit lib nix-std cfg;};
+            in {
+              options.hermes = base.options;
+              config.hermes.toml = base.config.toml;
+            }
           )
         ]
         ++ modules;

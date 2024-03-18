@@ -126,50 +126,52 @@ in
 
         services.hermes = {
           enable = true;
-          global.log_level = "trace";
           package = hermes;
-          rest = {
-            port = defaultRestPort;
-            host = "0.0.0.0";
+          config = {
+            global.log_level = "trace";
+            rest = {
+              port = defaultRestPort;
+              host = "0.0.0.0";
+            };
+            telemetry = {
+              port = defaultMetricsPort;
+              host = "0.0.0.0";
+            };
+            chains = [
+              {
+                id = "nixos";
+                rpc_addr = "http://validator1:26657";
+                grpc_addr = "http://validator1:9090";
+                account_prefix = "cosmos";
+                address_type = {derivation = "cosmos";};
+                key_name = "testkey";
+                gas_price = {
+                  price = 0.001;
+                  denom = "stake";
+                };
+                event_source = {
+                  mode = "pull";
+                  interval = "1s";
+                };
+              }
+              {
+                id = "nixos2";
+                rpc_addr = "http://validator2:26657";
+                grpc_addr = "http://validator2:9090";
+                account_prefix = "cosmos";
+                address_type = {derivation = "cosmos";};
+                key_name = "testkey";
+                gas_price = {
+                  price = 0.001;
+                  denom = "stake";
+                };
+                event_source = {
+                  mode = "pull";
+                  interval = "1s";
+                };
+              }
+            ];
           };
-          telemetry = {
-            port = defaultMetricsPort;
-            host = "0.0.0.0";
-          };
-          chains = [
-            {
-              id = "nixos";
-              rpc_addr = "http://validator1:26657";
-              grpc_addr = "http://validator1:9090";
-              account_prefix = "cosmos";
-              address_type = {derivation = "cosmos";};
-              key_name = "testkey";
-              gas_price = {
-                price = 0.001;
-                denom = "stake";
-              };
-              event_source = {
-                mode = "pull";
-                interval = "1s";
-              };
-            }
-            {
-              id = "nixos2";
-              rpc_addr = "http://validator2:26657";
-              grpc_addr = "http://validator2:9090";
-              account_prefix = "cosmos";
-              address_type = {derivation = "cosmos";};
-              key_name = "testkey";
-              gas_price = {
-                price = 0.001;
-                denom = "stake";
-              };
-              event_source = {
-                mode = "pull";
-                interval = "1s";
-              };
-            }
-          ];
         };
       };
     };

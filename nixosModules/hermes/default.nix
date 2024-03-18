@@ -11,23 +11,16 @@
     if hermes != null
     then hermes
     else pkgs.hermes;
-  prev = config.services.hermes;
-  sanitizedCfg =
-    # remove non toml parts
-    (builtins.removeAttrs prev ["package"])
-    // {
-      chains =
-        # remove `null` from toml render
-        builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;
-    };
-  hermes-toml = pkgs.writeTextFile {
-    text = nix-std.lib.serde.toTOML sanitizedCfg;
+  cfg = config.services.hermes;
+  base = import ./base.nix {inherit lib nix-std cfg;};
+  tomlFile = pkgs.writeTextFile {
     name = "config.toml";
+    text = base.config.toml;
   };
 in
   with lib; {
     options.services.hermes =
-      import ./options.nix {inherit lib;}
+      base.options
       // {
         enable = mkEnableOption "hermes";
         package = mkOption {
@@ -39,15 +32,16 @@ in
         };
       };
 
-    config = mkIf sanitizedCfg.enable {
+    config = mkIf cfg.enable {
+      services.hermes.toml = base.config.toml;
       systemd.services.hermes = {
         description = "Hermes Daemon";
         wantedBy = ["multi-user.target"];
         after = ["network.target"];
-        preStart = "echo \"hermes toml can be found here: ${hermes-toml}\"";
+        preStart = "echo \"hermes toml can be found here: ${tomlFile}\"";
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${pkgs.lib.meta.getExe config.services.hermes.package} -c ${hermes-toml} start";
+          ExecStart = "${pkgs.lib.meta.getExe cfg.package} -c ${tomlFile} start";
         };
       };
     };
