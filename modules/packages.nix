@@ -39,6 +39,10 @@
           inherit (self'.packages) libwasmvm_1_2_6;
           inherit cosmosLib;
         };
+        centauri-oci = import ../packages/centauri-oci.nix {
+          inherit (pkgs) nix2container;
+          inherit (self'.packages) centauri;
+        };
         cometbft = import ../packages/cometbft.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) cometbft-src;
@@ -66,6 +70,10 @@
         dymension = import ../packages/dymension.nix {
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) dymension-src;
+        };
+        gaia-oci = import ../packages/gaia-oci.nix {
+          inherit (pkgs) nix2container;
+          gaia = self'.packages.gaia14;
         };
         gex = import ../packages/gex.nix {
           inherit (pkgs) buildGoModule;
@@ -122,6 +130,10 @@
           inherit (inputs) osmosis-src;
           inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
+        };
+        osmosis-oci = import ../packages/osmosis-oci.nix {
+          inherit (pkgs) nix2container;
+          inherit (self'.packages) osmosis;
         };
         provenance = import ../packages/provenance.nix {
           inherit (inputs) provenance-src;
