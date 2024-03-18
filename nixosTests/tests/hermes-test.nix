@@ -1,5 +1,6 @@
 {
   pkgs,
+  nix-std,
   gaia,
   hermes,
 }: let

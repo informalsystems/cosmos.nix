@@ -181,6 +181,7 @@ in {
               ...
             }: let
               prev = config.hermes;
+              # remove `null` from toml render
               cfg = prev // {chains = builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;};
               hermes-toml = nix-std.lib.serde.toTOML (builtins.removeAttrs cfg ["toml"]);
             in

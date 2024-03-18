@@ -7,11 +7,14 @@
   pkgs,
   ...
 }: let
-  hermes-path = lib.meta.getExe hermes;
+  defaultPackage =
+    if hermes != null
+    then hermes
+    else pkgs.hermes;
   prev = config.services.hermes;
   sanitizedCfg =
     # remove non toml parts
-    (builtins.map (pkgs.lib.filterAttrs (k: _: k == "package")) prev)
+    (builtins.removeAttrs prev ["package"])
     // {
       chains =
         # remove `null` from toml render
@@ -28,15 +31,15 @@ in
       // {
         enable = mkEnableOption "hermes";
         package = mkOption {
-          type = types.str;
-          default = hermes-path;
+          type = types.package;
+          default = defaultPackage;
           description = ''
             The hermes (ibc-rs) software to run.
           '';
         };
       };
 
-    config = mkIf cfg.enable {
+    config = mkIf sanitizedCfg.enable {
       systemd.services.hermes = {
         description = "Hermes Daemon";
         wantedBy = ["multi-user.target"];
@@ -44,7 +47,7 @@ in
         preStart = "echo \"hermes toml can be found here: ${hermes-toml}\"";
         serviceConfig = {
           Type = "notify";
-          ExecStart = "${cfg.package} -c ${hermes-toml} start";
+          ExecStart = "${pkgs.lib.meta.getExe config.services.hermes.package} -c ${hermes-toml} start";
         };
       };
     };
