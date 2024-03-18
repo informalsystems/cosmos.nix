@@ -9,9 +9,16 @@
 }: let
   hermes-path = lib.meta.getExe hermes;
   prev = config.services.hermes;
-  cfg = prev // {chains = builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;};
+  sanitizedCfg =
+    # remove non toml parts
+    (builtins.map (pkgs.lib.filterAttrs (k: _: k == "package")) prev)
+    // {
+      chains =
+        # remove `null` from toml render
+        builtins.map (pkgs.lib.filterAttrsRecursive (_: v: v != null)) prev.chains;
+    };
   hermes-toml = pkgs.writeTextFile {
-    text = nix-std.lib.serde.toTOML cfg;
+    text = nix-std.lib.serde.toTOML sanitizedCfg;
     name = "config.toml";
   };
 in

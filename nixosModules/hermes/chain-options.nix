@@ -1,3 +1,4 @@
+# will be used to generate `[[chains]]` part of [config.toml](https://hermes.informal.systems/documentation/configuration/description.html)
 {lib}:
 with lib; {
   # Required

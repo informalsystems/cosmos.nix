@@ -1,3 +1,4 @@
+# will be used to render [config.toml](https://hermes.informal.systems/documentation/configuration/description.html)
 {lib}:
 with lib; {
   global = mkOption {
