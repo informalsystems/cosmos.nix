@@ -1,5 +1,5 @@
 {
-  nix-std ? import (fetchTarball "https://github.com/chessai/nix-std/archive/master.tar.gz"),
+  nix-std,
   hermes,
 }: {
   lib,

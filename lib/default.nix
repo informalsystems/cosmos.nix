@@ -168,6 +168,8 @@ in {
         gomod2nix --outdir "$CURDIR"
       '';
     };
+  # `hermesModuleConfigToml { modules }).config.hermes.toml`
+  # will be a string to put into [config.toml](https://hermes.informal.systems/documentation/configuration/configure-hermes.html)
   hermesModuleConfigToml = {modules}:
     pkgs.lib.evalModules {
       modules =

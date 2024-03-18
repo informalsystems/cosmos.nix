@@ -1,8 +1,7 @@
 {
   pkgs,
-  nix-std,
-  hermes,
   gaia,
+  hermes,
 }: let
   jsonRpcCurlRequest = addr: port: ''${pkgs.curl}/bin/curl -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"health\",\"params\":[]}' http://${addr}:${builtins.toString port} 2>&1'';
   sharedModule = {
@@ -127,7 +126,7 @@ in
         services.hermes = {
           enable = true;
           global.log_level = "trace";
-          # package = hermes;
+          package = hermes;
           rest = {
             port = defaultRestPort;
             host = "0.0.0.0";
