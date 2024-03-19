@@ -15,4 +15,7 @@ pkgs.rustPlatform.buildRustPackage {
     ];
   cargoSha256 = "sha256-oAsRn0THb5FU1HqgpB60jChGeQZdbrPoPfzTbyt3ozM=";
   doCheck = false;
+  meta = {
+    mainProgram = "hermes";
+  };
 }

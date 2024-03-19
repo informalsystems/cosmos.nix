@@ -1,7 +1,8 @@
 {
   pkgs,
-  hermes,
+  nix-std,
   gaia,
+  hermes,
 }: let
   jsonRpcCurlRequest = addr: port: ''${pkgs.curl}/bin/curl -X POST -H 'Content-Type: application/json' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"health\",\"params\":[]}' http://${addr}:${builtins.toString port} 2>&1'';
   sharedModule = {
@@ -16,7 +17,10 @@ in
     name = "hermes-module-test";
     nodes = {
       validator1 = {
-        imports = [sharedModule ../../nixosModules/chains/gaia.nix];
+        imports = [
+          sharedModule
+          ../../nixosModules/chains/gaia.nix
+        ];
         networking = {
           interfaces = {
             eth1 = {
@@ -45,7 +49,10 @@ in
       };
 
       validator2 = {
-        imports = [sharedModule ../chains/gaia.nix];
+        imports = [
+          sharedModule
+          ../../nixosModules/chains/gaia.nix
+        ];
         networking = {
           interfaces = {
             eth1 = {
@@ -93,7 +100,10 @@ in
       };
 
       relayer = {
-        imports = [sharedModule ../../nixosModules/relayer/hermes.nix];
+        imports = [
+          sharedModule
+          (import ../../nixosModules/hermes/default.nix {inherit nix-std hermes;})
+        ];
 
         networking = {
           interfaces.eth1 = {
@@ -117,36 +127,51 @@ in
         services.hermes = {
           enable = true;
           package = hermes;
-          rest = {
-            port = defaultRestPort;
-            host = "0.0.0.0";
+          config = {
+            global.log_level = "trace";
+            rest = {
+              port = defaultRestPort;
+              host = "0.0.0.0";
+            };
+            telemetry = {
+              port = defaultMetricsPort;
+              host = "0.0.0.0";
+            };
+            chains = [
+              {
+                id = "nixos";
+                rpc_addr = "http://validator1:26657";
+                grpc_addr = "http://validator1:9090";
+                account_prefix = "cosmos";
+                address_type = {derivation = "cosmos";};
+                key_name = "testkey";
+                gas_price = {
+                  price = 0.001;
+                  denom = "stake";
+                };
+                event_source = {
+                  mode = "pull";
+                  interval = "1s";
+                };
+              }
+              {
+                id = "nixos2";
+                rpc_addr = "http://validator2:26657";
+                grpc_addr = "http://validator2:9090";
+                account_prefix = "cosmos";
+                address_type = {derivation = "cosmos";};
+                key_name = "testkey";
+                gas_price = {
+                  price = 0.001;
+                  denom = "stake";
+                };
+                event_source = {
+                  mode = "pull";
+                  interval = "1s";
+                };
+              }
+            ];
           };
-          telemetry = {
-            port = defaultMetricsPort;
-            host = "0.0.0.0";
-          };
-          chains = [
-            {
-              id = "nixos";
-              rpc-address = "http://validator1:26657";
-              grpc-address = "http://validator1:9090";
-              websocket-address = "ws://validator1:26657/websocket";
-              account-prefix = "cosmos";
-              key-name = "testkey";
-              gas-price = 0.001;
-              gas-denomination = "stake";
-            }
-            {
-              id = "nixos2";
-              rpc-address = "http://validator2:26657";
-              grpc-address = "http://validator2:9090";
-              websocket-address = "ws://validator2:26657/websocket";
-              account-prefix = "cosmos";
-              key-name = "testkey";
-              gas-price = 0.001;
-              gas-denomination = "stake";
-            }
-          ];
         };
       };
     };

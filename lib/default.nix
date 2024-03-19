@@ -168,4 +168,29 @@ in {
         gomod2nix --outdir "$CURDIR"
       '';
     };
+  # `hermesModuleConfigToml { modules }).config.hermes.toml`
+  # will be a string to put into [config.toml](https://hermes.informal.systems/documentation/configuration/configure-hermes.html)
+  hermesModuleConfigToml = {modules}:
+    pkgs.lib.evalModules {
+      modules =
+        [
+          (
+            {
+              lib,
+              config,
+              ...
+            }: let
+              # please note that this is not `nixos service`(systemd/launchd),
+              # but just the "abstract" module that can be used to build other configurations:
+              # static config files, containers, vm, process manager, futher generator.
+              cfg = config.hermes;
+              base = import ../nixosModules/hermes/base.nix {inherit lib nix-std cfg;};
+            in {
+              options.hermes = base.options;
+              config.hermes.toml = base.config.toml;
+            }
+          )
+        ]
+        ++ modules;
+    };
 }
