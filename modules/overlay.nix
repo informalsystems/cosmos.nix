@@ -9,7 +9,7 @@
   # Overlay with everything
   flake.overlays.default = with self.overlays;
     inputs.nixpkgs.lib.fixedPoints.composeExtensions
-    cosmosNix
+    cosmosNixPackages
     cosmosNixLib;
 
   # Overlay with all the cosmos.nix cosmos packages
