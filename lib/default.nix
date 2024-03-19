@@ -75,7 +75,7 @@ nix-std: {
     additionalLdFlags ? [],
     appName ? null,
     preCheck ? null,
-    goVersion ? "1.19",
+    goVersion ? "1.20",
     ...
   }: let
     buildGoModuleArgs =
