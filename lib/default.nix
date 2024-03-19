@@ -180,8 +180,9 @@ in {
               config,
               ...
             }: let
-              # pleae not that it is not `nixos service`(systemd/launchd),
-              # but just abstract module to be serviced on top by anything (container/vm/process manager/futher generator)
+              # please note that this is not `nixos service`(systemd/launchd),
+              # but just the "abstract" module that can be used to build other configurations:
+              # static config files, containers, vm, process manager, futher generator.
               cfg = config.hermes;
               base = import ../nixosModules/hermes/base.nix {inherit lib nix-std cfg;};
             in {
