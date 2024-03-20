@@ -115,16 +115,16 @@
     "composable-cosmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1710176274,
-        "narHash": "sha256-/fBLRr1dxtsWsx/LqeQmxAYwNtNzugsXSpmJwkcrFpw=",
+        "lastModified": 1710941282,
+        "narHash": "sha256-Vovv7Ka8IR4Lr4ylmDErtLU07ZrZ9U0mGOlsMPHJY2M=",
         "owner": "ComposableFi",
         "repo": "composable-cosmos",
-        "rev": "adf4face2ef304ae0f9d537cb88f5e888b7d4a7d",
+        "rev": "f0497a8a96511a18bfc87f38aee6181734794545",
         "type": "github"
       },
       "original": {
         "owner": "ComposableFi",
-        "ref": "v6.4.4-to-7-tag",
+        "ref": "v6.4.8",
         "repo": "composable-cosmos",
         "type": "github"
       }
@@ -1397,6 +1397,7 @@
         "wasmvm_1_2_6-src": "wasmvm_1_2_6-src",
         "wasmvm_1_3_0-src": "wasmvm_1_3_0-src",
         "wasmvm_1_5_0-src": "wasmvm_1_5_0-src",
+        "wasmvm_1_5_2-src": "wasmvm_1_5_2-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
@@ -1808,6 +1809,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v1.5.0",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_5_2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705576719,
+        "narHash": "sha256-3KJq5jFllFSqlm85/iRWYMhu99iuokvR3Ib9Gq3gIjc=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "b742b2623cce98f04ae5d8bfb488c73988f3dd61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.5.2",
         "repo": "wasmvm",
         "type": "github"
       }
