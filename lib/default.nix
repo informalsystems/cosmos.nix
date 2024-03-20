@@ -140,9 +140,18 @@ nix-std: {
       }
       // buildGoModuleArgs);
 in {
+  # A helper for building rust cosmwasm smart contracts. Does some best practices like using binaryren wasm-opt 
+  # to optimize the bytecode, and runs cosmwasm-check to validate.
   inherit buildCosmwasmContract;
+  
+  # A wrapper around [buildGoModule](https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/go/module.nix) 
+  # that is specialized to packaging cosmos-sdk based go projects
+  # 
+  # for more information see: https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/go.section.md
   mkCosmosGoApp = buildApp;
 
+  # A helper function for patching cosmos-sdk binaries that use wasmd, so that the binary artifact references
+  # a nix store path, and not a local relative path
   wasmdPreFixupPhase = libwasmvm: binName:
     if pkgs.stdenv.hostPlatform.isLinux
     then ''
@@ -156,6 +165,8 @@ in {
     ''
     else null;
 
+  # A helper that produces an executable for generating a gomod2nix.toml file (which 
+  # captures a go module's dependencies and their hash in a toml file)
   mkGenerator = name: srcDir:
     pkgs.writeShellApplication {
       inherit name;
@@ -168,6 +179,7 @@ in {
         gomod2nix --outdir "$CURDIR"
       '';
     };
+
   # `hermesModuleConfigToml { modules }).config.hermes.toml`
   # will be a string to put into [config.toml](https://hermes.informal.systems/documentation/configuration/configure-hermes.html)
   hermesModuleConfigToml = {modules}:
