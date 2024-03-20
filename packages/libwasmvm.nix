@@ -20,11 +20,11 @@ in
     libwasmvm_1_5_2 = {
       src = "${inputs.wasmvm_1_5_2-src}/libwasmvm";
       version = "v1.5.2";
-      cargoSha256 = "sha256-BFou831HI+YKXU9H51Xa/y7A441Z7QkAA92mhquJ5l4=";
+      cargoSha256 = "sha256-BFou131HI+YKXU9H51Xa/y7A441Z7QkAA92mhquJ5l4=";
       cargoLock = {
         lockFile = "${inputs.wasmvm_1_5_2-src}/libwasmvm/Cargo.lock";
         outputHashes = {
-          "cosmwasm-crypto-1.5.0" = "sha256-41s5jLFzw9Jo+dirAVOad1dtUqCBY6rIz/6TRc0frMw=";
+          "cosmwasm-crypto-1.5.2" = "sha256-OgROAoOflWMfiOCuSt52EHiP2E+CzOqLvVJDWufV6kU=";
         };
       };
     };
