@@ -1037,10 +1037,11 @@
     },
     "nix-std": {
       "locked": {
-        "narHash": "sha256-KIt1TUuBvldhaVRta010MI5FeQlB8WadjqljybjesN0=",
+        "lastModified": 1710870712,
+        "narHash": "sha256-e+7MJF2gsgTBuOWv4mCimSP0D9+naeFSw9a7N3yEmv4=",
         "owner": "chessai",
         "repo": "nix-std",
-        "rev": "715db541ffff4194620e48d210b76f73a74b5b5d",
+        "rev": "31bbc925750cc9d8f828fe55cee1a2bd985e0c00",
         "type": "github"
       },
       "original": {

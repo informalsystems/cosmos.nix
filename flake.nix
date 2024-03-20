@@ -31,6 +31,8 @@
         ./modules/apps.nix
         # Sets the overlays.default flake output
         ./modules/overlay.nix
+        # Sets the flake.nixosModules flake output
+        ./modules/nixosModules.nix
       ];
     };
 
