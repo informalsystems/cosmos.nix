@@ -93,9 +93,9 @@ them into your nixpkgs package set.
     let pkgs = import nixpkgs { 
             system = "x86_64-linux"; # Or whatever system you are on
             overlays = [
-                cosmos-nix.overlays.cosmosNixLib # Provides just the nix utility lib
-                cosmos-nix.overlays.cosmosNix    # Provides all the cosmos packages provided by cosmos.nix
-                cosmos-nix.overlay               # The default overlay gives you everything in the previous two combined
+                cosmos-nix.overlays.cosmosNixLib       # Provides just the nix utility lib
+                cosmos-nix.overlays.cosmosNixPackages  # Provides all the cosmos packages provided by cosmos.nix
+                cosmos-nix.overlay                     # The default overlay gives you everything in the previous two combined
             ];
         }
     in ...

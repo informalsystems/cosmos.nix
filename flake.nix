@@ -150,7 +150,7 @@
     juno-src.url = "github:CosmosContracts/juno/v17.1.1";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v21.0.0";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v22.0.5";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";

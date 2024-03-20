@@ -5,10 +5,10 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "osmosis";
-  version = "v21.0.0";
+  version = "v22.0.5";
   src = osmosis-src;
   rev = osmosis-src.rev;
-  vendorHash = "sha256-9BBAILwkOhru/35/sc91kf0h3Byz9RJ/P56s2hSmf18=";
+  vendorHash = "sha256-1BBAILwkOhru/35/sc91kf0h3Byz9RJ/P56s2hSmf18=";
   tags = ["netgo"];
   excludedPackages = ["cl-genesis-positions"];
   engine = "cometbft/cometbft";
