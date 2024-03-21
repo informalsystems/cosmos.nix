@@ -55,10 +55,6 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
         };
-        crescent = import ../packages/crescent.nix {
-          inherit (inputs) crescent-src;
-          inherit (cosmosLib) mkCosmosGoApp;
-        };
         cw20-base = import ../packages/cw20-base.nix {
           inherit (cosmosLib) buildCosmwasmContract;
           inherit (inputs) cw-plus-src;

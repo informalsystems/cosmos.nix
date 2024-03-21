@@ -166,10 +166,6 @@
             type = "app";
             program = "${packages.sifchain}/bin/sifnoded";
           };
-          crescent = {
-            type = "app";
-            program = "${packages.crescent}/bin/crescentd";
-          };
           wasmd = {
             type = "app";
             program = "${packages.wasmd}/bin/wasmd";
