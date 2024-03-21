@@ -170,9 +170,6 @@
     sifchain-src.url = "github:Sifchain/sifnode/v0.12.1";
     sifchain-src.flake = false;
 
-    crescent-src.url = "github:crescent-network/crescent/v1.0.0-rc3";
-    crescent-src.flake = false;
-
     stargaze-src.url = "github:public-awesome/stargaze/v3.0.0";
     stargaze-src.flake = false;
 
