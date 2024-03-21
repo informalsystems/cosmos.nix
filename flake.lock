@@ -161,22 +161,6 @@
         "type": "github"
       }
     },
-    "crescent-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-c1xiTB/HgtQJSwD3ccFQIoSHPbJK6rf1nSjnM3r0oCE=",
-        "owner": "crescent-network",
-        "repo": "crescent",
-        "rev": "01980cfd06b06786109eaba78c154e6db1adc3d6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "crescent-network",
-        "ref": "v1.0.0-rc3",
-        "repo": "crescent",
-        "type": "github"
-      }
-    },
     "cw-plus-src": {
       "flake": false,
       "locked": {
@@ -1328,7 +1312,6 @@
         "composable-cosmos-src": "composable-cosmos-src",
         "cosmos-sdk-src": "cosmos-sdk-src",
         "cosmwasm-src": "cosmwasm-src",
-        "crescent-src": "crescent-src",
         "cw-plus-src": "cw-plus-src",
         "dydx-src": "dydx-src",
         "dymension-src": "dymension-src",
