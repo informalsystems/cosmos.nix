@@ -22,4 +22,8 @@ cosmosLib.mkCosmosGoApp {
 
   # Test has to be skipped as end-to-end testing requires network access
   doCheck = false;
+
+  meta = {
+    mainProgram = "osmosisd";
+  };
 }

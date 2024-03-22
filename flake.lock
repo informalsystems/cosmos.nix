@@ -115,16 +115,16 @@
     "composable-cosmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1710941282,
-        "narHash": "sha256-Vovv7Ka8IR4Lr4ylmDErtLU07ZrZ9U0mGOlsMPHJY2M=",
+        "lastModified": 1710970443,
+        "narHash": "sha256-7h+vLGFxj2QvcTfXgHqS3pfnYzIzyf8DhO7adJKRe8c=",
         "owner": "ComposableFi",
         "repo": "composable-cosmos",
-        "rev": "f0497a8a96511a18bfc87f38aee6181734794545",
+        "rev": "a76ebd371059b778aa3e9799366b09e8453f114b",
         "type": "github"
       },
       "original": {
         "owner": "ComposableFi",
-        "ref": "v6.4.8",
+        "ref": "v6.4.88",
         "repo": "composable-cosmos",
         "type": "github"
       }
