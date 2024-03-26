@@ -5,10 +5,10 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "centauri";
-  version = "v6.4.4";
+  version = "v6.4.8";
   src = composable-cosmos-src;
   rev = composable-cosmos-src.rev;
-  vendorHash = "sha256-uoolB6FFcz1OiOhtIcngHBovmq/Cc0nrcRYrzi+F6Kc=";
+  vendorHash = "sha256-GZSvL2INqpBLiusSW9SOW/Ylw5+vfRST0h1xBdvyaDQ=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   excludedPackages = ["interchaintest" "simd"];

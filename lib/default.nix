@@ -75,7 +75,7 @@ nix-std: {
     additionalLdFlags ? [],
     appName ? null,
     preCheck ? null,
-    goVersion ? "1.19",
+    goVersion ? "1.20",
     ...
   }: let
     buildGoModuleArgs =
@@ -114,7 +114,6 @@ nix-std: {
       else appName;
 
     buildGoModuleVersion = {
-      "1.19" = pkgs.buildGo119Module;
       "1.20" = pkgs.buildGo120Module;
       "1.21" = pkgs.buildGo121Module;
     };

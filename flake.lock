@@ -115,16 +115,16 @@
     "composable-cosmos-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1710176274,
-        "narHash": "sha256-/fBLRr1dxtsWsx/LqeQmxAYwNtNzugsXSpmJwkcrFpw=",
+        "lastModified": 1710970443,
+        "narHash": "sha256-7h+vLGFxj2QvcTfXgHqS3pfnYzIzyf8DhO7adJKRe8c=",
         "owner": "ComposableFi",
         "repo": "composable-cosmos",
-        "rev": "adf4face2ef304ae0f9d537cb88f5e888b7d4a7d",
+        "rev": "a76ebd371059b778aa3e9799366b09e8453f114b",
         "type": "github"
       },
       "original": {
         "owner": "ComposableFi",
-        "ref": "v6.4.4-to-7-tag",
+        "ref": "v6.4.88",
         "repo": "composable-cosmos",
         "type": "github"
       }
@@ -1194,15 +1194,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-4uLO7izIZ8JvKTfUXbYkxQFpIjwMEcO81WvhklrzI9E=",
+        "lastModified": 1707262742,
+        "narHash": "sha256-DudppJmGaToUcYVbVA17FVXlev1NuoSY+Jy2c7PpZlY=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "b0aee0006ce55d0851773084bd7880db7e32ad70",
+        "rev": "350901e523815fc34a1de1ca54e9ccd3c4d1f756",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v21.0.0",
+        "ref": "v22.0.5",
         "repo": "osmosis",
         "type": "github"
       }
@@ -1380,6 +1381,7 @@
         "wasmvm_1_2_6-src": "wasmvm_1_2_6-src",
         "wasmvm_1_3_0-src": "wasmvm_1_3_0-src",
         "wasmvm_1_5_0-src": "wasmvm_1_5_0-src",
+        "wasmvm_1_5_2-src": "wasmvm_1_5_2-src",
         "wasmvm_1_beta7-src": "wasmvm_1_beta7-src"
       }
     },
@@ -1791,6 +1793,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v1.5.0",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_1_5_2-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705576719,
+        "narHash": "sha256-3KJq5jFllFSqlm85/iRWYMhu99iuokvR3Ib9Gq3gIjc=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "b742b2623cce98f04ae5d8bfb488c73988f3dd61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v1.5.2",
         "repo": "wasmvm",
         "type": "github"
       }
