@@ -24,7 +24,7 @@ jobs:
             substituters = https://cache.nixos.org https://cosmosnix-store.s3.us-east-2.amazonaws.com
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
 
-      - uses: cachix/cachix-action@main
+      - uses: cachix/cachix-action@v14
         with: 
           name: cosmos-nix
           authToken: '${{ secrets.COSMOS_CACHIX_KEY }}'
