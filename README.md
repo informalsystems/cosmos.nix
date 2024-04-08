@@ -53,11 +53,10 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
 4. [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html):
 
-add this to your /etc/nix/nix.conf file (or wherever you keep your substituters)
+Run this to add the `cosmos-nix` cache as a substituter
 
-```
-substituters = https://cosmosnix-store.s3.us-east-2.amazonaws.com
-trusted-public-keys = cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
+```bash
+cachix use cosmos-nix
 ```
 
 ## Shell
