@@ -14,13 +14,20 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+
       - uses: jlumbroso/free-disk-space@main
         if: matrix.os == 'ubuntu-22.04' 
+
       - uses: DeterminateSystems/nix-installer-action@main
         with: 
           extra-conf: |
-            substituters = https://cache.nixos.org https://cosmosnix-store.s3.us-east-2.amazonaws.com
-            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
+            substituters = https://cache.nixos.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+
+      - uses: cachix/cachix-action@v14
+        with: 
+          name: cosmos-nix
+          authToken: '${{ secrets.COSMOS_CACHIX_KEY }}'
 
       - name: Check 🔎
         run: |
@@ -29,26 +36,3 @@ jobs:
       - name: Run Shell 🐚
         run: |
           nix develop
-
-      # NOTE: the if conditions below mean that we only run these steps for Pull Requests from non-forks
-      # This is partially due to this issue https://github.com/aws-actions/configure-aws-credentials/issues/373.
-      # And partially because a malicious actor could fork the repo and fill our cache with junk.
-      # Note that the cache will be pushed when merged to main, so PR's from forks that make it in will still
-      # populate the cache
-      - name: Authenticate 🔒
-        uses: aws-actions/configure-aws-credentials@v4
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-        with:
-          aws-region: us-east-2
-          retry-max-attempts: 3
-          role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
-          role-session-name: InformalSystemsGithubAction
-
-      - name: Push Cache 🫸💨📦
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
-        env: 
-          SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
-        run: |
-          echo "$SIGNING_KEY" >> key
-          nix store sign -k key --all
-          nix copy --to "s3://cosmosnix-store?region=us-east-2" --all

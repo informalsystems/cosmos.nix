@@ -16,13 +16,21 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+
       - uses: jlumbroso/free-disk-space@main
         if: matrix.os == 'ubuntu-22.04' 
+
       - uses: DeterminateSystems/nix-installer-action@main
         with: 
           extra-conf: |
-            substituters = https://cache.nixos.org https://cosmosnix-store.s3.us-east-2.amazonaws.com
-            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
+            substituters = https://cache.nixos.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+
+      - uses: cachix/cachix-action@v14
+        with: 
+          name: cosmos-nix
+          authToken: '${{ secrets.COSMOS_CACHIX_KEY }}'
+
 
       - name: Check 🔎
         run: |
@@ -31,22 +39,6 @@ jobs:
       - name: Run Shell 🐚
         run: |
           nix develop
-
-      - name: Authenticate 🔒
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: us-east-2
-          retry-max-attempts: 3
-          role-to-assume: arn:aws:iam::762411426253:role/push-cosmosnix-store
-          role-session-name: InformalSystemsGithubAction
-
-      - name: Push Cache 🫸📦💨
-        env: 
-          SIGNING_KEY: ${{ secrets.SECRET_STORE_SIGNING_KEY }}
-        run: |
-          echo "$SIGNING_KEY" >> key
-          nix store sign -k key --all
-          nix copy --to "s3://cosmosnix-store?region=us-east-2" --all
 
       - name: Push to FlakeHub ❄️
         uses: determinatesystems/flakehub-push@main
