@@ -27,20 +27,20 @@ with inputs;
 
     ibc-go-v4-simapp = {
       name = "simapp";
-      version = "v4.2.0";
+      version = "v4.6.0";
       src = ibc-go-v4-src;
       rev = ibc-go-v4-src.rev;
-      vendorHash = "sha256-M8N6IPBnhOQp4LsCgdKc0NOtdeLNkAcXtGsvHS00D+g=";
+      vendorHash = "sha256-1BrGCK/TtJFEvHf7C7OXvwNRxeCJejM17Jq7a3JVlnk=";
       tags = ["netgo"];
       engine = "tendermint/tendermint";
     };
 
     ibc-go-v5-simapp = {
       name = "simapp";
-      version = "v5.1.0";
+      version = "v5.4.0";
       src = ibc-go-v5-src;
       rev = ibc-go-v5-src.rev;
-      vendorHash = "sha256-KajTi+hCMM8AoLsGmWV7qVGbYA8vZhn+0tmG20zJgPI=";
+      vendorHash = "sha256-k1YaGedNUv1fjXNfYjDAfcX8KqviHhWFreqjYHXQoJs=";
       tags = ["netgo"];
       engine = "tendermint/tendermint";
       excludedPackages = ["./e2e"];
@@ -48,10 +48,10 @@ with inputs;
 
     ibc-go-v6-simapp = {
       name = "simapp";
-      version = "v6.1.0";
+      version = "v6.3.0";
       src = ibc-go-v6-src;
       rev = ibc-go-v6-src.rev;
-      vendorHash = "sha256-hP/DTNkB1NI7yZZDn5tYy/9jYIb3BqESxIG2A4wgjJU";
+      vendorHash = "sha256-IA6W9MaiDi/4wPDXIVO/6xPJwduBwgLiq/yv1zHFBMc=";
       tags = ["netgo"];
       engine = "tendermint/tendermint";
       excludedPackages = ["./e2e"];
@@ -61,10 +61,10 @@ with inputs;
     # package that loads only the given subdirectory as source
     ibc-go-v7-simapp = {
       name = "simd";
-      version = "v7.3.0";
+      version = "v7.4.0";
       src = ibc-go-v7-src;
       rev = ibc-go-v7-src.rev;
-      vendorHash = "sha256-Wn7krfvF7E93g4KnGZ8iXaSjc+kmGgQ8Jb5egWNMQg8=";
+      vendorHash = "sha256-zjk/75+e/gWSCvpz7lrZkNEDigC/x8czpCSxxbSmWXg=";
       goVersion = "1.20";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
@@ -76,10 +76,10 @@ with inputs;
     # the given subdirectory as source
     ibc-go-v8-simapp = {
       name = "simd";
-      version = "v8.1.0";
+      version = "v8.2.0";
       src = ibc-go-v8-src;
       rev = ibc-go-v8-src.rev;
-      vendorHash = "sha256-KmuidyqJXwZOg+cnas/5O6awcKeEgzsByDg9rClADUQ=";
+      vendorHash = "sha256-a88Eu3Oz5byo03ECaDdUXNGom9F/BsWbCRCI1pkp9yQ=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
