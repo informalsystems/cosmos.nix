@@ -59,6 +59,10 @@
           inherit (cosmosLib) buildCosmwasmContract;
           inherit (inputs) cw-plus-src;
         };
+        sov-celestia-client-cw = import ../packages/sov-celestia-client-cw.nix {
+          inherit (cosmosLib) buildCosmwasmContract;
+          inherit (inputs) wasm-sov-celestia-src;
+        };
         dydx = import ../packages/dydx.nix {
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) dydx-src;

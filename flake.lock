@@ -1376,6 +1376,7 @@
         "stride-consumer-src": "stride-consumer-src",
         "stride-src": "stride-src",
         "umee-src": "umee-src",
+        "wasm-sov-celestia-src": "wasm-sov-celestia-src",
         "wasmd-src": "wasmd-src",
         "wasmd_next-src": "wasmd_next-src",
         "wasmvm_1-src": "wasmvm_1-src",
@@ -1638,6 +1639,22 @@
         "owner": "umee-network",
         "ref": "v2.0.0",
         "repo": "umee",
+        "type": "github"
+      }
+    },
+    "wasm-sov-celestia-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712637761,
+        "narHash": "sha256-2pEWcFBBP9J9WLLnXn/M8At+seVyRqH2NBtfgeSynww=",
+        "owner": "informalsystems",
+        "repo": "sovereign-ibc",
+        "rev": "2214dbee441ff005083841f4cd5983229d08d306",
+        "type": "github"
+      },
+      "original": {
+        "owner": "informalsystems",
+        "repo": "sovereign-ibc",
         "type": "github"
       }
     },

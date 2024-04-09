@@ -262,6 +262,8 @@
     # contracts
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
+    wasm-sov-celestia-src.url = "github:informalsystems/sovereign-ibc";
+    wasm-sov-celestia-src.flake = false;
 
     # tools
     beaker-src.url = "github:osmosis-labs/beaker/v0.1.8";
