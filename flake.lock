@@ -1216,16 +1216,16 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1707262742,
-        "narHash": "sha256-DudppJmGaToUcYVbVA17FVXlev1NuoSY+Jy2c7PpZlY=",
+        "lastModified": 1712687434,
+        "narHash": "sha256-j1PtSv4i/3IV6hUHxxgO/5t9/bfWs28i3D/uVAkf68Q=",
         "owner": "osmosis-labs",
         "repo": "osmosis",
-        "rev": "350901e523815fc34a1de1ca54e9ccd3c4d1f756",
+        "rev": "0021d3812a8c8d2798ab17e58991a677b82e8955",
         "type": "github"
       },
       "original": {
         "owner": "osmosis-labs",
-        "ref": "v22.0.5",
+        "ref": "v24.0.1",
         "repo": "osmosis",
         "type": "github"
       }
