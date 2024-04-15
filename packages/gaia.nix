@@ -147,6 +147,21 @@
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
       };
+
+      gaia15 = {
+        name = "gaia";
+        vendorHash = "sha256-3n/tBOEwM9gvrLikJTJN7vzwVL9td+0+2yqgS7jzRd0=";
+        version = "v15.2.0";
+        goVersion = "1.20";
+        src = gaia15-src;
+        rev = gaia15-src.rev;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
     };
 in
   gaias // {gaia-main = gaias.gaia8;}
