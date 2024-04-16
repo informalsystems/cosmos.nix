@@ -1,51 +1,42 @@
 {
   inputs,
   mkCosmosGoApp,
+  cosmosLib,
+  libwasmvm_1_5_2,
 }:
 with inputs;
   builtins.mapAttrs (_: mkCosmosGoApp)
   {
-    stride = {
-      name = "stride";
-      version = "v8.0.0";
-      src = stride-src;
-      rev = stride-src.rev;
-      vendorHash = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
-      engine = "tendermint/tendermint";
-
-      doCheck = false;
-    };
-
     stride-consumer = {
       name = "stride-consumer";
-      version = "v12.1.0";
+      version = "v21.0.0";
+      goVersion = "1.21";
       src = stride-consumer-src;
       rev = stride-consumer-src.rev;
-      vendorHash = "sha256-tH56oB9Lw0/+ypWRj9n8o/QHPcLQuuNkzD4zFy6bW04=";
+      vendorHash = "sha256-N3+H90djql3pqyvKM9nlq2XIxUDw7lt9xtWYiKBabro=";
       engine = "cometbft/cometbft";
+
+      preFixup = ''
+        ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_2 "strided"}
+      '';
+      buildInputs = [libwasmvm_1_5_2];
 
       doCheck = false;
     };
 
     stride-consumer-no-admin = {
       name = "stride-consumer-no-admin";
-      version = "v12.1.0";
+      version = "v21.0.0";
+      goVersion = "1.21";
       src = stride-consumer-src;
       rev = stride-consumer-src.rev;
-      vendorHash = "sha256-tH56oB9Lw0/+ypWRj9n8o/QHPcLQuuNkzD4zFy6bW04=";
+      vendorHash = "sha256-N3+H90djql3pqyvKM9nlq2XIxUDw7lt9xtWYiKBabro=";
       engine = "cometbft/cometbft";
 
-      patches = [../patches/stride-no-admin-check.patch];
-      doCheck = false;
-    };
-
-    stride-no-admin = {
-      name = "stride-no-admin";
-      version = "v8.0.0";
-      src = stride-src;
-      rev = stride-src.rev;
-      vendorHash = "sha256-z4vT4CeoJF76GwljHm2L2UF1JxyEJtvqAkP9TmIgs10=";
-      engine = "tendermint/tendermint";
+      preFixup = ''
+        ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_2 "strided"}
+      '';
+      buildInputs = [libwasmvm_1_5_2];
 
       patches = [../patches/stride-no-admin-check.patch];
       doCheck = false;

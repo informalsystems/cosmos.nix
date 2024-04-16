@@ -1,18 +1,18 @@
 {
   neutron-src,
   cosmosLib,
-  libwasmvm_1_5_0,
+  libwasmvm_1_5_2,
 }:
 cosmosLib.mkCosmosGoApp {
-  goVersion = "1.20";
+  goVersion = "1.21";
   name = "neutron";
-  version = "v2.0.0";
+  version = "v3.0.2";
   src = neutron-src;
   rev = neutron-src.rev;
-  vendorHash = "sha256-uLInKbuL886cfXCyQvIDZJHUC8AK9fR39yNBHDO+Qzc=";
+  vendorHash = "sha256-Ao/soQsOw00QZ8c7BF42od303wdiFo30flWSPTm5Mzc=";
   engine = "cometbft/cometbft";
   preFixup = ''
-    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_0 "neutrond"}
+    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_2 "neutrond"}
   '';
-  buildInputs = [libwasmvm_1_5_0];
+  buildInputs = [libwasmvm_1_5_2];
 }

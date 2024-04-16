@@ -109,7 +109,7 @@
         };
         neutron = import ../packages/neutron.nix {
           inherit (inputs) neutron-src;
-          inherit (self'.packages) libwasmvm_1_5_0;
+          inherit (self'.packages) libwasmvm_1_5_2;
           inherit cosmosLib;
         };
         andromeda = import ../packages/andromeda.nix {
@@ -198,7 +198,9 @@
           # Stride
           (import ../packages/stride.nix {
             inherit inputs;
+            inherit (self'.packages) libwasmvm_1_5_2;
             inherit (cosmosLib) mkCosmosGoApp;
+            inherit cosmosLib;
           })
           # Evmos
           (import ../packages/evmos {
