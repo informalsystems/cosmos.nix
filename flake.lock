@@ -1392,7 +1392,7 @@
         "slinky-src": "slinky-src",
         "stargaze-src": "stargaze-src",
         "stoml-src": "stoml-src",
-        "stride-consumer-src": "stride-consumer-src",
+        "stride-src": "stride-src",
         "umee-src": "umee-src",
         "wasmd-src": "wasmd-src",
         "wasmd_next-src": "wasmd_next-src",
@@ -1539,7 +1539,7 @@
         "type": "github"
       }
     },
-    "stride-consumer-src": {
+    "stride-src": {
       "flake": false,
       "locked": {
         "lastModified": 1711572539,
