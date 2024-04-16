@@ -1004,15 +1004,16 @@
     "neutron-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-NuoOlrciBeL2f/A7wlQBqYlYJhSYucXRhLgxdasfyhI=",
+        "lastModified": 1712330928,
+        "narHash": "sha256-3olixILNnkRcNwtpPDqQJ63cYjV5qiVYTM+fJEIH65s=",
         "owner": "neutron-org",
         "repo": "neutron",
-        "rev": "e605ed3db4381994ee8185ba4a0ff0877d34e67f",
+        "rev": "d652580f204231a5d6d76c83a084d7110d981416",
         "type": "github"
       },
       "original": {
         "owner": "neutron-org",
-        "ref": "v2.0.0",
+        "ref": "v3.0.2",
         "repo": "neutron",
         "type": "github"
       }
@@ -1392,7 +1393,6 @@
         "stargaze-src": "stargaze-src",
         "stoml-src": "stoml-src",
         "stride-consumer-src": "stride-consumer-src",
-        "stride-src": "stride-src",
         "umee-src": "umee-src",
         "wasmd-src": "wasmd-src",
         "wasmd_next-src": "wasmd_next-src",
@@ -1542,31 +1542,16 @@
     "stride-consumer-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-DByig9ISs9x9Kvakc8LFL558VKhM+UBiaESWgyVzI0w=",
+        "lastModified": 1711572539,
+        "narHash": "sha256-WOoaijuB/Xziw3RMzVcLgR1iDWv72StuLL8K5JzcdlA=",
         "owner": "Stride-Labs",
         "repo": "stride",
-        "rev": "bbf0bb7f52878f3205c76bb1e96662fe7bd7af8d",
+        "rev": "093f25e17b1c9fae38a8092f9582af7c84bbaee4",
         "type": "github"
       },
       "original": {
         "owner": "Stride-Labs",
-        "ref": "v12.1.0",
-        "repo": "stride",
-        "type": "github"
-      }
-    },
-    "stride-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-fdjnFHPBZNnhDyVoMuPfqNb6YUYRdcMO73FlZHjIuzA=",
-        "owner": "Stride-Labs",
-        "repo": "stride",
-        "rev": "3c69e7644859981b1fd9313eb1f0c5e5886e4a0d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Stride-Labs",
-        "ref": "v8.0.0",
+        "ref": "v21.0.0",
         "repo": "stride",
         "type": "github"
       }

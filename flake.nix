@@ -224,11 +224,8 @@
     interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
     interchain-security-src.flake = false;
 
-    stride-src.url = "github:Stride-Labs/stride/v8.0.0";
+    stride-src.url = "github:Stride-Labs/stride/v21.0.0";
     stride-src.flake = false;
-
-    stride-consumer-src.url = "github:Stride-Labs/stride/v12.1.0";
-    stride-consumer-src.flake = false;
 
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2";
     migaloo-src.flake = false;
@@ -239,7 +236,7 @@
     celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
     celestia-node-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v2.0.0";
+    neutron-src.url = "github:neutron-org/neutron/v3.0.2";
     neutron-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";

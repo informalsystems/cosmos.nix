@@ -178,14 +178,6 @@
             type = "app";
             program = "${packages.stride}/bin/strided";
           };
-          stride-consumer = {
-            type = "app";
-            program = "${packages.stride-consumer}/bin/strided";
-          };
-          stride-consumer-no-admin = {
-            type = "app";
-            program = "${packages.stride-consumer-no-admin}/bin/strided";
-          };
           stride-no-admin = {
             type = "app";
             program = "${packages.stride-no-admin}/bin/strided";
