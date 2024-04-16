@@ -104,7 +104,7 @@
         };
         migaloo = import ../packages/migaloo.nix {
           inherit (inputs) migaloo-src;
-          inherit (self'.packages) libwasmvm_1_2_3;
+          inherit (self'.packages) libwasmvm_1_5_2;
           inherit cosmosLib;
         };
         neutron = import ../packages/neutron.nix {

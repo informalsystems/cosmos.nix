@@ -227,7 +227,7 @@
     stride-src.url = "github:Stride-Labs/stride/v21.0.0";
     stride-src.flake = false;
 
-    migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2";
+    migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.1.3";
     migaloo-src.flake = false;
 
     celestia-app-src.url = "github:celestiaorg/celestia-app/v1.4.0";

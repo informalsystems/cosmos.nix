@@ -972,15 +972,16 @@
     "migaloo-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-O+vGWFnV3+bvXinxl1QjVyDnQskp5H1VnlL+TaMfiSs=",
+        "lastModified": 1710414169,
+        "narHash": "sha256-BGOUAw48c92KGpUMvzStiJfd+tgJpTBYk0bAvvUNYL8=",
         "owner": "White-Whale-Defi-Platform",
         "repo": "migaloo-chain",
-        "rev": "de98de2dd96917ae1ab79161d573fc0b4ee1facf",
+        "rev": "5382bfc56173a0f57dcaef34e99c59c99cf70dda",
         "type": "github"
       },
       "original": {
         "owner": "White-Whale-Defi-Platform",
-        "ref": "v3.0.2",
+        "ref": "v4.1.3",
         "repo": "migaloo-chain",
         "type": "github"
       }
