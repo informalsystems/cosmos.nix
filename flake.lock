@@ -941,15 +941,16 @@
     "juno-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-z9TOeDyUnn1T8Z662XqQJ9ydVIKKB54YISt7ms4xvos=",
+        "lastModified": 1709992388,
+        "narHash": "sha256-8VcxdvaaBNyzza6U65PELt8bUII3teruokfbu5j7i9M=",
         "owner": "CosmosContracts",
         "repo": "juno",
-        "rev": "48507ed9b83511089cbf1fdc5bae54cae4a7f4b2",
+        "rev": "e98863bf7112f4b117a2114e22f7482367362764",
         "type": "github"
       },
       "original": {
         "owner": "CosmosContracts",
-        "ref": "v17.1.1",
+        "ref": "v21.0.0",
         "repo": "juno",
         "type": "github"
       }
