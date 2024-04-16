@@ -7,12 +7,12 @@
 with inputs;
   builtins.mapAttrs (_: mkCosmosGoApp)
   {
-    stride-consumer = {
-      name = "stride-consumer";
+    stride = {
+      name = "stride";
       version = "v21.0.0";
       goVersion = "1.21";
-      src = stride-consumer-src;
-      rev = stride-consumer-src.rev;
+      src = stride-src;
+      rev = stride-src.rev;
       vendorHash = "sha256-N3+H90djql3pqyvKM9nlq2XIxUDw7lt9xtWYiKBabro=";
       engine = "cometbft/cometbft";
 
@@ -24,12 +24,12 @@ with inputs;
       doCheck = false;
     };
 
-    stride-consumer-no-admin = {
-      name = "stride-consumer-no-admin";
+    stride-no-admin = {
+      name = "stride-no-admin";
       version = "v21.0.0";
       goVersion = "1.21";
-      src = stride-consumer-src;
-      rev = stride-consumer-src.rev;
+      src = stride-src;
+      rev = stride-src.rev;
       vendorHash = "sha256-N3+H90djql3pqyvKM9nlq2XIxUDw7lt9xtWYiKBabro=";
       engine = "cometbft/cometbft";
 

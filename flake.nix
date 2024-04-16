@@ -224,8 +224,8 @@
     interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
     interchain-security-src.flake = false;
 
-    stride-consumer-src.url = "github:Stride-Labs/stride/v21.0.0";
-    stride-consumer-src.flake = false;
+    stride-src.url = "github:Stride-Labs/stride/v21.0.0";
+    stride-src.flake = false;
 
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v3.0.2";
     migaloo-src.flake = false;
