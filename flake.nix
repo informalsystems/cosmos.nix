@@ -6,8 +6,8 @@
 
   description = "A reproducible package set for Cosmos, IBC and CosmWasm";
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = inputs @ { flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
         "aarch64-linux"
@@ -125,11 +125,19 @@
     ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.1.0";
     ibc-go-v8-src.flake = false;
 
-    ibc-go-wasm-src = {
+    ibc-go-v7-wasm-src = {
       type = "github";
       owner = "cosmos";
       repo = "ibc-go";
       ref = "08-wasm/release/v0.1.x+ibc-go-v7.3.x-wasmvm-v1.5.x";
+      flake = false;
+    };
+
+    ibc-go-v8-wasm-src = {
+      type = "github";
+      owner = "cosmos";
+      repo = "ibc-go";
+      ref = "08-wasm/release/v0.1.x+ibc-go-v8.0.x-wasmvm-v1.5.x";
       flake = false;
     };
 
