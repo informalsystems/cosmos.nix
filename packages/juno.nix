@@ -1,20 +1,21 @@
 {
   cosmosLib,
   juno-src,
-  libwasmvm_1_3_0,
+  libwasmvm_1_5_2,
 }:
 cosmosLib.mkCosmosGoApp {
   name = "juno";
-  version = "v17.1.1";
+  version = "v21.0.0";
+  goVersion = "1.21";
   src = juno-src;
   rev = juno-src.rev;
-  vendorHash = "sha256-ftmNMjCFWq4XGM9+ad64dzzcgQJ1ApH4YmthldfrB54=";
+  vendorHash = "sha256-Z5I16c/qRTmJJzAjQp6vmUrSd2F+RV13UYHHnLnhFcE=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   excludedPackages = ["interchaintest"];
   preFixup = ''
-    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_3_0 "junod"}
+    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_2 "junod"}
   '';
   dontStrip = true;
-  buildInputs = [libwasmvm_1_3_0];
+  buildInputs = [libwasmvm_1_5_2];
 }
