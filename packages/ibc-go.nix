@@ -96,7 +96,7 @@ builtins.mapAttrs (_: mkCosmosGoApp)
     version = "v7.3.0-wasm";
     src = "${ibc-go-v7-wasm-src}/modules/light-clients/08-wasm";
     rev = ibc-go-v7-wasm-src.rev;
-    vendorHash = "sha256-oQ7KSQzl/BlknSYmQxf0PVidK9q36IA0wJk9DZN3xwk=";
+    vendorHash = "sha256-ERIl4J3a7aD89kcZK1xkcTyZ97qmBQ3YbHEKDjqCJ4c=";
     goVersion = "1.21";
     tags = [ "netgo" ];
     engine = "cometbft/cometbft";
