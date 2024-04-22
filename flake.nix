@@ -179,11 +179,8 @@
     composable-cosmos-src.url = "github:ComposableFi/composable-cosmos/v6.4.88";
     composable-cosmos-src.flake = false;
 
-    wasmd-src.url = "github:CosmWasm/wasmd/v0.30.0";
+    wasmd-src.url = "github:CosmWasm/wasmd/v0.50.0";
     wasmd-src.flake = false;
-
-    wasmd_next-src.url = "github:CosmWasm/wasmd/v0.40.0-rc.1";
-    wasmd_next-src.flake = false;
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
