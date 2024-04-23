@@ -10,30 +10,26 @@ pkgs.rustPlatform.buildRustPackage {
   src = namada-src;
   nativeBuildInputs = with pkgs;
     (
-      lib.optionals stdenv.isLinux
-      [pkg-config]
+      if stdenv.isLinux
+      then [pkg-config]
+      else [darwin.apple_sdk.frameworks.Security]
     )
     ++ [
       protobuf
       rustPlatform.bindgenHook # required for bindgen in custom build script for librocksdb-sys
     ];
   buildInputs = with pkgs;
-    lib.optionals stdenv.isLinux [
+    [
+      openssl
+      openssl.dev
+    ]
+    ++ lib.optionals stdenv.isLinux [
       systemd # required for libudev in custom build script for hidapi
     ]
     ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.Security
+      libusb
       hidapi
-    ]
-    ++ [
-      openssl
-      openssl.dev
     ];
-
-  RUSTFLAGS = pkgs.lib.optionalString pkgs.stdenv.isDarwin "-C link-arg=-lSystem";
-  preBuild = ''
-    export RUSTUP_TOOLCHAIN="nightly"  # Use nightly to access unstable features
-  '';
 
   cargoLock = {
     lockFile = "${namada-src}/Cargo.lock";

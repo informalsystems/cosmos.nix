@@ -5,7 +5,7 @@ nix-std: {
   buildCosmwasmContract = let
     target = "wasm32-unknown-unknown";
     # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
-    rust = pkgs.rust-bin.stable."1.70.0".default.override {
+    rust = pkgs.rust-bin.stable."1.75.0".default.override {
       extensions = [];
       targets = [
         target
@@ -27,6 +27,7 @@ nix-std: {
       nativeBuildInputs ? [],
       # as per https://github.com/CosmWasm/wasmd/blob/main/README.md
       maxWasmSizeBytes ? 819200,
+      cargoExtraArgs ? "--locked",
       ...
     }: let
       binaryName = "${builtins.replaceStrings ["-"] ["_"] pname}.wasm";
@@ -45,7 +46,7 @@ nix-std: {
             mkdir --parents $out/lib
           '';
           buildPhase = ''
-            cargo build --lib --target ${target} --profile ${profile} --package ${pname}
+            cargo build --lib --target ${target} --profile ${profile} --package ${pname} ${cargoExtraArgs}
             mkdir -p ./output/lib
             wasm-opt "target/${target}/${profile}/${binaryName}" -o  "./output/lib/${binaryName}" -Os --signext-lowering
             cp -r ./output $out
@@ -67,13 +68,14 @@ nix-std: {
   buildApp = args @ {
     name,
     version,
+    rev,
     src,
     engine,
     vendorHash,
-    additionalLdFlags ? "",
+    additionalLdFlags ? [],
     appName ? null,
     preCheck ? null,
-    goVersion ? "1.19",
+    goVersion ? "1.20",
     ...
   }: let
     buildGoModuleArgs =
@@ -112,7 +114,6 @@ nix-std: {
       else appName;
 
     buildGoModuleVersion = {
-      "1.19" = pkgs.buildGo119Module;
       "1.20" = pkgs.buildGo120Module;
       "1.21" = pkgs.buildGo121Module;
     };
@@ -120,26 +121,36 @@ nix-std: {
     buildGoModule = buildGoModuleVersion.${goVersion};
   in
     buildGoModule ({
-        inherit version src vendorHash;
+        inherit version vendorHash src;
         pname = name;
         preCheck =
           if preCheck == null
           then ''export HOME="$(mktemp -d)"''
           else preCheck;
-        ldflags = ''
-          -X github.com/cosmos/cosmos-sdk/version.Name=${name}
-          -X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}
-          -X github.com/cosmos/cosmos-sdk/version.Version=${version}
-          -X github.com/cosmos/cosmos-sdk/version.Commit=${src.rev}
-          -X github.com/${engine}/version.TMCoreSemVer=${dependency-version}
-          ${additionalLdFlags}
-        '';
+        ldflags =
+          [
+            "-X github.com/cosmos/cosmos-sdk/version.Name=${name}"
+            "-X github.com/cosmos/cosmos-sdk/version.AppName=${ldFlagAppName}"
+            "-X github.com/cosmos/cosmos-sdk/version.Version=${version}"
+            "-X github.com/cosmos/cosmos-sdk/version.Commit=${rev}"
+            "-X github.com/${engine}/version.TMCoreSemVer=${dependency-version}"
+          ]
+          ++ additionalLdFlags;
       }
       // buildGoModuleArgs);
 in {
+  # A helper for building rust cosmwasm smart contracts. Does some best practices like using binaryren wasm-opt
+  # to optimize the bytecode, and runs cosmwasm-check to validate.
   inherit buildCosmwasmContract;
+
+  # A wrapper around [buildGoModule](https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/go/module.nix)
+  # that is specialized to packaging cosmos-sdk based go projects
+  #
+  # for more information see: https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/go.section.md
   mkCosmosGoApp = buildApp;
 
+  # A helper function for patching cosmos-sdk binaries that use wasmd, so that the binary artifact references
+  # a nix store path, and not a local relative path
   wasmdPreFixupPhase = libwasmvm: binName:
     if pkgs.stdenv.hostPlatform.isLinux
     then ''
@@ -153,6 +164,8 @@ in {
     ''
     else null;
 
+  # A helper that produces an executable for generating a gomod2nix.toml file (which
+  # captures a go module's dependencies and their hash in a toml file)
   mkGenerator = name: srcDir:
     pkgs.writeShellApplication {
       inherit name;
@@ -164,5 +177,31 @@ in {
         cp -r ${srcDir}/* ./
         gomod2nix --outdir "$CURDIR"
       '';
+    };
+
+  # `hermesModuleConfigToml { modules }).config.hermes.toml`
+  # will be a string to put into [config.toml](https://hermes.informal.systems/documentation/configuration/configure-hermes.html)
+  hermesModuleConfigToml = {modules}:
+    pkgs.lib.evalModules {
+      modules =
+        [
+          (
+            {
+              lib,
+              config,
+              ...
+            }: let
+              # please note that this is not `nixos service`(systemd/launchd),
+              # but just the "abstract" module that can be used to build other configurations:
+              # static config files, containers, vm, process manager, futher generator.
+              cfg = config.hermes;
+              base = import ../nixosModules/hermes/base.nix {inherit lib nix-std cfg;};
+            in {
+              options.hermes = base.options;
+              config.hermes.toml = base.config.toml;
+            }
+          )
+        ]
+        ++ modules;
     };
 }

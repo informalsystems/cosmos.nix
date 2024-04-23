@@ -24,7 +24,7 @@ as Nix packages. Use this at your own risk.
 
 ## Setup
 
-NOTE: If you already have nix installed, make sure you are on version >=2.7.
+NOTE: If you already have nix installed, make sure you are on version >=2.18.
 Instructions to upgrade nix can be found [here](https://nixos.org/manual/nix/unstable/installation/upgrading.html)
 
 ### Non-NixOS
@@ -53,11 +53,10 @@ echo 'experimental-features = nix-command flakes' >> ~/.config/nix/nix.conf
 
 4. [Setup Caches](https://nixos.org/manual/nix/unstable/package-management/sharing-packages.html):
 
-add this to your /etc/nix/nix.conf file (or wherever you keep your substituters)
+Run this to add the `cosmos-nix` cache as a substituter
 
-```
-substituters = https://cosmosnix-store.s3.us-east-2.amazonaws.com
-trusted-public-keys = cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk=
+```bash
+cachix use cosmos-nix
 ```
 
 ## Shell
@@ -77,28 +76,31 @@ latest development environment you should run:
 nix develop github:informalsystems/cosmos.nix#cosmos-shell --refresh
 ```
 
-## Library
+## Overlays
 
-There are a few nix utilities provided as a nix library. You can use these in your own flake like so:
+There are a few nix utilities provided as a nix library. There is also an
+overlay for all the cosmos packages exported by this flake, so you can fold
+them into your nixpkgs package set.
 
 ```nix
 {
-
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs";
     cosmos-nix.url = "github:informalsystems/cosmos.nix";
-    nixpkgs.url = "github:nixos/nixpkgs";
   };
-  outputs = {cosmos-nix, nixpkgs}: {
-    let system = ...
-        pkgs = nixpkgs.legacyPackages.${system};
-        cosmosLib = cosmos-nix.lib { inherit pkgs; };
+  outputs = { cosmos-nix, nixpkgs }: {
+    let pkgs = import nixpkgs { 
+            system = "x86_64-linux"; # Or whatever system you are on
+            overlays = [
+                cosmos-nix.overlays.cosmosNixLib       # Provides just the nix utility lib
+                cosmos-nix.overlays.cosmosNixPackages  # Provides all the cosmos packages provided by cosmos.nix
+                cosmos-nix.overlay                     # The default overlay gives you everything in the previous two combined
+            ];
+        }
     in ...
   };
 }
 ```
-
-> NOTE: you need to pass `cosmosLib` a pkgs argument because it uses `buildGoModule` internally. This is 
-> slightly unfortunate since it isn't pure nix (without derivations), and therefore needs to be `system` aware.
 
 ## Development
 
@@ -108,4 +110,58 @@ Formatting will be run via the default nix command. You can find the formatter c
 
 ```bash
 nix fmt
+```
+
+#### Contribution Guide
+
+1. Add the chains source code as a flake input
+
+```nix
+    inputs = {
+        my-chain-src.url = "github:my-chains-organization/my-chains-repo";
+        my-chain-src.flake = false;
+    };
+```
+
+2. Add a new file in `packages/` named after the chain that you are packaging
+
+> Usually you will use this structure for cosmos-sdk chains, there are other examples of non-sdk chains in the repo
+```nix
+# packages/my-chain.nix
+{
+  mkCosmosGoApp,
+  my-chain-src,
+}:
+mkCosmosGoApp {
+  name = "my-chain";
+  version = "v0.1.0";
+  src = my-chain-src;
+  rev = my-chain-src.rev;
+  vendorHash = "sha256-WLLQKXjPRhK19oEdqp2UBZpi9W7wtYjJMj07omH41K0=";
+  tags = ["netgo"];
+  engine = "cometbft/cometbft";
+}
+```
+
+3. Import your new derivation into the `modules/packages.nix` file
+
+```nix
+    my-chain = import ../packages/my-chain.nix {
+      inherit (cosmosLib) mkCosmosGoApp;
+      inherit (inputs) my-chain-src;
+    };
+```
+
+4. Test that it works by running:
+```
+> git add .
+> nix build .#my-chain
+```
+
+5. Add the package to apps.nix, after you have built the package in step 4 you can check what the binary path is by running `ls result/`
+```nix
+  my-chain = {
+    type = "app";
+    program = "${packages.my-chain}/bin/mychaind";
+  };
 ```

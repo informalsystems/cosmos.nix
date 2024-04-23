@@ -15,5 +15,4 @@ in {
       inherit (self'.packages) cosmwasm-check;
     };
   };
-  flake.lib = lib std;
 }

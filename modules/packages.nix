@@ -18,22 +18,30 @@
           inherit (inputs) akash-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
-        apalache = import ../packages/apalache.nix {
-          inherit pkgs;
-          inherit (inputs) apalache-src;
-        };
         beaker = import ../packages/beaker.nix {
           inherit pkgs;
           inherit (inputs) beaker-src;
         };
-        celestia = import ../packages/celestia.nix {
-          inherit (inputs) celestia-src;
+        celestia-app = import ../packages/celestia-app.nix {
+          inherit (inputs) celestia-app-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
+        celestia-node = import ../packages/celestia-node.nix {
+          inherit (inputs) celestia-node-src;
+          inherit (cosmosLib) mkCosmosGoApp;
+        };
+        celestia = pkgs.symlinkJoin {
+          name = "celestia";
+          paths = [self'.packages.celestia-app self'.packages.celestia-node];
+        };
         centauri = import ../packages/centauri.nix {
-          inherit (inputs) centauri-src;
-          inherit (self'.packages) libwasmvm_1_2_4;
+          inherit (inputs) composable-cosmos-src;
+          inherit (self'.packages) libwasmvm_1_2_6;
           inherit cosmosLib;
+        };
+        centauri-oci = import ../packages/centauri-oci.nix {
+          inherit (pkgs) nix2container;
+          inherit (self'.packages) centauri;
         };
         cometbft = import ../packages/cometbft.nix {
           inherit (pkgs) buildGoModule;
@@ -47,19 +55,28 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
         };
-        crescent = import ../packages/crescent.nix {
-          inherit (inputs) crescent-src;
-          inherit (cosmosLib) mkCosmosGoApp;
-        };
         cw20-base = import ../packages/cw20-base.nix {
           inherit (cosmosLib) buildCosmwasmContract;
           inherit (inputs) cw-plus-src;
+        };
+        dydx = import ../packages/dydx.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) dydx-src;
+        };
+        dymension = import ../packages/dymension.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) dymension-src;
+        };
+        gaia-oci = import ../packages/gaia-oci.nix {
+          inherit (pkgs) nix2container;
+          gaia = self'.packages.gaia14;
         };
         gex = import ../packages/gex.nix {
           inherit (pkgs) buildGoModule;
           inherit (inputs) gex-src;
         };
         gm = import ../packages/gm.nix {inherit pkgs inputs;};
+        haqq = inputs.haqq-src.packages.${system}.haqq;
         hermes = import ../packages/hermes.nix {
           inherit pkgs;
           inherit (inputs) hermes-src;
@@ -82,23 +99,37 @@
         };
         juno = import ../packages/juno.nix {
           inherit (inputs) juno-src;
-          inherit (self'.packages) libwasmvm_1_3_0;
+          inherit (self'.packages) libwasmvm_1_5_2;
           inherit cosmosLib;
         };
         migaloo = import ../packages/migaloo.nix {
           inherit (inputs) migaloo-src;
-          inherit (self'.packages) libwasmvm_1_2_3;
+          inherit (self'.packages) libwasmvm_1_5_2;
           inherit cosmosLib;
         };
         neutron = import ../packages/neutron.nix {
           inherit (inputs) neutron-src;
+          inherit (self'.packages) libwasmvm_1_5_2;
+          inherit cosmosLib;
+        };
+        andromeda = import ../packages/andromeda.nix {
+          inherit (inputs) andromeda-src;
+          inherit (self'.packages) libwasmvm_1_3_0;
+          inherit cosmosLib;
+        };
+        injective = import ../packages/injective.nix {
+          inherit (inputs) injective-src;
           inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
-          inherit (self'.packages) libwasmvm_1_5_0;
+          inherit (self'.packages) libwasmvm_1_5_2;
           inherit cosmosLib;
+        };
+        osmosis-oci = import ../packages/osmosis-oci.nix {
+          inherit (pkgs) nix2container;
+          inherit (self'.packages) osmosis;
         };
         provenance = import ../packages/provenance.nix {
           inherit (inputs) provenance-src;
@@ -125,10 +156,9 @@
           inherit (pkgs) buildGoModule;
           inherit (inputs) cosmos-sdk-src;
         };
-        stargaze = import ../packages/stargaze.nix {
-          inherit (inputs) stargaze-src;
-          inherit (self'.packages) libwasmvm_1beta7;
-          inherit cosmosLib;
+        slinky = import ../packages/slinky.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) slinky-src;
         };
         umee = import ../packages/umee.nix {
           inherit (cosmosLib) mkCosmosGoApp;
@@ -136,17 +166,12 @@
         };
         wasmd = import ../packages/wasmd.nix {
           inherit (inputs) wasmd-src;
-          inherit (self'.packages) libwasmvm_1_1_1;
+          inherit (self'.packages) libwasmvm_1_5_0;
           inherit cosmosLib;
         };
-        wasmd_next = import ../packages/wasmd_next.nix {
-          inherit (inputs) wasmd_next-src;
-          inherit (self'.packages) libwasmvm_1_2_3;
-          inherit cosmosLib;
-        };
-        namada = import ../packages/namada.nix {
-          inherit pkgs;
-          inherit (inputs) namada-src;
+        rollapp-evm = import ../packages/rollapp-evm.nix {
+          inherit (cosmosLib) mkCosmosGoApp;
+          inherit (inputs) rollapp-evm-src;
         };
         namada-src = pkgs.symlinkJoin {
           name = "namada-src";
@@ -155,31 +180,68 @@
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
-      [
-        # Gaia
-        (import ../packages/gaia.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # IBC Go
-        (import ../packages/ibc-go.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # Libwasm VM
-        (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
+      ([
+          # Gaia
+          (import ../packages/gaia.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # IBC Go
+          (import ../packages/ibc-go.nix {
+            inherit inputs;
+            inherit (cosmosLib) mkCosmosGoApp;
+          })
+          # Libwasm VM
+          (import ../packages/libwasmvm.nix {inherit inputs pkgs system;})
 
-        # Stride
-        (import ../packages/stride.nix {
-          inherit inputs;
-          inherit (cosmosLib) mkCosmosGoApp;
-        })
-        # Evmos
-        (import ../packages/evmos {
-          inherit pkgs;
-          inherit (inputs) evmos-src;
-          inherit (cosmosLib) mkGenerator;
-        })
-      ];
+          # Stride
+          (import ../packages/stride.nix {
+            inherit inputs;
+            inherit (self'.packages) libwasmvm_1_5_2;
+            inherit (cosmosLib) mkCosmosGoApp;
+            inherit cosmosLib;
+          })
+          # Evmos
+          (import ../packages/evmos {
+            inherit pkgs;
+            inherit (inputs) evmos-src;
+            inherit (cosmosLib) mkGenerator;
+          })
+        ]
+        ## Linux only packages
+        ++ (lists.optionals pkgs.stdenv.isLinux
+          [
+            {
+              apalache = import ../packages/apalache.nix {
+                inherit pkgs;
+                inherit (inputs) apalache-src;
+              };
+            }
+            # fails with gaia nill pointer, so need to have config builder for cosmos-sdk too
+            # {
+            #   hermes-test = import ../nixosTests/tests/hermes-test.nix {
+            #     inherit pkgs;
+            #     inherit (inputs) nix-std;
+            #     inherit (self'.packages) hermes;
+            #     gaia = self'.packages.gaia14;
+            #   };
+            # }
+            {
+              stargaze = import ../packages/stargaze.nix {
+                inherit (inputs) stargaze-src;
+                inherit (self'.packages) libwasmvm_1beta7;
+                inherit cosmosLib;
+              };
+            }
+            {
+              namada = import ../packages/namada.nix {
+                inherit pkgs;
+                inherit (inputs) namada-src;
+              };
+            }
+          ])
+        ## Darwin only packages
+        ++ (lists.optionals pkgs.stdenv.isDarwin
+          []));
   };
 }

@@ -17,6 +17,18 @@
 in
   builtins.mapAttrs (_: libwasmvm: pkgs.rustPlatform.buildRustPackage (libwasmvmCommon // libwasmvm))
   {
+    libwasmvm_1_5_2 = {
+      src = "${inputs.wasmvm_1_5_2-src}/libwasmvm";
+      version = "v1.5.2";
+      cargoSha256 = "sha256-BFou131HI+YKXU9H51Xa/y7A441Z7QkAA92mhquJ5l4=";
+      cargoLock = {
+        lockFile = "${inputs.wasmvm_1_5_2-src}/libwasmvm/Cargo.lock";
+        outputHashes = {
+          "cosmwasm-crypto-1.5.2" = "sha256-OgROAoOflWMfiOCuSt52EHiP2E+CzOqLvVJDWufV6kU=";
+        };
+      };
+    };
+
     libwasmvm_1_5_0 = {
       src = "${inputs.wasmvm_1_5_0-src}/libwasmvm";
       version = "v1.5.0";
@@ -37,6 +49,18 @@ in
         lockFile = "${inputs.wasmvm_1_3_0-src}/libwasmvm/Cargo.lock";
         outputHashes = {
           "cosmwasm-crypto-1.3.0" = "sha256-VU6bPS9z55W4O0rh82O2Zm4oO50cFA4dklNC4Cqmgw0=";
+        };
+      };
+    };
+
+    libwasmvm_1_2_6 = {
+      src = "${inputs.wasmvm_1_2_6-src}/libwasmvm";
+      version = "v1.2.6";
+      cargoSha256 = "sha256-BFou838HI+YKXU9H53Xa/y7A441Z7Qkhf92mhquJ5l1=";
+      cargoLock = {
+        lockFile = "${inputs.wasmvm_1_2_6-src}/libwasmvm/Cargo.lock";
+        outputHashes = {
+          "cosmwasm-crypto-1.2.8" = "sha256-EvusaWyqTYk8opcjciTImJLkwVCxEJwbwbzkwsJhilo=";
         };
       };
     };
