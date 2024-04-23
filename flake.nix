@@ -239,7 +239,7 @@
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
 
-    namada-src.url = "github:anoma/namada/v0.28.1";
+    namada-src.url = "github:anoma/namada/v0.33.0";
     namada-src.flake = false;
   };
 }
