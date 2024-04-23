@@ -5,8 +5,6 @@
 pkgs.rustPlatform.buildRustPackage {
   pname = "namada";
   version = "v0.33.0";
-  rustc = pkgs.rustPackages.latest.rustChannels.nightly.rust;
-  cargo = pkgs.rustPackages.latest.rustChannels.nightly.cargo;
   src = namada-src;
   nativeBuildInputs = with pkgs;
     (
