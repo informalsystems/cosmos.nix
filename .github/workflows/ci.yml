@@ -36,3 +36,7 @@ jobs:
       - name: Run Shell 🐚
         run: |
           nix develop
+
+      -name: Build Namada
+        run: |
+          nix build .#namada
