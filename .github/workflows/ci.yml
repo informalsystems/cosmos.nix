@@ -37,9 +37,9 @@ jobs:
         run: |
           nix develop
 
-      - name: Build Namada
+      - name: Build all cosmos packages
         run: |
-          nix build .#namada
+          nix develop .#cosmos-shell
 
   check-namada:
     strategy:
