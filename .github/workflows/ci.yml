@@ -40,3 +40,32 @@ jobs:
       - name: Build Namada
         run: |
           nix build .#namada
+
+  check-namada:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: jlumbroso/free-disk-space@main
+        if: matrix.os == 'ubuntu-22.04' 
+
+      - uses: DeterminateSystems/nix-installer-action@main
+        with: 
+          extra-conf: |
+            substituters = https://cache.nixos.org
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+
+      - uses: cachix/cachix-action@v14
+        with: 
+          name: cosmos-nix
+          authToken: '${{ secrets.COSMOS_CACHIX_KEY }}'
+
+      - name: Build Namada
+        run: |
+          nix build .#namada
