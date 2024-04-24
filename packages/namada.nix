@@ -47,5 +47,8 @@ pkgs.rustPlatform.buildRustPackage {
       "zcash_encoding-0.2.0" = "sha256-keuaoM/t1Q/+8JMemMMUuIo4g5I/EAoONFge+dyWGy0=";
     };
   };
+  preBuild = ''
+    export RUSTUP_TOOLCHAIN="1.77.1"
+  '';
   doCheck = false;
 }
