@@ -207,6 +207,11 @@
             inherit (inputs) evmos-src;
             inherit (cosmosLib) mkGenerator;
           })
+          # Namada
+          (import ../packages/namada {
+            inherit pkgs;
+            inherit (inputs) namada-src;
+          })
         ]
         ## Linux only packages
         ++ (lists.optionals pkgs.stdenv.isLinux
