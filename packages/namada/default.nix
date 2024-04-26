@@ -62,5 +62,5 @@ rec {
       ls $out
       ls ${namada}/bin
     '';
-  }
+  };
 }
