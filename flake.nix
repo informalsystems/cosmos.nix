@@ -239,7 +239,7 @@
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
     provenance-src.flake = false;
 
-    namada-src.url = "github:anoma/namada/v0.33.0";
+    namada-src.url = "github:anoma/namada/yuji/for-hermes-ci";
     namada-src.flake = false;
 
     dydx-src.url = "github:dydxprotocol/v4-chain/protocol/v3.0.0-dev0";

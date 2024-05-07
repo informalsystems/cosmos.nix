@@ -990,16 +990,16 @@
     "namada-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1712916378,
-        "narHash": "sha256-zI3ca98eUex09/PjpNnaKez1kC6z7ibaspxlE/avrEQ=",
+        "lastModified": 1715075631,
+        "narHash": "sha256-NmDVS//tiDz6LEleWVeJZIcpryim3RB6QAZmRaCNRTs=",
         "owner": "anoma",
         "repo": "namada",
-        "rev": "97ec5b46cb350a28157d21ea9070f0eb5ddb3f9f",
+        "rev": "c231350ad3862a43e5abac3b423908e01bdc1c78",
         "type": "github"
       },
       "original": {
         "owner": "anoma",
-        "ref": "v0.33.0",
+        "ref": "yuji/for-hermes-ci",
         "repo": "namada",
         "type": "github"
       }

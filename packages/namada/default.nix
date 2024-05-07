@@ -5,7 +5,7 @@
 rec {
   namada = pkgs.rustPlatform.buildRustPackage {
     pname = "namada";
-    version = "v0.33.0";
+    version = "v0.34.0-yuji/for-hermes-ci";
     src = namada-src;
     nativeBuildInputs = with pkgs;
       (
@@ -41,9 +41,8 @@ rec {
         "ledger-namada-rs-0.0.1" = "sha256-qFL8LU7i5NAnMUhtrGykVfiYX1NodCNkZG07twyVrac=";
         "librocksdb-sys-0.16.0+8.10.0" = "sha256-ZcX2bpTDprcefo1ziyQ58GggX2D7NH17/zYvpbGSvhk=";
         "masp_note_encryption-1.0.0" = "sha256-c3SiSCk5jK7eEXXXj2RWMig+HjOWztAeWoVZ+l+4KyU=";
-        "sparse-merkle-tree-0.3.1-pre" = "sha256-B1ZEN4FZjV0x0Cqvx7AZjH9qhDMZYFPVJzg89dqWCv4=";
+        "sparse-merkle-tree-0.3.1-pre" = "sha256-ckgX6XQj1TMRdDHC8P/jy5Mt0l1hnXdacE6jjViXJsE=";
         "tiny-bip39-0.8.2" = "sha256-TU+7Vug3+M6Zxhy6Wln54Pxc9ES4EdFq5TvMOcAG+qA=";
-        "tower-abci-0.11.1" = "sha256-KisZtsylvUymvV1TpDdGIiE7fSarcuD3I8oZ33BdKTU=";
         "wasmer-2.3.0" = "sha256-lBipiaoYaEjJg9iZZrVhF1lUNH90QZ29xAHGBBhdujE=";
         "zcash_encoding-0.2.0" = "sha256-keuaoM/t1Q/+8JMemMMUuIo4g5I/EAoONFge+dyWGy0=";
       };
@@ -52,15 +51,5 @@ rec {
       export RUSTUP_TOOLCHAIN="1.77.1"
     '';
     doCheck = false;
-  };
-
-  namada-wasm-scripts = pkgs.stdenv.mkDerivation {
-    src = namada-src;
-    buildPhase = ''
-      ls
-      ls $src
-      ls $out
-      ls ${namada}/bin
-    '';
   };
 }
