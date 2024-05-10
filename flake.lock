@@ -809,6 +809,23 @@
         "type": "github"
       }
     },
+    "ibc-go-v8-polymer-multihop-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701789024,
+        "narHash": "sha256-vGujPpdEZO0SvgifKmN+SWntJEkistj4xjtfkkJImgw=",
+        "owner": "polymerdao",
+        "repo": "ibc-go",
+        "rev": "b5d5877fbe63c187896c5185920a7382340dc30f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polymerdao",
+        "ref": "polymer/multihop-main",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-go-v8-src": {
       "flake": false,
       "locked": {
@@ -1366,6 +1383,7 @@
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
+        "ibc-go-v8-polymer-multihop-src": "ibc-go-v8-polymer-multihop-src",
         "ibc-go-v8-src": "ibc-go-v8-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",

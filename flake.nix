@@ -134,6 +134,9 @@
     ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.2.0";
     ibc-go-v8-src.flake = false;
 
+    ibc-go-v8-polymer-multihop-src.url = "github:polymerdao/ibc-go/polymer/multihop-main";
+    ibc-go-v8-polymer-multihop-src.flake = false;
+
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
     cosmos-sdk-src.flake = false;
 

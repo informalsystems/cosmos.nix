@@ -85,4 +85,16 @@ with inputs;
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
     };
+
+    ibc-go-v8-polymer-multihop-simapp = {
+      name = "simd";
+      version = "v8-polymer-multihop";
+      src = ibc-go-v8-polymer-multihop-src;
+      rev = ibc-go-v8-polymer-multihop-src.rev;
+      vendorHash = "sha256-qgDne2dHs94D4jgp2RhwDJYf+Ki5DrKqJGDVOEBiiT0=";
+      goVersion = "1.21";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability" "./modules/light-clients/08-wasm"];
+    };
   }
