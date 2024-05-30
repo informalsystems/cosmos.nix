@@ -76,10 +76,10 @@ with inputs;
     # the given subdirectory as source
     ibc-go-v8-simapp = {
       name = "simd";
-      version = "v8.2.0";
+      version = "v8.3.1";
       src = ibc-go-v8-src;
       rev = ibc-go-v8-src.rev;
-      vendorHash = "sha256-a88Eu3Oz5byo03ECaDdUXNGom9F/BsWbCRCI1pkp9yQ=";
+      vendorHash = "sha256-SZPjD/7KCmTtlhRV6XdwPG5ArB67mpuJkcSukGKBRPM=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
