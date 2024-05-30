@@ -990,11 +990,11 @@
     "namada-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1716975323,
-        "narHash": "sha256-Al3OG0goDJB3WZRh6HvloIHk6oFQdRhsRWLa7DHC72Y=",
+        "lastModified": 1716995663,
+        "narHash": "sha256-jIFt4cawGczvk4O1qQXt5oim1wmZlzqBpgKaqeF+0fk=",
         "owner": "anoma",
         "repo": "namada",
-        "rev": "e1dc32bdfb60f014cc0b5b5cadf54b9d13601510",
+        "rev": "e03a968151edc7e1b5400ad91c2f46015a88ca64",
         "type": "github"
       },
       "original": {
