@@ -9,6 +9,5 @@ mkCosmosGoApp {
   rev = rollapp-evm-src.rev;
   vendorHash = "sha256-rg3ZrNIMuUUW01lyjklTxn4zYlOiwFXyTqSE7scaRAk=";
   tags = ["netgo"];
-  goVersion = "1.20";
   engine = "cometbft/cometbft";
 }

@@ -4,7 +4,6 @@
   libwasmvm_1_3_0,
 }:
 cosmosLib.mkCosmosGoApp {
-  goVersion = "1.20";
   name = "andromeda";
   version = "andromeda-1";
   src = andromeda-src;

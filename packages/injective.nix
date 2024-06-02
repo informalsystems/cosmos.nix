@@ -4,7 +4,6 @@
   libwasmvm_1_5_0,
 }:
 cosmosLib.mkCosmosGoApp {
-  goVersion = "1.20";
   name = "injective";
   version = "v1.12.1";
   src = injective-src;

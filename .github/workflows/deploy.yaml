@@ -40,6 +40,10 @@ jobs:
         run: |
           nix develop
 
+      - name: Build all cosmos packages
+        run: |
+          nix develop .#cosmos-shell
+
       - name: Push to FlakeHub ❄️
         uses: determinatesystems/flakehub-push@main
         if: matrix.os == 'ubuntu-22.04' 

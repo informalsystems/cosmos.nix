@@ -19,8 +19,8 @@ jobs:
       id-token: write
       contents: write
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v4
-      - uses: actions/checkout@v3
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: actions/checkout@v4
 
       - name: Create Github Release 📦
         uses: ncipollo/release-action@v1

@@ -173,6 +173,10 @@
           inherit (cosmosLib) mkCosmosGoApp;
           inherit (inputs) rollapp-evm-src;
         };
+        namada-src = pkgs.symlinkJoin {
+          name = "namada-src";
+          paths = [inputs.namada-src.outPath];
+        };
       }
       # This list contains attr sets that are recursively merged into the
       # base attrset
@@ -202,6 +206,11 @@
             inherit pkgs;
             inherit (inputs) evmos-src;
             inherit (cosmosLib) mkGenerator;
+          })
+          # Namada
+          (import ../packages/namada {
+            inherit pkgs;
+            inherit (inputs) namada-src;
           })
         ]
         ## Linux only packages
