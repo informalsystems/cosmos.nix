@@ -826,6 +826,23 @@
         "type": "github"
       }
     },
+    "ibc-go-v9-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717529464,
+        "narHash": "sha256-zEFuEeMh1bqOPE0kGPghMvJra2By0Vr5W+NuKxtGCzQ=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "9a849617eeb5e6b058e25bc526686967d98fdeba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "ics20-v2-multidenom-alpha.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-rs-src": {
       "flake": false,
       "locked": {
@@ -1367,6 +1384,7 @@
         "ibc-go-v6-src": "ibc-go-v6-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
         "ibc-go-v8-src": "ibc-go-v8-src",
+        "ibc-go-v9-src": "ibc-go-v9-src",
         "ibc-rs-src": "ibc-rs-src",
         "ica-src": "ica-src",
         "ignite-cli-src": "ignite-cli-src",

@@ -85,4 +85,19 @@ with inputs;
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
     };
+
+    # If the modules/apps/callbacks and/or modules/capability are needed,
+    # they must each be defined in a separate nix package that loads only
+    # the given subdirectory as source
+    ibc-go-v9-simapp = {
+      name = "simd";
+      version = "v9.0.0-multidenom-alpha.0";
+      src = ibc-go-v9-src;
+      rev = ibc-go-v9-src.rev;
+      vendorHash = "sha256-6cb8BHNhS8aZNz55eepl6NfEhqZ2EhQepn94/Lx2OsU=";
+      goVersion = "1.22";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability" "./modules/light-clients/08-wasm"];
+    };
   }
