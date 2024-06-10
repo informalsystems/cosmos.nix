@@ -77,6 +77,9 @@
     gaia-main-src.url = "github:cosmos/gaia";
     gaia-main-src.flake = false;
 
+    gaia17-src.url = "github:cosmos/gaia/v17.2.0";
+    gaia17-src.flake = false;
+
     gaia15-src.url = "github:cosmos/gaia/v15.2.0";
     gaia15-src.flake = false;
 
@@ -155,7 +158,7 @@
     juno-src.url = "github:CosmosContracts/juno/v22.0.0";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v24.0.1";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v25.0.0";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
@@ -179,11 +182,14 @@
     composable-cosmos-src.url = "github:ComposableFi/composable-cosmos/v6.4.88";
     composable-cosmos-src.flake = false;
 
-    wasmd-src.url = "github:CosmWasm/wasmd/v0.50.0";
+    wasmd-src.url = "github:CosmWasm/wasmd/v0.51.0";
     wasmd-src.flake = false;
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
+
+    wasmvm_2_0_0-src.url = "github:CosmWasm/wasmvm/v2.0.0";
+    wasmvm_2_0_0-src.flake = false;
 
     wasmvm_1_5_2-src.url = "github:CosmWasm/wasmvm/v1.5.2";
     wasmvm_1_5_2-src.flake = false;
@@ -212,7 +218,7 @@
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
 
-    apalache-src.url = "github:informalsystems/apalache/v0.42.0";
+    apalache-src.url = "github:informalsystems/apalache/v0.44.11";
     apalache-src.flake = false;
 
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
@@ -233,7 +239,7 @@
     celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
     celestia-node-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v3.0.2";
+    neutron-src.url = "github:neutron-org/neutron/v3.0.5";
     neutron-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
