@@ -65,7 +65,6 @@ with inputs;
       src = ibc-go-v7-src;
       rev = ibc-go-v7-src.rev;
       vendorHash = "sha256-zjk/75+e/gWSCvpz7lrZkNEDigC/x8czpCSxxbSmWXg=";
-      goVersion = "1.20";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks"];
