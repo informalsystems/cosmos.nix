@@ -12,7 +12,6 @@
     devShells = {
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
-          rnix-lsp
           alejandra
         ];
       };
