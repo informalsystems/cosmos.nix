@@ -155,7 +155,7 @@
     evmos-src.url = "github:evmos/evmos/v16.0.0-rc4";
     evmos-src.flake = false;
 
-    juno-src.url = "github:CosmosContracts/juno/v21.0.0";
+    juno-src.url = "github:CosmosContracts/juno/v22.0.0";
     juno-src.flake = false;
 
     osmosis-src.url = "github:osmosis-labs/osmosis/v25.0.0";
@@ -218,7 +218,7 @@
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
 
-    apalache-src.url = "github:informalsystems/apalache/v0.42.0";
+    apalache-src.url = "github:informalsystems/apalache/v0.44.11";
     apalache-src.flake = false;
 
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
