@@ -212,7 +212,7 @@
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
 
-    apalache-src.url = "github:informalsystems/apalache/v0.42.0";
+    apalache-src.url = "github:informalsystems/apalache/v0.44.11";
     apalache-src.flake = false;
 
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
