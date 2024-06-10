@@ -233,7 +233,7 @@
     celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
     celestia-node-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v3.0.2";
+    neutron-src.url = "github:neutron-org/neutron/v3.0.5";
     neutron-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
