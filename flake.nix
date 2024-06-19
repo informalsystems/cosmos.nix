@@ -183,11 +183,14 @@
     centauri-src.url = "github:ComposableFi/composable-cosmos/387c96b434db9d96b0506aa7f14536d9bdec968c";
     centauri-src.flake = false;
 
-    wasmd-src.url = "github:CosmWasm/wasmd/v0.30.0";
+    wasmd-src.url = "github:CosmWasm/wasmd/v0.51.0";
     wasmd-src.flake = false;
 
     wasmd_next-src.url = "github:CosmWasm/wasmd/v0.40.0-rc.1";
     wasmd_next-src.flake = false;
+
+    wasmvm_2_0_0-src.url = "github:CosmWasm/wasmvm/v2.0.0";
+    wasmvm_2_0_0-src.flake = false;
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;

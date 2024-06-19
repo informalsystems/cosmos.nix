@@ -1,5 +1,5 @@
 { inputs
-, libwasmvm_1_5_0
+, libwasmvm_2_0_0
 , mkCosmosGoApp
 , wasmdPreFixupPhase
 ,
@@ -101,9 +101,9 @@ builtins.mapAttrs (_: mkCosmosGoApp)
     tags = [ "netgo" ];
     engine = "cometbft/cometbft";
     preFixup = ''
-      ${wasmdPreFixupPhase libwasmvm_1_5_0 "simd"}
+      ${wasmdPreFixupPhase libwasmvm_2_0_0 "simd"}
     '';
-    buildInputs = [ libwasmvm_1_5_0 ];
+    buildInputs = [ libwasmvm_2_0_0 ];
   };
 
   ibc-go-v8-wasm-simapp = {

@@ -11,7 +11,7 @@ cosmosLib.mkCosmosGoApp {
   vendorHash = "sha256-FWpclJuuIkbcoXxRTeZwDR0wZP2eHkPKsu7xme5vLPg=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
-  preFixup = cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_3 "wasmd";
+  preFixup = cosmosLib.wasmdPreFixupPhase libwasmvm_2_0_0 "wasmd";
   dontStrip = true;
-  buildInputs = [libwasmvm_1_2_3];
+  buildInputs = [libwasmvm_2_0_0];
 }

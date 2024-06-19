@@ -136,7 +136,7 @@
         };
         wasmd = import ../packages/wasmd.nix {
           inherit (inputs) wasmd-src;
-          inherit (self'.packages) libwasmvm_1_1_1;
+          inherit (self'.packages) libwasmvm_2_0_0;
           inherit cosmosLib;
         };
         wasmd_next = import ../packages/wasmd_next.nix {
