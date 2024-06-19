@@ -129,7 +129,7 @@
       type = "github";
       owner = "cosmos";
       repo = "ibc-go";
-      ref = "08-wasm/release/v0.1.x+ibc-go-v7.3.x-wasmvm-v1.5.x";
+      ref = "damian/test-height-jsontags";
       flake = false;
     };
 
