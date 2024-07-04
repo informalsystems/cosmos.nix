@@ -122,7 +122,6 @@
         name = "gaia";
         vendorHash = "sha256-SQF6YNVVOfpL55Uc4LIzo2jv/cdKp8hHUeqcpc/dBEc=";
         version = "v13.0.2";
-        goVersion = "1.20";
         src = gaia13-src;
         rev = gaia13-src.rev;
         tags = ["netgo"];
@@ -137,7 +136,6 @@
         name = "gaia";
         vendorHash = "sha256-7hmP0Uc4HHW7voy3DRMkpAXifon/qnaaT6jaUf/h8HU=";
         version = "v14.0.0";
-        goVersion = "1.20";
         src = gaia14-src;
         rev = gaia14-src.rev;
         tags = ["netgo"];
@@ -152,9 +150,23 @@
         name = "gaia";
         vendorHash = "sha256-3n/tBOEwM9gvrLikJTJN7vzwVL9td+0+2yqgS7jzRd0=";
         version = "v15.2.0";
-        goVersion = "1.20";
         src = gaia15-src;
         rev = gaia15-src.rev;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
+
+      gaia17 = {
+        name = "gaia";
+        vendorHash = "sha256-gDzq+Jfs5EyH0tbeBzkz3xR75t324yaWLRhw59U8aRI=";
+        version = "v17.2.0";
+        goVersion = "1.21";
+        src = gaia17-src;
+        rev = gaia17-src.rev;
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         proxyVendor = true;

@@ -90,6 +90,10 @@
             type = "app";
             program = "${packages.gaia15}/bin/gaiad";
           };
+          gaia17 = {
+            type = "app";
+            program = "${packages.gaia17}/bin/gaiad";
+          };
           gaia-main = {
             type = "app";
             program = "${packages.gaia-main}/bin/gaiad";
