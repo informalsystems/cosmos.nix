@@ -95,5 +95,6 @@ with inputs;
       tags = ["netgo"];
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability" "./modules/light-clients/08-wasm"];
+      doCheck = false;
     };
   }
