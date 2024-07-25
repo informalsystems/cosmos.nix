@@ -179,8 +179,9 @@
       ([
           # Gaia
           (import ../packages/gaia.nix {
-            inherit inputs;
+            inherit inputs cosmosLib;
             inherit (cosmosLib) mkCosmosGoApp;
+            inherit (self'.packages) libwasmvm_1_5_2;
           })
           # IBC Go
           (import ../packages/ibc-go.nix {
