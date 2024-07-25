@@ -1,7 +1,7 @@
 {
   inputs,
   mkCosmosGoApp,
-  libwasmvm_1_5_2,
+  libwasmvm_1_5_0,
   cosmosLib,
 }: let
   gaias = with inputs;
@@ -189,9 +189,9 @@
         proxyVendor = true;
 
         preFixup = ''
-          ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_2 "gaiad"}
+          ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_0 "gaiad"}
         '';
-        buildInputs = [libwasmvm_1_5_2];
+        buildInputs = [libwasmvm_1_5_0];
 
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
