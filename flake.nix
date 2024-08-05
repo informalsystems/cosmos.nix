@@ -191,6 +191,9 @@
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
 
+    wasmvm_2_1_0-src.url = "github:CosmWasm/wasmvm/v2.1.0";
+    wasmvm_2_1_0-src.flake = false;
+
     wasmvm_2_0_0-src.url = "github:CosmWasm/wasmvm/v2.0.0";
     wasmvm_2_0_0-src.flake = false;
 
@@ -245,7 +248,7 @@
     neutron-src.url = "github:neutron-org/neutron/v3.0.5";
     neutron-src.flake = false;
 
-    provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
+    provenance-src.url = "github:/provenance-io/provenance/v1.19.1";
     provenance-src.flake = false;
 
     namada-src.url = "github:anoma/namada/v0.28.1";

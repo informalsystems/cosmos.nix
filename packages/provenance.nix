@@ -1,18 +1,18 @@
 {
   cosmosLib,
   provenance-src,
-  libwasmvm_1_2_4,
+  libwasmvm_2_1_0,
 }:
 cosmosLib.mkCosmosGoApp {
   name = "provenance";
-  version = "v1.17.0";
+  version = "v1.19.1";
   src = provenance-src;
   rev = provenance-src.rev;
-  vendorHash = "sha256-XFU/+lMwg4hLlyYGUvDp0SqGqijrUQZddoH4VkIvqHg=";
+  vendorHash = "sha256-RTGQuDVxK4U+o+P8YJIkQJnjNEfRdFqoDHxXuPpndE8=";
   tags = ["netgo"];
-  engine = "tendermint/tendermint";
+  engine = "cometbft/cometbft";
   preFixup = ''
-    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_2_4 "provenanced"}
+    ${cosmosLib.wasmdPreFixupPhase libwasmvm_2_1_0 "provenanced"}
   '';
   # dbmigrate is problematic as it depends implicitly on the build/ directory being present at runtime,
   # which is not guaranteed to be there.
@@ -31,5 +31,5 @@ cosmosLib.mkCosmosGoApp {
   excludedPackages = [
     "./cmd/dbmigrate"
   ];
-  buildInputs = [libwasmvm_1_2_4];
+  buildInputs = [libwasmvm_2_1_0];
 }

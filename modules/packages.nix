@@ -133,7 +133,7 @@
         };
         provenance = import ../packages/provenance.nix {
           inherit (inputs) provenance-src;
-          inherit (self'.packages) libwasmvm_1_2_4;
+          inherit (self'.packages) libwasmvm_2_1_0;
           inherit cosmosLib;
         };
         regen = import ../packages/regen.nix {
