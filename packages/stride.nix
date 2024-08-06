@@ -9,11 +9,11 @@ with inputs;
   {
     stride = {
       name = "stride";
-      version = "v21.0.0";
+      version = "v23.0.1";
       goVersion = "1.21";
       src = stride-src;
       rev = stride-src.rev;
-      vendorHash = "sha256-N3+H90djql3pqyvKM9nlq2XIxUDw7lt9xtWYiKBabro=";
+      vendorHash = "sha256-T1xdcD5ucMuAIMZdLrlBxkdWJF2Uirn7+lBpypf6q98=";
       engine = "cometbft/cometbft";
 
       preFixup = ''
@@ -26,11 +26,11 @@ with inputs;
 
     stride-no-admin = {
       name = "stride-no-admin";
-      version = "v21.0.0";
+      version = "v23.0.1";
       goVersion = "1.21";
       src = stride-src;
       rev = stride-src.rev;
-      vendorHash = "sha256-N3+H90djql3pqyvKM9nlq2XIxUDw7lt9xtWYiKBabro=";
+      vendorHash = "sha256-T1xdcD5ucMuAIMZdLrlBxkdWJF2Uirn7+lBpypf6q98=";
       engine = "cometbft/cometbft";
 
       preFixup = ''

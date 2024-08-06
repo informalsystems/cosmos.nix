@@ -233,7 +233,7 @@
     interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
     interchain-security-src.flake = false;
 
-    stride-src.url = "github:Stride-Labs/stride/v21.0.0";
+    stride-src.url = "github:Stride-Labs/stride/v23.0.1";
     stride-src.flake = false;
 
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.1.3";
