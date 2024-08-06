@@ -158,7 +158,7 @@
     evmos-src.url = "github:evmos/evmos/v16.0.0-rc4";
     evmos-src.flake = false;
 
-    juno-src.url = "github:CosmosContracts/juno/v22.0.0";
+    juno-src.url = "github:CosmosContracts/juno/v23.0.0";
     juno-src.flake = false;
 
     osmosis-src.url = "github:osmosis-labs/osmosis/v25.0.0";

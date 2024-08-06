@@ -5,11 +5,11 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "juno";
-  version = "v22.0.0";
+  version = "v23.0.0";
   goVersion = "1.22";
   src = juno-src;
   rev = juno-src.rev;
-  vendorHash = "sha256-5TTW7ftC5bQgdKOQJtmAQ8GyAuAtTmeFIl+hh12WX4M=";
+  vendorHash = "sha256-oyxW/xvZne3Ybf+1tUUk2qP2gkjGuzdHjWYunXQB8g8=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   excludedPackages = ["interchaintest"];

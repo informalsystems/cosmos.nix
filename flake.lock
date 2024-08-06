@@ -977,16 +977,16 @@
     "juno-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1713701044,
-        "narHash": "sha256-AN9g1t/zOZVs5S/ZXP4/MrIC9kN6nUGG/wLNJz5fL6E=",
+        "lastModified": 1720542396,
+        "narHash": "sha256-niG12wn49bt184zqctrGsT73mgKfZUPTZAzSKX+ZLVs=",
         "owner": "CosmosContracts",
         "repo": "juno",
-        "rev": "b0faafbd6df4bb03940d99df13030af7f7bc315b",
+        "rev": "bf140aa60045ba92b83d0cb7f3bc47a2661a4e7e",
         "type": "github"
       },
       "original": {
         "owner": "CosmosContracts",
-        "ref": "v22.0.0",
+        "ref": "v23.0.0",
         "repo": "juno",
         "type": "github"
       }
