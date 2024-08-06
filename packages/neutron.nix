@@ -1,18 +1,22 @@
 {
   neutron-src,
   cosmosLib,
-  libwasmvm_1_5_2,
+  libwasmvm_2_0_0,
 }:
 cosmosLib.mkCosmosGoApp {
-  goVersion = "1.21";
+  goVersion = "1.22";
   name = "neutron";
-  version = "v3.0.5";
+  version = "v4.1.0";
   src = neutron-src;
   rev = neutron-src.rev;
-  vendorHash = "sha256-6WV7Z0KbvDReCJ7JccPnRWPkR4BMrfxRouTC5cC6PZc=";
+  vendorHash = "sha256-SKuAOWosHM2tvVAsTu54sAfbiTtCoJap3/LA4zfmuOo=";
   engine = "cometbft/cometbft";
   preFixup = ''
-    ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_2 "neutrond"}
+    ${cosmosLib.wasmdPreFixupPhase libwasmvm_2_0_0 "neutrond"}
   '';
-  buildInputs = [libwasmvm_1_5_2];
+  buildInputs = [libwasmvm_2_0_0];
+
+  # main module (github.com/neutron-org/neutron/v4) does not contain package github.com/neutron-org/neutron/v4/tests/feemarket
+  # main module (github.com/neutron-org/neutron/v4) does not contain package github.com/neutron-org/neutron/v4/tests/slinky
+  excludedPackages = ["tests/feemarket" "tests/slinky"];
 }
