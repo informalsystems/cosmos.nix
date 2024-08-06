@@ -146,7 +146,7 @@
     andromeda-src.url = "github:andromedaprotocol/andromedad/andromeda-1";
     andromeda-src.flake = false;
 
-    injective-src.url = "github:OpenDeFiFoundation/injective-core/v1.12.1";
+    injective-src.url = "github:OpenDeFiFoundation/injective-core/v1.13.1";
     injective-src.flake = false;
 
     iris-src.url = "github:irisnet/irishub/v1.1.1";
