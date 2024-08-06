@@ -109,7 +109,7 @@
         };
         neutron = import ../packages/neutron.nix {
           inherit (inputs) neutron-src;
-          inherit (self'.packages) libwasmvm_1_5_2;
+          inherit (self'.packages) libwasmvm_2_0_0;
           inherit cosmosLib;
         };
         andromeda = import ../packages/andromeda.nix {
