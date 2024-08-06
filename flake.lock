@@ -913,15 +913,16 @@
     "injective-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-Vr/l8/wtZ47wi1OTWhsfLetKZH8c1fUFeoQaxF+QS3c=",
+        "lastModified": 1722874193,
+        "narHash": "sha256-zDG32ogXMep0wKegDN8zm1YmadcVpwlrY+ITokefcVI=",
         "owner": "OpenDeFiFoundation",
         "repo": "injective-core",
-        "rev": "e1ab66c240524b05b872f63890fefcd4fced5f7a",
+        "rev": "725af8f9ca6809d6b1026d5e8dddeb309ff97b42",
         "type": "github"
       },
       "original": {
         "owner": "OpenDeFiFoundation",
-        "ref": "v1.12.1",
+        "ref": "v1.13.1",
         "repo": "injective-core",
         "type": "github"
       }
