@@ -1690,16 +1690,16 @@
     "wasmd-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1713797184,
-        "narHash": "sha256-k7c8RdLggeM6hSQhJt0UREY/48T3ZRSSijA+TMFKhUc=",
+        "lastModified": 1720696698,
+        "narHash": "sha256-b2u3PWtjZAgmTdm/b3UcGn9K9qVQj9DR4FMcqg67T1w=",
         "owner": "CosmWasm",
         "repo": "wasmd",
-        "rev": "7b418de3f6cf8fbac1e9cb11c57983fcc17264d0",
+        "rev": "1ff818801d4aa5dd6f483571ac7a38660c59c671",
         "type": "github"
       },
       "original": {
         "owner": "CosmWasm",
-        "ref": "v0.51.0",
+        "ref": "v0.52.0",
         "repo": "wasmd",
         "type": "github"
       }
