@@ -185,7 +185,7 @@
     composable-cosmos-src.url = "github:ComposableFi/composable-cosmos/v6.4.88";
     composable-cosmos-src.flake = false;
 
-    wasmd-src.url = "github:CosmWasm/wasmd/v0.51.0";
+    wasmd-src.url = "github:CosmWasm/wasmd/v0.52.0";
     wasmd-src.flake = false;
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
@@ -233,7 +233,7 @@
     interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
     interchain-security-src.flake = false;
 
-    stride-src.url = "github:Stride-Labs/stride/v21.0.0";
+    stride-src.url = "github:Stride-Labs/stride/v23.0.1";
     stride-src.flake = false;
 
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
@@ -245,7 +245,7 @@
     celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
     celestia-node-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v3.0.5";
+    neutron-src.url = "github:neutron-org/neutron/v4.1.0";
     neutron-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.19.1";

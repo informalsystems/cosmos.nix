@@ -1,5 +1,5 @@
 diff --git a/utils/utils.go b/utils/utils.go
-index 0bce89235..dd24c0f83 100644
+index 2b78e41f8..7487fe341 100644
 --- a/utils/utils.go
 +++ b/utils/utils.go
 @@ -37,9 +37,6 @@ func Int64ToCoinString(amount int64, denom string) string {
