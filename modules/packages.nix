@@ -109,7 +109,7 @@
         };
         neutron = import ../packages/neutron.nix {
           inherit (inputs) neutron-src;
-          inherit (self'.packages) libwasmvm_1_5_2;
+          inherit (self'.packages) libwasmvm_2_0_0;
           inherit cosmosLib;
         };
         andromeda = import ../packages/andromeda.nix {
@@ -161,7 +161,7 @@
         };
         wasmd = import ../packages/wasmd.nix {
           inherit (inputs) wasmd-src;
-          inherit (self'.packages) libwasmvm_2_0_0;
+          inherit (self'.packages) libwasmvm_2_1_0;
           inherit cosmosLib;
         };
         rollapp-evm = import ../packages/rollapp-evm.nix {

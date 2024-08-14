@@ -84,4 +84,16 @@ with inputs;
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks" "./modules/capability"];
     };
+
+    ibc-go-v9-simapp = {
+      name = "simd";
+      version = "v9.0.0-beta.1";
+      src = ibc-go-v9-src;
+      rev = ibc-go-v9-src.rev;
+      sourceRoot = "source/simapp";
+      vendorHash = "sha256-gr5Wre8OoSVBR+JNNCvs9zr6T5TwCgSAnchENEgu9qM=";
+      goVersion = "1.22";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+    };
   }
