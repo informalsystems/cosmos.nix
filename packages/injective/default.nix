@@ -22,7 +22,9 @@
       ${cosmosLib.wasmdPreFixupPhase libwasmvm_2_0_0 "injectived"}
       ${cosmosLib.wasmdPreFixupPhase libwasmvm_2_0_0 "client"}
     '';
-    buildInputs = [libwasmvm_2_0_0];
+    buildInputs =
+      [libwasmvm_2_0_0]
+      ++ pkgs.lib.optionals pkgs.stdenv.isDarwin (with pkgs; [libiconv]);
   };
   gen-injective = mkGenerator "gen-injective" injective-src;
 }
