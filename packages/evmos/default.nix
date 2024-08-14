@@ -9,7 +9,8 @@
     pname = "evmos";
     version = "v16.0.0-rc4";
     src = evmos-src;
-    goVersion = "1.21";
+    go = pkgs.go_1_21;
+    pwd = ./.;
     modules = ./gomod2nix.toml;
     doCheck = false;
   };

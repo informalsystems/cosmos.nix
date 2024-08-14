@@ -43,9 +43,13 @@
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
     nix2container = {
       url = "github:nlewo/nix2container";
+      # just to save size of this flake (assuming that currently containers are optional features)
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gomod2nix = {
+      url = "github:nix-community/gomod2nix";
       # just to save size of this flake (assuming that currently containers are optional features)
       inputs.nixpkgs.follows = "nixpkgs";
     };

@@ -202,6 +202,7 @@
           # Injective
           (import ../packages/injective {
             inherit pkgs;
+            inherit system;
             inherit (inputs) injective-src;
             inherit (cosmosLib) mkGenerator;
             inherit cosmosLib;
