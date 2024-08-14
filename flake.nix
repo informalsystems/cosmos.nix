@@ -43,9 +43,13 @@
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    gomod2nix.url = "github:JonathanLorimer/gomod2nix/jonathan/update-go";
     nix2container = {
       url = "github:nlewo/nix2container";
+      # just to save size of this flake (assuming that currently containers are optional features)
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gomod2nix = {
+      url = "github:nix-community/gomod2nix";
       # just to save size of this flake (assuming that currently containers are optional features)
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -149,7 +153,7 @@
     andromeda-src.url = "github:andromedaprotocol/andromedad/andromeda-1";
     andromeda-src.flake = false;
 
-    injective-src.url = "github:OpenDeFiFoundation/injective-core/v1.12.1";
+    injective-src.url = "github:OpenDeFiFoundation/injective-core/v1.13.1";
     injective-src.flake = false;
 
     iris-src.url = "github:irisnet/irishub/v1.1.1";

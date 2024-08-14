@@ -117,11 +117,6 @@
           inherit (self'.packages) libwasmvm_1_3_0;
           inherit cosmosLib;
         };
-        injective = import ../packages/injective.nix {
-          inherit (inputs) injective-src;
-          inherit (self'.packages) libwasmvm_1_5_0;
-          inherit cosmosLib;
-        };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
           inherit (self'.packages) libwasmvm_1_5_2;
@@ -203,6 +198,15 @@
             inherit pkgs;
             inherit (inputs) evmos-src;
             inherit (cosmosLib) mkGenerator;
+          })
+          # Injective
+          (import ../packages/injective {
+            inherit pkgs;
+            inherit system;
+            inherit (inputs) injective-src;
+            inherit (cosmosLib) mkGenerator;
+            inherit cosmosLib;
+            inherit (self'.packages) libwasmvm_2_0_0;
           })
         ]
         ## Linux only packages
