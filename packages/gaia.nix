@@ -1,6 +1,8 @@
 {
   inputs,
   mkCosmosGoApp,
+  libwasmvm_1_5_0,
+  cosmosLib,
 }: let
   gaias = with inputs;
     builtins.mapAttrs (_: mkCosmosGoApp)
@@ -170,6 +172,26 @@
         tags = ["netgo"];
         engine = "cometbft/cometbft";
         proxyVendor = true;
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+      };
+
+      gaia18 = {
+        name = "gaia";
+        vendorHash = "sha256-+vTP15mftPKWMkE4yI3avI+jQt917YCYGdUt29E1lYs=";
+        version = "v18.1.0";
+        goVersion = "1.22";
+        src = gaia18-src;
+        rev = gaia18-src.rev;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        preFixup = ''
+          ${cosmosLib.wasmdPreFixupPhase libwasmvm_1_5_0 "gaiad"}
+        '';
+        buildInputs = [libwasmvm_1_5_0];
 
         # Tests have to be disabled because they require Docker to run
         doCheck = false;

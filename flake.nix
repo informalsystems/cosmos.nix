@@ -77,6 +77,9 @@
     gaia-main-src.url = "github:cosmos/gaia";
     gaia-main-src.flake = false;
 
+    gaia18-src.url = "github:cosmos/gaia/v18.1.0";
+    gaia18-src.flake = false;
+
     gaia17-src.url = "github:cosmos/gaia/v17.2.0";
     gaia17-src.flake = false;
 
@@ -158,10 +161,10 @@
     evmos-src.url = "github:evmos/evmos/v16.0.0-rc4";
     evmos-src.flake = false;
 
-    juno-src.url = "github:CosmosContracts/juno/v22.0.0";
+    juno-src.url = "github:CosmosContracts/juno/v23.0.0";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v25.0.0";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v25.2.0";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
@@ -185,11 +188,14 @@
     composable-cosmos-src.url = "github:ComposableFi/composable-cosmos/v6.4.88";
     composable-cosmos-src.flake = false;
 
-    wasmd-src.url = "github:CosmWasm/wasmd/v0.51.0";
+    wasmd-src.url = "github:CosmWasm/wasmd/v0.52.0";
     wasmd-src.flake = false;
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
+
+    wasmvm_2_1_0-src.url = "github:CosmWasm/wasmvm/v2.1.0";
+    wasmvm_2_1_0-src.flake = false;
 
     wasmvm_2_0_0-src.url = "github:CosmWasm/wasmvm/v2.0.0";
     wasmvm_2_0_0-src.flake = false;
@@ -230,10 +236,10 @@
     interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
     interchain-security-src.flake = false;
 
-    stride-src.url = "github:Stride-Labs/stride/v21.0.0";
+    stride-src.url = "github:Stride-Labs/stride/v23.0.1";
     stride-src.flake = false;
 
-    migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.1.3";
+    migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
     migaloo-src.flake = false;
 
     celestia-app-src.url = "github:celestiaorg/celestia-app/v1.11.0";
@@ -242,10 +248,10 @@
     celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
     celestia-node-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v3.0.5";
+    neutron-src.url = "github:neutron-org/neutron/v4.1.0";
     neutron-src.flake = false;
 
-    provenance-src.url = "github:/provenance-io/provenance/v1.17.0";
+    provenance-src.url = "github:/provenance-io/provenance/v1.19.1";
     provenance-src.flake = false;
 
     namada-src.url = "github:anoma/namada/v0.28.1";
