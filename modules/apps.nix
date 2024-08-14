@@ -122,6 +122,10 @@
             type = "app";
             program = "${packages.ibc-go-v8-simapp}/bin/simd";
           };
+          ibc-go-v9-simapp = {
+            type = "app";
+            program = "${packages.ibc-go-v9-simapp}/bin/simd";
+          };
           ignite-cli = {
             type = "app";
             program = "${packages.ignite-cli}/bin/ignite";
