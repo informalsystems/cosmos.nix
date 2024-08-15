@@ -100,6 +100,6 @@ with inputs;
       preFixup = ''
         ${wasmdPreFixupPhase libwasmvm_2_1_0 "simd"}
       '';
-      buildInputs = [ libwasmvm_2_1_0 ];
+      buildInputs = [libwasmvm_2_1_0];
     };
   }

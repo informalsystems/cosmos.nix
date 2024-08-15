@@ -183,7 +183,10 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "nix": "nix",
-        "nixpkgs": ["haqq-src", "nixpkgs-unstable"],
+        "nixpkgs": [
+          "haqq-src",
+          "nixpkgs-unstable"
+        ],
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
@@ -641,7 +644,12 @@
     },
     "gitignore": {
       "inputs": {
-        "nixpkgs": ["haqq-src", "devenv", "pre-commit-hooks", "nixpkgs"]
+        "nixpkgs": [
+          "haqq-src",
+          "devenv",
+          "pre-commit-hooks",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "narHash": "sha256-8DFJjXG8zqoONA1vXtgeKXy68KdJL5UaXR8NtVMUbx8=",
@@ -659,7 +667,9 @@
     "gomod2nix": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1722589758,
@@ -677,8 +687,14 @@
     },
     "gomod2nix_2": {
       "inputs": {
-        "flake-utils": ["haqq-src", "flake-utils"],
-        "nixpkgs": ["haqq-src", "nixpkgs-unstable"]
+        "flake-utils": [
+          "haqq-src",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "haqq-src",
+          "nixpkgs-unstable"
+        ]
       },
       "locked": {
         "narHash": "sha256-yfQQ67dLejP0FLK76LKHbkzcQqNIrux6MFe32MMFGNQ=",
@@ -1064,7 +1080,11 @@
     "nix": {
       "inputs": {
         "lowdown-src": "lowdown-src",
-        "nixpkgs": ["haqq-src", "devenv", "nixpkgs"],
+        "nixpkgs": [
+          "haqq-src",
+          "devenv",
+          "nixpkgs"
+        ],
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
@@ -1099,7 +1119,9 @@
     "nix2container": {
       "inputs": {
         "flake-utils": "flake-utils_4",
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1712990762,
@@ -1256,10 +1278,18 @@
     },
     "pre-commit-hooks": {
       "inputs": {
-        "flake-compat": ["haqq-src", "devenv", "flake-compat"],
+        "flake-compat": [
+          "haqq-src",
+          "devenv",
+          "flake-compat"
+        ],
         "flake-utils": "flake-utils_2",
         "gitignore": "gitignore",
-        "nixpkgs": ["haqq-src", "devenv", "nixpkgs"],
+        "nixpkgs": [
+          "haqq-src",
+          "devenv",
+          "nixpkgs"
+        ],
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
