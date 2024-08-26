@@ -151,7 +151,7 @@
       type = "github";
       owner = "cosmos";
       repo = "ibc-go";
-      ref = "08-wasm/release/v0.1.x+ibc-go-v7.3.x-wasmvm-v1.5.x";
+      ref = "modules/light-clients/08-wasm/v0.3.1+ibc-go-v7.4-wasmvm-v1.5";
       flake = false;
     };
 
@@ -159,7 +159,7 @@
       type = "github";
       owner = "cosmos";
       repo = "ibc-go";
-      ref = "modules/light-clients/08-wasm/v0.3.1%2Bibc-go-v7.4-wasmvm-v1.5";
+      ref = "modules/light-clients/08-wasm/v0.4.1+ibc-go-v8.4-wasmvm-v2.0";
       flake = false;
     };
 
