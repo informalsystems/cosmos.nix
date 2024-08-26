@@ -1,5 +1,6 @@
 {
   inputs,
+  libwasmvm_1_5_0,
   libwasmvm_2_1_0,
   mkCosmosGoApp,
   wasmdPreFixupPhase,
@@ -94,6 +95,36 @@ with inputs;
       sourceRoot = "source/modules/light-clients/08-wasm";
       rev = ibc-go-v9-src.rev;
       vendorHash = "sha256-uAHvGRXhjydh+c5/M71qRDOYGiHT1ZryvyAgjgHSSo0=";
+      goVersion = "1.22";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      preFixup = ''
+        ${wasmdPreFixupPhase libwasmvm_2_1_0 "simd"}
+      '';
+      buildInputs = [libwasmvm_2_1_0];
+    };
+
+    ibc-go-v7-wasm-simapp = {
+      name = "simd";
+      version = "v7.4.0-wasm";
+      src = "${ibc-go-v7-wasm-src}/modules/light-clients/08-wasm";
+      rev = ibc-go-v7-wasm-src.rev;
+      vendorHash = "sha256-jPd1mjyjFlS3thN0LlpPUhnA6D4UyVkDU+pcJwI9tp0=";
+      goVersion = "1.22";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      preFixup = ''
+        ${wasmdPreFixupPhase libwasmvm_1_5_0 "simd"}
+      '';
+      buildInputs = [libwasmvm_1_5_0];
+    };
+
+    ibc-go-v8-wasm-simapp = {
+      name = "simd";
+      version = "v8.4.0-wasm";
+      src = "${ibc-go-v8-wasm-src}/modules/light-clients/08-wasm";
+      rev = ibc-go-v8-wasm-src.rev;
+      vendorHash = "sha256-z+hmzuAeyVYXtbb3SClfwQW0+nrUiYYYZCP6Vvc4dmQ=";
       goVersion = "1.22";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
