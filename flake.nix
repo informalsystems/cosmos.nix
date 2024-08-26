@@ -1,7 +1,7 @@
 {
   nixConfig = {
     substituters = "https://cosmos-nix.cachix.org https://cache.nixos.org https://nix-community.cachix.org";
-    trusted-public-keys = "cosmosnix.store-1:O28HneR1MPtgY3WYruWFuXCimRPwY7em5s0iynkQxdk= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
+    trusted-public-keys = "cosmos-nix.cachix.org-1:I9dmz4kn5+JExjPxOd9conCzQVHPl0Jo1Cdp6s+63d4= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
   };
 
   description = "A reproducible package set for Cosmos, IBC and CosmWasm";
@@ -146,6 +146,22 @@
 
     ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-beta.1";
     ibc-go-v9-src.flake = false;
+
+    ibc-go-v7-wasm-src = {
+      type = "github";
+      owner = "cosmos";
+      repo = "ibc-go";
+      ref = "08-wasm/release/v0.1.x+ibc-go-v7.3.x-wasmvm-v1.5.x";
+      flake = false;
+    };
+
+    ibc-go-v8-wasm-src = {
+      type = "github";
+      owner = "cosmos";
+      repo = "ibc-go";
+      ref = "modules/light-clients/08-wasm/v0.3.1%2Bibc-go-v7.4-wasmvm-v1.5";
+      flake = false;
+    };
 
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
     cosmos-sdk-src.flake = false;
