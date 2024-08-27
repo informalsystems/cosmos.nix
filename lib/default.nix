@@ -116,6 +116,7 @@ nix-std: {
     buildGoModuleVersion = {
       "1.21" = pkgs.buildGo121Module;
       "1.22" = pkgs.buildGo122Module;
+      "1.23" = pkgs.buildGo123Module;
     };
 
     buildGoModule = buildGoModuleVersion.${goVersion};
