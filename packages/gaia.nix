@@ -2,6 +2,7 @@
   inputs,
   mkCosmosGoApp,
   libwasmvm_1_5_0,
+  libwasmvm_2_0_0,
   cosmosLib,
 }: let
   gaias = with inputs;
@@ -195,6 +196,30 @@
 
         # Tests have to be disabled because they require Docker to run
         doCheck = false;
+      };
+
+      gaia19 = {
+        name = "gaia";
+        vendorHash = "sha256-+9Q5Zcg/WtUPp1AbU9sGh9pxALjJesQ+m2sd4WQYOEs=";
+        version = "v19.1.0";
+        # nixpkgs latest go version v1.22 is v1.22.5 but Gaia v19.1.0 requires
+        # v1.22.6 or more so v1.23 is used instead
+        goVersion = "1.23";
+        src = gaia19-src;
+        rev = gaia19-src.rev;
+        tags = ["netgo"];
+        engine = "cometbft/cometbft";
+        proxyVendor = true;
+
+        preFixup = ''
+          ${cosmosLib.wasmdPreFixupPhase libwasmvm_2_0_0 "gaiad"}
+        '';
+        buildInputs = [libwasmvm_2_0_0];
+
+        # Tests have to be disabled because they require Docker to run
+        doCheck = false;
+
+        excludedPackages = ["tests/interchain"];
       };
     };
 in
