@@ -220,6 +220,9 @@
     wasmvm_2_1_0-src.url = "github:CosmWasm/wasmvm/v2.1.0";
     wasmvm_2_1_0-src.flake = false;
 
+    wasmvm_2_0_3-src.url = "github:CosmWasm/wasmvm/v2.0.3";
+    wasmvm_2_0_3-src.flake = false;
+
     wasmvm_2_0_0-src.url = "github:CosmWasm/wasmvm/v2.0.0";
     wasmvm_2_0_0-src.flake = false;
 
@@ -274,7 +277,7 @@
     celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
     celestia-node-src.flake = false;
 
-    neutron-src.url = "github:neutron-org/neutron/v4.1.0";
+    neutron-src.url = "github:neutron-org/neutron/v4.2.2";
     neutron-src.flake = false;
 
     provenance-src.url = "github:/provenance-io/provenance/v1.19.1";
