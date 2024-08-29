@@ -41,6 +41,18 @@ in
       };
     };
 
+    libwasmvm_2_0_3 = {
+      src = "${inputs.wasmvm_2_0_3-src}/libwasmvm";
+      version = "v2.0.3";
+      cargoSha256 = "sha256-BFou131HI+YKXU9H51Xa/y7A441Z7QkAA92mhquJ5l4=";
+      cargoLock = {
+        lockFile = "${inputs.wasmvm_2_0_3-src}/libwasmvm/Cargo.lock";
+        outputHashes = {
+          "cosmwasm-crypto-2.0.6" = "sha256-gGrbTeHzVn+9T82R6nsq2VIm1armIS/e1TP9w8z0aQ4=";
+        };
+      };
+    };
+
     libwasmvm_2_0_0 = {
       src = "${inputs.wasmvm_2_0_0-src}/libwasmvm";
       version = "v2.0.0";
