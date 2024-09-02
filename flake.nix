@@ -81,6 +81,9 @@
     gaia-main-src.url = "github:cosmos/gaia";
     gaia-main-src.flake = false;
 
+    gaia20-src.url = "github:cosmos/gaia/b5b22dc6e8eef40a6de67d62409601c6e5198fed";
+    gaia20-src.flake = false;
+
     gaia19-src.url = "github:cosmos/gaia/v19.1.0";
     gaia19-src.flake = false;
 
