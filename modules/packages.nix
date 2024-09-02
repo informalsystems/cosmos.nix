@@ -157,7 +157,7 @@
         };
         wasmd = import ../packages/wasmd.nix {
           inherit (inputs) wasmd-src;
-          inherit (self'.packages) libwasmvm_2_1_0;
+          inherit (self'.packages) libwasmvm_2_1_2;
           inherit cosmosLib;
         };
         rollapp-evm = import ../packages/rollapp-evm.nix {
