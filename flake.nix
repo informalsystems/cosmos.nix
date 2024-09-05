@@ -268,7 +268,7 @@
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
     ignite-cli-src.flake = false;
 
-    interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
+    interchain-security-src.url = "github:cosmos/interchain-security/7301916eeafa3700a03d5ddf47a0779801c6d3a1";
     interchain-security-src.flake = false;
 
     stride-src.url = "github:Stride-Labs/stride/v23.0.1";
