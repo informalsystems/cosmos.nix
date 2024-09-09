@@ -848,6 +848,23 @@
         "type": "github"
       }
     },
+    "ibc-go-v7-indexer-subs-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1725882636,
+        "narHash": "sha256-LvBZihl+TRb3uS87EtbrTblTHVbScRGv40HX7Pjs96s=",
+        "owner": "informalsystems",
+        "repo": "ibc-go",
+        "rev": "d94c614980c87828d3e3c8cc2e62c9e43b5b51ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "informalsystems",
+        "ref": "cometbft/indexer-subs-cap-1",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-go-v7-src": {
       "flake": false,
       "locked": {
@@ -1463,6 +1480,7 @@
         "ibc-go-v4-src": "ibc-go-v4-src",
         "ibc-go-v5-src": "ibc-go-v5-src",
         "ibc-go-v6-src": "ibc-go-v6-src",
+        "ibc-go-v7-indexer-subs-src": "ibc-go-v7-indexer-subs-src",
         "ibc-go-v7-src": "ibc-go-v7-src",
         "ibc-go-v7-wasm-src": "ibc-go-v7-wasm-src",
         "ibc-go-v8-src": "ibc-go-v8-src",

@@ -104,6 +104,18 @@ with inputs;
       buildInputs = [libwasmvm_2_1_0];
     };
 
+    ibc-go-v7-indexer-subs-simapp = {
+      name = "simd";
+      version = "v7.8.0-indexer-subs";
+      src = ibc-go-v7-indexer-subs-src;
+      rev = ibc-go-v7-indexer-subs-src.rev;
+      vendorHash = "sha256-KLE/ewaP4eqyE9CMmFCUyBZriqmrqYPq3FfhsZyKKEY=";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      excludedPackages = ["./e2e" "./modules/apps/callbacks"];
+      doCheck = false;
+    };
+
     ibc-go-v7-wasm-simapp = {
       name = "simd";
       version = "v7.4.0-wasm";
