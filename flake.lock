@@ -851,11 +851,11 @@
     "ibc-go-v7-indexer-subs-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1725882636,
-        "narHash": "sha256-LvBZihl+TRb3uS87EtbrTblTHVbScRGv40HX7Pjs96s=",
+        "lastModified": 1726659959,
+        "narHash": "sha256-I54u/UnvkSSVcj/73qyboW2irijthWxw2Xvd0bntHMk=",
         "owner": "informalsystems",
         "repo": "ibc-go",
-        "rev": "d94c614980c87828d3e3c8cc2e62c9e43b5b51ae",
+        "rev": "7ca60663a1d7d15f1c659746191a4a8d41879fa2",
         "type": "github"
       },
       "original": {
