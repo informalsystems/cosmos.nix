@@ -130,6 +130,10 @@
             type = "app";
             program = "${packages.ibc-go-v9-simapp}/bin/simd";
           };
+          ibc-go-v7-simapp-indexer-subs = {
+            type = "app";
+            program = "${packages.ibc-go-v7-simapp-indexer-subs}/bin/simd";
+          };
           ibc-go-v7-wasm-simapp = {
             type = "app";
             program = "${packages.ibc-go-v7-wasm-simapp}/bin/simd";
