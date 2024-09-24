@@ -1018,17 +1018,17 @@
     "interchain-security-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1725434145,
-        "narHash": "sha256-GiaTXIYG0ZM5mScV7bEOLf311yYCy/d/YslRosnnzf0=",
+        "lastModified": 1726849313,
+        "narHash": "sha256-1WEvV3LoXfGvZC9fXOb8mBLKVGCVBiXZcwUewSPit+8=",
         "owner": "cosmos",
         "repo": "interchain-security",
-        "rev": "7301916eeafa3700a03d5ddf47a0779801c6d3a1",
+        "rev": "1e60637f9d8f3505208282416abfbb87fabc4795",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
+        "ref": "v6.1.0",
         "repo": "interchain-security",
-        "rev": "7301916eeafa3700a03d5ddf47a0779801c6d3a1",
         "type": "github"
       }
     },

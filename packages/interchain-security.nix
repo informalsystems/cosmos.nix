@@ -5,10 +5,10 @@
 mkCosmosGoApp {
   name = "interchain-security";
   appName = "interchain-security";
-  version = "v5.5.0-pre";
+  version = "v6.1.0";
   src = interchain-security-src;
   rev = interchain-security-src.rev;
-  vendorHash = "sha256-JNyyPbp8XD1gEoyCO7sMB1z7HbER6lfdfnAIq6kiQkQ=";
+  vendorHash = "sha256-hBKJA5kIw7aHicCcmvzm9pXb+WPjbx5mq7UDPkLLuJ4=";
   goVersion = "1.22";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
