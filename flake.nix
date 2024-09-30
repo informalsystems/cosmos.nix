@@ -81,6 +81,9 @@
     gaia-main-src.url = "github:cosmos/gaia";
     gaia-main-src.flake = false;
 
+    gaia20-src.url = "github:cosmos/gaia/v20.0.0";
+    gaia20-src.flake = false;
+
     gaia19-src.url = "github:cosmos/gaia/v19.1.0";
     gaia19-src.flake = false;
 
@@ -265,7 +268,7 @@
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
     ignite-cli-src.flake = false;
 
-    interchain-security-src.url = "github:cosmos/interchain-security/feat/ics-misbehaviour-handling";
+    interchain-security-src.url = "github:cosmos/interchain-security/v6.1.0";
     interchain-security-src.flake = false;
 
     stride-src.url = "github:Stride-Labs/stride/v23.0.1";

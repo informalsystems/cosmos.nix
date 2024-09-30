@@ -547,6 +547,23 @@
         "type": "github"
       }
     },
+    "gaia20-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726853009,
+        "narHash": "sha256-N7x3k56AtPbIbbJjqKmlEJIytKElALJwj14lZ2pewZg=",
+        "owner": "cosmos",
+        "repo": "gaia",
+        "rev": "2dba9d471ef73b0a99e844bf55a44ddae700ea06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v20.0.0",
+        "repo": "gaia",
+        "type": "github"
+      }
+    },
     "gaia5-src": {
       "flake": false,
       "locked": {
@@ -1001,15 +1018,16 @@
     "interchain-security-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-adBzn51PKoRsCL9gIzC5Tcqmu7u3GjxTcDj2jpZ/da8=",
+        "lastModified": 1726849313,
+        "narHash": "sha256-1WEvV3LoXfGvZC9fXOb8mBLKVGCVBiXZcwUewSPit+8=",
         "owner": "cosmos",
         "repo": "interchain-security",
-        "rev": "03aada4af3243dbf739a12adfacc7b37232df694",
+        "rev": "1e60637f9d8f3505208282416abfbb87fabc4795",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "feat/ics-misbehaviour-handling",
+        "ref": "v6.1.0",
         "repo": "interchain-security",
         "type": "github"
       }
@@ -1448,6 +1466,7 @@
         "gaia17-src": "gaia17-src",
         "gaia18-src": "gaia18-src",
         "gaia19-src": "gaia19-src",
+        "gaia20-src": "gaia20-src",
         "gaia5-src": "gaia5-src",
         "gaia6-ordered-src": "gaia6-ordered-src",
         "gaia6-src": "gaia6-src",

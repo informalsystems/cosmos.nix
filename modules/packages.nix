@@ -176,7 +176,7 @@
           (import ../packages/gaia.nix {
             inherit inputs cosmosLib;
             inherit (cosmosLib) mkCosmosGoApp;
-            inherit (self'.packages) libwasmvm_1_5_0 libwasmvm_2_0_0;
+            inherit (self'.packages) libwasmvm_1_5_0 libwasmvm_2_0_0 libwasmvm_2_1_2;
           })
           # IBC Go
           (import ../packages/ibc-go.nix {
