@@ -147,7 +147,7 @@
     ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.5.1";
     ibc-go-v8-src.flake = false;
 
-    ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-beta.1";
+    ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-rc.0";
     ibc-go-v9-src.flake = false;
 
     ibc-go-v7-wasm-src = {

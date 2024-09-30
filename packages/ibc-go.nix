@@ -90,18 +90,14 @@ with inputs;
 
     ibc-go-v9-simapp = {
       name = "simd";
-      version = "v9.0.0-beta.1-wasm";
+      version = "v9.0.0-rc.0";
       src = ibc-go-v9-src;
-      sourceRoot = "source/modules/light-clients/08-wasm";
       rev = ibc-go-v9-src.rev;
-      vendorHash = "sha256-uAHvGRXhjydh+c5/M71qRDOYGiHT1ZryvyAgjgHSSo0=";
+      sourceRoot = "source/simapp";
+      vendorHash = "sha256-tcGoHs2tPcSBgTfyJCF6cvOpLEjDGG38QFxT59JtwI8=";
       goVersion = "1.22";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
-      preFixup = ''
-        ${wasmdPreFixupPhase libwasmvm_2_1_0 "simd"}
-      '';
-      buildInputs = [libwasmvm_2_1_0];
     };
 
     ibc-go-v7-wasm-simapp = {

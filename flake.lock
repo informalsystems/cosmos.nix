@@ -919,16 +919,16 @@
     "ibc-go-v9-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1723037346,
-        "narHash": "sha256-ba8gbJ0l4l8ZRT9XVN3hTcnxZSb5Fn20p1xiEG4/54c=",
+        "lastModified": 1725262239,
+        "narHash": "sha256-F2p/lIs2/ropKdm0Pebz1kjhRlgwYK0BmDGe/sYec3Y=",
         "owner": "cosmos",
         "repo": "ibc-go",
-        "rev": "66ebf864d7bfe2193a96c972a9e74196b2ddf104",
+        "rev": "8983f91e519fb1c43d9c9481ba60f11e4ae2b2b0",
         "type": "github"
       },
       "original": {
         "owner": "cosmos",
-        "ref": "v9.0.0-beta.1",
+        "ref": "v9.0.0-rc.0",
         "repo": "ibc-go",
         "type": "github"
       }
