@@ -51,7 +51,7 @@ with inputs;
 
     ibc-go-v6-simapp = {
       name = "simapp";
-      version = "v6.3.0";
+      version = "v6.3.1";
       src = ibc-go-v6-src;
       rev = ibc-go-v6-src.rev;
       vendorHash = "sha256-IA6W9MaiDi/4wPDXIVO/6xPJwduBwgLiq/yv1zHFBMc=";

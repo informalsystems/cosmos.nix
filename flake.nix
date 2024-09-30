@@ -138,7 +138,7 @@
     ibc-go-v5-src.url = "github:cosmos/ibc-go/v5.4.0";
     ibc-go-v5-src.flake = false;
 
-    ibc-go-v6-src.url = "github:cosmos/ibc-go/v6.3.0";
+    ibc-go-v6-src.url = "github:cosmos/ibc-go/v6.3.1";
     ibc-go-v6-src.flake = false;
 
     ibc-go-v7-src.url = "github:cosmos/ibc-go/v7.8.0";
