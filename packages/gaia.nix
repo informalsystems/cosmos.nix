@@ -225,8 +225,8 @@
 
       gaia20 = {
         name = "gaia";
-        vendorHash = "sha256-D7fvLjWUhEr+/wxicdKZthcqRDiop0JxNQaM+Lc9sOM=";
-        version = "v20.0.0-alpha1";
+        vendorHash = "sha256-1WErtwmYr3AgY1lFpiFYrosU4leJ+ZC13Vbk8vwmmg8=";
+        version = "v20.0.0";
         # nixpkgs latest go version v1.22 is v1.22.5 but Gaia v20.0.0 requires
         # v1.22.6 or more so v1.23 is used instead
         goVersion = "1.23";
