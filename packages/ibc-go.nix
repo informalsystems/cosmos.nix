@@ -51,7 +51,7 @@ with inputs;
 
     ibc-go-v6-simapp = {
       name = "simapp";
-      version = "v6.3.0";
+      version = "v6.3.1";
       src = ibc-go-v6-src;
       rev = ibc-go-v6-src.rev;
       vendorHash = "sha256-IA6W9MaiDi/4wPDXIVO/6xPJwduBwgLiq/yv1zHFBMc=";
@@ -64,10 +64,10 @@ with inputs;
     # package that loads only the given subdirectory as source
     ibc-go-v7-simapp = {
       name = "simd";
-      version = "v7.4.0";
+      version = "v7.8.0";
       src = ibc-go-v7-src;
       rev = ibc-go-v7-src.rev;
-      vendorHash = "sha256-zjk/75+e/gWSCvpz7lrZkNEDigC/x8czpCSxxbSmWXg=";
+      vendorHash = "sha256-4XypqrHthsmhNrEwU0m9wi8Tr7TRPNWgsA+Cdvio5+w=";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks"];
@@ -78,10 +78,10 @@ with inputs;
     # the given subdirectory as source
     ibc-go-v8-simapp = {
       name = "simd";
-      version = "v8.3.1";
+      version = "v8.5.1";
       src = ibc-go-v8-src;
       rev = ibc-go-v8-src.rev;
-      vendorHash = "sha256-SZPjD/7KCmTtlhRV6XdwPG5ArB67mpuJkcSukGKBRPM=";
+      vendorHash = "sha256-xWOoahXPDQT4qyojR0LDDFWaOE1rzw2jD/A1xpKOB8g=";
       goVersion = "1.21";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
@@ -90,18 +90,14 @@ with inputs;
 
     ibc-go-v9-simapp = {
       name = "simd";
-      version = "v9.0.0-beta.1-wasm";
+      version = "v9.0.0-rc.0";
       src = ibc-go-v9-src;
-      sourceRoot = "source/modules/light-clients/08-wasm";
       rev = ibc-go-v9-src.rev;
-      vendorHash = "sha256-uAHvGRXhjydh+c5/M71qRDOYGiHT1ZryvyAgjgHSSo0=";
+      sourceRoot = "source/simapp";
+      vendorHash = "sha256-tcGoHs2tPcSBgTfyJCF6cvOpLEjDGG38QFxT59JtwI8=";
       goVersion = "1.22";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
-      preFixup = ''
-        ${wasmdPreFixupPhase libwasmvm_2_1_0 "simd"}
-      '';
-      buildInputs = [libwasmvm_2_1_0];
     };
 
     ibc-go-v7-wasm-simapp = {

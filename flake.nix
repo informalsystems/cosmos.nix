@@ -141,16 +141,16 @@
     ibc-go-v5-src.url = "github:cosmos/ibc-go/v5.4.0";
     ibc-go-v5-src.flake = false;
 
-    ibc-go-v6-src.url = "github:cosmos/ibc-go/v6.3.0";
+    ibc-go-v6-src.url = "github:cosmos/ibc-go/v6.3.1";
     ibc-go-v6-src.flake = false;
 
-    ibc-go-v7-src.url = "github:cosmos/ibc-go/v7.4.0";
+    ibc-go-v7-src.url = "github:cosmos/ibc-go/v7.8.0";
     ibc-go-v7-src.flake = false;
 
-    ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.3.1";
+    ibc-go-v8-src.url = "github:cosmos/ibc-go/v8.5.1";
     ibc-go-v8-src.flake = false;
 
-    ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-beta.1";
+    ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-rc.0";
     ibc-go-v9-src.flake = false;
 
     ibc-go-v7-wasm-src = {
