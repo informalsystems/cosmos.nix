@@ -64,10 +64,10 @@ with inputs;
     # package that loads only the given subdirectory as source
     ibc-go-v7-simapp = {
       name = "simd";
-      version = "v7.4.0";
+      version = "v7.8.0";
       src = ibc-go-v7-src;
       rev = ibc-go-v7-src.rev;
-      vendorHash = "sha256-zjk/75+e/gWSCvpz7lrZkNEDigC/x8czpCSxxbSmWXg=";
+      vendorHash = "sha256-4XypqrHthsmhNrEwU0m9wi8Tr7TRPNWgsA+Cdvio5+w=";
       tags = ["netgo"];
       engine = "cometbft/cometbft";
       excludedPackages = ["./e2e" "./modules/apps/callbacks"];
