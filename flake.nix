@@ -184,7 +184,7 @@
     evmos-src.url = "github:evmos/evmos/v16.0.0-rc4";
     evmos-src.flake = false;
 
-    juno-src.url = "github:CosmosContracts/juno/v24.0.0";
+    juno-src.url = "github:CosmosContracts/juno/v25.0.0";
     juno-src.flake = false;
 
     osmosis-src.url = "github:osmosis-labs/osmosis/v25.2.0";
@@ -228,6 +228,9 @@
 
     wasmvm_2_0_0-src.url = "github:CosmWasm/wasmvm/v2.0.0";
     wasmvm_2_0_0-src.flake = false;
+
+    wasmvm_1_5_5-src.url = "github:CosmWasm/wasmvm/v1.5.5";
+    wasmvm_1_5_5-src.flake = false;
 
     wasmvm_1_5_4-src.url = "github:CosmWasm/wasmvm/v1.5.4";
     wasmvm_1_5_4-src.flake = false;
