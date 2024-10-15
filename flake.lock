@@ -1650,16 +1650,16 @@
     "stride-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1721921071,
-        "narHash": "sha256-EtsK7sjzQ2XfYt3DSV85IbKj7HEMy2Apt0m8kfgCEuk=",
+        "lastModified": 1724989162,
+        "narHash": "sha256-bN+5OUJ/ObexhlZ+XqhQaQuBzGFsjLk/q2+zrllJn3Y=",
         "owner": "Stride-Labs",
         "repo": "stride",
-        "rev": "d6e4e686e54a6a3c41d3ca0645f91ee1dc3ec441",
+        "rev": "4cfda614e8fb9664ce72861d32824d72430d4436",
         "type": "github"
       },
       "original": {
         "owner": "Stride-Labs",
-        "ref": "v23.0.1",
+        "ref": "v24.0.0",
         "repo": "stride",
         "type": "github"
       }
