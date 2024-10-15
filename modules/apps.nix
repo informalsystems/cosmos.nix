@@ -138,6 +138,10 @@
             type = "app";
             program = "${packages.ibc-go-v8-wasm-simapp}/bin/simd";
           };
+          ibc-go-v9-wasm-simapp = {
+            type = "app";
+            program = "${packages.ibc-go-v9-wasm-simapp}/bin/simd";
+          };
           ignite-cli = {
             type = "app";
             program = "${packages.ignite-cli}/bin/ignite";
