@@ -61,7 +61,7 @@
     sconfig-src.flake = false;
 
     # CometBFT
-    cometbft-src.url = "github:cometbft/cometbft/v0.38.0";
+    cometbft-src.url = "github:cometbft/cometbft/v0.38.11";
     cometbft-src.flake = false;
 
     # Relayer Sources
