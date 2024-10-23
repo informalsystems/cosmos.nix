@@ -5,6 +5,6 @@
 buildGoModule {
   name = "cometbft";
   src = cometbft-src;
-  vendorHash = "sha256-rZeC0B5U0bdtZAw/hnMJ7XG73jN0nsociAN8GGdmlUY=";
+  vendorHash = "sha256-bQseXRiRup7g7TChMRC3K8tjFLgyqzLWxT9LgsXQnqw=";
   doCheck = false;
 }
