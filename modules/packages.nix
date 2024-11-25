@@ -22,10 +22,6 @@
           inherit pkgs;
           inherit (inputs) beaker-src;
         };
-        celestia-app = import ../packages/celestia-app.nix {
-          inherit (inputs) celestia-app-src;
-          inherit (cosmosLib) mkCosmosGoApp;
-        };
         celestia-node = import ../packages/celestia-node.nix {
           inherit (inputs) celestia-node-src;
           inherit (cosmosLib) mkCosmosGoApp;
@@ -208,6 +204,12 @@
             inherit (cosmosLib) mkGenerator;
             inherit cosmosLib;
             inherit (self'.packages) libwasmvm_2_0_0;
+          })
+          # Celestia
+          (import ../packages/celestia-app {
+            inherit pkgs;
+            inherit (inputs) celestia-app-src;
+            inherit (cosmosLib) mkGenerator;
           })
         ]
         ## Linux only packages
