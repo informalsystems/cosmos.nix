@@ -182,7 +182,7 @@
           # IBC Go
           (import ../packages/ibc-go.nix {
             inherit inputs;
-            inherit (self'.packages) libwasmvm_1_5_0 libwasmvm_2_1_0;
+            inherit (self'.packages) libwasmvm_1_5_0 libwasmvm_2_1_0 libwasmvm_2_1_4;
             inherit (cosmosLib) mkCosmosGoApp wasmdPreFixupPhase;
           })
           # Libwasm VM

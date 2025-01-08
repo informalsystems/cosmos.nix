@@ -17,6 +17,18 @@
 in
   builtins.mapAttrs (_: libwasmvm: pkgs.rustPlatform.buildRustPackage (libwasmvmCommon // libwasmvm))
   {
+    libwasmvm_2_1_4 = {
+      src = "${inputs.wasmvm_2_1_4-src}/libwasmvm";
+      version = "v2.1.4";
+      cargoSha256 = "sha256-BFou131HI+YKXU9H51Xa/y7A441Z7QkAA92mhquJ5l4=";
+      cargoLock = {
+        lockFile = "${inputs.wasmvm_2_1_4-src}/libwasmvm/Cargo.lock";
+        outputHashes = {
+          "cosmwasm-crypto-2.1.5" = "sha256-URkpx8+PXZ1IaYnFFC/zBhNd1+FvwNhquR/O5kAyC5U=";
+        };
+      };
+    };
+
     libwasmvm_2_1_3 = {
       src = "${inputs.wasmvm_2_1_3-src}/libwasmvm";
       version = "v2.1.3";

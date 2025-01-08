@@ -2,6 +2,7 @@
   inputs,
   libwasmvm_1_5_0,
   libwasmvm_2_1_0,
+  libwasmvm_2_1_4,
   mkCosmosGoApp,
   wasmdPreFixupPhase,
 }:
@@ -128,5 +129,20 @@ with inputs;
         ${wasmdPreFixupPhase libwasmvm_2_1_0 "simd"}
       '';
       buildInputs = [libwasmvm_2_1_0];
+    };
+
+    ibc-go-v9-wasm-simapp = {
+      name = "simd";
+      version = "08-wasm/release/v0.5.x%2Bibc-go-v9.0.x-wasmvm-v2.1.x";
+      src = "${ibc-go-v9-wasm-src}/modules/light-clients/08-wasm";
+      rev = ibc-go-v9-wasm-src.rev;
+      vendorHash = "sha256-6ceJhOA2GRgRi+WDt8DN2YhvtUsk4gg1OhG+R/jXJcM=";
+      goVersion = "1.22";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      preFixup = ''
+        ${wasmdPreFixupPhase libwasmvm_2_1_4 "simd"}
+      '';
+      buildInputs = [libwasmvm_2_1_4];
     };
   }

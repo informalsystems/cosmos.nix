@@ -169,6 +169,14 @@
       flake = false;
     };
 
+    ibc-go-v9-wasm-src = {
+      type = "github";
+      owner = "cosmos";
+      repo = "ibc-go";
+      ref = "08-wasm/release/v0.5.x%2Bibc-go-v9.0.x-wasmvm-v2.1.x";
+      flake = false;
+    };
+
     cosmos-sdk-src.url = "github:cosmos/cosmos-sdk/v0.46.0";
     cosmos-sdk-src.flake = false;
 
@@ -219,6 +227,9 @@
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
+
+    wasmvm_2_1_4-src.url = "github:CosmWasm/wasmvm/v2.1.4";
+    wasmvm_2_1_4-src.flake = false;
 
     wasmvm_2_1_3-src.url = "github:CosmWasm/wasmvm/v2.1.3";
     wasmvm_2_1_3-src.flake = false;
