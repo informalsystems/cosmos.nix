@@ -34,10 +34,6 @@
             type = "app";
             program = "${packages.hermes}/bin/hermes";
           };
-          gaia4 = {
-            type = "app";
-            program = "${packages.gaia4}/bin/gaiad";
-          };
           gaia5 = {
             type = "app";
             program = "${packages.gaia5}/bin/gaiad";
