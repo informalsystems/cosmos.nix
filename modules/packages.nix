@@ -191,7 +191,7 @@
           # Stride
           (import ../packages/stride.nix {
             inherit inputs;
-            inherit (self'.packages) libwasmvm_1_5_2;
+            inherit (self'.packages) libwasmvm_1_5_4;
             inherit (cosmosLib) mkCosmosGoApp;
             inherit cosmosLib;
           })

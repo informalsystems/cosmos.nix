@@ -288,7 +288,7 @@
     interchain-security-src.url = "github:cosmos/interchain-security/v6.1.0";
     interchain-security-src.flake = false;
 
-    stride-src.url = "github:Stride-Labs/stride/v23.0.1";
+    stride-src.url = "github:Stride-Labs/stride/v24.0.0";
     stride-src.flake = false;
 
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
