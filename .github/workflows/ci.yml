@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: jlumbroso/free-disk-space@main
-        if: matrix.os == 'ubuntu-22.04' 
+        if: matrix.os == 'ubuntu-22.04' || matrix.os == 'ubuntu-22.04-arm'
 
       - uses: DeterminateSystems/nix-installer-action@main
         with: 
