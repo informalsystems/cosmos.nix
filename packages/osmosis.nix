@@ -6,13 +6,13 @@
 }:
 cosmosLib.mkCosmosGoApp {
   name = "osmosis";
-  version = "v27.0.1";
-  # nixpkgs latest go version v1.22 is v1.22.5 but Osmosis v27.0.1 requires
+  version = "v28.0.0";
+  # nixpkgs latest go version v1.22 is v1.22.5 but Osmosis v28.0.8 requires
   # v1.22.7 or more so v1.23 is used instead
   goVersion = "1.23";
   src = osmosis-src;
   rev = osmosis-src.rev;
-  vendorHash = "sha256-wiEixpZPbnwMdhyNrQvHz3cLZF/GXJRa7ho0YaAnVuc=";
+  vendorHash = "sha256-hkF1TO1E1vKLC380dhaaDQAU+t8t4SxhP1UOV41KdUc=";
   tags = ["netgo"];
   excludedPackages = ["cl-genesis-positions"];
   engine = "cometbft/cometbft";
