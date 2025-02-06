@@ -153,6 +153,14 @@
     ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-rc.0";
     ibc-go-v9-src.flake = false;
 
+    ibc-go-v7-indexer-subs-src = {
+      type = "github";
+      owner = "informalsystems";
+      repo = "ibc-go";
+      ref = "cometbft/indexer-subs-cap-1";
+      flake = false;
+    };
+
     ibc-go-v7-wasm-src = {
       type = "github";
       owner = "cosmos";

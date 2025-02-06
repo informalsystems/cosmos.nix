@@ -101,6 +101,18 @@ with inputs;
       engine = "cometbft/cometbft";
     };
 
+    ibc-go-v7-indexer-subs-simapp = {
+      name = "simd";
+      version = "v7.8.0-index-subs";
+      src = ibc-go-v7-indexer-subs-src;
+      rev = ibc-go-v7-indexer-subs-src.rev;
+      vendorHash = "sha256-EghDcmVUBT7AeXdTAsWkM+BdPFKhTBGzmjEmQxzW+R8=";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+      excludedPackages = ["./e2e" "./modules/apps/callbacks"];
+      doCheck = false;
+    };
+
     ibc-go-v7-wasm-simapp = {
       name = "simd";
       version = "v7.4.0-wasm";
