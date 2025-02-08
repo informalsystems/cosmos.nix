@@ -291,6 +291,9 @@
     stride-src.url = "github:Stride-Labs/stride/v23.0.1";
     stride-src.flake = false;
 
+    mantrachain-src.url = "github:MANTRA-Chain/mantrachain/v1.0.3";
+    mantrachain-src.flake = false;
+
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
     migaloo-src.flake = false;
 

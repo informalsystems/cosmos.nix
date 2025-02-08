@@ -102,6 +102,11 @@
           inherit (self'.packages) libwasmvm_1_5_5;
           inherit cosmosLib;
         };
+        mantrachain = import ../packages/mantrachain.nix {
+          inherit (inputs) mantrachain-src;
+          inherit (self'.packages) libwasmvm_2_1_3;
+          inherit cosmosLib;
+        };
         migaloo = import ../packages/migaloo.nix {
           inherit (inputs) migaloo-src;
           inherit (self'.packages) libwasmvm_1_5_2;

@@ -1114,6 +1114,23 @@
         "type": "github"
       }
     },
+    "mantrachain-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733888784,
+        "narHash": "sha256-4d00RJ/lu6gGZQqp29jzLFl//pV70gNvreDNe4kc08I=",
+        "owner": "MANTRA-Chain",
+        "repo": "mantrachain",
+        "rev": "f550ec6ff3a5b96728331ec0c2f771b48ea73fe6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MANTRA-Chain",
+        "ref": "v1.0.3",
+        "repo": "mantrachain",
+        "type": "github"
+      }
+    },
     "migaloo-src": {
       "flake": false,
       "locked": {
@@ -1514,6 +1531,7 @@
         "iris-src": "iris-src",
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
+        "mantrachain-src": "mantrachain-src",
         "migaloo-src": "migaloo-src",
         "namada-src": "namada-src",
         "neutron-src": "neutron-src",
