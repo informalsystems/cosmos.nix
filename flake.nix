@@ -39,6 +39,7 @@
   inputs = {
     # Nix Inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     rust-overlay.url = "github:oxalica/rust-overlay";
     sbt-derivation.url = "github:zaninime/sbt-derivation";
     nix-std.url = "github:chessai/nix-std";
@@ -228,6 +229,9 @@
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
 
+    wasmvm_2_2_1-src.url = "github:CosmWasm/wasmvm/v2.2.1";
+    wasmvm_2_2_1-src.flake = false;
+
     wasmvm_2_1_4-src.url = "github:CosmWasm/wasmvm/v2.1.4";
     wasmvm_2_1_4-src.flake = false;
 
@@ -291,7 +295,7 @@
     stride-src.url = "github:Stride-Labs/stride/v23.0.1";
     stride-src.flake = false;
 
-    mantrachain-src.url = "github:MANTRA-Chain/mantrachain/v1.0.3";
+    mantrachain-src.url = "git+https://github.com/MANTRA-Chain/mantrachain?ref=refs/tags/v2.0.0";
     mantrachain-src.flake = false;
 
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
