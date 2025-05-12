@@ -783,6 +783,23 @@
         "type": "github"
       }
     },
+    "ibc-go-v10-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746016806,
+        "narHash": "sha256-4y7Hm5pIad6Ahu3D95CfXfM2L8wJpaFrvZwQfWQlBK8=",
+        "owner": "cosmos",
+        "repo": "ibc-go",
+        "rev": "e120ef5d4778c3e659ce57b59f028b250be5bb2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cosmos",
+        "ref": "v10.2.0",
+        "repo": "ibc-go",
+        "type": "github"
+      }
+    },
     "ibc-go-v2-src": {
       "flake": false,
       "locked": {
@@ -1301,11 +1318,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1723603349,
-        "narHash": "sha256-VMg6N7MryOuvSJ8Sj6YydarnUCkL7cvMdrMcnsJnJCE=",
+        "lastModified": 1746576598,
+        "narHash": "sha256-FshoQvr6Aor5SnORVvh/ZdJ1Sa2U4ZrIMwKBX5k2wu0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "daf7bb95821b789db24fc1ac21f613db0c1bf2cb",
+        "rev": "b3582c75c7f21ce0b429898980eddbbf05c68e55",
         "type": "github"
       },
       "original": {
@@ -1495,6 +1512,7 @@
         "gomod2nix": "gomod2nix",
         "haqq-src": "haqq-src",
         "hermes-src": "hermes-src",
+        "ibc-go-v10-src": "ibc-go-v10-src",
         "ibc-go-v2-src": "ibc-go-v2-src",
         "ibc-go-v3-src": "ibc-go-v3-src",
         "ibc-go-v4-src": "ibc-go-v4-src",

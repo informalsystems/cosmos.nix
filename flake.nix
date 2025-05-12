@@ -153,6 +153,9 @@
     ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-rc.0";
     ibc-go-v9-src.flake = false;
 
+    ibc-go-v10-src.url = "github:cosmos/ibc-go/v10.2.0";
+    ibc-go-v10-src.flake = false;
+
     ibc-go-v7-wasm-src = {
       type = "github";
       owner = "cosmos";

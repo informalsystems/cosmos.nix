@@ -101,6 +101,18 @@ with inputs;
       engine = "cometbft/cometbft";
     };
 
+    ibc-go-v10-simapp = {
+      name = "simd";
+      version = "v10.2.0";
+      src = ibc-go-v10-src;
+      rev = ibc-go-v10-src.rev;
+      sourceRoot = "source/simapp";
+      vendorHash = "sha256-JkkTKj7vtLqqNkUAQn5OusiqRdXFeScfqz51diuGosk=";
+      goVersion = "1.23";
+      tags = ["netgo"];
+      engine = "cometbft/cometbft";
+    };
+
     ibc-go-v7-wasm-simapp = {
       name = "simd";
       version = "v7.4.0-wasm";
