@@ -49,35 +49,19 @@
         "type": "github"
       }
     },
-    "beaker-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-ZLDuTwB8PG0rMiDcLRxCf/xuoFowgK+aat9mSZVp+Dw=",
-        "owner": "osmosis-labs",
-        "repo": "beaker",
-        "rev": "fc046f8fe9d8baecdd76404b57b31f5a4e100301",
-        "type": "github"
-      },
-      "original": {
-        "owner": "osmosis-labs",
-        "ref": "v0.1.8",
-        "repo": "beaker",
-        "type": "github"
-      }
-    },
     "celestia-app-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1722019080,
-        "narHash": "sha256-NN3O1nN+LTxDzYBzXjksfKl9DMCbFy+MsuxPBKgv9Dc=",
+        "lastModified": 1730300893,
+        "narHash": "sha256-ui67KRaabQyZiV5QD4Qyaqobky++rAe9ppJ2yveoXOs=",
         "owner": "celestiaorg",
         "repo": "celestia-app",
-        "rev": "b6db108a444c234e4b4656031d876bc45421c5f3",
+        "rev": "06f24f5dbe48c29964e1d8cfb030cffd90797ded",
         "type": "github"
       },
       "original": {
         "owner": "celestiaorg",
-        "ref": "v1.14.0",
+        "ref": "v2.3.1",
         "repo": "celestia-app",
         "type": "github"
       }
@@ -85,15 +69,16 @@
     "celestia-node-src": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-O5a8Dy7WOSaLzYHTZAZFHFeJwqOLyajcHmGEcphOpKg=",
+        "lastModified": 1725294938,
+        "narHash": "sha256-AiNd7dM8QK8KSL5CzMDZ2kdMKLAJF55IWMkF8X22Pio=",
         "owner": "celestiaorg",
         "repo": "celestia-node",
-        "rev": "e55e1c88708b46839867bcbbed9bcdd8a3ffa830",
+        "rev": "6744f648649ebb5fee1b27faf7aca96ecf4519b2",
         "type": "github"
       },
       "original": {
         "owner": "celestiaorg",
-        "ref": "v0.13.0",
+        "ref": "v0.16.0",
         "repo": "celestia-node",
         "type": "github"
       }
@@ -1479,7 +1464,6 @@
         "akash-src": "akash-src",
         "andromeda-src": "andromeda-src",
         "apalache-src": "apalache-src",
-        "beaker-src": "beaker-src",
         "celestia-app-src": "celestia-app-src",
         "celestia-node-src": "celestia-node-src",
         "cometbft-src": "cometbft-src",

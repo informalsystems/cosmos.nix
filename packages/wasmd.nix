@@ -6,7 +6,7 @@
 cosmosLib.mkCosmosGoApp {
   name = "wasm";
   version = "v0.53.0";
-  goVersion = "1.21";
+  goVersion = "1.23";
   src = wasmd-src;
   rev = wasmd-src.rev;
   vendorHash = "sha256-rhuYWhaTtrHCeO9l4uiP7L2OmWkCPtMHXBqS7TRzM4s=";

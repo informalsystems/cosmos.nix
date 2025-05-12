@@ -297,10 +297,10 @@
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
     migaloo-src.flake = false;
 
-    celestia-app-src.url = "github:celestiaorg/celestia-app/v1.14.0";
+    celestia-app-src.url = "github:celestiaorg/celestia-app/v2.3.1";
     celestia-app-src.flake = false;
 
-    celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
+    celestia-node-src.url = "github:celestiaorg/celestia-node/v0.16.0";
     celestia-node-src.flake = false;
 
     neutron-src.url = "github:neutron-org/neutron/v4.2.2";
@@ -329,10 +329,6 @@
     # contracts
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
-
-    # tools
-    beaker-src.url = "github:osmosis-labs/beaker/v0.1.8";
-    beaker-src.flake = false;
 
     cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.3";
     cosmwasm-src.flake = false;

@@ -10,7 +10,11 @@
     ];
     postInstall = ''
       cp ./bindings.h $out/lib/
-      ln -s $out/lib/libwasmvm.so $out/lib/libwasmvm.${builtins.head (pkgs.lib.strings.splitString "-" system)}.so
+      arch=$(uname -m)
+      sofile=$out/lib/libwasmvm.so
+      if [ -f "$sofile" ]; then
+        ln -s libwasmvm.so $out/lib/libwasmvm.$arch.so
+      fi
     '';
     doCheck = false;
   };

@@ -12,7 +12,7 @@
     pname = "injective";
     version = "v1.13.1";
     src = injective-src;
-    go = pkgs.go_1_22;
+    go = pkgs.go_1_23;
     modules = ./gomod2nix.toml;
     doCheck = false;
     pwd = ./.;

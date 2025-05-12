@@ -10,4 +10,13 @@ mkCosmosGoApp {
   vendorHash = "sha256-rg3ZrNIMuUUW01lyjklTxn4zYlOiwFXyTqSE7scaRAk=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
+
+  preBuild = ''
+    go mod tidy
+  '';
+  postPatch = ''
+    export HOME=$TMPDIR
+    go mod tidy
+    go mod vendor
+  '';
 }

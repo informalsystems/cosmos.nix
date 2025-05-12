@@ -10,4 +10,9 @@ buildCosmwasmContract {
   cargoLock = {
     lockFile = "${cw-plus-src}/Cargo.lock";
   };
+
+  meta = {
+    # Prevent failure due to missing `rustc.targetPlatforms`
+    platforms = ["aarch64-darwin" "x86_64-linux"];
+  };
 }

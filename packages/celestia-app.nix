@@ -4,11 +4,13 @@
 }:
 mkCosmosGoApp {
   name = "celestia-app";
-  version = "v1.14.0";
+  version = "v2.3.1";
   src = celestia-app-src;
   rev = celestia-app-src.rev;
-  goVersion = "1.22";
-  vendorHash = "sha256-xvjdU0GPbqet8L8rvRMZ8AKN7huRn6eDoEYGJYhdJaY=";
+  goVersion = "1.23";
+  vendorHash = "sha256-zL3G+ml2bIcQlthHY6rovr2ykCGHqV51rQBkS3J9tGo=";
   engine = "tendermint/tendermint";
   doCheck = false;
+
+  excludedPackages = ["test/interchain" "test/testground"];
 }

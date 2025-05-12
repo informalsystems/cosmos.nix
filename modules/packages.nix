@@ -18,10 +18,6 @@
           inherit (inputs) akash-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
-        beaker = import ../packages/beaker.nix {
-          inherit pkgs;
-          inherit (inputs) beaker-src;
-        };
         celestia-app = import ../packages/celestia-app.nix {
           inherit (inputs) celestia-app-src;
           inherit (cosmosLib) mkCosmosGoApp;

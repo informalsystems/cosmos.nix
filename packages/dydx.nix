@@ -10,7 +10,7 @@ mkCosmosGoApp {
   moduleSubDir = "/protocol";
   vendorHash = "sha256-BwFD4IKk211dfLDKqQB1uixYIVada+KlWkBFEq6UDWc=";
   tags = ["netgo"];
-  goVersion = "1.21";
+  goVersion = "1.23";
   engine = "cometbft/cometbft";
   doCheck = false;
 }
