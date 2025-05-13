@@ -2,7 +2,18 @@
   pkgs,
   namada-src,
 }:
-pkgs.rustPlatform.buildRustPackage {
+let
+  rust = pkgs.rust-bin.stable."1.76.0".default.overrideAttrs (old: {
+    targetPlatforms = [ "x86_64-linux" ];
+    badTargetPlatforms = [];
+  });
+  rustPlatform = pkgs.makeRustPlatform {
+    cargo = rust;
+    rustc = rust;
+  };
+in
+
+rustPlatform.buildRustPackage {
   pname = "namada";
   version = "v0.28.1";
   src = namada-src;
