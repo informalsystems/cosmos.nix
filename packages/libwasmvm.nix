@@ -7,6 +7,7 @@
     pname = "libwasmvm";
     nativeBuildInputs = with pkgs; [
       rust-bin.stable.latest.default
+      pkgs.deterministic-uname
     ];
     postInstall = ''
       cp ./bindings.h $out/lib/
