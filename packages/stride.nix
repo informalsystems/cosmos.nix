@@ -10,7 +10,7 @@ with inputs;
     stride = {
       name = "stride";
       version = "v23.0.1";
-      goVersion = "1.21";
+      goVersion = "1.23";
       src = stride-src;
       rev = stride-src.rev;
       vendorHash = "sha256-T1xdcD5ucMuAIMZdLrlBxkdWJF2Uirn7+lBpypf6q98=";
@@ -27,7 +27,7 @@ with inputs;
     stride-no-admin = {
       name = "stride-no-admin";
       version = "v23.0.1";
-      goVersion = "1.21";
+      goVersion = "1.23";
       src = stride-src;
       rev = stride-src.rev;
       vendorHash = "sha256-T1xdcD5ucMuAIMZdLrlBxkdWJF2Uirn7+lBpypf6q98=";

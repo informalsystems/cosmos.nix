@@ -6,6 +6,9 @@ pkgs.rustPlatform.buildRustPackage {
   pname = "hermes";
   version = "v1.7.4";
   src = hermes-src;
+  cargoLock = {
+    lockFile = "${hermes-src}/Cargo.lock";
+  };
   nativeBuildInputs = with pkgs; [rust-bin.stable.latest.default];
   buildInputs = with pkgs;
     lib.lists.optionals stdenv.isDarwin

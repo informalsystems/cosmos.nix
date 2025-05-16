@@ -9,6 +9,6 @@ mkCosmosGoApp {
   rev = dymension-src.rev;
   vendorHash = "sha256-2mDEDtFN0T6430owWxPl+zLl/BaJaNDMA//RUBtncbs=";
   tags = ["netgo"];
-  goVersion = "1.21";
+  goVersion = "1.23";
   engine = "cometbft/cometbft";
 }

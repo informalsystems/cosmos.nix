@@ -54,7 +54,7 @@
 
       gaia8 = {
         name = "gaia";
-        vendorHash = "sha256-w3MLjxXzKytMxCN9Q9RPeeXq7ijDQXoH0d+ti5FLMtA=";
+        vendorHash = "sha256-Wu4KZVzBCdGOCbHzaAE7zRFrYurlIeC0eJmOg28xbXg=";
         version = "v8.0.1";
         src = gaia8-src;
         rev = gaia8-src.rev;
@@ -68,7 +68,7 @@
 
       gaia9 = {
         name = "gaia";
-        vendorHash = "sha256-W1pKtrWfXe0pdO7ntcjFbDa0LTpD91yI2mUMXBiDo1w=";
+        vendorHash = "sha256-WIJ/VTMNh1YSj9fkmoJv1giANNgANV+pLdFzY2dqhVQ=";
         version = "v9.0.3";
         src = gaia9-src;
         rev = gaia9-src.rev;
@@ -82,7 +82,7 @@
 
       gaia10 = {
         name = "gaia";
-        vendorHash = "sha256-W0+XQyXDvwKq7iS9GhW/UK0/4D32zK26u0abGNPsdZc=";
+        vendorHash = "sha256-gL7Ved289OTelPXG3/bHzd4WtXk0TX9JFsIjJV2nyeo=";
         version = "v10.0.2";
         src = gaia10-src;
         rev = gaia10-src.rev;
@@ -96,7 +96,7 @@
 
       gaia11 = {
         name = "gaia";
-        vendorHash = "sha256-05S5mmex/IReEBfo0BgB/99NWY7tGM2wWCi0qTa50oM=";
+        vendorHash = "sha256-Qrd/w10j6kCO0fO98d1X1q4QNua2/obIht4AijVWuxk=";
         version = "v11.0.0";
         src = gaia11-src;
         rev = gaia11-src.rev;
@@ -110,7 +110,7 @@
 
       gaia12 = {
         name = "gaia";
-        vendorHash = "sha256-yULjy7lBfxgm0rZjqwIAu99TYBnW4O29mz7u+Bnu6gY=";
+        vendorHash = "sha256-Q4dthEaOFF1GQUSsBi7FtXjeWpjDbirbiXLIU0vfaRQ=";
         version = "v12.0.0";
         src = gaia12-src;
         rev = gaia12-src.rev;
@@ -124,7 +124,7 @@
 
       gaia13 = {
         name = "gaia";
-        vendorHash = "sha256-SQF6YNVVOfpL55Uc4LIzo2jv/cdKp8hHUeqcpc/dBEc=";
+        vendorHash = "sha256-GvinrC9/O7EjHqcWRC/CzbYIGdULiJxTGY3HH1LSz1U=";
         version = "v13.0.2";
         src = gaia13-src;
         rev = gaia13-src.rev;
@@ -138,7 +138,7 @@
 
       gaia14 = {
         name = "gaia";
-        vendorHash = "sha256-7hmP0Uc4HHW7voy3DRMkpAXifon/qnaaT6jaUf/h8HU=";
+        vendorHash = "sha256-kmDemA4dfu8di9xzm6qLJZJ8sqQ56B7tbWuSBMsJKNY=";
         version = "v14.0.0";
         src = gaia14-src;
         rev = gaia14-src.rev;
@@ -152,7 +152,7 @@
 
       gaia15 = {
         name = "gaia";
-        vendorHash = "sha256-3n/tBOEwM9gvrLikJTJN7vzwVL9td+0+2yqgS7jzRd0=";
+        vendorHash = "sha256-Ozh2m3YBdYVpN9qaywUbQ1ewFpwL4uWCdhmNTxBhSkI=";
         version = "v15.2.0";
         src = gaia15-src;
         rev = gaia15-src.rev;
@@ -166,9 +166,9 @@
 
       gaia17 = {
         name = "gaia";
-        vendorHash = "sha256-gDzq+Jfs5EyH0tbeBzkz3xR75t324yaWLRhw59U8aRI=";
+        vendorHash = "sha256-5XRQj6zR1VsJRe3VrjzI6INvm1Obz9JgmCQTQpCZyf0=";
         version = "v17.2.0";
-        goVersion = "1.21";
+        goVersion = "1.23";
         src = gaia17-src;
         rev = gaia17-src.rev;
         tags = ["netgo"];
@@ -183,7 +183,7 @@
         name = "gaia";
         vendorHash = "sha256-+vTP15mftPKWMkE4yI3avI+jQt917YCYGdUt29E1lYs=";
         version = "v18.1.0";
-        goVersion = "1.22";
+        goVersion = "1.23";
         src = gaia18-src;
         rev = gaia18-src.rev;
         tags = ["netgo"];

@@ -5,12 +5,16 @@ nix-std: {
   buildCosmwasmContract = let
     target = "wasm32-unknown-unknown";
     # from https://github.com/CosmWasm/rust-optimizer/blob/main/Dockerfile
-    rust = pkgs.rust-bin.stable."1.75.0".default.override {
-      extensions = [];
-      targets = [
-        target
-      ];
-    };
+    rust =
+      (pkgs.rust-bin.stable."1.75.0".default.override {
+        extensions = [];
+        targets = [
+          target
+        ];
+      }).overrideAttrs (old: {
+        targetPlatforms = [target];
+        badTargetPlatforms = [];
+      });
 
     defaultRustPlatform = pkgs.makeRustPlatform {
       cargo = rust;
@@ -38,7 +42,7 @@ nix-std: {
         ]);
       cleanedArgs = builtins.removeAttrs args ["rustPlatform" "profile" "nativeBuildInputs"];
     in
-      rustPlatform.buildRustPackage (
+      (rustPlatform.buildRustPackage (
         {
           RUSTFLAGS = "-C link-arg=-s";
           nativeBuildInputs = wasmNativeBuildInputs;
@@ -63,7 +67,12 @@ nix-std: {
           '';
         }
         // cleanedArgs
-      );
+      )).overrideAttrs (_: {
+        meta =
+          args.meta or {
+            platforms = ["x86_64-linux" "aarch64-darwin"];
+          };
+      });
 
   buildApp = args @ {
     name,
@@ -75,7 +84,7 @@ nix-std: {
     additionalLdFlags ? [],
     appName ? null,
     preCheck ? null,
-    goVersion ? "1.21",
+    goVersion ? "1.23",
     ...
   }: let
     buildGoModuleArgs =
@@ -114,8 +123,6 @@ nix-std: {
       else appName;
 
     buildGoModuleVersion = {
-      "1.21" = pkgs.buildGo121Module;
-      "1.22" = pkgs.buildGo122Module;
       "1.23" = pkgs.buildGo123Module;
     };
 

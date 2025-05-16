@@ -6,7 +6,7 @@
 cosmosLib.mkCosmosGoApp {
   name = "juno";
   version = "v25.0.0";
-  goVersion = "1.22";
+  goVersion = "1.23";
   src = juno-src;
   rev = juno-src.rev;
   vendorHash = "sha256-HDHsBuuJ+ta3ynYv8NVqEdd0h4UNWBelUA8j+YoEf4E=";

@@ -4,11 +4,11 @@
 }:
 mkCosmosGoApp {
   name = "celestia-node";
-  version = "v0.13.0";
+  version = "v0.16.0";
   src = celestia-node-src;
   rev = celestia-node-src.rev;
-  goVersion = "1.21";
-  vendorHash = "sha256-wUyb6gZ9n+wOBagJ1BdKcbBGtLIaVyaRH6NHSJ7VFk8=";
+  goVersion = "1.23";
+  vendorHash = "sha256-8IDjVQZrOfg4tR//mQxKVoJjaTYJdSuENS5IrAZDdN0=";
   engine = "tendermint/tendermint";
   doCheck = false;
 }

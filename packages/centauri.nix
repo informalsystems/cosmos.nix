@@ -8,7 +8,7 @@ cosmosLib.mkCosmosGoApp {
   version = "v6.4.8";
   src = composable-cosmos-src;
   rev = composable-cosmos-src.rev;
-  vendorHash = "sha256-GZSvL2INqpBLiusSW9SOW/Ylw5+vfRST0h1xBdvyaDQ=";
+  vendorHash = "sha256-xSVJApdLIBVNjfXLDpoXoktzG+gwdg284BTr/tBvh4w=";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   excludedPackages = ["interchaintest" "simd"];

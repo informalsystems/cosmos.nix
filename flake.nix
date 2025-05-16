@@ -153,6 +153,9 @@
     ibc-go-v9-src.url = "github:cosmos/ibc-go/v9.0.0-rc.0";
     ibc-go-v9-src.flake = false;
 
+    ibc-go-v10-src.url = "github:cosmos/ibc-go/v10.2.0";
+    ibc-go-v10-src.flake = false;
+
     ibc-go-v7-wasm-src = {
       type = "github";
       owner = "cosmos";
@@ -294,10 +297,10 @@
     migaloo-src.url = "github:White-Whale-Defi-Platform/migaloo-chain/v4.2.0";
     migaloo-src.flake = false;
 
-    celestia-app-src.url = "github:celestiaorg/celestia-app/v1.14.0";
+    celestia-app-src.url = "github:celestiaorg/celestia-app/v2.3.1";
     celestia-app-src.flake = false;
 
-    celestia-node-src.url = "github:celestiaorg/celestia-node/v0.13.0";
+    celestia-node-src.url = "github:celestiaorg/celestia-node/v0.16.0";
     celestia-node-src.flake = false;
 
     neutron-src.url = "github:neutron-org/neutron/v4.2.2";
@@ -318,18 +321,11 @@
     slinky-src.url = "github:skip-mev/slinky/v0.2.0";
     slinky-src.flake = false;
 
-    rollapp-evm-src.url = "github:dymensionxyz/rollapp-evm/21b29f6e77f5c11a2036252d60819810abbbd7b8";
-    rollapp-evm-src.flake = false;
-
     haqq-src.url = "github:haqq-network/haqq/18370cfb2f9aab35d311c4c75ab5586f50213830";
 
     # contracts
     cw-plus-src.url = "github:CosmWasm/cw-plus/v1.1.2";
     cw-plus-src.flake = false;
-
-    # tools
-    beaker-src.url = "github:osmosis-labs/beaker/v0.1.8";
-    beaker-src.flake = false;
 
     cosmwasm-src.url = "github:CosmWasm/cosmwasm/v1.5.3";
     cosmwasm-src.flake = false;

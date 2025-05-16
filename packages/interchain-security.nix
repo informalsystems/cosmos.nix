@@ -9,7 +9,7 @@ mkCosmosGoApp {
   src = interchain-security-src;
   rev = interchain-security-src.rev;
   vendorHash = "sha256-hBKJA5kIw7aHicCcmvzm9pXb+WPjbx5mq7UDPkLLuJ4=";
-  goVersion = "1.22";
+  goVersion = "1.23";
   tags = ["netgo"];
   engine = "cometbft/cometbft";
   doCheck = false; # tests are currently failing

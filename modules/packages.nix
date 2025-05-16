@@ -18,10 +18,6 @@
           inherit (inputs) akash-src;
           inherit (cosmosLib) mkCosmosGoApp;
         };
-        beaker = import ../packages/beaker.nix {
-          inherit pkgs;
-          inherit (inputs) beaker-src;
-        };
         celestia-app = import ../packages/celestia-app.nix {
           inherit (inputs) celestia-app-src;
           inherit (cosmosLib) mkCosmosGoApp;
@@ -164,10 +160,6 @@
           inherit (inputs) wasmd-src;
           inherit (self'.packages) libwasmvm_2_1_2;
           inherit cosmosLib;
-        };
-        rollapp-evm = import ../packages/rollapp-evm.nix {
-          inherit (cosmosLib) mkCosmosGoApp;
-          inherit (inputs) rollapp-evm-src;
         };
       }
       # This list contains attr sets that are recursively merged into the
