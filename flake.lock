@@ -1116,6 +1116,23 @@
         "type": "github"
       }
     },
+    "mantrachain-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739411022,
+        "narHash": "sha256-E8XE2z2rM1pNGPCgv6WtVo60OpGk409nl1oQq2bsRr0=",
+        "ref": "refs/tags/v2.0.0",
+        "rev": "e17cefad8097ed3e0a34c0183ba8f661be1506ab",
+        "revCount": 742,
+        "type": "git",
+        "url": "https://github.com/MANTRA-Chain/mantrachain"
+      },
+      "original": {
+        "ref": "refs/tags/v2.0.0",
+        "type": "git",
+        "url": "https://github.com/MANTRA-Chain/mantrachain"
+      }
+    },
     "migaloo-src": {
       "flake": false,
       "locked": {
@@ -1252,6 +1269,22 @@
         "dir": "lib",
         "owner": "NixOS",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1739633219,
+        "narHash": "sha256-aRjo1U8V7GpsDL/RMlQF/2a9SavJBqo0nnoPHF1XHcE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "96afb4d5499b8f2994a0dc96ee52ac76ce6609e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1500,12 +1533,14 @@
         "iris-src": "iris-src",
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
+        "mantrachain-src": "mantrachain-src",
         "migaloo-src": "migaloo-src",
         "namada-src": "namada-src",
         "neutron-src": "neutron-src",
         "nix-std": "nix-std",
         "nix2container": "nix2container",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-master": "nixpkgs-master",
         "osmosis-src": "osmosis-src",
         "provenance-src": "provenance-src",
         "regen-src": "regen-src",
@@ -1538,7 +1573,8 @@
         "wasmvm_2_1_0-src": "wasmvm_2_1_0-src",
         "wasmvm_2_1_2-src": "wasmvm_2_1_2-src",
         "wasmvm_2_1_3-src": "wasmvm_2_1_3-src",
-        "wasmvm_2_1_4-src": "wasmvm_2_1_4-src"
+        "wasmvm_2_1_4-src": "wasmvm_2_1_4-src",
+        "wasmvm_2_2_1-src": "wasmvm_2_2_1-src"
       }
     },
     "rust-overlay": {
@@ -2089,6 +2125,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v2.1.4",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_2_2_1-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734630409,
+        "narHash": "sha256-HA/YPdE1yy2/vfiQWOTE0z75agYZL/kWTvpXKyKbfLk=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "bb5b8c1afc27b5df0cb9162ff44266a830991e68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v2.2.1",
         "repo": "wasmvm",
         "type": "github"
       }
