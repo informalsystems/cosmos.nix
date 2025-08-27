@@ -204,9 +204,8 @@
     juno-src.url = "github:CosmosContracts/juno/v25.0.0";
     juno-src.flake = false;
 
-    # Using `git` type source to avoid potential issues with larger repositories
-    # See: https://github.com/informalsystems/cosmos.nix/issues/284
-    osmosis-src.url = "git+https://github.com/osmosis-labs/osmosis?ref=refs/tags/v30.0.1";
+    # Using `tarball` to avoid NAR hash mismatched caused by git-lfs
+    osmosis-src.url = "tarball+https://github.com/osmosis-labs/osmosis/archive/697b89f2790dbedba88c1a28396571701ced17ad.tar.gz";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";

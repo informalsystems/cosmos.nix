@@ -1370,16 +1370,12 @@
       "locked": {
         "lastModified": 1754475992,
         "narHash": "sha256-Mr8fIreIAJ2B/tyzEI9X6FkZLie8FvUXwg59xHDMogk=",
-        "ref": "refs/tags/v30.0.1",
-        "rev": "697b89f2790dbedba88c1a28396571701ced17ad",
-        "revCount": 4155,
-        "type": "git",
-        "url": "https://github.com/osmosis-labs/osmosis"
+        "type": "tarball",
+        "url": "https://github.com/osmosis-labs/osmosis/archive/697b89f2790dbedba88c1a28396571701ced17ad.tar.gz"
       },
       "original": {
-        "ref": "refs/tags/v30.0.1",
-        "type": "git",
-        "url": "https://github.com/osmosis-labs/osmosis"
+        "type": "tarball",
+        "url": "https://github.com/osmosis-labs/osmosis/archive/697b89f2790dbedba88c1a28396571701ced17ad.tar.gz"
       }
     },
     "pre-commit-hooks": {
