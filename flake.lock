@@ -1132,22 +1132,6 @@
         "type": "github"
       }
     },
-    "namada-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-WyIVffqszY3rz3ClQJlpDaexLGQk8pVK+Y3k/D9Lvxg=",
-        "owner": "anoma",
-        "repo": "namada",
-        "rev": "468d3d3bcadd2bd11760855d2bbfcc0b4ce27e14",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anoma",
-        "ref": "v0.28.1",
-        "repo": "namada",
-        "type": "github"
-      }
-    },
     "neutron-src": {
       "flake": false,
       "locked": {
@@ -1501,7 +1485,6 @@
         "ixo-src": "ixo-src",
         "juno-src": "juno-src",
         "migaloo-src": "migaloo-src",
-        "namada-src": "namada-src",
         "neutron-src": "neutron-src",
         "nix-std": "nix-std",
         "nix2container": "nix2container",

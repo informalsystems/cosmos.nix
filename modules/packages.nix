@@ -228,12 +228,6 @@
                 inherit cosmosLib;
               };
             }
-            {
-              namada = import ../packages/namada.nix {
-                inherit pkgs;
-                inherit (inputs) namada-src;
-              };
-            }
           ])
         ## Darwin only packages
         ++ (lists.optionals pkgs.stdenv.isDarwin
