@@ -6,7 +6,7 @@
   libwasmvmCommon = {
     pname = "libwasmvm";
     nativeBuildInputs = with pkgs; [
-      rust-bin.stable.latest.default
+      rust-bin.stable."1.88.0".default
       pkgs.deterministic-uname
     ];
     postInstall = ''
