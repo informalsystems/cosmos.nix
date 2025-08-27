@@ -115,7 +115,7 @@
         };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
-          inherit (self'.packages) libwasmvm_2_1_3;
+          inherit (self'.packages) libwasmvm_2_2_4;
           inherit cosmosLib;
           inherit (pkgs) libiconv;
         };

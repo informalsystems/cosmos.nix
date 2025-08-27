@@ -204,7 +204,7 @@
     juno-src.url = "github:CosmosContracts/juno/v25.0.0";
     juno-src.flake = false;
 
-    osmosis-src.url = "git+https://github.com/osmosis-labs/osmosis?ref=refs/tags/v28.0.0";
+    osmosis-src.url = "github:osmosis-labs/osmosis/v30.0.1";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
@@ -233,6 +233,9 @@
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
+
+    wasmvm_2_2_4-src.url = "github:CosmWasm/wasmvm/v2.2.4";
+    wasmvm_2_2_4-src.flake = false;
 
     wasmvm_2_2_3-src.url = "github:CosmWasm/wasmvm/v2.2.3";
     wasmvm_2_2_3-src.flake = false;

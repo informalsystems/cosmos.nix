@@ -1368,18 +1368,18 @@
     "osmosis-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1733410232,
-        "narHash": "sha256-XU6eRpngXZMzDS3C68T7ocHAorPXPP0jtC/nDB7XGeE=",
-        "ref": "refs/tags/v28.0.0",
-        "rev": "39ec8f9e54742aa52ed531210b02218171dfadd9",
-        "revCount": 4026,
-        "type": "git",
-        "url": "https://github.com/osmosis-labs/osmosis"
+        "lastModified": 1754475992,
+        "narHash": "sha256-Mr8fIreIAJ2B/tyzEI9X6FkZLie8FvUXwg59xHDMogk=",
+        "owner": "osmosis-labs",
+        "repo": "osmosis",
+        "rev": "697b89f2790dbedba88c1a28396571701ced17ad",
+        "type": "github"
       },
       "original": {
-        "ref": "refs/tags/v28.0.0",
-        "type": "git",
-        "url": "https://github.com/osmosis-labs/osmosis"
+        "owner": "osmosis-labs",
+        "ref": "v30.0.1",
+        "repo": "osmosis",
+        "type": "github"
       }
     },
     "pre-commit-hooks": {
@@ -1557,7 +1557,8 @@
         "wasmvm_2_1_2-src": "wasmvm_2_1_2-src",
         "wasmvm_2_1_3-src": "wasmvm_2_1_3-src",
         "wasmvm_2_1_4-src": "wasmvm_2_1_4-src",
-        "wasmvm_2_2_3-src": "wasmvm_2_2_3-src"
+        "wasmvm_2_2_3-src": "wasmvm_2_2_3-src",
+        "wasmvm_2_2_4-src": "wasmvm_2_2_4-src"
       }
     },
     "rust-overlay": {
@@ -2125,6 +2126,23 @@
       "original": {
         "owner": "CosmWasm",
         "ref": "v2.2.3",
+        "repo": "wasmvm",
+        "type": "github"
+      }
+    },
+    "wasmvm_2_2_4-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746018578,
+        "narHash": "sha256-DoZW2V72r33ihb1i4SD0DG5m/wOHddwhFmac+vkCjqo=",
+        "owner": "CosmWasm",
+        "repo": "wasmvm",
+        "rev": "45efbe55f3874020a1ba16effadf2f6737a69da1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CosmWasm",
+        "ref": "v2.2.4",
         "repo": "wasmvm",
         "type": "github"
       }
