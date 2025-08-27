@@ -204,7 +204,9 @@
     juno-src.url = "github:CosmosContracts/juno/v25.0.0";
     juno-src.flake = false;
 
-    osmosis-src.url = "github:osmosis-labs/osmosis/v30.0.1";
+    # Using `git` type source to avoid potential issues with larger repositories
+    # See: https://github.com/informalsystems/cosmos.nix/issues/284
+    osmosis-src.url = "git+https://github.com/osmosis-labs/osmosis?ref=refs/tags/v30.0.1";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
