@@ -7,11 +7,9 @@
 cosmosLib.mkCosmosGoApp {
   name = "osmosis";
   version = "v30.0.1";
-  # nixpkgs latest go version v1.22 is v1.22.5 but Osmosis v28.0.8 requires
-  # v1.22.7 or more so v1.23 is used instead
   goVersion = "1.23";
   src = osmosis-src;
-  rev = osmosis-src.rev;
+  rev = "697b89f2790dbedba88c1a28396571701ced17ad"; # Revision for v30.0.1
   vendorHash = "sha256-jXfYYZUjm7QU6rCy/zQPUkb3BfgZ1/VA/gUL+n8Cb20=";
   tags = ["netgo"];
   excludedPackages = ["cl-genesis-positions"];
