@@ -244,6 +244,12 @@
                   program = "${packages.stargaze}/bin/starsd";
                 };
               }
+              {
+                namada = {
+                  type = "app";
+                  program = "${packages.namada}/bin/namada";
+                };
+              }
             ])
           ## Darwin only apps
           ++ (lists.optionals pkgs.stdenv.isDarwin
