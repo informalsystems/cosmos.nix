@@ -32,23 +32,6 @@
         "type": "github"
       }
     },
-    "apalache-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1714996894,
-        "narHash": "sha256-3xw7bajvhGL+wGne4MRh/HpDFdp+HGfnfzqq8YSx9tc=",
-        "owner": "informalsystems",
-        "repo": "apalache",
-        "rev": "5dee24e4d05dc3476977a2e49f4963e3802fae2f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "informalsystems",
-        "ref": "v0.44.11",
-        "repo": "apalache",
-        "type": "github"
-      }
-    },
     "celestia-app-src": {
       "flake": false,
       "locked": {
@@ -1427,7 +1410,6 @@
       "inputs": {
         "akash-src": "akash-src",
         "andromeda-src": "andromeda-src",
-        "apalache-src": "apalache-src",
         "celestia-app-src": "celestia-app-src",
         "celestia-node-src": "celestia-node-src",
         "cometbft-src": "cometbft-src",

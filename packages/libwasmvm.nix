@@ -92,6 +92,14 @@ in
           "cosmwasm-crypto-2.1.0" = "sha256-3rCzYh+lNRn4YiRPsFxJ7s4D4QlX+m3Yekz2h22L8vE=";
         };
       };
+      # override Rust to avoid compilation error
+      # Using v1.74.0 for:
+      #   * < v1.80.0 to avoid `time` compilation error
+      #   * < v1.75.0 to avoid `bnum` compilation error
+      nativeBuildInputs = with pkgs; [
+        rust-bin.stable."1.74.0".default
+        pkgs.deterministic-uname
+      ];
     };
 
     libwasmvm_2_0_3 = {
@@ -116,6 +124,14 @@ in
           "cosmwasm-crypto-2.0.0" = "sha256-wXBWwc1jZsO0kfrh0jkl4+TeFsM/8ZkptCEJSpgsLG8=";
         };
       };
+      # override Rust to avoid compilation error
+      # Using v1.74.0 for:
+      #   * < v1.80.0 to avoid `time` compilation error
+      #   * < v1.75.0 to avoid `bnum` compilation error
+      nativeBuildInputs = with pkgs; [
+        rust-bin.stable."1.74.0".default
+        pkgs.deterministic-uname
+      ];
     };
 
     libwasmvm_1_5_5 = {
@@ -152,6 +168,14 @@ in
           "cosmwasm-crypto-1.5.2" = "sha256-OgROAoOflWMfiOCuSt52EHiP2E+CzOqLvVJDWufV6kU=";
         };
       };
+      # override Rust to avoid compilation error
+      # Using v1.74.0 for:
+      #   * < v1.80.0 to avoid `time` compilation error
+      #   * < v1.75.0 to avoid `bnum` compilation error
+      nativeBuildInputs = with pkgs; [
+        rust-bin.stable."1.74.0".default
+        pkgs.deterministic-uname
+      ];
     };
 
     libwasmvm_1_5_0 = {
@@ -164,6 +188,14 @@ in
           "cosmwasm-crypto-1.5.0" = "sha256-41s5jLFzw9Jo+dirAVOad1dtUqCBY6rIz/6TRc0frMw=";
         };
       };
+      # override Rust to avoid compilation error
+      # Using v1.74.0 for:
+      #   * < v1.80.0 to avoid `time` compilation error
+      #   * < v1.75.0 to avoid `bnum` compilation error
+      nativeBuildInputs = with pkgs; [
+        rust-bin.stable."1.74.0".default
+        pkgs.deterministic-uname
+      ];
     };
 
     libwasmvm_1_3_0 = {

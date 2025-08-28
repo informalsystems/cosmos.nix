@@ -3,7 +3,6 @@
   pkgs,
 }: let
   version = "v0.44.11 ";
-
   postPatch = ''
     # Patch the build.sbt file so that it does not call the `git describe` command.
     # This is called by sbt-derivation to resolve the Scala dependencies, however

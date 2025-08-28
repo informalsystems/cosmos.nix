@@ -231,12 +231,13 @@
           ## Linux only apps
           ++ (lists.optionals pkgs.stdenv.isLinux
             [
-              {
-                apalache = {
-                  type = "app";
-                  program = "${packages.apalache}/bin/apalache-mc";
-                };
-              }
+              # fails with: [error] [launcher] could not retrieve sbt 1.11.5
+              #{
+              #  apalache = {
+              #    type = "app";
+              #    program = "${packages.apalache}/bin/apalache-mc";
+              #  };
+              #}
               {
                 stargaze = {
                   type = "app";
