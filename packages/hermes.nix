@@ -4,7 +4,7 @@
 }:
 pkgs.rustPlatform.buildRustPackage {
   pname = "hermes";
-  version = "v1.7.4";
+  version = "v1.9.0";
   src = hermes-src;
   cargoLock = {
     lockFile = "${hermes-src}/Cargo.lock";

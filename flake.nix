@@ -68,7 +68,7 @@
     ibc-rs-src.url = "github:informalsystems/ibc-rs/v1.0.0";
     ibc-rs-src.flake = false;
 
-    hermes-src.url = "github:informalsystems/hermes/v1.7.4";
+    hermes-src.url = "github:informalsystems/hermes/v1.9.0";
     hermes-src.flake = false;
 
     relayer-src.url = "github:cosmos/relayer/v1.0.0";
@@ -204,7 +204,8 @@
     juno-src.url = "github:CosmosContracts/juno/v25.0.0";
     juno-src.flake = false;
 
-    osmosis-src.url = "git+https://github.com/osmosis-labs/osmosis?ref=refs/tags/v28.0.0";
+    # Using `tarball` to avoid NAR hash mismatched caused by git-lfs
+    osmosis-src.url = "tarball+https://github.com/osmosis-labs/osmosis/archive/697b89f2790dbedba88c1a28396571701ced17ad.tar.gz";
     osmosis-src.flake = false;
 
     sentinel-src.url = "github:sentinel-official/hub/v0.9.0-rc0";
@@ -233,6 +234,9 @@
 
     wasmvm_1-src.url = "github:CosmWasm/wasmvm/v1.0.0";
     wasmvm_1-src.flake = false;
+
+    wasmvm_2_2_4-src.url = "github:CosmWasm/wasmvm/v2.2.4";
+    wasmvm_2_2_4-src.flake = false;
 
     wasmvm_2_2_3-src.url = "github:CosmWasm/wasmvm/v2.2.3";
     wasmvm_2_2_3-src.flake = false;
@@ -288,8 +292,9 @@
     wasmvm_1_beta7-src.url = "github:CosmWasm/wasmvm/v1.0.0-beta7";
     wasmvm_1_beta7-src.flake = false;
 
-    apalache-src.url = "github:informalsystems/apalache/v0.44.11";
-    apalache-src.flake = false;
+    # fails with: [error] [launcher] could not retrieve sbt 1.11.5
+    #apalache-src.url = "github:informalsystems/apalache/v0.50.1";
+    #apalache-src.flake = false;
 
     ignite-cli-src.url = "github:ignite/cli/v0.24.0";
     ignite-cli-src.flake = false;

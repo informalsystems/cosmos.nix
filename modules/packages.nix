@@ -115,7 +115,7 @@
         };
         osmosis = import ../packages/osmosis.nix {
           inherit (inputs) osmosis-src;
-          inherit (self'.packages) libwasmvm_2_1_3;
+          inherit (self'.packages) libwasmvm_2_2_4;
           inherit cosmosLib;
           inherit (pkgs) libiconv;
         };
@@ -206,12 +206,13 @@
         ## Linux only packages
         ++ (lists.optionals pkgs.stdenv.isLinux
           [
-            {
-              apalache = import ../packages/apalache.nix {
-                inherit pkgs;
-                inherit (inputs) apalache-src;
-              };
-            }
+            # fails with: [error] [launcher] could not retrieve sbt 1.11.5
+            #{
+            #  apalache = import ../packages/apalache.nix {
+            #    inherit pkgs;
+            #    inherit (inputs) apalache-src;
+            #  };
+            #}
             # fails with gaia nill pointer, so need to have config builder for cosmos-sdk too
             # {
             #   hermes-test = import ../nixosTests/tests/hermes-test.nix {
